@@ -9,12 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-<<<<<<< Updated upstream
-=======
-/**
- * Servlet implementation class MemberEnrollFormController
- */
->>>>>>> Stashed changes
+
 @WebServlet("/enrollForm.me")
 public class MemberEnrollFormController extends HttpServlet {
 	private static final long serialVersionUID = 1L;

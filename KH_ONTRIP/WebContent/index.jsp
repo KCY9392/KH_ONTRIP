@@ -144,13 +144,8 @@
         </div>
 
         <div>
-<<<<<<< Updated upstream
-            <button onclick="submitLogin()" class="btn btn-login" type="button">로그인</button>
-            <button onclick="enrollPage();" class="btn btn-enroll" type="button">회원가입</button>   
-=======
             <button  class="btn btn-login" type="button">로그인</button>
             <button onclick="agreePage();" class="btn btn-enroll" type="button">회원가입</button>   
->>>>>>> Stashed changes
         </div>     
     </div>
 </form>
@@ -159,15 +154,11 @@
 
         function agreePage(){
 			
-<<<<<<< Updated upstream
-        	location.href = "<%=contextPath%>/enrollForm.me";
-=======
         	// location.href = /jsp/views/member/memberEnrollForm.jsp
         	// 웹 애플리케이션의 디렉토리 구조가 url에 노출되면 보안에 취약하다.
         	
         	// 단순한 정적인 페이지라도 반드시 servlet을 거져가기.
         	location.href = "<%=contextPath%>/agreeForm.me";
->>>>>>> Stashed changes
         }
         
 		
