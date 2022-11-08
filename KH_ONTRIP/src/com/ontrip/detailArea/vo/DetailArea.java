@@ -2,10 +2,14 @@ package com.ontrip.detailArea.vo;
 
 
 public class DetailArea {
+	
     private String dAreaCode; // 상세지역코드(PK) // SQL : DA_CODE    // VARCHAR2(20)
     private String dAreaName; // 지역코드 (FK)   // SQL : LOCAL_CODE // VARCHAR2(20)
     private String localCode; // 상세지역이름     // SQL : DA_NAME    // VARCHAR2(20)
 	
+    public DetailArea() {
+    	
+    }
     
     public DetailArea(String dAreaCode, String dAreaName, String localCode) {
 		super();

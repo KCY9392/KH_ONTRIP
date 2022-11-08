@@ -1,4 +1,4 @@
-package ontrip.domain.image.service;
+package com.ontrip.image.service;
 
 public class ImageService {
 }

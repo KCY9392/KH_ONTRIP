@@ -1,14 +1,6 @@
-package ontrip.domain.place.vo;
-
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
+package com.ontrip.place.vo;
 
 import java.util.Date;
-
-@Setter
-@Getter
-@AllArgsConstructor
 
 public class Place {
 
@@ -25,6 +17,143 @@ public class Place {
     private int plcLa; // 시설위도 // SQL : PLC_LA // NUMBER
     private int plcLo; // 시설경도 // SQL : PLC_LO // NUMBER
     private String status; // 삭제여부 // SQL : STATUS // VARCHAR2(1) // DEFAULT 'N'
+    
+    public Place() {
+    	
+    }
+
+	public String getPlcCode() {
+		return plcCode;
+	}
+
+	public void setPlcCode(String plcCode) {
+		this.plcCode = plcCode;
+	}
+
+	public int getCategoryCode() {
+		return categoryCode;
+	}
+
+	public void setCategoryCode(int categoryCode) {
+		this.categoryCode = categoryCode;
+	}
+
+	public String getLocalCode() {
+		return localCode;
+	}
+
+	public void setLocalCode(String localCode) {
+		this.localCode = localCode;
+	}
+
+	public String getDareaCode() {
+		return dareaCode;
+	}
+
+	public void setDareaCode(String dareaCode) {
+		this.dareaCode = dareaCode;
+	}
+
+	public String getPlcName() {
+		return plcName;
+	}
+
+	public void setPlcName(String plcName) {
+		this.plcName = plcName;
+	}
+
+	public String getPlcAddress() {
+		return plcAddress;
+	}
+
+	public void setPlcAddress(String plcAddress) {
+		this.plcAddress = plcAddress;
+	}
+
+	public String getPlcText() {
+		return plcText;
+	}
+
+	public void setPlcText(String plcText) {
+		this.plcText = plcText;
+	}
+
+	public String getPlcBname() {
+		return plcBname;
+	}
+
+	public void setPlcBname(String plcBname) {
+		this.plcBname = plcBname;
+	}
+
+	public String getPlcPnumber() {
+		return plcPnumber;
+	}
+
+	public void setPlcPnumber(String plcPnumber) {
+		this.plcPnumber = plcPnumber;
+	}
+
+	public Date getPlcDate() {
+		return plcDate;
+	}
+
+	public void setPlcDate(Date plcDate) {
+		this.plcDate = plcDate;
+	}
+
+	public int getPlcLa() {
+		return plcLa;
+	}
+
+	public void setPlcLa(int plcLa) {
+		this.plcLa = plcLa;
+	}
+
+	public int getPlcLo() {
+		return plcLo;
+	}
+
+	public void setPlcLo(int plcLo) {
+		this.plcLo = plcLo;
+	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
+	public Place(String plcCode, int categoryCode, String localCode, String dareaCode, String plcName,
+			String plcAddress, String plcText, String plcBname, String plcPnumber, Date plcDate, int plcLa, int plcLo,
+			String status) {
+		super();
+		this.plcCode = plcCode;
+		this.categoryCode = categoryCode;
+		this.localCode = localCode;
+		this.dareaCode = dareaCode;
+		this.plcName = plcName;
+		this.plcAddress = plcAddress;
+		this.plcText = plcText;
+		this.plcBname = plcBname;
+		this.plcPnumber = plcPnumber;
+		this.plcDate = plcDate;
+		this.plcLa = plcLa;
+		this.plcLo = plcLo;
+		this.status = status;
+	}
+
+	@Override
+	public String toString() {
+		return "Place [plcCode=" + plcCode + ", categoryCode=" + categoryCode + ", localCode=" + localCode
+				+ ", dareaCode=" + dareaCode + ", plcName=" + plcName + ", plcAddress=" + plcAddress + ", plcText="
+				+ plcText + ", plcBname=" + plcBname + ", plcPnumber=" + plcPnumber + ", plcDate=" + plcDate
+				+ ", plcLa=" + plcLa + ", plcLo=" + plcLo + ", status=" + status + "]";
+	}
+    
+    
 
 
 }

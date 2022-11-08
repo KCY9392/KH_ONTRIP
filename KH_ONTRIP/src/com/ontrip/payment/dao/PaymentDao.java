@@ -1,4 +1,4 @@
-package ontrip.domain.payment.dao;
+package com.ontrip.payment.dao;
 
 public class PaymentDao {
 

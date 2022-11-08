@@ -1,4 +1,4 @@
-package ontrip.domain.score.service;
+package com.ontrip.score.service;
 
 public class ScoreService {
 }

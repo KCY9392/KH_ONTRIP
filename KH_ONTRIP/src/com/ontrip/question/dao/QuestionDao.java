@@ -1,4 +1,4 @@
-package ontrip.domain.question.dao;
+package com.ontrip.question.dao;
 
 public class QuestionDao {
 }

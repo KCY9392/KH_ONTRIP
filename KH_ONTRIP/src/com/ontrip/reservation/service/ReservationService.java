@@ -1,4 +1,4 @@
-package ontrip.domain.reservation.service;
+package com.ontrip.reservation.service;
 
 public class ReservationService {
 }

@@ -1,4 +1,4 @@
-package ontrip.domain.price.service;
+package com.ontrip.price.service;
 
 public class PriceService {
 }

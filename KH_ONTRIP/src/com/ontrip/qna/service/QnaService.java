@@ -1,4 +1,4 @@
-package ontrip.domain.qna.service;
+package com.ontrip.qna.service;
 
 public class QnaService {
 }

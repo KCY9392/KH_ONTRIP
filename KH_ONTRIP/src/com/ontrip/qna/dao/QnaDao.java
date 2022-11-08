@@ -1,4 +1,4 @@
-package ontrip.domain.qna.dao;
+package com.ontrip.qna.dao;
 
 public class QnaDao {
 }

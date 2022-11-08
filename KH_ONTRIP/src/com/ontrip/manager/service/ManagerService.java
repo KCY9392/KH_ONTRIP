@@ -1,4 +1,4 @@
-package ontrip.domain.manager.service;
+package com.ontrip.manager.service;
 
 public class ManagerService {
 }

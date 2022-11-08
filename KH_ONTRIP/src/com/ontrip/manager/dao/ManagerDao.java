@@ -1,4 +1,4 @@
-package ontrip.domain.manager.dao;
+package com.ontrip.manager.dao;
 
 public class ManagerDao {
 }

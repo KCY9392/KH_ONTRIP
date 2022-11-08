@@ -1,4 +1,4 @@
-package ontrip.domain.place.dao;
+package com.ontrip.place.dao;
 
 public class PlaceDao {
 }

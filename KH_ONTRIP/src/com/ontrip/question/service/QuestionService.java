@@ -1,4 +1,4 @@
-package ontrip.domain.question.service;
+package com.ontrip.question.service;
 
 public class QuestionService {
 }

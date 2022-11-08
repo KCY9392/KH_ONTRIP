@@ -1,4 +1,4 @@
-package ontrip.domain.location.service;
+package com.ontrip.location.service;
 
 public class LocationService {
 }

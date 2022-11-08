@@ -1,14 +1,6 @@
-package ontrip.domain.image.vo;
-
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
+package com.ontrip.image.vo;
 
 import java.util.Date;
-
-@Setter
-@Getter
-@AllArgsConstructor
 
 public class Image {
 
@@ -20,5 +12,81 @@ public class Image {
     private Date uploadDate; // 업로드일 // SQL : UPLOAD_DATE // DATE(SYSDATE)
     private int fLevel; // 파일레벨 // SQL : FILE_LEVEL // NUMBER
     private String iStatus; // 삭제여부 // SQL : IMG_STATUS // VARCHAR2(1) // DEFAULT 'N'
+    
+    public Image() {
+    	
+    }
+
+	public int getfNo() {
+		return fNo;
+	}
+
+	public void setfNo(int fNo) {
+		this.fNo = fNo;
+	}
+
+	public String getPlcCode() {
+		return plcCode;
+	}
+
+	public void setPlcCode(String plcCode) {
+		this.plcCode = plcCode;
+	}
+
+	public int getrBno() {
+		return rBno;
+	}
+
+	public void setrBno(int rBno) {
+		this.rBno = rBno;
+	}
+
+	public String getfName() {
+		return fName;
+	}
+
+	public void setfName(String fName) {
+		this.fName = fName;
+	}
+
+	public String getfPath() {
+		return fPath;
+	}
+
+	public void setfPath(String fPath) {
+		this.fPath = fPath;
+	}
+
+	public Date getUploadDate() {
+		return uploadDate;
+	}
+
+	public void setUploadDate(Date uploadDate) {
+		this.uploadDate = uploadDate;
+	}
+
+	public int getfLevel() {
+		return fLevel;
+	}
+
+	public void setfLevel(int fLevel) {
+		this.fLevel = fLevel;
+	}
+
+	public String getiStatus() {
+		return iStatus;
+	}
+
+	public void setiStatus(String iStatus) {
+		this.iStatus = iStatus;
+	}
+
+	@Override
+	public String toString() {
+		return "Image [fNo=" + fNo + ", plcCode=" + plcCode + ", rBno=" + rBno + ", fName=" + fName + ", fPath=" + fPath
+				+ ", uploadDate=" + uploadDate + ", fLevel=" + fLevel + ", iStatus=" + iStatus + "]";
+	}
+    
+    
 
 }

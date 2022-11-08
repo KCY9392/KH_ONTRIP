@@ -1,4 +1,4 @@
-package ontrip.domain.heart.service;
+package com.ontrip.heart.service;
 
 public class HeartService {
 }

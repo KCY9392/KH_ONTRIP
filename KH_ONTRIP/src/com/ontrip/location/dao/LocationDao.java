@@ -1,4 +1,4 @@
-package ontrip.domain.location.dao;
+package com.ontrip.location.dao;
 
 public class LocationDao {
 }

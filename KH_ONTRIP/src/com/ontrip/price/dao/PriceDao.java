@@ -1,4 +1,4 @@
-package ontrip.domain.price.dao;
+package com.ontrip.price.dao;
 
 public class PriceDao {
 }

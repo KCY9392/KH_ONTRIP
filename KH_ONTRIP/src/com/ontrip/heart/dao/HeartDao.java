@@ -1,4 +1,4 @@
-package ontrip.domain.heart.dao;
+package com.ontrip.heart.dao;
 
 public class HeartDao {
 }

@@ -1,4 +1,4 @@
-package ontrip.domain.image.dao;
+package com.ontrip.image.dao;
 
 public class ImageDao {
 }
