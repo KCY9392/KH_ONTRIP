@@ -4,14 +4,14 @@
 	
 	<entry key="loginMember">
 		SELECT * 
-		FROM MEMBER
-		WHERE USER_ID = ?
-	      AND USER_PWD = ?
+		FROM 'MEMBER'
+		WHERE MEM_ID = ?
+	      AND MEM_PWD = ?
 	      AND STATUS = 'Y'
 	</entry>
 	
 	<entry key="insertMember">
-		INSERT INTO MEMBER(MEM_NO,
+		INSERT INTO 'MEMBER'(MEM_NO,
 						   MEM_ID,
 						   MEM_PWD,
 						   MEM_NAME,
