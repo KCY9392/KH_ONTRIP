@@ -8,12 +8,12 @@ public class Member {
 	private String memberId;
 	private String memberPwd;
 	private String memberName;
-	private String Gender;
-	private String Phone;
-	private Date BirthDate;
+	private String gender;
+	private String phone;
+	private Date birthDate;
 	private boolean status;
-	private Date EnrollDate;
-	private Date ModifyDate;
+	private Date enrollDate;
+	private Date modifyDate;
 	
 	public Member() {
 		
@@ -26,15 +26,25 @@ public class Member {
 		this.memberId = memberId;
 		this.memberPwd = memberPwd;
 		this.memberName = memberName;
-		Gender = gender;
-		Phone = phone;
-		BirthDate = birthDate;
+		this.gender = gender;
+		this.phone = phone;
+		this.birthDate = birthDate;
 		this.status = status;
-		EnrollDate = enrollDate;
-		ModifyDate = modifyDate;
+		this.enrollDate = enrollDate;
+		this.modifyDate = modifyDate;
 	}
 	
 	
+
+	public Member(String memberId, String memberPwd, String memberName, String gender, String phone, Date birthDate) {
+		super();
+		this.memberId = memberId;
+		this.memberPwd = memberPwd;
+		this.memberName = memberName;
+		this.gender = gender;
+		this.phone = phone;
+		this.birthDate = birthDate;
+	}
 
 	public int getMemberNo() {
 		return memberNo;
@@ -69,27 +79,27 @@ public class Member {
 	}
 
 	public String getGender() {
-		return Gender;
+		return gender;
 	}
 
 	public void setGender(String gender) {
-		Gender = gender;
+		this.gender = gender;
 	}
 
 	public String getPhone() {
-		return Phone;
+		return phone;
 	}
 
 	public void setPhone(String phone) {
-		Phone = phone;
+		this.phone = phone;
 	}
 
 	public Date getBirthDate() {
-		return BirthDate;
+		return birthDate;
 	}
 
 	public void setBirthDate(Date birthDate) {
-		BirthDate = birthDate;
+		this.birthDate = birthDate;
 	}
 
 	public boolean isStatus() {
@@ -101,31 +111,28 @@ public class Member {
 	}
 
 	public Date getEnrollDate() {
-		return EnrollDate;
+		return enrollDate;
 	}
 
 	public void setEnrollDate(Date enrollDate) {
-		EnrollDate = enrollDate;
+		this.enrollDate = enrollDate;
 	}
 
 	public Date getModifyDate() {
-		return ModifyDate;
+		return modifyDate;
 	}
 
 	public void setModifyDate(Date modifyDate) {
-		ModifyDate = modifyDate;
+		this.modifyDate = modifyDate;
 	}
 
 	@Override
 	public String toString() {
 		return "Member [memberNo=" + memberNo + ", memberId=" + memberId + ", memberPwd=" + memberPwd + ", memberName="
-				+ memberName + ", Gender=" + Gender + ", Phone=" + Phone + ", BirthDate=" + BirthDate + ", status="
-				+ status + ", EnrollDate=" + EnrollDate + ", ModifyDate=" + ModifyDate + "]";
+				+ memberName + ", gender=" + gender + ", phone=" + phone + ", birthDate=" + birthDate + ", status="
+				+ status + ", enrollDate=" + enrollDate + ", modifyDate=" + modifyDate + "]";
 	}
 
 	
-
-	
-
 
 }
