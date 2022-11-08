@@ -13,7 +13,14 @@ import javax.servlet.http.HttpSession;
 import com.ontrip.member.model.service.MemberService;
 import com.ontrip.member.model.vo.Member;
 
+<<<<<<< Updated upstream
 @WebServlet(name="loginServlet",urlPatterns="/login.me")
+=======
+/**
+ * Servlet implementation class LoginController
+ */
+@WebServlet("/login")
+>>>>>>> Stashed changes
 public class LoginController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

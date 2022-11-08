@@ -1,7 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" import="com.ontrip.member.model.vo.Member"%>
 <%
     String contextPath = request.getContextPath();
+
+	Member loginUser = (Member) session.getAttribute("loginUser");
+	// 로그인전 or 로그인 실패 : null
+	// 로그인 성공후 : 로그인한 회원의 정보가 담긴 member객체.
+	
+	String alertMsg = (String) session.getAttribute("alertMsg");
+	// 서비스 요청전 : null
+	// 서비스 요청성공후 : alert로 띄워줄 메시지 문구.
 %>
 <!DOCTYPE html>
 <html lang="ko">
@@ -136,17 +144,30 @@
         </div>
 
         <div>
+<<<<<<< Updated upstream
             <button onclick="submitLogin()" class="btn btn-login" type="button">로그인</button>
             <button onclick="enrollPage();" class="btn btn-enroll" type="button">회원가입</button>   
+=======
+            <button  class="btn btn-login" type="button">로그인</button>
+            <button onclick="agreePage();" class="btn btn-enroll" type="button">회원가입</button>   
+>>>>>>> Stashed changes
         </div>     
     </div>
 </form>
 
     <script>
 
-        function enrollPage(){
+        function agreePage(){
 			
+<<<<<<< Updated upstream
         	location.href = "<%=contextPath%>/enrollForm.me";
+=======
+        	// location.href = /jsp/views/member/memberEnrollForm.jsp
+        	// 웹 애플리케이션의 디렉토리 구조가 url에 노출되면 보안에 취약하다.
+        	
+        	// 단순한 정적인 페이지라도 반드시 servlet을 거져가기.
+        	location.href = "<%=contextPath%>/agreeForm.me";
+>>>>>>> Stashed changes
         }
         
 		
@@ -154,5 +175,6 @@
 		
         
     </script>
+    
 </body>
 </html>
