@@ -1,4 +1,4 @@
-package ontrip.domain.payment.service;
+package com.ontrip.payment.service;
 
 public class PaymentService {
 

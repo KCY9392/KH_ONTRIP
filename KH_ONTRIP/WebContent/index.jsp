@@ -147,7 +147,7 @@
         	// 웹 애플리케이션의 디렉토리 구조가 url에 노출되면 보안에 취약하다.
         	
         	// 단순한 정적인 페이지라도 반드시 servlet을 거져가기.
-        	location.href = "<%=contextPath%>/enrollFrom.me";
+        	location.href = "<%=contextPath%>/enrollForm.me";
         }
     </script>
 </body>
