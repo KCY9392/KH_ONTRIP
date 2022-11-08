@@ -11,13 +11,30 @@ public class Member {
 	private String Gender;
 	private String Phone;
 	private Date BirthDate;
-	private boolean Unregisiter;
+	private boolean status;
 	private Date EnrollDate;
 	private Date ModifyDate;
 	
 	public Member() {
 		
 	}
+
+	public Member(int memberNo, String memberId, String memberPwd, String memberName, String gender, String phone,
+			Date birthDate, boolean status, Date enrollDate, Date modifyDate) {
+		super();
+		this.memberNo = memberNo;
+		this.memberId = memberId;
+		this.memberPwd = memberPwd;
+		this.memberName = memberName;
+		Gender = gender;
+		Phone = phone;
+		BirthDate = birthDate;
+		this.status = status;
+		EnrollDate = enrollDate;
+		ModifyDate = modifyDate;
+	}
+	
+	
 
 	public int getMemberNo() {
 		return memberNo;
@@ -75,12 +92,12 @@ public class Member {
 		BirthDate = birthDate;
 	}
 
-	public boolean isUnregisiter() {
-		return Unregisiter;
+	public boolean isStatus() {
+		return status;
 	}
 
-	public void setUnregisiter(boolean unregisiter) {
-		Unregisiter = unregisiter;
+	public void setStatus(boolean status) {
+		this.status = status;
 	}
 
 	public Date getEnrollDate() {
@@ -99,27 +116,15 @@ public class Member {
 		ModifyDate = modifyDate;
 	}
 
-	public Member(int memberNo, String memberId, String memberPwd, String memberName, String gender, String phone,
-			Date birthDate, boolean unregisiter, Date enrollDate, Date modifyDate) {
-		super();
-		this.memberNo = memberNo;
-		this.memberId = memberId;
-		this.memberPwd = memberPwd;
-		this.memberName = memberName;
-		Gender = gender;
-		Phone = phone;
-		BirthDate = birthDate;
-		Unregisiter = unregisiter;
-		EnrollDate = enrollDate;
-		ModifyDate = modifyDate;
-	}
-
 	@Override
 	public String toString() {
 		return "Member [memberNo=" + memberNo + ", memberId=" + memberId + ", memberPwd=" + memberPwd + ", memberName="
-				+ memberName + ", Gender=" + Gender + ", Phone=" + Phone + ", BirthDate=" + BirthDate + ", Unregisiter="
-				+ Unregisiter + ", EnrollDate=" + EnrollDate + ", ModifyDate=" + ModifyDate + "]";
+				+ memberName + ", Gender=" + Gender + ", Phone=" + Phone + ", BirthDate=" + BirthDate + ", status="
+				+ status + ", EnrollDate=" + EnrollDate + ", ModifyDate=" + ModifyDate + "]";
 	}
+
+	
+
 	
 
 

@@ -117,7 +117,8 @@
         <video src="시퀀스 01.mp4" autoplay muted loop >
         </video>
     </div>
-
+    
+<form id="login-form" action="<%= contextPath %>/login.me" method="post">
     <div class="container">
         <div class="centerText">
             <p>바쁜 현대인들을위한</p>
@@ -128,27 +129,30 @@
             <p>On Trip</p>
         </div>
 
+	
         <div class="input">
-            <input type="text" placeholder="아이디를 입력하세요."> <br>
-            <input type="password" placeholder="비밀번호를 입력하세요.">
+            <input type="text" name="userId" placeholder="아이디를 입력하세요." required> <br>
+            <input type="password" name="userPwd" placeholder="비밀번호를 입력하세요." required>
         </div>
 
         <div>
-            <button  class="btn btn-login" type="button">로그인</button>
+            <button onclick="submitLogin()" class="btn btn-login" type="button">로그인</button>
             <button onclick="enrollPage();" class="btn btn-enroll" type="button">회원가입</button>   
         </div>     
     </div>
+</form>
 
     <script>
 
         function enrollPage(){
 			
-        	// location.href = /jsp/views/member/memberEnrollForm.jsp
-        	// 웹 애플리케이션의 디렉토리 구조가 url에 노출되면 보안에 취약하다.
-        	
-        	// 단순한 정적인 페이지라도 반드시 servlet을 거져가기.
         	location.href = "<%=contextPath%>/enrollForm.me";
         }
+        
+		
+        
+		
+        
     </script>
 </body>
 </html>
