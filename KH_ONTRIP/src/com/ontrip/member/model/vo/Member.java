@@ -10,7 +10,7 @@ public class Member {
 	private String memberName;
 	private String gender;
 	private String phone;
-	private Date birthDate;
+	private String birthDate;
 	private boolean status;
 	private Date enrollDate;
 	private Date modifyDate;
@@ -20,7 +20,7 @@ public class Member {
 	}
 
 	public Member(int memberNo, String memberId, String memberPwd, String memberName, String gender, String phone,
-			Date birthDate, boolean status, Date enrollDate, Date modifyDate) {
+			String birthDate, boolean status, Date enrollDate, Date modifyDate) {
 		super();
 		this.memberNo = memberNo;
 		this.memberId = memberId;
@@ -36,7 +36,7 @@ public class Member {
 	
 	
 
-	public Member(String memberId, String memberPwd, String memberName, String gender, String phone, Date birthDate) {
+	public Member(String memberId, String memberPwd, String memberName, String gender, String phone, String birthDate) {
 		super();
 		this.memberId = memberId;
 		this.memberPwd = memberPwd;
@@ -94,11 +94,11 @@ public class Member {
 		this.phone = phone;
 	}
 
-	public Date getBirthDate() {
+	public String getBirthDate() {
 		return birthDate;
 	}
 
-	public void setBirthDate(Date birthDate) {
+	public void setBirthDate(String birthDate) {
 		this.birthDate = birthDate;
 	}
 

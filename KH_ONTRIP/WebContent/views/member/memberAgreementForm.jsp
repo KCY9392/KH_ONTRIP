@@ -7,10 +7,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>온트립 : 회원가입</title>
+    <script
+        src="https://code.jquery.com/jquery-3.6.1.min.js"
+        integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="
+        crossorigin="anonymous">
+    </script>
     <link rel="stylesheet" href="../css/회원1.css">
 </head>
 <body>
-    <div class="container">
+    <div class="container" id = "content">
         <h1>On Trip</h1> 
         <p>OnTrip 이용약관 동의 (필수)</p>
         <textarea cols="50" rows="5">
@@ -130,10 +135,10 @@ OnTrip에 오신 여러분을 환영합니다.
 온트립 서비스와 관련하여 궁금하신 사항이 있으시면 고객센터(대표번호: 010-5454-2362/ 평일 09:00~18:00)로 문의 주시기 바랍니다.
         </textarea>
         <br>
-        <input id="agree1" name="agree1" type="radio">
+        <input id="agree1" name="agree1" type="radio" value="1">
         <label for="agree1">동의합니다</label>
 
-        <input id="noAgree1" name="agree1" type="radio">
+        <input id="noAgree1" name="agree1" type="radio" value="0">
         <label for="noAgree1">동의하지 않습니다.</label> <br><br>
 
         <p>개인정보 수집 및 이용동의 (필수)</p>
@@ -205,10 +210,10 @@ eXpert 서비스 및 eXpert 센터 가입 등록정보 : 신청일로부터 6개
         </textarea>
 
         <br>
-        <input id="agree2" name="agree2" type="radio">
+        <input id="agree2" name="agree2" type="radio" value="2">
         <label for="agree2">동의합니다</label>
 
-        <input id="noAgree2" name="agree2" type="radio">
+        <input id="noAgree2" name="agree2" type="radio" value="0">
         <label for="noAgree2">동의하지 않습니다.</label> <br><br>
 
         <p>위치기반 서비스 이용 동의 (선택)</p>
@@ -294,12 +299,20 @@ eXpert 서비스 및 eXpert 센터 가입 등록정보 : 신청일로부터 6개
         <label for="noAgree3">동의하지 않습니다.</label> <br><br>
 
         <button class="btn-1">취소</button>
-        <button class="btn-1" onclick="enrollPage();">확인</button>
-
-
+        <button type ="button" name = "checkagree" class="btn-1" disabled id = "checkagree" onclick="enrollPage();">확인</button>
+   
     </div>
-    <script>
-
+    
+   <script>
+	    $(function(){
+	      $('[name^=agree]').click(function(){
+	          if($("[name=agree1]:checked").val() == "1" && $("[name=agree2]:checked").val() == "2") { 
+	            $("button:button[name=checkagree]").attr("disabled",false);
+	          } else { 
+	             $("button:button[name=checkagree]").attr("disabled",true);
+	          } 
+	      });
+	   })
         function enrollPage(){
 			
         	// location.href = /jsp/views/member/memberEnrollForm.jsp
@@ -309,5 +322,7 @@ eXpert 서비스 및 eXpert 센터 가입 등록정보 : 신청일로부터 6개
         	location.href = "<%=request.getContextPath()%>/enrollForm.me";
         }
     </script>
+  
+    
 </body>
 </html>

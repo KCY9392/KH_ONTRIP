@@ -3,7 +3,6 @@ package com.ontrip.member.model.dao;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -56,7 +55,7 @@ public class MemberDao {
                      rset.getString("memberName"),
                      rset.getString("gender"),
                      rset.getString("phone"),
-                     rset.getDate("birthDate"));
+                     rset.getString("birthDate"));
          }
       } catch (SQLException e) {
          e.printStackTrace();
@@ -85,7 +84,7 @@ public class MemberDao {
 		psmt.setString(3, m.getMemberName());
 		psmt.setString(4, m.getGender());
 		psmt.setString(5, m.getPhone());
-		psmt.setDate(6, (Date) m.getBirthDate());
+		psmt.setString(6,  m.getBirthDate());
 		
 		result = psmt.executeUpdate();
 	} catch (SQLException e) {
