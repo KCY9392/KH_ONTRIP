@@ -1,0 +1,286 @@
+@charset "UTF-8";
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+html,
+body {
+    font-family: 'Noto Sans KR', sans-serif !important;
+    -webkit-overflow-scrolling: touch !important;
+    touch-action: manipulation;
+}
+.imgbox {
+    display: block;
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+}
+.imgbox .box-cover {
+    line-height: 1em;
+    font-size: 0;
+}
+
+.imgbox img {
+    backface-visibility: hidden;
+    transition: all 200ms ease-in-out;
+    -moz-transition: all 200ms ease-in-out;
+    -ms-transition: all 200ms ease-in-out;
+    -o-transition: all 200ms ease-in-out;
+    transform: scale(1);
+    -webkit-transform: scale(1);
+    -ms-transform: scale(1);
+}
+
+.imgbox .box-details {
+    pointer-events: none;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    padding: 30px;
+}
+
+.imgbox .box-details::before {
+    content: '';
+    transition: all 200ms ease-in-out;
+    -moz-transition: all 200ms ease-in-out;
+    -ms-transition: all 200ms ease-in-out;
+    -o-transition: all 200ms ease-in-out;
+    opacity: 0;
+    position: absolute;
+    z-index: 1;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    top: -15px;
+    opacity: 0.7;
+    background: linear-gradient(to bottom, transparent, #000);
+}
+
+.imgbox .box-meta {
+    transition: all 250ms ease-in-out;
+    -moz-transition: all 250ms ease-in-out;
+    -ms-transition: all 250ms ease-in-out;
+    -o-transition: all 250ms ease-in-out;
+    transform: translate(0, 10%);
+    -webkit-transform: translate(0, 10%);
+    -ms-transform: translate(0, 10%);
+    visibility: visible;
+    position: relative;
+    opacity: 0.9;
+    z-index: 2;
+}
+
+.imgbox .box-meta .city,
+.imgbox .box-meta .country {
+    letter-spacing: 0.04em;
+    font-weight: 500;
+    line-height: 1em;
+    color: #ffffff;
+    margin: 0;
+}
+
+.imgbox .box-meta .city {
+    font-size: 1.8rem;
+    margin: 0 0 7.5px;
+}
+
+.imgbox .box-meta .country {
+    font-size: 20px;
+}
+
+.imgbox .box-meta .citysummary {
+    color: #ffffff;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    margin-top: 5px;
+    margin-bottom: -20px;
+    display: none;
+    letter-spacing: 0.02em;
+}
+
+.imgbox:hover .box-details::before {
+    transform: translate(0, 0);
+    -webkit-transform: translate(0, 0);
+    -ms-transform: translate(0, 0);
+    visibility: visible;
+    opacity: 1;
+}
+
+.imgbox:hover .box-meta {
+    transform: translate(0, 0);
+    -webkit-transform: translate(0, 0);
+    -ms-transform: translate(0, 0);
+    visibility: visible;
+    opacity: 1;
+}
+
+.imgbox:hover img {
+    transform: scale(1.2);
+    -webkit-transform: scale(1.2);
+    -ms-transform: scale(1.2);
+}
+
+.imgbox:hover .box-meta .citysummary {
+    display: block !important;
+}
+
+body{
+    margin:0;
+    
+}
+div{
+    box-sizing: border-box;
+}
+.nav_b{
+    font-size: 30px;
+    padding-left: 40px;
+    color:rgb(155, 205, 138);
+}
+.nav_h{
+    font-size:small;
+}
+.nav_brand{
+    margin-left: 50px;
+}
+nav{
+    position:fixed;
+}
+h1{
+    text-align: center;
+    font-weight:900;
+}
+.center-hash{
+    text-align: center;
+    color:rgb(24, 207, 155);
+    font-weight: 900;
+}
+
+
+.row {
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 20px;
+}
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+*, *:before, *:after {
+    -webkit-box-sizing: inherit;
+    box-sizing: inherit;
+}
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+div {
+    display: block;
+}
+body {
+    font-size: 15px;
+    line-height: 1.5;
+    margin: 0;
+    color: #000 !important;
+    background-color: #fff !important;
+}
+body {
+    line-height: 1;
+}
+html, body {
+    font-family: 'Noto Sans KR', sans-serif !important;
+    -webkit-overflow-scrolling: touch !important;
+    touch-action: manipulation;
+}
+:root {
+    --uk-position-margin-offset: 0px;
+}
+:root {
+    --uk-leader-fill-content: '.';
+}
+:root {
+    --uk-breakpoint-s: 640px;
+    --uk-breakpoint-m: 960px;
+    --uk-breakpoint-l: 1200px;
+    --uk-breakpoint-xl: 1600px;
+}
+html {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.5;
+    -webkit-text-size-adjust: 100%;
+    background: #fff;
+    color: #666;
+}
+@media only screen and (min-width: 1200px){
+html {
+    font-size: 15px;
+}
+}
+@media only screen and (min-width: 992px){
+html {
+    font-size: 14.5px;
+}
+}
+@media only screen and (min-width: 0){
+html {
+    font-size: 14px;
+}
+}
+html {
+    line-height: 1.5;
+    /* font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif; */
+    font-weight: normal;
+    color: rgba(0, 0, 0, 0.87);
+}
+html {
+    line-height: 1.15;
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+}
+html {
+    overflow-x: hidden;
+    font-size: 15px;
+    line-height: 1.5;
+    box-sizing: border-box;
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+}
+*, *:before, *:after {
+    -webkit-box-sizing: inherit;
+    box-sizing: inherit;
+}
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+.row:after {
+    content: '';
+    display: table;
+    clear: both;
+}
+*, *:before, *:after {
+    -webkit-box-sizing: inherit;
+    box-sizing: inherit;
+}
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+::selection {
+    background: #39f;
+    color: #fff;
+    text-shadow: none;
+}
+
+
+
+
+
+
+
+
+
