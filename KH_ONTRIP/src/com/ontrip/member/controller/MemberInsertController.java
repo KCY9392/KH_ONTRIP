@@ -13,7 +13,7 @@ import javax.servlet.http.HttpSession;
 import com.ontrip.member.model.service.MemberService;
 import com.ontrip.member.model.vo.Member;
 
-@WebServlet("/MemberInsertController")
+@WebServlet("/insert.me")
 public class MemberInsertController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
      
@@ -23,6 +23,9 @@ public class MemberInsertController extends HttpServlet {
 
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		System.out.println("되니");
+		
 		String memberId = request.getParameter("memberId");
 		String memberPwd = request.getParameter("memberPwd");
 		String memberName = request.getParameter("memberName");
@@ -38,7 +41,7 @@ public class MemberInsertController extends HttpServlet {
 			HttpSession session = request.getSession();
 			session.setAttribute("alertMsg", "회원가입 성공!");
 			
-			response.sendRedirect();
+			response.sendRedirect(request.getContextPath());
 		} else {
 			request.setAttribute("errorMsg", "회원가입 실패");
 			

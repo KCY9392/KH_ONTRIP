@@ -71,33 +71,33 @@ public class MemberDao {
       return m;
    }
    
-   public int insertMember(Member m, Connection conn) {
-	   
-	   // insert 문 처리된 행의 갯수 반환해서 result에 저장
-	   int result = 0;
-	   
-	   PreparedStatement psmt = null;
-	   
-	   String sql = prop.getProperty("insertMember");
-	   
-	   try {
-		psmt = conn.prepareStatement(sql);
-		
-		psmt.setString(1, m.getMemberId());
-		psmt.setString(2, m.getMemberPwd());
-		psmt.setString(3, m.getMemberName());
-		psmt.setString(4, m.getGender());
-		psmt.setString(5, m.getPhone());
-		psmt.setString(6,  m.getBirthDate());
-		
-		result = psmt.executeUpdate();
-	} catch (SQLException e) {
-		e.printStackTrace();
-	} finally {
-		close(psmt);
+	public int insertMember(Member m, Connection conn) {
+
+		// insert 문 처리된 행의 갯수 반환해서 result에 저장
+		int result = 0;
+
+		PreparedStatement psmt = null;
+
+		String sql = prop.getProperty("insertMember");
+
+		try {
+			psmt = conn.prepareStatement(sql);
+
+			psmt.setString(1, m.getMemberName());
+			psmt.setString(2, m.getGender());
+			psmt.setString(3, m.getBirthDate());
+			psmt.setString(4, m.getMemberId());
+			psmt.setString(5, m.getMemberPwd());
+			psmt.setString(6, m.getPhone());
+
+			result = psmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(psmt);
+		}
+		return result;
 	}
-	   return result;
-   }
 }
 	
 
