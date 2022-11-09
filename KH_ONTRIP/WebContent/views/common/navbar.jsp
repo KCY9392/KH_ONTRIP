@@ -14,6 +14,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link href="<%= request.getContextPath() %>/resources/css/mainForm.css" rel="stylesheet" >
 </head>
 <body>
 <% if(loginUser != null) { %>
