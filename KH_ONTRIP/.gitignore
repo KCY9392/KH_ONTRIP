@@ -1,1 +1,12 @@
 /.settings/
+
+.idea/
+
+*.iml
+*.iws
+
+log/
+target/
+
+
+.classpath
