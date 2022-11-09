@@ -83,12 +83,12 @@ public class MemberDao {
 		try {
 			psmt = conn.prepareStatement(sql);
 
-			psmt.setString(1, m.getMemberName());
-			psmt.setString(2, m.getGender());
-			psmt.setString(3, m.getBirthDate());
-			psmt.setString(4, m.getMemberId());
-			psmt.setString(5, m.getMemberPwd());
-			psmt.setString(6, m.getPhone());
+			psmt.setString(1, m.getMemberId());
+			psmt.setString(2, m.getMemberPwd());
+			psmt.setString(3, m.getMemberName());
+			psmt.setString(4, m.getGender());
+			psmt.setString(5, m.getPhone());
+			psmt.setString(6, m.getBirthDate());
 
 			result = psmt.executeUpdate();
 		} catch (SQLException e) {

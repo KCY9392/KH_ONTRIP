@@ -139,29 +139,29 @@
     <div class="container">
         <h1>On Trip</h1> 
         <br>
-        <form action="<%=request.getContextPath() %>/insert.me" id="enroll-form" method="post" enctype="multipart/form-data">
+        <form action="<%=request.getContextPath() %>/insert.me" id="enroll-form" method="post">
 	        <div class="centerText">
 	            <span class="span_name">여행자 이름</span>
-	            <input type="text" placeholder="여행자 이름" size="14" required>  &nbsp; &nbsp; &nbsp; &nbsp;
+	            <input type="text" placeholder="여행자 이름" size="14" name="memberName" required>  &nbsp; &nbsp; &nbsp; &nbsp;
 	            <span>성별</span> &nbsp;
-	            <select class="select_gender">
+	            <select class="select_gender" name="gender">
 	                <option>성별</option>
-	                <option>남</option>
-	                <option>여</option>
+	                <option value="남">남</option>
+	                <option value="여">여</option>
 	            </select> <br><br>
 	
 	            <span class="span_birth">생년월일</span> &nbsp;
 	            <input type="date" name="birthDate"/> <br><br>
 	
 	            <span class="span_id">아이디</span>
-	            <input class="input" type="text" placeholder="아이디" required>
+	            <input class="input" type="text" placeholder="아이디" name="memberId" required>
 	            <button class="btn_2">중복확인</button><br><br>
 	            <span class="span_pwd">비밀번호</span>
-	            <input class="input" type="password" placeholder="비밀번호" required><br><br>
+	            <input class="input" type="password" placeholder="비밀번호" name="memberPwd" required><br><br>
 	            <span class="span_pwd2">비밀번호 확인</span>
-	            <input class="input" type="password" placeholder="비밀번호 확인" required> <br><br>
+	            <input class="input" type="password" placeholder="비밀번호 확인"  required> <br><br>
 	            <span class="span_phone">휴대전화</span>
-	            <input class="input" type="text" placeholder="휴대전화번호 ( ' - ' 포함 )" required><br>
+	            <input class="input" type="text" placeholder="휴대전화번호 ( ' - ' 포함 )" name="phone" required><br>
 	            
 	            <button type="reset" class="btn_3">초기화</button>
 	            <button type="submit" class="btn_3">가입</button>

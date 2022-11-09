@@ -12,12 +12,12 @@
 	
 	<entry key="insertMember">
       INSERT INTO "Member"(MEM_NO,
-                     MEM_NAME,
-                     MEM_GENDER,
                      MEM_ID,
                      MEM_PWD,
-                     MEM_BIRTH,
-                     MEM_PHONE)
+                     MEM_NAME,
+                     MEM_GENDER,
+                     MEM_PHONE,
+                     MEM_BIRTH)
                VALUES(SEQ_MEM.NEXTVAL,
                      ?,
                      ?,
