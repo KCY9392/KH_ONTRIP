@@ -26,4 +26,11 @@
                      ?,
                      ?)      
    </entry>
+   
+   <entry key="idCheck">
+   	SELECT COUNT(*)
+   	FROM "Member"
+   	WHERE MEM_ID = ?
+   </entry>
+   
 </properties>
