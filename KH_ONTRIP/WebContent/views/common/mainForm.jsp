@@ -46,7 +46,7 @@
       </a>
       <form class="d-flex" role="click">
         
-        <button style="border:none; color:black;" class="btn btn-outline-success" type="submit" onclick="myPage();">마이페이지</button>
+        <button style="border:none; color:black;" class="btn btn-outline-success" type="button" onclick="myPage();">마이페이지</button>
         <button style="margin-right: 40px; margin-left:20px; color:black; border:none;" class="btn btn-outline-success" type="button"
         	onclick="logout();">로그아웃</button>
       </form>
@@ -64,6 +64,9 @@
  		location.href = "<%=request.getContextPath()%>/logout.me";
  	}
  
+ 	function myPage(){
+ 		location.href = "<%=request.getContextPath()%>/mypage.me";
+ 	}
  </script>
   
 </body>
