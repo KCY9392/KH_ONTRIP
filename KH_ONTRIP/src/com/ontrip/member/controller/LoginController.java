@@ -32,10 +32,10 @@ public class LoginController extends HttpServlet {
 		
 		request.setCharacterEncoding("UTF-8");
 		
-		String userId = request.getParameter("userId");
-		String userPwd = request.getParameter("userPwd");
+		String memberId = request.getParameter("memberId");
+		String memberPwd = request.getParameter("memberPwd");
 		
-		Member loginUser = ms.loginMember(userId, userPwd);
+		Member loginUser = ms.loginMember(memberId, memberPwd);
 		
 		if(loginUser == null) { // login 실패 => 에러페이지 응답
 			
@@ -52,7 +52,7 @@ public class LoginController extends HttpServlet {
 			
 			session.setAttribute("alertMsg", "로그인에 성공하였습니다");
 			
-			response.sendRedirect("/views/common/mainForm.jsp");
+			response.sendRedirect(request.getContextPath());
 			 // 프로젝트의 기본경로 
 		}
 	}

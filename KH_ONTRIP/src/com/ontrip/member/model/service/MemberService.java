@@ -11,11 +11,11 @@ import com.ontrip.member.model.vo.Member;
 
 public class MemberService {
 	
-	public Member loginMember(String userId, String userPwd) {
+	public Member loginMember(String memberId, String memberPwd) {
 		
 		System.out.println("memberService 통과");
 		Connection conn = JDBCTemplate.getConnection();
-		Member m = new MemberDao().loginMember(userId, userPwd, conn);
+		Member m = new MemberDao().loginMember(memberId, memberPwd, conn);
 		   
 		JDBCTemplate.close();
 		   

@@ -28,7 +28,7 @@ public class MemberDao {
       
    }
    
-   public Member loginMember(String userId, String userPwd, Connection conn) {
+   public Member loginMember(String memberId, String memberPwd, Connection conn) {
       // select문 => ResultSet객체 => Member객체
       Member m = null;
       
@@ -42,8 +42,8 @@ public class MemberDao {
       try {
          psmt = conn.prepareStatement(sql);
          
-         psmt.setString(1, userId);
-         psmt.setString(2, userPwd);
+         psmt.setString(1, memberId);
+         psmt.setString(2, memberPwd);
          
          rset = psmt.executeQuery(); //실행하고 결과얻기
          

@@ -115,54 +115,61 @@
     </style>
 </head>
 <body>
-<form id="login-form" action="<%= contextPath %>/login.me" method="post">
-    <div class="headContainer">
-        <a href="#">
-            <span class="headOnTrip">OnTrip</span> &nbsp;
-            <span class="headText">MAKE YOUR ROUTE OPTIMIZED</span>
-        </a>
-    </div>
-
-    <div class="video">
-        <video src="시퀀스 01.mp4" autoplay muted loop >
-        </video>
-    </div>
-    
-
-    <div class="container">
-        <div class="centerText">
-            <p>바쁜 현대인들을위한</p>
-            <p>국내여행 스케줄링 플래너</p>
-        </div>
-
-        <div class="title">
-            <p>On Trip</p>
-        </div>
-
+	<script>
+		let msg = "<%= alertMsg%>"; // let msg = 성공적으로 로그인이 되었습니다.
+		
+		if(msg != "null"){
+			alert(msg);
+			// 알림창을 띄워준후 session에 담긴 해당메세지는 지워줘야함.
+			// 안그러면 menubar.jsp가 로딩될때마다 매번 alert가 계속 뜰것
+			
+			<% session.removeAttribute("alertMsg");%>
+		}
+	</script>
+		<form id="login-form" action="<%= contextPath %>/login.me"
+			method="post">
+			<div class="headContainer">
+				<a href="#"> <span class="headOnTrip">OnTrip</span> &nbsp; <span
+					class="headText">MAKE YOUR ROUTE OPTIMIZED</span>
+				</a>
+			</div>
 	
-        <div class="input">
-            <input type="text" name="userId" placeholder="아이디를 입력하세요." required> <br>
-            <input type="password" name="userPwd" placeholder="비밀번호를 입력하세요." required>
-        </div>
+			<div class="video">
+				<video src="시퀀스 01.mp4" autoplay muted loop>
+				</video>
+			</div>
+	
+	
+			<div class="container">
+				<div class="centerText">
+					<p>바쁜 현대인들을위한</p>
+					<p>국내여행 스케줄링 플래너</p>
+				</div>
+	
+				<div class="title">
+					<p>On Trip</p>
+				</div>
+	
+	
+				<div class="input">
+					<input type="text" name="memberId" placeholder="아이디를 입력하세요." required>
+					<br> <input type="password" name="memberPwd"
+						placeholder="비밀번호를 입력하세요." required>
+				</div>
+	
+				<div>
+					<button class="btn btn-login" type="submit">로그인</button>
+					<button onclick="agreePage();" class="btn btn-enroll" type="button">회원가입</button>
+				</div>
+			</div>
+		</form>
 
-        <div>
-            <button onclick="submitLogin();" class="btn btn-login" type="button">로그인</button>
-            <button onclick="agreePage();" class="btn btn-enroll" type="button">회원가입</button>   
-        </div>     
-    </div>
-</form>
-
-    <script>
-    
-	    function submitLogin(){
-	    	
-	    	location.href="<%=contextPath%>/login.me";
-	    }
+	<script>
         function agreePage(){
 		
         	location.href = "<%=request.getContextPath()%>/agreeForm.me";
         }    
     </script>
-    
+
 </body>
 </html>
