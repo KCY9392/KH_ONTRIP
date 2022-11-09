@@ -52,7 +52,7 @@ public class LoginController extends HttpServlet {
 			
 			session.setAttribute("alertMsg", "로그인에 성공하였습니다");
 			
-			response.sendRedirect(request.getContextPath());
+			response.sendRedirect("/views/common/mainForm.jsp");
 			 // 프로젝트의 기본경로 
 		}
 	}
