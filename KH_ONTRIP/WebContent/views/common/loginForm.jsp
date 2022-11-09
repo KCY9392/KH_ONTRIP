@@ -11,6 +11,8 @@
 	// 서비스 요청전 : null
 	// 서비스 요청성공후 : alert로 띄워줄 메시지 문구.
 %>
+
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>

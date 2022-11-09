@@ -17,6 +17,13 @@
 <title>Insert title here</title>
 
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous"> 
+
+<script
+        src="https://code.jquery.com/jquery-3.6.1.min.js"
+        integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="
+        crossorigin="anonymous">
+    </script>
+
 </head>
 <body>
 <% if(loginUser != null) { %>
@@ -39,12 +46,25 @@
       </a>
       <form class="d-flex" role="click">
         
-        <button style="border:none; color:black;" class="btn btn-outline-success" type="submit">마이페이지</button>
-        <button style="margin-right: 40px; margin-left:20px; color:black; border:none;" class="btn btn-outline-success" type="submit">로그아웃</button>
+        <button style="border:none; color:black;" class="btn btn-outline-success" type="submit" onclick="myPage();">마이페이지</button>
+        <button style="margin-right: 40px; margin-left:20px; color:black; border:none;" class="btn btn-outline-success" type="button"
+        	onclick="logout();">로그아웃</button>
       </form>
     </div>
   </nav>
+ <% } else {%>
+ 
+ 
+ 
+ 
  <% } %>
+ 
+ <script>
+ 	function logout(){
+ 		location.href = "<%=request.getContextPath()%>/logout.me";
+ 	}
+ 
+ </script>
   
 </body>
 </html>
