@@ -11,7 +11,7 @@ public class Member {
 	private String gender;
 	private String phone;
 	private String birthDate;
-	private boolean status;
+	private String status;
 	private Date enrollDate;
 	private Date modifyDate;
 	
@@ -20,7 +20,7 @@ public class Member {
 	}
 
 	public Member(int memberNo, String memberId, String memberPwd, String memberName, String gender, String phone,
-			String birthDate, boolean status, Date enrollDate, Date modifyDate) {
+			String birthDate, String status, Date enrollDate, Date modifyDate) {
 		super();
 		this.memberNo = memberNo;
 		this.memberId = memberId;
@@ -33,9 +33,11 @@ public class Member {
 		this.enrollDate = enrollDate;
 		this.modifyDate = modifyDate;
 	}
-	
-	
 
+	
+	
+	
+	
 	public Member(String memberId, String memberPwd, String memberName, String gender, String phone, String birthDate) {
 		super();
 		this.memberId = memberId;
@@ -102,11 +104,11 @@ public class Member {
 		this.birthDate = birthDate;
 	}
 
-	public boolean isStatus() {
+	public String getStatus() {
 		return status;
 	}
 
-	public void setStatus(boolean status) {
+	public void setStatus(String status) {
 		this.status = status;
 	}
 
@@ -132,6 +134,8 @@ public class Member {
 				+ memberName + ", gender=" + gender + ", phone=" + phone + ", birthDate=" + birthDate + ", status="
 				+ status + ", enrollDate=" + enrollDate + ", modifyDate=" + modifyDate + "]";
 	}
+	
+	
 
 	
 
