@@ -131,19 +131,19 @@
                 <button type="button" id = "s" name="search" onclick="show(this);">숙소</button>
 
                 <div id = "nsearch" class = "box">
-                    <img src = "image1.png" width = "930px" height = "550px"> &nbsp;
+                    <img src = "selectPlace/image1.png" width = "930px" height = "550px"> &nbsp;
                     <br><br><br>
                     ◀&nbsp;&nbsp;&nbsp;<strong>1</strong>&nbsp;&nbsp;&nbsp;2&nbsp;&nbsp;&nbsp;3&nbsp;&nbsp;&nbsp;4&nbsp;&nbsp;&nbsp;6&nbsp;&nbsp;&nbsp;7&nbsp;&nbsp;&nbsp;8&nbsp;&nbsp;&nbsp;9&nbsp;&nbsp;&nbsp;10&nbsp;&nbsp;&nbsp;▶
                 </div>
             
                 <div id = "msearch" class = "box"> 
-                    <img src = "image2.png" width = "930px" height = "550px"> &nbsp;
+                    <img src = "selectPlace/image2.png" width = "930px" height = "550px"> &nbsp;
                     <br><br><br>
                     ◀&nbsp;&nbsp;&nbsp;1&nbsp;&nbsp;&nbsp;<strong>2</strong>&nbsp;&nbsp;&nbsp;3&nbsp;&nbsp;&nbsp;4&nbsp;&nbsp;&nbsp;6&nbsp;&nbsp;&nbsp;7&nbsp;&nbsp;&nbsp;8&nbsp;&nbsp;&nbsp;9&nbsp;&nbsp;&nbsp;10&nbsp;&nbsp;&nbsp;▶
                 </div>
             
                 <div id = "ssearch" class = "box">
-                    <img src = "image3.png" width = "930px" height = "550px"> &nbsp;
+                    <img src = "selectPlace/image3.png" width = "930px" height = "550px"> &nbsp;
                     <br><br><br>
                     ◀&nbsp;&nbsp;&nbsp;1&nbsp;&nbsp;&nbsp;2&nbsp;&nbsp;&nbsp;<strong>3</strong>&nbsp;&nbsp;&nbsp;4&nbsp;&nbsp;&nbsp;6&nbsp;&nbsp;&nbsp;7&nbsp;&nbsp;&nbsp;8&nbsp;&nbsp;&nbsp;9&nbsp;&nbsp;&nbsp;10&nbsp;&nbsp;&nbsp;▶
                 </div>
