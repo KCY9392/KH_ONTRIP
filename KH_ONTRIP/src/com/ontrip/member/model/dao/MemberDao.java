@@ -50,12 +50,16 @@ public class MemberDao {
          //값이 무조건 하나일 수 밖에 없으니까 while문이 아닌 if문 활용
          if(rset.next()) {
             m = new Member(
-                     rset.getString("memberId"),
-                     rset.getString("memberPwd"),
-                     rset.getString("memberName"),
-                     rset.getString("gender"),
-                     rset.getString("phone"),
-                     rset.getString("birthDate"));
+            		 rset.getInt("MEM_NO"),
+                     rset.getString("MEM_ID"),
+                     rset.getString("MEM_PWD"),
+                     rset.getString("MEM_NAME"),
+                     rset.getString("MEM_GENDER"),
+                     rset.getString("MEM_PHONE"),
+                     rset.getString("MEM_BIRTH"),
+            		 rset.getString("STATUS"),
+            		 rset.getDate("MEM_ENROLLDATE"),
+            		 rset.getDate("MEM_MODIFYDATE"));
          }
       } catch (SQLException e) {
          e.printStackTrace();
