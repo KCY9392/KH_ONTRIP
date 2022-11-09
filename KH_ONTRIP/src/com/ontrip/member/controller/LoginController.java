@@ -13,7 +13,7 @@ import javax.servlet.http.HttpSession;
 import com.ontrip.member.model.service.MemberService;
 import com.ontrip.member.model.vo.Member;
 
-@WebServlet(name="loginServlet",urlPatterns="/login.me")
+@WebServlet("/login.me")
 
 public class LoginController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -26,6 +26,9 @@ public class LoginController extends HttpServlet {
     MemberService ms = new MemberService();
     
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		
+		System.out.println("들어오니");
 		
 		request.setCharacterEncoding("UTF-8");
 		
