@@ -8,7 +8,7 @@
 	 
 	Image im = (Image)request.getAttribute("im"); //이미지 : 대표지역 사진 가져오기
 	
-	ArrayList<DetailArea> list = (ArrayList<DetailArea>)request.getAttribute("list");
+	Array array = 
 %>
 <!DOCTYPE html>
 <html>

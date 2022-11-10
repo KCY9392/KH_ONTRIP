@@ -7,36 +7,36 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- * Servlet implementation class mainFormController
- */
+import com.ontrip.detailArea.service.DetailAreaService;
+import com.ontrip.detailArea.vo.DetailArea;
+import com.ontrip.location.service.LocationService;
+import com.ontrip.location.vo.Location;
+
 @WebServlet("/mainForm.no")
 public class mainFormController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
     public mainFormController() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
+    LocationService ls = new LocationService();
+    Location l = new Location();
+    
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		String str = request.getParameter("localName");
-		System.out.println(str);
+		String localName = request.getParameter("localName");
+		
+		l.setLocalName(localName);
+		
+		String localText = ls.selectlocalText(localName);
+		
+		
 		
 		
 		
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
