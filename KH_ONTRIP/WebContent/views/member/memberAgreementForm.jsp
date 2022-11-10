@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+<%
+    String contextPath = request.getContextPath();
+%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -12,7 +16,8 @@
         integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="
         crossorigin="anonymous">
     </script>
-    <link rel="stylesheet" href="../css/회원1.css">
+    >
+    <link href="<%= contextPath %>/resources/css/enroll.css" rel="stylesheet" >
 </head>
 <body>
     <div class="container" id = "content">
