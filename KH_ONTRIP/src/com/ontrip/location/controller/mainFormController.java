@@ -7,8 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.ontrip.detailArea.service.DetailAreaService;
-import com.ontrip.detailArea.vo.DetailArea;
+
 import com.ontrip.location.service.LocationService;
 import com.ontrip.location.vo.Location;
 
@@ -27,14 +26,11 @@ public class mainFormController extends HttpServlet {
 		
 		String localName = request.getParameter("localName");
 		
-		l.setLocalName(localName);
+		request.setAttribute("localName", localName);
 		
-		String localText = ls.selectlocalText(localName);
+//		String localText = ls.selectlocalText(localName);
 		
-		
-		
-		
-		
+		request.getRequestDispatcher("views/location/selectDArea.jsp").forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
