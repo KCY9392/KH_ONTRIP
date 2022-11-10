@@ -48,6 +48,7 @@ public class DetailArea {
 		this.localCode = localCode;
 	}
 
+	
 
 	@Override
 	public String toString() {
