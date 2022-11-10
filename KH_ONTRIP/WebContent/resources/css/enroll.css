@@ -1,0 +1,125 @@
+@charset "UTF-8";
+
+body{
+    margin:0;
+    text-align: center;
+}
+p{
+    font-weight: bold;
+}
+h1{
+    color:rgb(155, 205, 138);
+    font-size:40px;
+}
+input{
+    margin: 10px;
+}
+textarea{
+    resize: none;
+    border: solid 2px rgb(155, 205, 138);
+	border-radius: 5px;
+    color:rgb(121, 119, 119);
+}
+span{
+    font-weight: 600;
+}
+.btn-1{
+    background-color:rgb(155, 205, 138) ;
+    border:none;
+    width:150px;
+    height:40px;
+    margin-left: 10px;
+    margin-right: 10px;
+    font-weight: 900;
+    border-radius: 5px;
+}
+
+.btn-1:hover{
+    cursor: pointer;
+    background-color: rgb(139, 190, 127);
+}
+.btn-1:active{
+    background-color: rgb(164, 224, 150);
+}
+.centerText{
+    margin: 0px;
+
+}
+.centerText>input{
+    height:30px;
+    border:1px solid #999;
+    border-radius: 5px;
+}
+.select_gender{
+    width:65px;
+    padding: .6em .5em;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border: 1px solid #999;
+    border-radius: 5px;
+}
+.select_birth{
+    width: 97px;
+    padding: .4em .5em;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border: 1px solid #999;
+    border-radius: 5px;
+}
+.span_name{
+    margin-left: -14px;
+}
+.span_birth{
+    margin-left: 5px;
+}
+.span_id{
+    margin-left:70px;
+}
+.span_pwd{
+    margin-left: -35px;
+}
+.span_pwd2{
+    margin-left: -72px;
+}
+.span_phone{
+    margin-left: -35px;
+}
+.input{
+    width:250px;
+}
+.btn_2{
+    background-color:rgb(155, 205, 138);
+    border:1px solid black;
+    border-radius: 5px;
+    width:80px;
+    height:33px;
+    font-weight: 400;
+}
+.btn_3{
+    margin-top: 40px;
+    background-color:rgb(155, 205, 138) ;
+    border:1px solid black;
+    width:150px;
+    height:40px;
+    margin-left: 10px;
+    margin-right: 10px;
+    font-weight: 900;
+    border-radius: 5px;
+}
+.btn_2:hover{
+    cursor: pointer;
+    background-color:rgb(194, 232, 181);
+}
+.btn_2:active{
+    background-color:rgb(173, 222, 155);
+}
+.btn_3:hover{
+    cursor: pointer;
+    background-color:rgb(194, 232, 181);
+}
+.btn_3:active{
+    background-color:rgb(173, 222, 155);
+}
+
