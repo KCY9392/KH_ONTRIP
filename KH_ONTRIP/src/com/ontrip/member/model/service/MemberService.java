@@ -47,4 +47,24 @@ public class MemberService {
 		
 		return count;
 	}
+	
+	public String findId(String memberName, String phone) {
+		Connection conn = getConnection();
+		
+		String  memberId = new MemberDao().findId(memberName, phone, conn);
+		
+		close();
+		
+		return memberId;
+	}
+	
+	public String findPwd(String memberName, String memberId, String phone) {
+		Connection conn = getConnection();
+		
+		String  memberPwd = new MemberDao().findPwd(memberName, memberId,  phone, conn);
+		
+		close();
+		
+		return memberPwd;
+	}
 }

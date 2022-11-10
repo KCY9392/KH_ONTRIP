@@ -151,7 +151,8 @@
 	
 				<div>
 					<button class="btn btn-login" type="submit">로그인</button>
-					<button onclick="agreePage();" class="btn btn-enroll" type="button">회원가입</button>
+					<button onclick="agreePage();" class="btn btn-enroll" type="button">회원가입</button><br>
+                    <a href="<%=request.getContextPath()%>/find.me">아이디/비밀번호 찾기</a>
 				</div>
 			</div>
 		</form>
