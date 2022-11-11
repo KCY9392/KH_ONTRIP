@@ -37,7 +37,7 @@ public class FindIdController extends HttpServlet {
 		String memberName = request.getParameter("memberName");
 		String phone = request.getParameter("phone");
 		
-		String memberId = ms.findId(memberName, phone);
+		String memberId = null;// ms.findId(memberName, phone);
 		
 		request.setAttribute("memberId", memberId);
 		

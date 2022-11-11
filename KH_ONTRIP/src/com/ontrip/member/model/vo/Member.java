@@ -34,10 +34,6 @@ public class Member {
 		this.modifyDate = modifyDate;
 	}
 
-	
-	
-	
-	
 	public Member(String memberId, String memberPwd, String memberName, String gender, String phone, String birthDate) {
 		super();
 		this.memberId = memberId;
@@ -46,6 +42,22 @@ public class Member {
 		this.gender = gender;
 		this.phone = phone;
 		this.birthDate = birthDate;
+	}
+	
+	public Member(String memberName , String gender , String memberId , String phone , String birthDate) {
+		super();
+		this.memberName = memberName;
+		this.gender = gender;
+		this.memberId = memberId;
+		this.phone = phone;
+		this.birthDate = birthDate;
+	}
+	
+	public Member(String memberName , String phone , String memberId) {
+		super();
+		this.memberName = memberName;
+		this.phone = phone;
+		this.memberId = memberId;
 	}
 
 	public int getMemberNo() {

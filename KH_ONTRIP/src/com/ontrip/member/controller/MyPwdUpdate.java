@@ -9,20 +9,21 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.ontrip.member.model.service.MemberService;
+import com.ontrip.member.model.vo.Member;
 
 /**
- * Servlet implementation class FindPwdController
+ * Servlet implementation class MyPwdUpdate
  */
-@WebServlet("/findPwd.me")
-public class FindPwdController extends HttpServlet {
+@WebServlet("/myPwdUpdate.me")
+public class MyPwdUpdate extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public FindPwdController() {
+    public MyPwdUpdate() {
         super();
-        // TODO Auto-generated constructor stub
+  
     }
 
 	/**
@@ -32,27 +33,23 @@ public class FindPwdController extends HttpServlet {
 		
 		request.setCharacterEncoding("UTF-8");
 		
-		String memberName = request.getParameter("memberName");
-		String memberId = request.getParameter("memberId");
-		String phone = request.getParameter("phone");
+		String updatePwd = request.getParameter("newPwd");
+		String memberId = request.getParameter("userId");
+		String memberPwd = request.getParameter("userPwd");
+		System.out.println(updatePwd);
+		Member myUpdatePwd = new MemberService().updateMyPwd(updatePwd , memberId , memberPwd);
 		
-		String memberPwd = null;// new MemberService().findPwd(memberName, memberId, phone);
+		HttpSession session = request.getSession();
 		
-		request.setAttribute("memberPwd", memberPwd);
-		
-		if(memberId == null) {
-			request.setAttribute("errorMsg", "존재하지않는 회원입니다.");
-			
-			request.getRequestDispatcher("views/common/errorPage.jsp").forward(request, response);
-			
+		if(myUpdatePwd == null) {
+			session.setAttribute("alertMsg", "비밀번호 변경에 실패했습니다.");
+			response.sendRedirect(request.getContextPath()+"/newpwd.me");
 		}else {
-			HttpSession session = request.getSession();
-			
-			session.setAttribute("alertMsg", memberPwd+"입니다.");
-			
-			request.getRequestDispatcher("views/common/find.jsp").forward(request, response);
-			
+			session.setAttribute("alertMsg", "비밀번호 변경에 성공하였습니다.");
+			session.setAttribute("loginUser", myUpdatePwd);
+			response.sendRedirect(request.getContextPath()+"/mypage.me");
 		}
+		
 		
 		
 	}
@@ -61,7 +58,7 @@ public class FindPwdController extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+
 		doGet(request, response);
 	}
 

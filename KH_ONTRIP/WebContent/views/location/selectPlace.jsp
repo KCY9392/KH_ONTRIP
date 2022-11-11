@@ -6,6 +6,12 @@
 <meta charset="UTF-8">
 <title>지역 상세선택</title>
 <style>
+    body{
+        margin:0;
+    }
+    div{
+        box-sizing: border-box;
+    }
     .outer{
         background-color: white; /* 해당사이트의 고유한 색상으로 작성 */
         color: black;
@@ -14,7 +20,7 @@
         border: 1px solid black;
         margin: auto;
         margin-top: 50px;
-        box-sizing: border-box;
+        display:flex;
     }
     .locationtitle{
         width: 1000px;
@@ -23,16 +29,15 @@
         font-size: 60px;
     }
     .outer1{
-        width: 50.5%;
+        width: 50%;
         margin: -1;
         border: 1px solid black;
-        height: 800px;
-        box-sizing: border-box;
+        height: 100%;
         display: inline-block;
     }
     .right{
         height: 100%;
-        width: 49%;
+        width: 50%;
         display: inline-block;
         position: relative;
     }
@@ -41,15 +46,14 @@
         border: 1px solid blue;
         height: 70%;
         float: right;
-        box-sizing: border-box;
         position: relative;
+        
     }
     .outer3{
         width: 100%;
         border: 1px solid red;
         height: 30%;
         float: right;
-        box-sizing: border-box;
         position: relative;
     }
     .bottom{
