@@ -5,6 +5,7 @@
 <%
 	String localName = (String)request.getParameter("localName");
 	String localText = (String)request.getAttribute("localText");
+	ArrayList<DetailArea> darea = (ArrayList<DetailArea>)request.getAttribute("darea");
    
 %>
 <!DOCTYPE html>
@@ -68,10 +69,12 @@
                         </p>
 
                         <br><br><br>
-
-                        
-            
-                  <button> </button>
+				<% if(!darea.isEmpty()) { %>
+                  <% for( DetailArea d : darea){ %>
+						<button><%= d.getdAreaName() %></button>
+						&nbsp;&nbsp;&nbsp;
+				  <% }  %>
+				<% } %>
             
                     </td>
                 </tr>

@@ -9,6 +9,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Properties;
 
+import com.ontrip.detailArea.vo.DetailArea;
 import com.ontrip.location.vo.Location;
 import com.ontrip.member.model.dao.MemberDao;
 import static com.ontrip.common.JDBCTemplate.*;
@@ -60,5 +61,41 @@ public class LocationDao {
 		return localText;
 	}
 
+	public ArrayList<DetailArea> selectDAreaName(String localCode, Connection conn) {
+			
+			ArrayList<DetailArea> darea = new ArrayList<>();
+			
+			PreparedStatement psmt = null;
+			
+			ResultSet rset = null;
+			
+			String sql = prop.getProperty("selectDAreaName");
+			
+			System.out.println(sql);
+			
+			try {
+				psmt = conn.prepareStatement(sql);
+				
+				psmt.setString(1, localCode);
+				
+				rset = psmt.executeQuery();
+				
+				while(rset.next()) {
+					darea.add(new DetailArea(
+							  rset.getString("DAREA_CODE"),
+							  rset.getString("DAREA_NAME"),
+							  rset.getString("LOCAL_CODE")));
+				}
+				
+				System.out.println(darea);
+				
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+				close(rset);
+				close(psmt);
+			}
+			return darea;
+		}
 	
 }

@@ -41,7 +41,7 @@
     
     <div class="col s12 m6 l3" name="asia">
       <input type="hidden" value="서울">
-      <a href="<%=request.getContextPath() %>/mainForm.no?localName=서울" onclick="" style="color:inherit; text-decoration: none!important;"  aria-expanded="false">
+      <a href="<%=request.getContextPath() %>/mainForm.no?localName=서울&localCode=L1" onclick="" style="color:inherit; text-decoration: none!important;"  aria-expanded="false">
         <div class="card city-card-style" style="margin:0; border: none !important; ">
           <div class="card-image imgbox">
             <img src="resources/image/seoul.jpg" alt="city">
