@@ -21,6 +21,8 @@ public class LocationDao {
 		
 		try {
 			psmt = conn.prepareStatement(sql);
+			
+			psmt.setString(1, localName);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
