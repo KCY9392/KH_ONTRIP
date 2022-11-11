@@ -69,14 +69,16 @@ public class LocationDao {
 			
 			ResultSet rset = null;
 			
-			String sql = prop.getProperty("selectDAreaName");
-			
+			//String sql = prop.getProperty("selectDAreaName");
+			String sql = "SELECT LOCAL_CODE, DAREA_CODE, DAREA_NAME "+
+				   	"FROM \"Detailed Area\" "+
+			  		"WHERE LOCAL_CODE = '"+localCode+"'";
 			System.out.println(sql);
 			
 			try {
 				psmt = conn.prepareStatement(sql);
 				
-				psmt.setString(1, localCode);
+				// psmt.setString(1, localCode);//L0001
 				
 				rset = psmt.executeQuery();
 				

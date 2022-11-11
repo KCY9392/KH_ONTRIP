@@ -11,6 +11,6 @@
 	<entry key="selectDAreaName">
 		SELECT LOCAL_CODE, DAREA_CODE, DAREA_NAME
 	   	FROM "Detailed Area"
-	    WHERE LOCAL_CODE = ?
+  		WHERE "LOCAL_CODE" = ?
 	</entry>
 </properties>
