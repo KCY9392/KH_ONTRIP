@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
 <properties>
-<entry key="selectlocalText">
-	SELECT LOCAL_TEXT
-	FROM "Location"
-	WHERE LOCAL_NAME = ?
-</entry>
+
+	<entry key="selectLocal">
+		SELECT LOCAL_TEXT
+		FROM "Location"
+		WHERE LOCAL_NAME = ?
+	</entry>
 
 </properties>

@@ -6,10 +6,15 @@ public class Location {
     private String localName; // 지역이름     // SQL : LOCAL_NAME // VARCHAR2(20)
     private String localText; // 지역설명텍스트 // SQL : LOCAL_TEXT // VARCHAR2(100)
     
-    public Location() {
+	public Location() {
     	
     }
 
+	public Location(String localName, String localText) {
+		super();
+		this.localName = localName;
+		this.localText = localText;
+	}
     
     
     
@@ -19,8 +24,6 @@ public class Location {
 		this.localName = localName;
 		this.localText = localText;
 	}
-
-
 
 
 	public String getLocalCode() {

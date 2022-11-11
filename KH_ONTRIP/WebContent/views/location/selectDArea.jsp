@@ -1,14 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="com.ontrip.location.vo.Location, com.ontrip.detailArea.vo.DetailArea ,com.ontrip.image.vo.Image"%>
+    pageEncoding="UTF-8" import="com.ontrip.location.vo.Location, com.ontrip.detailArea.vo.DetailArea ,com.ontrip.image.vo.Image,
+    java.util.ArrayList"%>
     
 <%
-	String localName = (String)request.getAttribute("localName"); //대표지역 : 대표지역 이름, 상세텍스트 가져오기
-	
-// 	DetailArea da = (DetailArea)request.getAttribute("da"); //상세지역 : 상세지역 이름 가져오기
-	 
-// 	Image im = (Image)request.getAttribute("im"); //이미지 : 대표지역 사진 가져오기
-	
-// 	Array array = 
+	String localName = (String)request.getParameter("localName");
+	String localText = (String)request.getAttribute("localText");
+   
 %>
 <!DOCTYPE html>
 <html>
@@ -45,24 +42,13 @@
 </head>
 <body>
 
-    <nav class="navbar bg-light" style="position:fixed; z-index:9999; width:100vw; ">
-        <div class="container-fluid" style="background-color: white; padding-bottom: 7px; border-bottom:1px solid rgb(218, 213, 213);">
-          <a class="navbar-brand" href="mainPage.html">
-            <b class="nav_b">Ontrip</b>&nbsp;
-            <h7 style="font-size:13px; color:rgb(151,154,151);">MAKE YOUR ROUTE OPTIMIZED</h7>
-          </a>
-          <form class="d-flex" role="click">
-            
-            <button style="border:none; color:black;" class="btn btn-outline-success" type="submit">마이페이지</button>
-            <button style="margin-right: 40px; margin-left:20px; color:black; border:none;" class="btn btn-outline-success" type="submit">로그아웃</button>
-          </form>
-        </div>
-      </nav>
+   <%@ include file="../common/navbar.jsp" %>
 
     <br><br><br><br>
     
     <div class="header">
-        <h1 class = "locationtitle"><%= localName %></h1>
+    
+        <h1 class = "locationtitle"><%=localName %></h1>
         <h4>&nbsp;</h4>
         <h6 style="text-align: center; color:lightgrey;">가고싶은 지역을 선택해주세요</h6>
     </div>
@@ -78,14 +64,15 @@
                         <h1></h1>
                         <br><br>
                         <p>
-                           <%= lo.getLocalText() %>
+							<%=localText %>
                         </p>
 
                         <br><br><br>
 
-                        <button><%= da.get %></button>
-                        <button>서울의 상세지역2</button>
-                        <button>서울의 상세지역3</button>
+                        
+            
+                  <button> </button>
+            
                     </td>
                 </tr>
                 <tr>

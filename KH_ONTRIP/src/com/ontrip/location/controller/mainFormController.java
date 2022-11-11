@@ -1,6 +1,8 @@
 package com.ontrip.location.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -19,18 +21,21 @@ public class mainFormController extends HttpServlet {
         super();
     }
 
-    LocationService ls = new LocationService();
-    Location l = new Location();
+   
+    
     
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		request.setCharacterEncoding("UTF-8");
 		String localName = request.getParameter("localName");
+		System.out.println(localName);
+		String localText = new LocationService().selectLocal(localName);
+
 		
-		request.setAttribute("localName", localName);
-		
-//		String localText = ls.selectlocalText(localName);
-		
+		request.setAttribute("localText", localText);
 		request.getRequestDispatcher("views/location/selectDArea.jsp").forward(request, response);
+		System.out.println(localText);
+		
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
