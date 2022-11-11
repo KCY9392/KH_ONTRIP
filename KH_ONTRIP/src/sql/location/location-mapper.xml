@@ -13,4 +13,10 @@
 	   	FROM "Detailed Area"
   		WHERE "LOCAL_CODE" = ?
 	</entry>
+	
+	<entry key="selectFilePath">
+		SELECT FILE_PATH, ORIGIN_NAME
+	   	FROM "Image"
+  		WHERE "LOCAL_CODE" = ?
+	</entry>
 </properties>

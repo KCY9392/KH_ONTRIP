@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.ontrip.detailArea.vo.DetailArea;
+import com.ontrip.image.vo.Image;
 import com.ontrip.location.service.LocationService;
 
 @WebServlet("/mainForm.no")
@@ -40,8 +41,12 @@ public class mainFormController extends HttpServlet {
 		String localCode = request.getParameter("localCode");
 		System.out.println(localCode);
 		ArrayList<DetailArea> darea = new LocationService().selectDAreaName(localCode);
+		ArrayList<Image> filePath = new LocationService().selectFilePath(localCode);
+		System.out.println(filePath);
 		System.out.println(darea);
 		request.setAttribute("darea", darea);
+		request.setAttribute("filePath", filePath);
+		
 		
 		request.getRequestDispatcher("views/location/selectDArea.jsp").forward(request, response);
 	}

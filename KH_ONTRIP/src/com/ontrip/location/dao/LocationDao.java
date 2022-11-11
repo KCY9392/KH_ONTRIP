@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.Properties;
 
 import com.ontrip.detailArea.vo.DetailArea;
+import com.ontrip.image.vo.Image;
 import com.ontrip.location.vo.Location;
 import com.ontrip.member.model.dao.MemberDao;
 import static com.ontrip.common.JDBCTemplate.*;
@@ -99,5 +100,33 @@ public class LocationDao {
 			}
 			return darea;
 		}
+	
+	public ArrayList<Image> selectFilePath(String localCode, Connection conn){
+		ArrayList<Image> filePath = new ArrayList<>();
+		
+		PreparedStatement psmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("selectFilePath");
+		
+		try {
+			psmt = conn.prepareStatement(sql);
+			
+			psmt.setString(1, localCode);
+			
+			rset = psmt.executeQuery();
+			
+			while(rset.next()) {
+				filePath.add(new Image(
+							 rset.getString("FILE_PATH"),
+							 rset.getString("ORIGIN_NAME")));
+			}
+			System.out.println(filePath);
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return filePath;
+	}
 	
 }

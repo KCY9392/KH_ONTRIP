@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import static com.ontrip.common.JDBCTemplate.*;
 
 import com.ontrip.detailArea.vo.DetailArea;
+import com.ontrip.image.vo.Image;
 import com.ontrip.location.dao.LocationDao;
 
 public class LocationService {
@@ -32,4 +33,14 @@ public class LocationService {
 			
 			return darea;
 		}
+	
+	public ArrayList<Image> selectFilePath(String localCode){
+		
+		Connection conn = getConnection();
+		ArrayList<Image> filePath = new LocationDao().selectFilePath(localCode, conn);
+		
+		close();
+		
+		return filePath;
+	}
 }

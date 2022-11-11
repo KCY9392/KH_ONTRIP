@@ -4,25 +4,46 @@ import java.util.Date;
 
 public class Image {
 
-    private int fNo; // 파일번호(PK) // SQL : FILE_NO // NUMBER
+    private int fileNo; // 파일번호(PK) // SQL : FILE_NO // NUMBER
     private String plcCode; // 시설코드(FK) // SQL : PLC_CODE // CHAR(2)
-    private int rBno; // 참조게시글번호 // SQL : FILE_NAME // VARCHAR2(20)
-    private String fName; // 파일명 // SQL : FILE_NAME // VARCHAR2(20)
-    private String fPath; // 저장폴더경로 // SQL : FILE_PATH // VARCHAR2(100)
+    private String originName;
+    private String changeName;
+    private String filePath; // 저장폴더경로 // SQL : FILE_PATH // VARCHAR2(100)
     private Date uploadDate; // 업로드일 // SQL : UPLOAD_DATE // DATE(SYSDATE)
-    private int fLevel; // 파일레벨 // SQL : FILE_LEVEL // NUMBER
+    private int fileLevel; // 파일레벨 // SQL : FILE_LEVEL // NUMBER
     private String iStatus; // 삭제여부 // SQL : IMG_STATUS // VARCHAR2(1) // DEFAULT 'N'
+    private String localCode;
     
     public Image() {
     	
     }
 
-	public int getfNo() {
-		return fNo;
+    public Image(int fileNo, String plcCode, String originName, String changeName, String filePath, Date uploadDate,
+    		int fileLevel, String iStatus, String localCode) {
+    	super();
+    	this.fileNo = fileNo;
+    	this.plcCode = plcCode;
+    	this.originName = originName;
+    	this.changeName = changeName;
+    	this.filePath = filePath;
+    	this.uploadDate = uploadDate;
+    	this.fileLevel = fileLevel;
+    	this.iStatus = iStatus;
+    	this.localCode = localCode;
+    }
+    
+    public Image(String filePath, String originName) {
+    	super();
+    	this.filePath = filePath;
+    	this.originName = originName;
+    }
+
+	public int getFileNo() {
+		return fileNo;
 	}
 
-	public void setfNo(int fNo) {
-		this.fNo = fNo;
+	public void setFileNo(int fileNo) {
+		this.fileNo = fileNo;
 	}
 
 	public String getPlcCode() {
@@ -33,28 +54,28 @@ public class Image {
 		this.plcCode = plcCode;
 	}
 
-	public int getrBno() {
-		return rBno;
+	public String getOriginName() {
+		return originName;
 	}
 
-	public void setrBno(int rBno) {
-		this.rBno = rBno;
+	public void setOriginName(String originName) {
+		this.originName = originName;
 	}
 
-	public String getfName() {
-		return fName;
+	public String getChangeName() {
+		return changeName;
 	}
 
-	public void setfName(String fName) {
-		this.fName = fName;
+	public void setChangeName(String changeName) {
+		this.changeName = changeName;
 	}
 
-	public String getfPath() {
-		return fPath;
+	public String getFilePath() {
+		return filePath;
 	}
 
-	public void setfPath(String fPath) {
-		this.fPath = fPath;
+	public void setFilePath(String filePath) {
+		this.filePath = filePath;
 	}
 
 	public Date getUploadDate() {
@@ -65,12 +86,12 @@ public class Image {
 		this.uploadDate = uploadDate;
 	}
 
-	public int getfLevel() {
-		return fLevel;
+	public int getFileLevel() {
+		return fileLevel;
 	}
 
-	public void setfLevel(int fLevel) {
-		this.fLevel = fLevel;
+	public void setFileLevel(int fileLevel) {
+		this.fileLevel = fileLevel;
 	}
 
 	public String getiStatus() {
@@ -81,12 +102,23 @@ public class Image {
 		this.iStatus = iStatus;
 	}
 
+	public String getLocalCode() {
+		return localCode;
+	}
+
+	public void setLocalCode(String localCode) {
+		this.localCode = localCode;
+	}
+
+
+	
+    
 	@Override
 	public String toString() {
-		return "Image [fNo=" + fNo + ", plcCode=" + plcCode + ", rBno=" + rBno + ", fName=" + fName + ", fPath=" + fPath
-				+ ", uploadDate=" + uploadDate + ", fLevel=" + fLevel + ", iStatus=" + iStatus + "]";
+		return "Image [fileNo=" + fileNo + ", plcCode=" + plcCode + ", originName=" + originName + ", changeName="
+				+ changeName + ", filePath=" + filePath + ", uploadDate=" + uploadDate + ", fileLevel=" + fileLevel
+				+ ", iStatus=" + iStatus + ", localCode=" + localCode + "]";
 	}
-    
     
 
 }

@@ -6,7 +6,7 @@
 	String localName = (String)request.getParameter("localName");
 	String localText = (String)request.getAttribute("localText");
 	ArrayList<DetailArea> darea = (ArrayList<DetailArea>)request.getAttribute("darea");
-   
+	ArrayList<Image> filePath = (ArrayList<Image>)request.getAttribute("filePath");
 %>
 <!DOCTYPE html>
 <html>
@@ -44,6 +44,7 @@
 <body>
 
    <%@ include file="../common/navbar.jsp" %>
+                  
 
     <br><br><br><br>
     
@@ -60,7 +61,8 @@
         <div class="row" id="cityList" style=" margin:auto;">
             <table border="1" width="30" height="20">
                 <tr>
-                    <td><img src="views/location/selectDArea/seoul1.jpg" ></td>
+            	
+                    <td><img src="<%=filePath.get(0).getFilePath()%><%=filePath.get(0).getOriginName() %>" ></td>
                     <td colspan="2" style="text-align: center;">
                         <h1></h1>
                         <br><br>
@@ -76,10 +78,11 @@
 				  <% }  %>
 				<% } %>
             
+				 
                     </td>
                 </tr>
                 <tr>
-                    <td><img src="views/location/selectDArea/seoul2.jpg"></td>
+                    <td><img src="<%=filePath.get(1).getFilePath()%><%=filePath.get(1).getOriginName()%>"></td>
                 </tr>
             </table>
     
