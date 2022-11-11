@@ -16,7 +16,7 @@
         integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="
         crossorigin="anonymous">
     </script>
-    >
+    
     <link href="<%= contextPath %>/resources/css/enroll.css" rel="stylesheet" >
 </head>
 <body>
