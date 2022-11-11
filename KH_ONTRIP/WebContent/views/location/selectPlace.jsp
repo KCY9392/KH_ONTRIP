@@ -101,7 +101,7 @@
 
     <br><br><br><br><br><br>
     
-    <h1 class = "locationtitle">서울(강남)</h1>
+    <h1 class = "locationtitle"></h1>
 
     <br>
     <br>
