@@ -36,7 +36,7 @@ public class FindPwdController extends HttpServlet {
 		String memberId = request.getParameter("memberId");
 		String phone = request.getParameter("phone");
 		
-		String memberPwd = null;// new MemberService().findPwd(memberName, memberId, phone);
+		String memberPwd = new MemberService().findPwd(memberName, memberId, phone);
 		
 		request.setAttribute("memberPwd", memberPwd);
 		

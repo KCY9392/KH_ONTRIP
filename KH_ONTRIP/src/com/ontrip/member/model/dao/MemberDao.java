@@ -128,7 +128,69 @@ public class MemberDao {
       return count;
       
    }
-   
+   public String findId(String memberName, String phone, Connection conn) {
+	      String memberId = null;
+	      
+	      ResultSet rset = null;
+	      PreparedStatement psmt = null;
+	      
+	      String sql = prop.getProperty("findId");
+	      
+	      try {
+	         psmt = conn.prepareStatement(sql);
+	         
+	         psmt.setString(1, memberName);
+	         psmt.setString(2, phone);
+	         
+	         rset = psmt.executeQuery();
+	         
+	         if(rset.next()) {
+	            memberId = rset.getString("MEM_ID");
+	         }
+	         
+	      } catch (SQLException e) {
+	         e.printStackTrace();
+	      } finally {
+	         close(rset);
+	         close(psmt);
+	      }
+	      
+	      return memberId;
+	   }
+	   
+	   public String findPwd(String memberName, String memberId, String phone, Connection conn) {
+	      
+	      String memberPwd = null;
+	      
+	      ResultSet rset = null;
+	      
+	      PreparedStatement psmt = null;
+	      
+	      String sql = prop.getProperty("findPwd");
+	      
+	      try {
+	         psmt = conn.prepareStatement(sql);
+	         
+	         psmt.setString(1, memberName);
+	         psmt.setString(2, memberId);
+	         psmt.setString(3, phone);
+	         
+	         rset = psmt.executeQuery();
+	         
+	         if(rset.next()) {
+	            memberPwd = rset.getString("MEM_PWD");
+	         }
+	         
+	      } catch (SQLException e) {
+	         e.printStackTrace();
+	      } finally {
+	         close(rset);
+	         close(psmt);
+	      }
+	      
+	      return memberPwd;
+	   }
+
    public int updateMember(Member m , Connection conn) {
       
       int result = 0;
