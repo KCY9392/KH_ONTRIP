@@ -1,23 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
 <properties>
-
-	<entry key="selectLocal">
-		SELECT LOCAL_TEXT
-		FROM "Location"
-		WHERE LOCAL_NAME = ?
-	</entry>
-
 	<entry key="selectDAreaName">
-		SELECT LOCAL_CODE, DAREA_CODE, DAREA_NAME
+		SELECT DAREA_NAME
 	   	FROM "Detailed Area"
-  		WHERE "LOCAL_CODE" = ?
+  		WHERE "DAREA_CODE" = ?
 	</entry>
-	
 	
 	<entry key="selectFilePath">
 		SELECT FILE_PATH, ORIGIN_NAME
-	   	FROM "Image"
-  		WHERE "LOCAL_CODE" = ?
+		FROM "Image"
+		WHERE "DAREA_CODE" = ?
 	</entry>
+	
 </properties>

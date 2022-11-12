@@ -1,5 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" import="com.ontrip.detailArea.vo.DetailArea ,com.ontrip.image.vo.Image,
+    java.util.ArrayList"%>
+<%
+	String dareaName = (String)request.getAttribute("dareaName");
+	ArrayList<Image> filePath = (ArrayList<Image>)request.getAttribute("filePath");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -85,49 +90,38 @@
 </head>
 <body>
 
-    <nav class="navbar bg-light" style="position:fixed; z-index:9999; width:100vw; ">
-        <div class="container-fluid" style="background-color: white; padding-bottom: 7px; border-bottom:1px solid rgb(218, 213, 213);">
-          <a class="navbar-brand" href="mainPage.html">
-            <b class="nav_b">Ontrip</b>&nbsp;
-            <h7 style="font-size:13px; color:rgb(151,154,151);">MAKE YOUR ROUTE OPTIMIZED</h7>
-          </a>
-          <form class="d-flex" role="click">
-            
-            <button style="border:none; color:black;" class="btn btn-outline-success" type="submit">마이페이지</button>
-            <button style="margin-right: 40px; margin-left:20px; color:black; border:none;" class="btn btn-outline-success" type="submit">로그아웃</button>
-          </form>
-        </div>
-      </nav>
+    <%@ include file="../common/navbar.jsp" %>
 
     <br><br><br><br><br><br>
     
-    <h1 class = "locationtitle"></h1>
+    <h1 class = "locationtitle"><%=dareaName %></h1>
 
     <br>
     <br>
     <br>
     
-    <div class = "outer">
-            <div class = "outer1">
-                
-
-            </div>
+    <div class = "outer" style=" margin:auto;">
+            <table border="1" width="30" height="20">
+                <tr>
+                    <td><img src="<%=filePath.get(0).getFilePath()%><%=filePath.get(0).getOriginName() %>" ></td>
+                </tr>               
+            </table>
        
         <div class = "right">
-            <div class = "outer2">
-        
-            
-            </div>
-            <div class = "outer3">
-        
-
-            </div>
+        	<table border="1" width="20" height="20">
+        		<tr>
+                    <td><img src="<%=filePath.get(0).getFilePath()%><%=filePath.get(0).getOriginName() %>" ></td>
+                </tr>
+                <tr>
+                    <td><img src="<%=filePath.get(1).getFilePath()%><%=filePath.get(1).getOriginName() %>" ></td>
+                </tr>
+			</table>
         </div>
     </div>
 
     <br><br><br><br>
 
-    <div class = "bottom">
+    <div class = "bottom" >
         <fieldset id = "mForm">
             <div class = "selectTitle">
                 <button type="button" id = "n" name="search" onclick="show(this);">놀거리</button>

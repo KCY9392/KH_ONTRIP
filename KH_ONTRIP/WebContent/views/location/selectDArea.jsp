@@ -66,7 +66,6 @@
         <div class="row" id="cityList" style=" margin:auto;">
             <table border="1" width="30" height="20">
                 <tr>
-            	
                     <td><img src="<%=filePath.get(0).getFilePath()%><%=filePath.get(0).getOriginName() %>" ></td>
                     <td colspan="2" style="text-align: center;">
                         <h1></h1>
@@ -78,7 +77,7 @@
                         <br><br><br>
 				<% if(!darea.isEmpty()) { %>
                   <% for( DetailArea d : darea){ %>
-						<button name=<%= d.getLocalCode() %>><%= d.getdAreaName() %></button>
+						<button name=<%= d.getLocalCode() %> onclick="<%= d.getdAreaCode()%>();"><%= d.getdAreaName() %></button>
 						&nbsp;&nbsp;&nbsp;
 				  <% }  %>
 				<% } %>
@@ -92,11 +91,15 @@
             </table>
     
     		<script>
-    			$(function(){
-    				$('button[name=<%= darea.get(0).getLocalCode()%>]').click(function(){
-    					location.href = "<%=request.getContextPath()%>/selectPlace.no?dareaCode=<%= darea.get(0).getdAreaCode()%>";
-    				});
-    			});
+    		<% if(!darea.isEmpty()) { %>
+            	<% for( DetailArea d : darea){ %>
+					function <%= d.getdAreaCode()%>(){
+		    			location.href = "<%=request.getContextPath()%>/selectPlace.no?dareaCode=<%= d.getdAreaCode()%>";
+		    		}
+			  	<% }  %>
+			<% } %>
+    			
+    			
     		</script>
         </div>
     </div>
