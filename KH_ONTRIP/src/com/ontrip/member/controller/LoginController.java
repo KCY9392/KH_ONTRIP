@@ -51,8 +51,7 @@ public class LoginController extends HttpServlet {
 			session.setAttribute("loginUser", loginUser);
 			
 			session.setAttribute("alertMsg", "로그인에 성공하였습니다");
-			
-			request.getRequestDispatcher("/views/common/mainForm.jsp").forward(request, response);
+			response.sendRedirect(request.getContextPath());
 		}
 	}
 

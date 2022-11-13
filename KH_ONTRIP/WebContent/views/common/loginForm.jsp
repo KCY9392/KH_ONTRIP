@@ -117,9 +117,17 @@
     </style>
 </head>
 <body>
-	
-		<form id="login-form" action="<%= contextPath %>/login.me"
-			method="post">
+	<script>
+		let msg = "<%= alertMsg%>"; // let msg = 성공적으로 로그인이 되었습니다.
+		
+		if(msg != "null"){
+			alert(msg);
+			// 알림창을 띄워준후 session에 담긴 해당메세지는 지워줘야함.
+			// 안그러면 menubar.jsp가 로딩될때마다 매번 alert가 계속 뜰것
+			
+			<% session.removeAttribute("alertMsg");%>
+		}
+	</script>
 			<div class="headContainer">
 				<a href="#"> <span class="headOnTrip">OnTrip</span> &nbsp; <span
 					class="headText">MAKE YOUR ROUTE OPTIMIZED</span>
@@ -143,25 +151,39 @@
 				</div>
 	
 	
-				<div class="input">
-					<input type="text" name="memberId" placeholder="아이디를 입력하세요." required>
-					<br> <input type="password" name="memberPwd"
-						placeholder="비밀번호를 입력하세요." required>
-				</div>
-	
-				<div>
-					<button class="btn btn-login" type="submit">로그인</button>
-					<button onclick="agreePage();" class="btn btn-enroll" type="button">회원가입</button><br><br>
-                    <a href="<%=request.getContextPath()%>/find.me" style="text-decoration: none; color:black; font-size:13px; font-weight:600;">아이디/비밀번호 찾기</a>
-				</div>
+	<% if(loginUser == null) { %>
+			<form id="login-form" action="<%= contextPath %>/login.me" method="post">
+					<div class="input">
+						<input type="text" name="memberId" placeholder="아이디를 입력하세요." required>
+						<br> <input type="password" name="memberPwd"
+							placeholder="비밀번호를 입력하세요." required>
+					</div>
+		
+					<div>
+						<button class="btn btn-login" type="submit">로그인</button>
+						<button onclick="agreePage();" class="btn btn-enroll" type="button">회원가입</button><br><br>
+	                    <a href="<%=request.getContextPath()%>/find.me" style="text-decoration: none; color:black; font-size:13px; font-weight:600;">아이디/비밀번호 찾기</a>
+					</div>
+				</form>
 			</div>
-		</form>
-
+	<% } else { %>
+    	<!-- 로그인 성공 후 -->
+    	<div id = "user-info">
+    		<b><%= loginUser.getMemberName() %></b>님 환영합니다.<br><br>
+    		<div align="center">
+    			<button class="btn btn-login" onclick="mainForm();">시작하기</button>
+    		</div>
+    	</div>
+    <% } %>
 	<script>
         function agreePage(){
 		
         	location.href = "<%=request.getContextPath()%>/agreeForm.me";
-        }    
+        }
+        function mainForm(){
+    		
+        	location.href = "<%=request.getContextPath()%>/start.me";
+        } 
     </script>
 
 </body>
