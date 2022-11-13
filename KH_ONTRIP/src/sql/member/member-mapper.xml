@@ -68,6 +68,14 @@
 			MEM_MODIFYDATE = SYSDATE
 		WHERE MEM_ID = ? AND MEM_PWD = ?
 	</entry>
+	
+	<entry key="deleteMember">
+		UPDATE "Member"
+		SET STATUS = 'N' , 
+			MEM_MODIFYDATE = SYSDATE
+		WHERE MEM_ID = ?
+		  AND MEM_PWD = ?
+	</entry>
 
 </properties>
 

@@ -11,13 +11,13 @@ import javax.servlet.http.HttpServletResponse;
  * Servlet implementation class MyPageNewPwdUpdate
  */
 @WebServlet("/newpwd.me")
-public class MyPageNewPwdUpdate extends HttpServlet {
+public class MyPageNewPwdUpdateController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MyPageNewPwdUpdate() {
+    public MyPageNewPwdUpdateController() {
         super();
 
     }

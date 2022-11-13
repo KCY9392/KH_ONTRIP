@@ -285,5 +285,29 @@ public class MemberDao {
 	   return result;
 	   
    }
+   
+   public int deleteMember(String memberId , String memberPwd , Connection conn) {
+	   
+	   int result = 0;
+	   
+	   PreparedStatement psmt = null;
+	   
+	   String sql = prop.getProperty("deleteMember");
+	   
+	   try {
+		psmt = conn.prepareStatement(sql);
+		
+		psmt.setString(1, memberId);
+		psmt.setString(2, memberPwd);
+		
+		result = psmt.executeUpdate();
+		
+	} catch (SQLException e) {
+		e.printStackTrace();
+	} finally {
+		close(psmt);
+	}
+	  return result;
+   }
 }
    

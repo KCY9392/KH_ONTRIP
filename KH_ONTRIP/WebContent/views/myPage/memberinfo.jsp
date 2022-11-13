@@ -94,7 +94,7 @@
                 </tr>
             </table>
             </div>
-            <br><br><br>
+            <br>
             <div align = "center">
                 <button type = "submit" id="btn1" class = "btn btn-secondary btn-sm" onclick="#">정보 변경</button> &nbsp;&nbsp;&nbsp;
                 <button type = "button" id="btn2" class = "btn btn-secondary btn-sm" onclick="myPwdUpdate();">비밀번호 변경</button>

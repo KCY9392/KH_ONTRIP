@@ -48,36 +48,32 @@
     <%@ include file="../common/navbar.jsp" %>
     <%@ include file="../common/myPageNavbar.jsp" %>  
 
-
     <div class="outer1">
         <h1 style = "text-align : center; margin: auto;">회원탈퇴</h1>
         <br><br><br>
-        <pre id = "secessionTitle">
+        <form id="checkReview" action="<%=request.getContextPath()%>/MemberDeleteCheckController.me" method="post">
             탈퇴안내
-            <br>
-            ✔ 사용하고 계신 아이디는 탈퇴할 경우 재사용 및 복구가 불가능합니다.
-            ✔ 탈퇴후 회원정보 및 서비스 이용기록은 모두 삭제됩니다.
-            ✔ 탈퇴후에도 등록하신 게시물은 그대로 남아있습니다.
+            <hr><br>
 
-            <br>
+            ✔ 사용하고 계신 아이디는 탈퇴할 경우 재사용 및 복구가 불가능합니다.<br>
+            ✔ 탈퇴후 회원정보 및 서비스 이용기록은 모두 삭제됩니다.<br>
+            ✔ 탈퇴후에도 등록하신 게시물은 그대로 남아있습니다.<br><br>
+
             탈퇴 사유
-        </pre>
-        <form id="checkReview">
+            <hr><br>
             <input type="checkbox" ><label>&nbsp;내가 예상했던것과 서비스 내용이 다름.</label><br>
             <input type="checkbox" ><label>&nbsp;사이트 이용이 불편함.</label><br>
             <input type="checkbox" ><label>&nbsp;정보가 부정확함.</label><br><br><br>
-            <input type="checkbox" ><label>&nbsp;기타개선사항</label><br>
-            <input type="text" id="treview">
-
+            ✔ 기타 개선사항
+            <input type="text" id="treview"><br>
+            
+        
             <div align = "center">
                 <br><br>
-                <button type = "submit" name = "deleteMember" class = "btn btn-secondary btn-sm" onclick="return newPwdUpdate();">탈퇴하기</button>
+                <button type = "submit" name = "deleteMember" class = "btn btn-secondary btn-sm">다음으로</button>
             </div>
         </form>
     </div>
 
-    <form>
-       
-    </form>
 </body>
 </html>

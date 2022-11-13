@@ -43,7 +43,7 @@
         <div class="outer">
             <div class="outers">
                  <div class="userResult"> 
-                    <button type="button" id = "n" name="search" onclick = "myMember();">메인 관리</button>
+                    <button type="button" id = "n" name="search">메인 관리</button>
                     <!-- 여행자 정보 페이지 a태그 구간-->
                  </div>
                  <div class="reserveResult"> 
@@ -55,25 +55,15 @@
                     <!-- 찜 목록 페이지 a태그 구간-->
                  </div>
                  <div class="reviewResult"> 
-                    <button type="button" id = "n" name="search">등록 후기</button>
+                    <button type="button" id = "n" name="search">문의사항 관리</button>
                     <!-- 등록 후기 페이지 a태그 구간-->
                  </div>
                  <div class="statusResult"> 
-                    <button type="button" id = "n" name="search" onclick = "deleteMember();">회원 탈퇴</button>
+                    <button type="button" id = "n" name="search">Q&A관리</button>
                     <!-- 회원 탈퇴 페이지 a태그 구간-->
                  </div>
             </div>
          </div>
-
-         <script>
-            function myMember(){
-                location.href = "<%=request.getContextPath()%>/mypage.me";
-            }
-            function deleteMember(){
-                location.href = "<%=request.getContextPath()%>/MemberDelete.me";
-            }
-         </script>
-
     </fieldset>
 
     

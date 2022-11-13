@@ -111,4 +111,19 @@ public class MemberService {
 	   return MyUpdatePwd;
 	   
    }
+   
+   public int deleteMember(String memberId , String memberPwd) {
+	   
+	   Connection conn = getConnection();
+	   
+	   int result = new MemberDao().deleteMember(memberId , memberPwd , conn);
+	   
+	   if(result > 0) {
+		   commit(conn);
+	   }else {
+		   rollback(conn);
+	   }
+	   close();
+	   return result;
+   }
 }
