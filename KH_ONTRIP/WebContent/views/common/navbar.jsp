@@ -40,6 +40,7 @@
  <script>
  	function logout(){
  		location.href = "<%=request.getContextPath()%>/logout.me";
+ 		
  	}
  
  	function myPage(){
