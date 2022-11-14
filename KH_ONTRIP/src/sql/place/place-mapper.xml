@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+	<entry key="selectPlayInfo">
+	SELECT PLC_NAME, PLC_ADDRESS, PLC_PNUMBER
+	FROM "Place"
+	WHERE DAREA_CODE = ? AND CATEGORY_CODE = 'PP'
+	</entry>
+
+</properties>

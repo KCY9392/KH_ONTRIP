@@ -13,30 +13,32 @@ public class Image {
     private int fileLevel; // 파일레벨 // SQL : FILE_LEVEL // NUMBER
     private String iStatus; // 삭제여부 // SQL : IMG_STATUS // VARCHAR2(1) // DEFAULT 'N'
     private String localCode;
+    private String categoryCode;
     
     public Image() {
     	
     }
 
-    public Image(int fileNo, String plcCode, String originName, String changeName, String filePath, Date uploadDate,
-    		int fileLevel, String iStatus, String localCode) {
-    	super();
-    	this.fileNo = fileNo;
-    	this.plcCode = plcCode;
-    	this.originName = originName;
-    	this.changeName = changeName;
-    	this.filePath = filePath;
-    	this.uploadDate = uploadDate;
-    	this.fileLevel = fileLevel;
-    	this.iStatus = iStatus;
-    	this.localCode = localCode;
-    }
-    
-    public Image(String filePath, String originName) {
-    	super();
-    	this.filePath = filePath;
-    	this.originName = originName;
-    }
+	public Image(int fileNo, String plcCode, String originName, String changeName, String filePath, Date uploadDate,
+			int fileLevel, String iStatus, String localCode, String categoryCode) {
+		super();
+		this.fileNo = fileNo;
+		this.plcCode = plcCode;
+		this.originName = originName;
+		this.changeName = changeName;
+		this.filePath = filePath;
+		this.uploadDate = uploadDate;
+		this.fileLevel = fileLevel;
+		this.iStatus = iStatus;
+		this.localCode = localCode;
+		this.categoryCode = categoryCode;
+	}
+
+	public Image(String filePath, String originName) {
+		super();
+		this.originName = originName;
+		this.filePath = filePath;
+	}
 
 	public int getFileNo() {
 		return fileNo;
@@ -110,15 +112,22 @@ public class Image {
 		this.localCode = localCode;
 	}
 
+	public String getCategoryCode() {
+		return categoryCode;
+	}
 
-	
-    
+	public void setCategoryCode(String categoryCode) {
+		this.categoryCode = categoryCode;
+	}
+
 	@Override
 	public String toString() {
 		return "Image [fileNo=" + fileNo + ", plcCode=" + plcCode + ", originName=" + originName + ", changeName="
 				+ changeName + ", filePath=" + filePath + ", uploadDate=" + uploadDate + ", fileLevel=" + fileLevel
-				+ ", iStatus=" + iStatus + ", localCode=" + localCode + "]";
+				+ ", iStatus=" + iStatus + ", localCode=" + localCode + ", categoryCode=" + categoryCode + "]";
 	}
+
+    
     
 
 }

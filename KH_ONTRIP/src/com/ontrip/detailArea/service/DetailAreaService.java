@@ -30,4 +30,15 @@ public class DetailAreaService {
 		return filePath;
 	}
 	
+	public ArrayList<Image> selectPlayPath(String dareaCode){
+		Connection conn = getConnection();
+		
+		ArrayList<Image> playPath = new DetailAreaDao().selectPlayPath(dareaCode, conn);
+		
+		close();
+		
+		return playPath;
+	}
+	
+	
 }

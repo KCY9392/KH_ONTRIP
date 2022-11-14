@@ -81,7 +81,41 @@ private Properties prop = new Properties();
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
+		}finally {
+			close(rset);
+			close(psmt);
 		}
 		return filePath;
+	}
+	
+	public ArrayList<Image> selectPlayPath(String dareaCode, Connection conn){
+		ArrayList<Image> playPath = new ArrayList<>();
+		
+		PreparedStatement psmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("selectPlayPath");
+		
+		try {
+			psmt = conn.prepareStatement(sql);
+			
+			psmt.setString(1, dareaCode);
+			
+			rset = psmt.executeQuery();
+			
+			while(rset.next()) {
+				playPath.add(new Image(
+							 rset.getString("FILE_PATH"),
+							 rset.getString("ORIGIN_NAME")));
+			}
+			System.out.println(playPath);
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rset);
+			close(psmt);
+		}
+		return playPath;
 	}
 }

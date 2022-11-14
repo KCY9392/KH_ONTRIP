@@ -1,9 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" import="com.ontrip.detailArea.vo.DetailArea ,com.ontrip.image.vo.Image,
-    java.util.ArrayList"%>
+    com.ontrip.place.model.vo.Place , java.util.ArrayList"%>
 <%
-	String dareaName = (String)request.getAttribute("dareaName");
-	ArrayList<Image> filePath = (ArrayList<Image>)request.getAttribute("filePath");
+   String dareaName = (String)request.getAttribute("dareaName");
+   ArrayList<Image> filePath = (ArrayList<Image>)request.getAttribute("filePath");
+   ArrayList<Image> playPath = (ArrayList<Image>)request.getAttribute("playPath");
+   ArrayList<Place> playInfo = (ArrayList<Place>)request.getAttribute("playInfo");
 %>
 <!DOCTYPE html>
 <html>
@@ -21,8 +23,8 @@
         background-color: white; /* 해당사이트의 고유한 색상으로 작성 */
         color: black;
         width: 1000px;
-        height: 800px;
-        border: 1px solid black;
+        height: 580px;
+        border: 1px solid white;
         margin: auto;
         margin-top: 50px;
         display:flex;
@@ -36,35 +38,23 @@
     .outer1{
         width: 50%;
         margin: -1;
-        border: 1px solid black;
+        /* border: 1px solid black; */
         height: 100%;
         display: inline-block;
     }
     .right{
-        height: 100%;
-        width: 50%;
-        display: inline-block;
-        position: relative;
-    }
-    .outer2{
+        height: 75%;
         width: 100%;
-        border: 1px solid blue;
-        height: 70%;
-        float: right;
-        position: relative;
-        
     }
-    .outer3{
-        width: 100%;
-        border: 1px solid red;
-        height: 30%;
-        float: right;
-        position: relative;
+    
+    table img{
+       width:100%;
+       height:30%;
     }
     .bottom{
         width: 1000px;
         height: 750px;
-        border: 1px solid black;
+        /* border: 1px solid black; */
         margin: auto;
     }
     .selectTitle{
@@ -85,12 +75,42 @@
         margin: 10px;
         padding: 10px;
     }
+    .outer2{
+        width: 100%;
+        /* border: 1px solid black; */
+    }
+    .outer7{
+        background-color: white; /* 해당사이트의 고유한 색상으로 작성 */
+        color: black;
+        width: 950px;
+        height: 200px;
+        border: 1px solid black;
+        margin: auto;
+        margin-top: 10px;
+        margin-left: -30px;
+        display:flex;
+    }
+    .outer8{
+        width: 35%;
+        height: 100%;
+        border: 1px solid blue;
+    }
+    .outer9{
+        width: 70%;
+        height: 100%;
+        /* border: 1px solid red; */
+    }
 </style>
+<link href="<%= request.getContextPath()%>/resources/css/clickHotel.css" rel="stylesheet" >
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous"> 
 </head>
 <body>
 
     <%@ include file="../common/navbar.jsp" %>
+    
+    <%
+       
+    %>
 
     <br><br><br><br><br><br>
     
@@ -101,55 +121,140 @@
     <br>
     
     <div class = "outer" style=" margin:auto;">
-            <table border="1" width="30" height="20">
+            <div class = "right">
+             <table>
                 <tr>
-                    <td><img src="<%=filePath.get(0).getFilePath()%><%=filePath.get(0).getOriginName() %>" ></td>
+<%--                     <td><img src="<%=filePath.get(0).getFilePath()%><%=filePath.get(0).getOriginName() %>" ></td> --%>
+<%--                     <td><img src="<%=filePath.get(2).getFilePath()%><%=filePath.get(1).getOriginName() %>" ></td> --%>
+                </tr>
+                <tr>
+<%--                    <td  colspan = "2"><img src="<%=filePath.get(1).getFilePath()%><%=filePath.get(2).getOriginName() %>" ></td> --%>
                 </tr>               
             </table>
-       
-        <div class = "right">
-        	<table border="1" width="20" height="20">
-        		<tr>
-                    <td><img src="<%=filePath.get(0).getFilePath()%><%=filePath.get(0).getOriginName() %>" ></td>
-                </tr>
-                <tr>
-                    <td><img src="<%=filePath.get(1).getFilePath()%><%=filePath.get(1).getOriginName() %>" ></td>
-                </tr>
-			</table>
-        </div>
+            </div>
     </div>
-
     <br><br><br><br>
 
-    <div class = "bottom" >
-        <fieldset id = "mForm">
-            <div class = "selectTitle">
-                <button type="button" id = "n" name="search" onclick="show(this);">놀거리</button>
-                <button type="button" id = "m" name="search" onclick="show(this);">맛집</button>
-                <button type="button" id = "s" name="search" onclick="show(this);">숙소</button>
+   <div class = "bottom" style="width:100%">
+            <fieldset id = "mForm">
+                <div class = "selectTitle">
+                    <button type="button" class="btn-div" id = "n" name="search" onclick="show(this);">놀거리</button>
+                    <button type="button" class="btn-div" id = "m" name="search" onclick="show(this);">맛집</button>
+                    <button type="button" class="btn-div" id = "s" name="search" onclick="show(this);">숙소</button>
+    
+                     <div id = "nsearch" class = "box" style="padding:20px; text-align: center;">  <!-- border:1px solid black; -->
+				<% if(!playPath.isEmpty()) { %>
+                			<% for(int i=0; i<playPath.size(); i++){ %>
+                        <div class="outer7">
+                            <div class="outer8">
+                                <div class="outer9" style="width:270px; height:270px;">
+                                    <img src="<%=playPath.get(i).getFilePath() %><%=playPath.get(i).getOriginName() %>" width = "122%" height = "198px"> 
+                                </div>
+                            </div>
+                          
+                            <div style="font-size:20px; font-weight:bold; margin-left: 25%; margin-top: 20px;"><input type="button" value="<%=playInfo.get(i).getPlcName() %>" style="border: 0; background-color: white; font-weight: bold;"></div>
+	                            <div style="text-align:center; margin: 70px; margin-left: -130px">
+		                            <span><%=playInfo.get(i).getPlcAddress() %></span><br>
+		                            <span><%=playInfo.get(i).getPlcPnumber() %></span>
+	                            </div>
+                        </div> 
+                        	<%} %>
+                        <%} %>
+                      </div>
+                
 
-                <div id = "nsearch" class = "box">
-                    <img src = "selectPlace/image1.png" width = "930px" height = "550px"> &nbsp;
-                    <br><br><br>
-                    ◀&nbsp;&nbsp;&nbsp;<strong>1</strong>&nbsp;&nbsp;&nbsp;2&nbsp;&nbsp;&nbsp;3&nbsp;&nbsp;&nbsp;4&nbsp;&nbsp;&nbsp;6&nbsp;&nbsp;&nbsp;7&nbsp;&nbsp;&nbsp;8&nbsp;&nbsp;&nbsp;9&nbsp;&nbsp;&nbsp;10&nbsp;&nbsp;&nbsp;▶
+
+
+                    <div id = "msearch" class = "box box2"  style="border:1px solid black; padding:20px;"> 
+                        <div class="img-container">
+                            <div>
+                                <div class="img-box" style="width:270px; height:270px;">
+                                    <img src = "../image/image2.png" width = "100%" height = "230px" style="border-radius:20px;"> 
+                                    <div style="font-size:20px; font-weight:bold;">롯데호텔</div>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <div class="img-box" style="width:270px; height:270px;">
+                                    <img src = "../image/image2.png" width = "100%" height = "230px" style="border-radius:20px;"> 
+                                    <div style="font-size:20px; font-weight:bold;">롯데호텔</div>
+                                </div>
+                            </div>
+
+                            <div>
+                                <div class="img-box" style="width:270px; height:270px;">
+                                    <img src = "../image/image2.png" width = "100%" height = "230px" style="border-radius:20px;"> 
+                                    <div style="font-size:20px; font-weight:bold;">롯데호텔</div>
+                                </div>
+                            </div>
+
+                            <div style="margin-left:15%;">
+                                <div class="img-box" style="width:270px; height:270px;">
+                                    <img src = "../image/image2.png" width = "100%" height = "230px" style="border-radius:20px;"> 
+                                    <div style="font-size:20px; font-weight:bold;">롯데호텔</div>
+                                </div>
+                            </div>
+
+                            <div>
+                                <div class="img-box" style="width:270px; height:270px;">
+                                    <img src = "../image/image2.png" width = "100%" height = "230px" style="border-radius:20px;"> 
+                                    <div style="font-size:20px; font-weight:bold;">롯데호텔</div>
+                                </div>
+                            </div>
+                    
+                        </div>
+
+                    
+                    </div>
+                
+
+
+
+
+                    <div id = "ssearch" class = "box box2" style="border:1px solid black; padding:20px;">
+                        <div class="img-container">
+                            <div>
+                                <div class="img-box" style="width:270px; height:270px;">
+                                    <img src = "../image/image1.png" width = "100%" height = "230px" style="border-radius:20px;"> 
+                                    <div style="font-size:20px; font-weight:bold;">롯데호텔</div>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <div class="img-box" style="width:270px; height:270px;">
+                                    <img src = "../image/image1.png" width = "100%" height = "230px" style="border-radius:20px;"> 
+                                    <div style="font-size:20px; font-weight:bold;">롯데호텔</div>
+                                </div>
+                            </div>
+
+                            <div>
+                                <div class="img-box" style="width:270px; height:270px;">
+                                    <img src = "../image/image1.png" width = "100%" height = "230px" style="border-radius:20px;"> 
+                                    <div style="font-size:20px; font-weight:bold;">롯데호텔</div>
+                                </div>
+                            </div>
+
+                            <div style="margin-left:15%;">
+                                <div class="img-box" style="width:270px; height:270px;">
+                                    <img src = "../image/image1.png" width = "100%" height = "230px" style="border-radius:20px;"> 
+                                    <div style="font-size:20px; font-weight:bold;">롯데호텔</div>
+                                </div>
+                            </div>
+
+                            <div>
+                                <div class="img-box" style="width:270px; height:270px;">
+                                    <img src = "../image/image1.png" width = "100%" height = "230px" style="border-radius:20px;"> 
+                                    <div style="font-size:20px; font-weight:bold;">롯데호텔</div>
+                                </div>
+                            </div>
+                    
+                        </div>
+
+                    </div>
                 </div>
-            
-                <div id = "msearch" class = "box"> 
-                    <img src = "selectPlace/image2.png" width = "930px" height = "550px"> &nbsp;
-                    <br><br><br>
-                    ◀&nbsp;&nbsp;&nbsp;1&nbsp;&nbsp;&nbsp;<strong>2</strong>&nbsp;&nbsp;&nbsp;3&nbsp;&nbsp;&nbsp;4&nbsp;&nbsp;&nbsp;6&nbsp;&nbsp;&nbsp;7&nbsp;&nbsp;&nbsp;8&nbsp;&nbsp;&nbsp;9&nbsp;&nbsp;&nbsp;10&nbsp;&nbsp;&nbsp;▶
-                </div>
-            
-                <div id = "ssearch" class = "box">
-                    <img src = "selectPlace/image3.png" width = "930px" height = "550px"> &nbsp;
-                    <br><br><br>
-                    ◀&nbsp;&nbsp;&nbsp;1&nbsp;&nbsp;&nbsp;2&nbsp;&nbsp;&nbsp;<strong>3</strong>&nbsp;&nbsp;&nbsp;4&nbsp;&nbsp;&nbsp;6&nbsp;&nbsp;&nbsp;7&nbsp;&nbsp;&nbsp;8&nbsp;&nbsp;&nbsp;9&nbsp;&nbsp;&nbsp;10&nbsp;&nbsp;&nbsp;▶
-                </div>
-            </div>
-        </fieldset>
-    </div>
- 
-    <br><br><br>
+            </fieldset>
+        </div>
+        
 
     <script>
         function show(element){
@@ -163,7 +268,11 @@
                 }
             }
         }
+
+
+        
     </script>
+ 
 
 </body>
 </html>
