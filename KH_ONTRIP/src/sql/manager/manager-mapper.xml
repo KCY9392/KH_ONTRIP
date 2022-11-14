@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+
+<!--    문의사항 & 페이징처리 쿼리 -->
+
+    <entry key="insertQuestion">
+     INSERT INTO "Questions"(Q_CODE , MEM_NO , Q_TITLE , Q_CONTENT , Q_DATE , A_CONTENT , Q_COUNT , STATUS )values(SEQ_Q.NEXTVAL,?,?,?,?,?,?,?)
+    </entry>
+
+    <entry key="questionByCode">
+     select * from "Questions" where Q_CODE = ?
+    </entry>
+
+    <entry key="questionPaging">
+        select * from (select rownum rn , a.* from(select * from "Questions" order by q_code desc ) A ) where rn between ? and ?
+    </entry>
+
+    <entry key="getTotal">
+
+        select count(*) as total from "Questions"
+
+    </entry>
+
+    <entry key="insertAnswer">
+
+        update "Questions" set a_content = ? where q_code =?
+
+    </entry>
+    <!--    문의사항 & 페이징처리 쿼리 -->
+
+
+
+
+    <!--    QNA -->
+
+    <entry key="saveQna">
+
+        insert into "QnA"(QA_CODE , QA_QUESTION , QA_ANSWER , QA_CATEGORY) values( SEQ_QA.NEXTVAL, ? , ? , ? )
+
+    </entry>
+
+    <entry key="selectByCategory">
+
+        select * from "QnA" where QA_CATEGORY = ?
+
+
+    </entry>
+
+
+
+
+
+
+
+
+    <!--    QNA -->
+
+
+
+
+
+
+</properties>
