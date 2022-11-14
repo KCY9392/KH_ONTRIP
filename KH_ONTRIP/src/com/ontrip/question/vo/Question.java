@@ -1,50 +1,47 @@
 package com.ontrip.question.vo;
 
-import java.util.Date;
+import java.sql.Date;
 
 public class Question {
 
-    private int qCount;
-    private String qCode;
-    private String qContent;
-    private String status;
-    private String qTitle;
-    private Date qDate;
+    private int qCode;
+	private int memNo;
+	private String qTitle;
+	private String qContent;
+	private Date qDate;
+	private String aContent;
+	private int qCount;
+	private String status;
 
     public Question() {
     	
     }
 
-	public int getqCount() {
-		return qCount;
-	}
-
-	public void setqCount(int qCount) {
+	public Question(int qCode, int memNo, String qTitle, String qContent, Date qDate, String aContent, int qCount, String status) {
+		this.qCode = qCode;
+		this.memNo = memNo;
+		this.qTitle = qTitle;
+		this.qContent = qContent;
+		this.qDate = qDate;
+		this.aContent = aContent;
 		this.qCount = qCount;
+		this.status = status;
 	}
 
-	public String getqCode() {
+	public int getqCode() {
 		return qCode;
 	}
 
-	public void setqCode(String qCode) {
+	public void setqCode(int qCode) {
 		this.qCode = qCode;
 	}
 
-	public String getqContent() {
-		return qContent;
+	public int getMemNo() {
+		return memNo;
 	}
 
-	public void setqContent(String qContent) {
-		this.qContent = qContent;
-	}
-
-	public String getStatus() {
-		return status;
-	}
-
-	public void setStatus(String status) {
-		this.status = status;
+	public void setMemNo(int memNo) {
+		this.memNo = memNo;
 	}
 
 	public String getqTitle() {
@@ -55,6 +52,14 @@ public class Question {
 		this.qTitle = qTitle;
 	}
 
+	public String getqContent() {
+		return qContent;
+	}
+
+	public void setqContent(String qContent) {
+		this.qContent = qContent;
+	}
+
 	public Date getqDate() {
 		return qDate;
 	}
@@ -63,21 +68,41 @@ public class Question {
 		this.qDate = qDate;
 	}
 
-	public Question(int qCount, String qCode, String qContent, String status, String qTitle, Date qDate) {
-		super();
+	public String getaContent() {
+		return aContent;
+	}
+
+	public void setaContent(String aContent) {
+		this.aContent = aContent;
+	}
+
+	public int getqCount() {
+		return qCount;
+	}
+
+	public void setqCount(int qCount) {
 		this.qCount = qCount;
-		this.qCode = qCode;
-		this.qContent = qContent;
+	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
 		this.status = status;
-		this.qTitle = qTitle;
-		this.qDate = qDate;
 	}
 
 	@Override
 	public String toString() {
-		return "Question [qCount=" + qCount + ", qCode=" + qCode + ", qContent=" + qContent + ", status=" + status
-				+ ", qTitle=" + qTitle + ", qDate=" + qDate + "]";
+		return "Question{" +
+				"qCode=" + qCode +
+				", memNo=" + memNo +
+				", qTitle='" + qTitle + '\'' +
+				", qContent='" + qContent + '\'' +
+				", qDate=" + qDate +
+				", aContent='" + aContent + '\'' +
+				", qCount=" + qCount +
+				", status='" + status + '\'' +
+				'}';
 	}
-    
-    
 }

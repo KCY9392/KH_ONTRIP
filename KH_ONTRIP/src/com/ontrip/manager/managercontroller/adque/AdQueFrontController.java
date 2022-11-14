@@ -1,33 +1,36 @@
 package com.ontrip.manager.managercontroller.adque;
 
 
-
 import com.ontrip.manager.managercontroller.adque.controller.AdAnsController;
 import com.ontrip.manager.managercontroller.adque.controller.AdAnsFormController;
 import com.ontrip.manager.managercontroller.adque.controller.AdQueController;
 import com.ontrip.manager.managercontroller.adque.controller.AdQueListController;
 
+import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
 
 @WebServlet(name = "AdQueFrontController" , urlPatterns = "/manager/questions/*")
-public class AdQueFrontController {
+public class AdQueFrontController extends HttpServlet {
 
     public Map<String, QueFrontController> controllerMap = new HashMap<>();
 
     public AdQueFrontController() {
 
-        controllerMap.put("/manager/questions/", new AdQueListController());
-        controllerMap.put("/manager/questions/question", new AdQueController());
-        controllerMap.put("/manager/questions/answerform", new AdAnsFormController());
-        controllerMap.put("/manager/questions/answerform/answer", new AdAnsController());
+        controllerMap.put("/KH_ONTRIP/manager/questions", new AdQueListController());
+        controllerMap.put("/KH_ONTRIP/manager/questions/question", new AdQueController());
+        controllerMap.put("/KH_ONTRIP/manager/questions/answerform", new AdAnsFormController());
+        controllerMap.put("/KH_ONTRIP/manager/questions/answerform/answer", new AdAnsController());
 
     }
 
-    public void service(HttpServletRequest request, HttpServletResponse response) {
+    public void service(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 
         String requestURI = request.getRequestURI();
 
@@ -38,8 +41,46 @@ public class AdQueFrontController {
 
         QueFrontController queFrontController = controllerMap.get(requestURI);
 
-        queFrontController.service(request, response);
+        try {
+            queFrontController.process(request, response);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
 
+    }
+
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        try {
+            doProcess(request, response);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        try {
+            doProcess(request, response);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    protected void doProcess(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
+        //get이든 post든 어떤 방식으로 요청으로 들어오든 로직은 여기에 작성.
+
+        System.out.println("QuestionFrontController.service");
+
+        String requestURI = request.getRequestURI();
+
+        System.out.println("requestURI = " + requestURI);
+
+        QueFrontController queFrontController = controllerMap.get(requestURI);
+
+        if (queFrontController == null) {
+            response.setStatus(HttpServletResponse.SC_NOT_FOUND);
+            return;
+        }
+
+        queFrontController.process(request, response);
     }
 
 

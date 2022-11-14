@@ -1,6 +1,7 @@
 package com.ontrip.member.controller;
 
-import java.io.IOException;
+import com.ontrip.member.model.service.MemberService;
+import com.ontrip.member.model.vo.Member;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -9,9 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
-import com.ontrip.member.model.service.MemberService;
-import com.ontrip.member.model.vo.Member;
+import java.io.IOException;
 
 @WebServlet("/login.me")
 
@@ -33,7 +32,13 @@ public class LoginController extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		
 		String memberId = request.getParameter("memberId");
+
+		System.out.println("memberId = " + memberId);
+
 		String memberPwd = request.getParameter("memberPwd");
+
+		System.out.println("memberPwd = " + memberPwd);
+
 		
 		Member loginUser = ms.loginMember(memberId, memberPwd);
 		

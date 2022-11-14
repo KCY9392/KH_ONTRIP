@@ -2,6 +2,7 @@ package com.ontrip.manager.vo;
 
 public class Manager {
 
+
     private String mId;
     private String mPwd;
     private String mName;

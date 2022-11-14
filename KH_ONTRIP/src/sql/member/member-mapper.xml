@@ -1,81 +1,60 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
 <properties>
-
+	
 	<entry key="loginMember">
-		SELECT *
+		SELECT * 
 		FROM "Member"
 		WHERE MEM_ID = ?
-		AND MEM_PWD = ?
-		AND STATUS = 'Y'
+	      AND MEM_PWD = ?
+	      AND STATUS = 'Y'
 	</entry>
-
+	
 	<entry key="insertMember">
-		INSERT INTO "Member"(MEM_NO,
-		MEM_ID,
-		MEM_PWD,
-		MEM_NAME,
-		MEM_GENDER,
-		MEM_PHONE,
-		MEM_BIRTH)
-		VALUES(SEQ_MEM.NEXTVAL,
-		?,
-		?,
-		?,
-		?,
-		?,
-		?)
-	</entry>
+      INSERT INTO "Member"(MEM_NO,
+                     MEM_ID,
+                     MEM_PWD,
+                     MEM_NAME,
+                     MEM_GENDER,
+                     MEM_PHONE,
+                     MEM_BIRTH)
+               VALUES(SEQ_MEM.NEXTVAL,
+                     ?,
+                     ?,
+                     ?,
+                     ?,
+                     ?,
+                     ?)      
+   </entry>
+   
+   <entry key="idCheck">
+   	SELECT COUNT(*)
+   	FROM "Member"
+   	WHERE MEM_ID = ?
+   </entry>
+   
+   <entry key="findId">
+   SELECT MEM_ID
+   FROM "Member"
+   WHERE MEM_NAME = ? AND MEM_PHONE= ?
+   </entry>
 
-	<entry key="idCheck">
-		SELECT COUNT(*)
-		FROM "Member"
-		WHERE MEM_ID = ?
-	</entry>
+   <!--    관리자 멤버관리-->
+    <entry key="memberList">
+        SELECT *
+        FROM "Member"
+    </entry>
 
-	<entry key="updateMember">
-		UPDATE "Member"
-		SET MEM_NAME = ? ,
-			MEM_PHONE = ? ,
-			MEM_MODIFYDATE = SYSDATE
-		WHERE STATUS = 'Y'
-		AND MEM_ID = ?
-		
-	</entry>
-	
-	<entry key="selectMember">
-		SELECT *
-		FROM "Member"
-		WHERE MEM_ID = ?
-		AND STATUS = 'Y'
-	</entry>
-	
-	<entry key="findId">
-		SELECT MEM_ID
-		FROM "Member"
-		WHERE MEM_NAME = ? AND MEM_PHONE= ?
-	</entry>
+    <entry key="memberByNo">
 
-	<entry key="findPwd">
-		SELECT MEM_PWD
-		FROM "Member"
-		WHERE MEM_NAME = ? AND MEM_ID = ? AND MEM_PHONE = ?
-	</entry>
+        select * from "Member" where MEM_NO = ?
+    </entry>
+    <!--    관리자 멤버관리-->
 
-	<entry key="updateMyPwd">
-		UPDATE "Member"
-		SET MEM_PWD = ? ,
-			MEM_MODIFYDATE = SYSDATE
-		WHERE MEM_ID = ? AND MEM_PWD = ?
-	</entry>
-	
-	<entry key="deleteMember">
-		UPDATE "Member"
-		SET STATUS = 'N' , 
-			MEM_MODIFYDATE = SYSDATE
-		WHERE MEM_ID = ?
-		  AND MEM_PWD = ?
-	</entry>
 
+    <entry key="findPwd">
+   SELECT MEM_PWD
+   FROM "Member"
+   WHERE MEM_NAME = ? AND MEM_ID = ? AND MEM_PHONE = ? 
+   </entry>
 </properties>
-

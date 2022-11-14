@@ -3,14 +3,16 @@ package com.ontrip.manager.managercontroller.adreview.controller;
 
 import com.ontrip.manager.managercontroller.adreview.ReviewFrontController;
 
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 
 public class AdReviewDeleteController implements ReviewFrontController {
 
 
     @Override
-    public void service(HttpServletRequest request, HttpServletResponse response) {
+    public void process(HttpServletRequest request, HttpServletResponse response)throws IOException, ServletException {
 
     }
 }
