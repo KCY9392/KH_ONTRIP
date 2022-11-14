@@ -1,0 +1,99 @@
+@charset "UTF-8";
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+html,
+body {
+    font-family: 'Noto Sans KR', sans-serif !important;
+    -webkit-overflow-scrolling: touch !important;
+    touch-action: manipulation;
+    margin:0;
+}
+div{
+    box-sizing: border-box;
+}
+nav{
+    position:fixed;
+}
+.nav_b{
+    font-size: 30px;
+    padding-left: 40px;
+    color:rgb(155, 205, 138);
+}
+.nav_h{
+    font-size:small;
+}
+.nav_brand{
+    margin-left: 50px;
+}
+.center-hash{
+    text-align: center;
+    color:rgb(24, 207, 155);
+    font-weight: 900;
+}
+.row {
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 20px;
+}
+.left-categoryBox{
+    width:15%;
+    height:91vh;
+    background-color: antiquewhite;
+    margin-top: -17px;
+    float:left;
+}
+#n{
+    width: 100%;
+    height: 100%;
+    background-color: darkseagreen;
+    border: 1px solid darkgreen;
+    color: white;
+    font-size: 35px;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: bold;
+    border-radius: 15px;   
+}
+.userResult , .reserveResult , .heartResult , .reviewResult , .statusResult{
+    width: 100%;
+    height: 20%;
+}
+.title{
+    text-align: center;
+    padding:10px;
+}
+.containerBox{
+    margin-left:41%;
+    margin-top:4%;
+    width:600px;
+    height: 600px;
+    border:1px solid rgb(208, 202, 202);
+    
+}
+textarea{
+    width:370px;
+    height:100px;
+    
+}
+.anotherInfo{
+    width:80%;
+    margin: auto;
+    padding:10px;
+    text-align: center;
+}
+input{
+    width:35px;
+    border-bottom: 1px solid #adadad;
+    margin: 10px;
+    padding: 10px 0px;
+    outline:none;
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
+}
+.fa-star{
+    color:rgb(255, 136, 93);
+}
+span{
+    font-weight: 900;
+}

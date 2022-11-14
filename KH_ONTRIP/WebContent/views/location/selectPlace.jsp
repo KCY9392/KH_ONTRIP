@@ -124,11 +124,11 @@
             <div class = "right">
              <table>
                 <tr>
-                    <td><img src="<%=filePath.get(0).getFilePath()%><%=filePath.get(0).getOriginName() %>" ></td>
-                    <td><img src="<%=filePath.get(1).getFilePath()%><%=filePath.get(1).getOriginName() %>" ></td>
+<%--                     <td><img src="<%=filePath.get(0).getFilePath()%><%=filePath.get(0).getOriginName() %>" ></td> --%>
+<%--                     <td><img src="<%=filePath.get(1).getFilePath()%><%=filePath.get(1).getOriginName() %>" ></td> --%>
                 </tr>
                 <tr>
-                   <td  colspan = "2"><img src="<%=filePath.get(2).getFilePath()%><%=filePath.get(2).getOriginName() %>" ></td>
+<%--                    <td  colspan = "2"><img src="<%=filePath.get(2).getFilePath()%><%=filePath.get(2).getOriginName() %>" ></td> --%>
                 </tr>               
             </table>
             </div>
