@@ -14,7 +14,6 @@
 <meta charset="UTF-8">
 <title>지역 상세선택</title>
 <style>
-    
     .header{
         width: 1000px;
         margin: auto;
@@ -32,12 +31,44 @@
 
     td img {
         width: 100%;
+        height:100%;
     }
 
     table {
         width: 100%;
         table-layout: fixed;
     }
+    
+    .localText-style{
+        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;  
+    	font-size : 23px;
+    	text-align:center; 
+    	width:700; 
+    	height:100;
+    	margin-left: 70px;
+        margin-right: 70px;
+    }
+    
+    #darea-btn{
+    	width:150px;
+    	height:70px;
+    	margin-right: 50px;
+    	background-color:rgb(155, 205, 138);
+    	font-weight: bold;
+    	font-size:20px;
+        border-color: rgb(155, 205, 138);
+    }
+    
+    pre{
+        border-radius: 25px;
+	    background-color: rgba(227, 226, 226, 0.393);
+	    padding:10px;
+	    overflow: auto;
+	    white-space: pre-wrap;
+	    font-weight : bolder;
+	    font-size:35px;
+	} 
+    
 </style>
 <script
         src="https://code.jquery.com/jquery-3.6.1.min.js"
@@ -66,24 +97,25 @@
         <div class="row" id="cityList" style=" margin:auto;">
             <table border="1" width="30" height="20">
                 <tr>
-                    <td><img src="<%=filePath.get(0).getFilePath()%><%=filePath.get(0).getOriginName() %>" ></td>
-                    <td colspan="2" style="text-align: center;">
+                    <td style="width:30%;"><img src="<%=filePath.get(0).getFilePath()%><%=filePath.get(0).getOriginName() %>" ></td>
+                    <td rowspan="2" style="text-align: center;">
                         <h1></h1>
-                        <br><br>
-                        <p>
-							<%=localText %>
-                        </p>
-
-                        <br><br><br>
-				<% if(!darea.isEmpty()) { %>
+                        <br>
+                        <div class="localText-style">
+                        <pre>
+<%=localText %>
+                        </pre>
+						</div>
+						
+						<br>
+						
+						<% if(!darea.isEmpty()) { %>
                   <% for( DetailArea d : darea){ %>
-						<button name=<%= d.getLocalCode() %> onclick="<%= d.getdAreaCode()%>();"><%= d.getdAreaName() %></button>
+						<button name=<%= d.getLocalCode() %> onclick="<%= d.getdAreaCode()%>();" id="darea-btn" type="button" class="btn btn-secondary btn-lg"><%= d.getdAreaName() %></button>
 						&nbsp;&nbsp;&nbsp;
 				  <% }  %>
 				<% } %>
-            
-				 
-                    </td>
+					</td>
                 </tr>
                 <tr>
                     <td><img src="<%=filePath.get(1).getFilePath()%><%=filePath.get(1).getOriginName()%>"></td>
@@ -98,10 +130,9 @@
 		    		}
 			  	<% }  %>
 			<% } %>
-    			
-    			
     		</script>
         </div>
     </div>
+    <br><br><br><br>
 </body>
 </html>

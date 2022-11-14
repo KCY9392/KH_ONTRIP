@@ -58,7 +58,7 @@
 
     <div class="col s12 m6 l3" name="asia">
       <input type="hidden" value="제주도">
-      <a href="/KH_ONTRIP/mainForm.no?localName=제주도" onclick="" style="color:inherit; text-decoration: none!important;" aria-expanded="false">
+      <a href="<%=request.getContextPath() %>/mainForm.no?localName=제주도&localCode=L3" onclick="" style="color:inherit; text-decoration: none!important;" aria-expanded="false">
         <div class="card city-card-style" style="margin:0; border: none !important; ">
           <div class="card-image imgbox">
             <img src="resources/image/jeju.jpg" alt="city">
@@ -96,7 +96,7 @@
     
     <div class="col s12 m6 l3" name="asia">
       <input type="hidden" value="강원도">
-      <a href="/KH_ONTRIP/mainForm.no?localName=강원도" onclick="" style="color:inherit; text-decoration: none!important;" aria-expanded="false">
+      <a href="<%=request.getContextPath() %>/mainForm.no?localName=강원도&localCode=L4" onclick="" style="color:inherit; text-decoration: none!important;" aria-expanded="false">
         <div class="card city-card-style" style="margin:0; border: none !important; ">
           <div class="card-image imgbox">
             <img src="resources/image/pyeongchang.jpg" alt="city">
@@ -118,7 +118,7 @@
     
     <div class="col s12 m6 l3" name="asia">
       <input type="hidden" value="충청도">
-      <a href="/KH_ONTRIP/mainForm.no?localName=충청도" onclick="" style="color:inherit; text-decoration: none!important;" aria-expanded="false">
+      <a href="<%=request.getContextPath() %>/mainForm.no?localName=충청도&localCode=L5" onclick="" style="color:inherit; text-decoration: none!important;" aria-expanded="false">
         <div class="card city-card-style" style="margin:0; border: none !important; ">
           <div class="card-image imgbox">
             <img src="resources/image/yesan.jpg" alt="city">
@@ -135,7 +135,7 @@
 
     <div class="col s12 m6 l3" name="asia">
       <input type="hidden" value="전라도">
-      <a href="/KH_ONTRIP/mainForm.no?localName=전라도" onclick="" style="color:inherit; text-decoration: none!important;" aria-expanded="false">
+      <a href="<%=request.getContextPath() %>/mainForm.no?localName=전라도&localCode=L6" onclick="" style="color:inherit; text-decoration: none!important;" aria-expanded="false">
         <div class="card city-card-style" style="margin:0; border: none !important; ">
           <div class="card-image imgbox">
             <img src="resources/image/jeonju.jpg" alt="city">
@@ -152,7 +152,7 @@
 
     <div class="col s12 m6 l3" name="asia">
       <input type="hidden" value="경상도">
-      <a href="/KH_ONTRIP/mainForm.no?localName=경상도" onclick="" style="color:inherit; text-decoration: none!important;" aria-expanded="false">
+      <a href="<%=request.getContextPath() %>/mainForm.no?localName=경상도&localCode=L7" onclick="" style="color:inherit; text-decoration: none!important;" aria-expanded="false">
         <div class="card city-card-style" style="margin:0; border: none !important; ">
           <div class="card-image imgbox">
             <img src="resources/image/busan.jpg" alt="city">
