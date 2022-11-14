@@ -80,7 +80,7 @@
 </head>
 <body> 
 	<%@ include file="../common/adnavbar.jsp" %>
-    <%@ include file="../common/myPageNavbar.jsp" %>  
+    <%@ include file="../common/managerNavbar.jsp" %>  
     
     <div class="outer1">
         <br>

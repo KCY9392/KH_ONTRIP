@@ -5,40 +5,36 @@
 <head>
   <meta charset="UTF-8">
   <title>Insert title here</title>
-  <style>
+ <style>
     @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
-    div {
-      box-sizing: border-box;
-    }
-
-
-
     .outers{
-      height: 100%;
-      display: inline-block;
-      position: relative;
-      position: fixed;
-      margin-top: 4.5%;
-
+        height: 100%;
+        display: inline-block;
+        position: relative;
+        position: fixed;
+        margin-top: 4.5%;
     }
     .userResult , .reserveResult , .heartResult , .reviewResult , .statusResult{
-      width: 260px;
-      height: 200px;
-      /* border: 1px solid green;
-      background-color: darkseagreen; */
+        width: 260px;
+
+        /* border: 1px solid green;
+        background-color: darkseagreen; */
     }
     #n{
-      width: 260px;
-      height: 200px;
-      background-color: darkseagreen;
-      border: 1px solid darkgreen;
-      color: white;
-      font-size: 35px;
-      font-family: 'Noto Sans KR', sans-serif;
-      font-weight: bold;
-      border-radius: 15px;
+        width: 260px;
+        height: 140px;
+        background-color: darkseagreen;
+        border: 1px solid darkgreen;
+        color: white;
+        font-size: 35px;
+        font-family: 'Noto Sans KR', sans-serif;
+        font-weight: bold;
+        /* border-radius: 15px;    */
     }
-  </style>
+    #n:hover{
+        transform: scale(1.1);
+    }
+</style>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
 
 </head>
@@ -67,12 +63,19 @@
         </form>
       </div>
       <div class="statusResult">
-        <form method="get" action="/KH_ONTRIP/manager/qnas">
-          <button type="submit" id = "n" name="search">Q&A관리</button>
-        </form>
+<!--         <form method="get" action="/KH_ONTRIP/manager/qnas"> -->
+<!--           <button type="submit" id = "n" name="search" onclick="qnaForm();">Q&A관리</button> -->
+<!--         </form> -->
+	<button type="submit" id = "n" name="search" onclick="qnaForm();">Q&A관리</button>
       </div>
     </div>
   </div>
+  
+  <script>
+         	function qnaForm(){
+         		location.href = "<%=request.getContextPath()%>/qnaForm.me";	
+         	}
+  </script>
 
 </fieldset>
 

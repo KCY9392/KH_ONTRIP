@@ -43,15 +43,15 @@
         <div class="outer">
             <div class="outers">
                  <div class="userResult"> 
-                    <button type="button" id = "n" name="search" onclick = "myMember();">메인 관리</button>
+                    <button type="button" id = "n" name="search" onclick = "myMember();">여행자 정보</button>
                     <!-- 여행자 정보 페이지 a태그 구간-->
                  </div>
                  <div class="reserveResult"> 
-                    <button type="button" id = "n" name="search">회원 관리</button>
+                    <button type="button" id = "n" name="search">예약 숙소</button>
                     <!-- 예약 숙소 페이지 a태그 구간-->
                  </div>
                  <div class="heartResult"> 
-                    <button type="button" id = "n" name="search">등록 후기</button>
+                    <button type="button" id = "n" name="search">찜 목록</button>
                     <!-- 찜 목록 페이지 a태그 구간-->
                  </div>
                  <div class="reviewResult"> 

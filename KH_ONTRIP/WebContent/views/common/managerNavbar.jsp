@@ -59,11 +59,17 @@
                     <!-- 등록 후기 페이지 a태그 구간-->
                  </div>
                  <div class="statusResult"> 
-                    <button type="button" id = "n" name="search">Q&A관리</button>
+                    <button type="button" id = "n" name="search" onclick="qnaForm();">Q&A관리</button>
                     <!-- 회원 탈퇴 페이지 a태그 구간-->
                  </div>
             </div>
          </div>
+         
+         <script>
+         	function qnaForm(){
+         		location.href = "<%=request.getContextPath()%>/qnaForm.me";	
+         	}
+         </script>
     </fieldset>
 
     
