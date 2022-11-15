@@ -52,6 +52,7 @@ public class selectPlaceController extends HttpServlet {
 		request.setAttribute("foodPath", foodPath);
 
 		// 숙소 정보(이름, 주소, 전화번호) 가져오기
+		ArrayList<Place> foodInfo = new PlaceService().selectFoodInfo(dareaCode);
 		request.setAttribute("foodInfo", foodInfo);
 				
 		// 숙소 사진 불러오기
