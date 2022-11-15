@@ -64,7 +64,7 @@ public class PlaceDao {
 		return playInfo;
 	}
 
-<<<<<<< HEAD
+
 	   public ArrayList<Place> selectPlace(String placeName, Connection conn) {
 	      
 	      ArrayList<Place> place = new ArrayList<>();
@@ -79,7 +79,7 @@ public class PlaceDao {
 	      
 	      return place;
 	   }
-=======
+
 	public ArrayList<Place> selectHotelInfo(String dareaCode, Connection conn){
 		ArrayList<Place> hotelInfo = new ArrayList<Place>();
 		
@@ -110,7 +110,7 @@ public class PlaceDao {
 		
 		return hotelInfo;
 	}
->>>>>>> 1eeb2292e0b17de0f90e40559682af1d0e06dfe5
+
 
 	
 }

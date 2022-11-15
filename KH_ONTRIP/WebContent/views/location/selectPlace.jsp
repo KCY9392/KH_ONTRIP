@@ -7,10 +7,7 @@
    ArrayList<Image> playPath = (ArrayList<Image>)request.getAttribute("playPath");
    ArrayList<Place> playInfo = (ArrayList<Place>)request.getAttribute("playInfo");
    ArrayList<Image> hotelPath = (ArrayList<Image>)request.getAttribute("hotelPath");
-<<<<<<< HEAD
-=======
    ArrayList<Place> hotelInfo = (ArrayList<Place>)request.getAttribute("hotelInfo");
->>>>>>> 1eeb2292e0b17de0f90e40559682af1d0e06dfe5
 %>
 <!DOCTYPE html>
 <html>
@@ -158,17 +155,10 @@
                             </div>
                           
                             <div style="font-size:20px; font-weight:bold; margin-left: 25%; margin-top: 20px;"><input type="button" onclick="<%=playInfo.get(i).getPlcName() %>();" value="<%=playInfo.get(i).getPlcName() %>" style="border: 0; background-color: white; font-weight: bold;"></div>
-<<<<<<< HEAD
                                <div style="text-align:center; margin: 70px; margin-left: -130px">
                                   <span><%=playInfo.get(i).getPlcAddress() %></span><br>
                                   <span><%=playInfo.get(i).getPlcPnumber() %></span>
                                </div>
-=======
-	                            <div style="text-align:center; margin: 70px; margin-left: -130px">
-		                            <span><%=playInfo.get(i).getPlcAddress() %></span><br>
-		                            <span><%=playInfo.get(i).getPlcPnumber() %></span>
-	                            </div>
->>>>>>> 1eeb2292e0b17de0f90e40559682af1d0e06dfe5
                         </div> 
                            <%} %>
                         <%} %>
@@ -177,33 +167,23 @@
 
 
 
-<<<<<<< HEAD
             <div id="msearch" class="box box2"
                style=" padding: 20px;">
 
                
 
             </div>
-=======
-				<div id="msearch" class="box box2"
-					style=" padding: 20px;">
-
-					
-
-				</div>
->>>>>>> 1eeb2292e0b17de0f90e40559682af1d0e06dfe5
 
 
 
 
 
-<<<<<<< HEAD
             <div id = "ssearch" class = "box box2" style=" padding:20px;">
-<%--                        <% --%>
-// //                   if (!hotelPath.isEmpty()) {
+<%-- <%--                        <% --%> --%>
+<!--                    if (!hotelPath.isEmpty()) { -->
 <%-- 		               %>  --%>
 <%--                <% --%>
-//                   for (int i = 0; i < hotelPath.size(); i++) {
+<!--                    for (int i = 0; i < hotelPath.size(); i++) { -->
 <%--                %> --%>
                <div class="outer7">
                   <div class="outer8">
@@ -226,12 +206,9 @@
                   </div>
                </div>
 <%--                <% --%>
-//                   }
 <%--                %> --%>
 <%--                <% --%>
-//                   }
 <%--                %> --%>
-=======
 				<div id = "ssearch" class = "box box2" style=" padding:20px;">
                        <%
 						if (!hotelPath.isEmpty()) {
@@ -260,7 +237,6 @@
 					<%
 						}
 					%>
->>>>>>> 1eeb2292e0b17de0f90e40559682af1d0e06dfe5
                 </div>
             </fieldset>
         </div>
@@ -281,7 +257,6 @@
 
         
     </script>
-<<<<<<< HEAD
    <script>
         <%if (!playPath.isEmpty()) {%>
                     <%for (int i = 0; i < playPath.size(); i++) {%>
@@ -290,24 +265,6 @@
           }
            <%}%>
       <%}%>
-=======
-	<script>
-  		<%if (!playPath.isEmpty()) {%>
-              		<%for (int i = 0; i < playPath.size(); i++) {%>
-			function <%=playInfo.get(i).getPlcName()%>(){
-    			location.href = "<%=request.getContextPath()%>/selectPlay.pe?placeName=<%=playInfo.get(i).getPlcName()%>";
-    		}
-	  		<%}%>
-		<%}%>
-		
-		<%if (!hotelPath.isEmpty()) {%>
-  		<%for (int i = 0; i < hotelPath.size(); i++) {%>
-		function <%=hotelInfo.get(i).getPlcName()%>(){
-			location.href = "<%=request.getContextPath()%>/selectHotel.pe?placeName=<%=hotelInfo.get(i).getPlcName()%>";
-		}
-			<%}%>
-		<%}%>
->>>>>>> 1eeb2292e0b17de0f90e40559682af1d0e06dfe5
     </script>
 </body>
 </html>

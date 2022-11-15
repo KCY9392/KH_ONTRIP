@@ -18,7 +18,7 @@ public class PlaceService {
 		
 		return playInfo;
 	}
-<<<<<<< HEAD
+
 
 	public ArrayList<Place> selectPlace(String placeName) {
 		
@@ -27,7 +27,7 @@ public class PlaceService {
 		return null;
 	}
 	
-=======
+
 	
 	public ArrayList<Place> selectHotelInfo(String dareaCode){
 		Connection conn = getConnection();
@@ -37,5 +37,5 @@ public class PlaceService {
 		
 		return hotelInfo;
 	}
->>>>>>> 1eeb2292e0b17de0f90e40559682af1d0e06dfe5
+
 }
