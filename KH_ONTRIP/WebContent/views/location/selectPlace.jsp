@@ -268,7 +268,7 @@
       <%if (!hotelPath.isEmpty()) {%>
         <%for (int i = 0; i < hotelPath.size(); i++) {%>
       function <%=hotelInfo.get(i).getPlcName()%>(){
-         location.href = "<%=request.getContextPath()%>/selectHotel.pe?placeName=<%=hotelInfo.get(i).getPlcName()%>";
+         location.href = "<%=request.getContextPath()%>/selectHotel.pe?placeName=<%=hotelInfo.get(i).getPlcName()%>&dareaName=<%=dareaName %>";
       }
          <%}%>
       <%}%>

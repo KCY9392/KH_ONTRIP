@@ -11,6 +11,8 @@ import static com.ontrip.common.JDBCTemplate.*;
 
 public class PlaceService {
    
+	
+//상세지역창 에서 놀거리, 숙소, 맛집 정보 찾기	
    public ArrayList<Place> selectPlayInfo(String dareaCode){
       Connection conn = getConnection();
       ArrayList<Place> playInfo = new PlaceDao().selectPlayInfo(dareaCode, conn);
@@ -37,7 +39,33 @@ public class PlaceService {
       
       return foodInfo;
    }
+  
    
+//시설상세창에서
+   public Place selectHotel(String placeName) {
+	   
+	   Connection conn = getConnection();
+	   
+	   Place place = new PlaceDao().selectHotel(placeName, conn);
+	   
+	   close();
+	   
+	   return place;
+	}
+   
+   public String findDareaCode(String dareaName) {
+	   
+	   Connection conn = getConnection();
+	   
+	   String dareaCode = new PlaceDao().findDareaCode(dareaName, conn);
+	   
+	   close();
+	   
+	   return dareaCode;
+   }
+   
+   
+//메인창에서 검색키워드로 시설사진, 정보 찾기 
    public ArrayList<Image> searchPlacePath(String word){
       Connection conn = getConnection();
       ArrayList<Image> placePath = new PlaceDao().searchPlacePath(word, conn);
@@ -55,6 +83,7 @@ public class PlaceService {
       
       return placeInfo;
    }
+
    
 
 } 

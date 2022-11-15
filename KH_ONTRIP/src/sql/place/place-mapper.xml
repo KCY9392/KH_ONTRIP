@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
 <properties>
+
+<!-- 상세지역창에서 놀거리,숙소,맛집 정보띄우기 -->
 	<entry key="selectPlayInfo">
 	SELECT PLC_NAME, PLC_ADDRESS, PLC_PNUMBER
 	FROM "Place"
@@ -19,6 +21,25 @@
 	WHERE DAREA_CODE = ? AND CATEGORY_CODE = 'FF'
 	</entry>
 	
+	
+<!-- 시설상세창(숙소)에 정보띄우기  -->
+	<entry key="Hotel">
+	SELECT PLC_CODE, CATEGORY_CODE, DAREA_CODE,PLC_ADDRESS, PLC_TEXT, PLC_BNAME, PLC_PNUMBER,
+	PLC_LA, PLC_LO 
+	FROM "Place"
+	WHERE PLC_NAME = ?
+	</entry>
+	
+	<entry key="findDareaCode">
+	SELECT DAREA_CODE 
+	FROM "Detailed Area"
+	WHERE DAREA_NAME = ?
+	</entry>
+	
+	
+	
+	
+<!-- 메인창에서 검색 -->
 	<entry key="searchPlacePath">
 	SELECT FILE_PATH, ORIGIN_NAME
 	FROM "Image"
@@ -30,4 +51,6 @@
 	FROM "Place"
 	WHERE PLC_NAME LIKE ?
 	</entry>
+	
+	
 </properties>

@@ -13,239 +13,235 @@ public class Place {
     private String plcText; // 시설설명텍스트 // SQL : PLC_TEXT // VARCHAR2(100)
     private String plcBname; // 시설대표자 // SQL : PLC_BNAME // VARCHAR2(20)
 
-    private String plcPnumber; // 시설전화번호 // SQL : PLC_PNUMBER // VARCHAR2(13)
-
-
-	private Date plcDate; // 시설등록날짜 // SQL : PLC_DATE // DATE(SYSDATE)
-    private int plcLa; // 시설위도 // SQL : PLC_LA // NUMBER
-    private int plcLo; // 시설경도 // SQL : PLC_LO // NUMBER
+	private String plcPnumber; // 시설전화번호 // SQL : PLC_PNUMBER // VARCHAR2(13)
+    private Date plcDate; // 시설등록날짜 // SQL : PLC_DATE // DATE(SYSDATE)
+    private float plcLa; // 시설위도 // SQL : PLC_LA // NUMBER
+    private float plcLo; // 시설경도 // SQL : PLC_LO // NUMBER
     private String status; // 삭제여부 // SQL : STATUS // VARCHAR2(1) // DEFAULT 'N'
     public Place() {
-       
+    	
     }
 
     
     
     public Place(int plcCode, String categoryCode, String localCode, String dareaCode, String plcName,
-         String plcAddress, String plcText, String plcBname, String plcPnumber, Date plcDate, int plcLa, int plcLo,
-         String status) {
-      super();
-      this.plcCode = plcCode;
-      this.categoryCode = categoryCode;
-      this.localCode = localCode;
-      this.dareaCode = dareaCode;
-      this.plcName = plcName;
-      this.plcAddress = plcAddress;
-      this.plcText = plcText;
-      this.plcBname = plcBname;
-      this.plcPnumber = plcPnumber;
-      this.plcDate = plcDate;
-      this.plcLa = plcLa;
-      this.plcLo = plcLo;
-      this.status = status;
-   }
+			String plcAddress, String plcText, String plcBname, String plcPnumber, Date plcDate, float plcLa, float plcLo,
+			String status) {
+		super();
+		this.plcCode = plcCode;
+		this.categoryCode = categoryCode;
+		this.localCode = localCode;
+		this.dareaCode = dareaCode;
+		this.plcName = plcName;
+		this.plcAddress = plcAddress;
+		this.plcText = plcText;
+		this.plcBname = plcBname;
+		this.plcPnumber = plcPnumber;
+		this.plcDate = plcDate;
+		this.plcLa = plcLa;
+		this.plcLo = plcLo;
+		this.status = status;
+	}
 
 
 
-   public Place(String plcName, String plcAddress, String plcPnumber) {
-       super();
-       this.plcName = plcName;
-       this.plcAddress = plcAddress;
-       this.plcPnumber = plcPnumber;
+	public Place(String plcName, String plcAddress, String plcPnumber) {
+    	super();
+    	this.plcName = plcName;
+    	this.plcAddress = plcAddress;
+    	this.plcPnumber = plcPnumber;
     }
 
 
-   
+	
 
-   public Place(int plcCode, String categoryCode, String dareaCode,
-         String plcAddress, String plcText, String plcBname, String plcPnumber, int plcLa, int plcLo) {
-      super();
-      this.plcCode = plcCode;
-      this.categoryCode = categoryCode;
-      this.dareaCode = dareaCode;
-      this.plcAddress = plcAddress;
-      this.plcText = plcText;
-      this.plcBname = plcBname;
-      this.plcPnumber = plcPnumber;
-      this.plcLa = plcLa;
-      this.plcLo = plcLo;
-   }
+	public Place(int plcCode, String categoryCode, String dareaCode,
+			String plcAddress, String plcText, String plcBname, String plcPnumber, float plcLa, float plcLo) {
+		super();
+		this.plcCode = plcCode;
+		this.categoryCode = categoryCode;
+		this.dareaCode = dareaCode;
+		this.plcAddress = plcAddress;
+		this.plcText = plcText;
+		this.plcBname = plcBname;
+		this.plcPnumber = plcPnumber;
+		this.plcLa = plcLa;
+		this.plcLo = plcLo;
+	}
 
-   public Place(String categoryCode, String plcName, String plcAddress, String plcPnumber) {
-	   super();
-	   this.categoryCode = categoryCode;
-	   this.plcName = plcName;
-	   this.plcAddress = plcAddress;
-	   this.plcPnumber = plcPnumber;
-   }
+	public Place(String categoryCode, String plcName, String plcAddress, String plcPnumber) {
+	      super();
+	      this.categoryCode = categoryCode;
+	      this.plcName = plcName;
+	      this.plcAddress = plcAddress;
+	      this.plcPnumber = plcPnumber;
+	   }
 
+	
 
-   public int getPlcCode() {
-      return plcCode;
-   }
 
+	public int getPlcCode() {
+		return plcCode;
+	}
 
 
-   public void setPlcCode(int plcCode) {
-      this.plcCode = plcCode;
-   }
 
+	public void setPlcCode(int plcCode) {
+		this.plcCode = plcCode;
+	}
 
 
-   public String getCategoryCode() {
-      return categoryCode;
-   }
 
+	public String getCategoryCode() {
+		return categoryCode;
+	}
 
 
-   public void setCategoryCode(String categoryCode) {
-      this.categoryCode = categoryCode;
-   }
 
+	public void setCategoryCode(String categoryCode) {
+		this.categoryCode = categoryCode;
+	}
 
 
-   public String getLocalCode() {
-      return localCode;
-   }
 
+	public String getLocalCode() {
+		return localCode;
+	}
 
 
-   public void setLocalCode(String localCode) {
-      this.localCode = localCode;
-   }
 
+	public void setLocalCode(String localCode) {
+		this.localCode = localCode;
+	}
 
 
-   public String getDareaCode() {
-      return dareaCode;
-   }
 
+	public String getDareaCode() {
+		return dareaCode;
+	}
 
 
-   public void setDareaCode(String dareaCode) {
-      this.dareaCode = dareaCode;
-   }
 
+	public void setDareaCode(String dareaCode) {
+		this.dareaCode = dareaCode;
+	}
 
 
-   public String getPlcName() {
-      return plcName;
-   }
 
+	public String getPlcName() {
+		return plcName;
+	}
 
 
-   public void setPlcName(String plcName) {
-      this.plcName = plcName;
-   }
 
+	public void setPlcName(String plcName) {
+		this.plcName = plcName;
+	}
 
 
-   public String getPlcAddress() {
-      return plcAddress;
-   }
 
+	public String getPlcAddress() {
+		return plcAddress;
+	}
 
 
-   public void setPlcAddress(String plcAddress) {
-      this.plcAddress = plcAddress;
-   }
 
+	public void setPlcAddress(String plcAddress) {
+		this.plcAddress = plcAddress;
+	}
 
 
-   public String getPlcText() {
-      return plcText;
-   }
 
+	public String getPlcText() {
+		return plcText;
+	}
 
 
-   public void setPlcText(String plcText) {
-      this.plcText = plcText;
-   }
 
+	public void setPlcText(String plcText) {
+		this.plcText = plcText;
+	}
 
 
-   public String getPlcBname() {
-      return plcBname;
-   }
 
+	public String getPlcBname() {
+		return plcBname;
+	}
 
 
-   public void setPlcBname(String plcBname) {
-      this.plcBname = plcBname;
-   }
 
+	public void setPlcBname(String plcBname) {
+		this.plcBname = plcBname;
+	}
 
 
-   public String getPlcPnumber() {
-      return plcPnumber;
-   }
 
+	public String getPlcPnumber() {
+		return plcPnumber;
+	}
 
 
-   public void setPlcPnumber(String plcPnumber) {
-      this.plcPnumber = plcPnumber;
-   }
 
+	public void setPlcPnumber(String plcPnumber) {
+		this.plcPnumber = plcPnumber;
+	}
 
 
-   public Date getPlcDate() {
-      return plcDate;
-   }
 
+	public Date getPlcDate() {
+		return plcDate;
+	}
 
 
-   public void setPlcDate(Date plcDate) {
-      this.plcDate = plcDate;
-   }
 
+	public void setPlcDate(Date plcDate) {
+		this.plcDate = plcDate;
+	}
 
 
-   public int getPlcLa() {
-      return plcLa;
-   }
 
+	public float getPlcLa() {
+		return plcLa;
+	}
 
 
-   public void setPlcLa(int plcLa) {
-      this.plcLa = plcLa;
-   }
 
+	public void setPlcLa(float plcLa) {
+		this.plcLa = plcLa;
+	}
 
 
-   public int getPlcLo() {
-      return plcLo;
-   }
 
+	public float getPlcLo() {
+		return plcLo;
+	}
 
 
-   public void setPlcLo(int plcLo) {
-      this.plcLo = plcLo;
-   }
 
+	public void setPlcLo(float plcLo) {
+		this.plcLo = plcLo;
+	}
 
 
-   public String getStatus() {
-      return status;
-   }
 
+	public String getStatus() {
+		return status;
+	}
 
 
-   public void setStatus(String status) {
-      this.status = status;
-   }
-    
-   
-   
-   @Override
-   public String toString() {
-	   return "Place [plcCode=" + plcCode + ", categoryCode=" + categoryCode + ", localCode=" + localCode
-			   + ", dareaCode=" + dareaCode + ", plcName=" + plcName + ", plcAddress=" + plcAddress + ", plcText="
-			   + plcText + ", plcBname=" + plcBname + ", plcPnumber=" + plcPnumber + ", plcDate=" + plcDate
-			   + ", plcLa=" + plcLa + ", plcLo=" + plcLo + ", status=" + status + "]";
-   }
-   
-    
-    
 
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
+
+
+	@Override
+	public String toString() {
+		return "Place [plcCode=" + plcCode + ", categoryCode=" + categoryCode + ", localCode=" + localCode
+				+ ", dareaCode=" + dareaCode + ", plcName=" + plcName + ", plcAddress=" + plcAddress + ", plcText="
+				+ plcText + ", plcBname=" + plcBname + ", plcPnumber=" + plcPnumber + ", plcDate=" + plcDate
+				+ ", plcLa=" + plcLa + ", plcLo=" + plcLo + ", status=" + status + "]";
+	}
 
 }

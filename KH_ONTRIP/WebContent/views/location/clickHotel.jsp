@@ -1,7 +1,30 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" import="java.util.ArrayList, com.ontrip.place.model.vo.Place,
+    com.ontrip.image.vo.Image"%>
 <%
     String contextPath = request.getContextPath();
+
+	//시설 정보 띄우기
+	Place place = (Place)request.getAttribute("place");
+	String placeName = (String)request.getAttribute("placeName");
+	
+	//상세지역이름
+	String dareaName = (String)request.getAttribute("dareaName");
+	
+	//시설사진띄우기
+	
+	
+	
+	
+	//밑에 놀거리, 숙소, 맛집 버튼별 사진나오게하기
+	ArrayList<Image> filePath = (ArrayList<Image>)request.getAttribute("filePath");
+   	ArrayList<Image> playPath = (ArrayList<Image>)request.getAttribute("playPath");
+   	ArrayList<Place> playInfo = (ArrayList<Place>)request.getAttribute("playInfo");
+//  ArrayList<Image> foodPath = (ArrayList<Image>)request.getAttribute("foodPath");
+//  ArrayList<Place> foodInfo = (ArrayList<Place>)request.getAttribute("foodInfo");
+   	ArrayList<Image> hotelPath = (ArrayList<Image>)request.getAttribute("hotelPath");
+   	ArrayList<Place> hotelInfo = (ArrayList<Place>)request.getAttribute("hotelInfo");
+   	
 %>
 <!DOCTYPE html>
 <html lang="ko">
@@ -19,6 +42,32 @@
         integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="
         crossorigin="anonymous">
     </script>
+    
+    
+<style>
+.outer7{
+        background-color: white; /* 해당사이트의 고유한 색상으로 작성 */
+        color: black;
+        width: 950px;
+        height: 200px;
+        border: 1px solid black;
+        margin: auto;
+        margin-top: 10px;
+        margin-left: -30px;
+        display:flex;
+    }
+    .outer8{
+        width: 35%;
+        height: 100%;
+        border: 1px solid blue;
+    }
+    .outer9{
+        width: 70%;
+        height: 100%;
+        /* border: 1px solid red; */
+    }
+
+</style>
 </head>
 <body>
     <%@ include file="../common/navbar.jsp" %>
@@ -28,10 +77,10 @@
     <div class="body-container">
 
         <div class="title-container">
-            <b>O O 숙소</b> &nbsp;&nbsp;
-            <b>서울 롯데호텔</b> &nbsp;&nbsp;
+            <b><%= dareaName %>숙소</b> &nbsp;&nbsp;
+            <b><%= placeName %></b> &nbsp;&nbsp;
             
-            <button>예약하러가기</button>
+            <button onclick="Goreservation();">예약하러가기</button>
             
             <button style="background-color: rgb(44, 144, 72); color:white; border-radius:10px; border:3px solid rgb(44, 144, 72);">
                 <i class="fa-regular fa-heart fa-lg"></i>
@@ -62,13 +111,13 @@
         <script>
             var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
                 mapOption = { 
-<%--                     center: new kakao.maps.LatLng(<%= %>, <%= %>), // 지도의 중심좌표 --%>
+                    center: new kakao.maps.LatLng(<%= place.getPlcLa() %>, <%= place.getPlcLo() %>), // 지도의 중심좌표
                     level: 3 // 지도의 확대 레벨
                 };
 
             // 지도를 표시할 div와  지도 옵션으로  지도를 생성
             var map = new kakao.maps.Map(mapContainer, mapOption); 
-        </script> <!-- 지도api 자리 -->
+        </script> 
         </div>
 
         <br>
@@ -76,167 +125,119 @@
         <a href="" class="review">방문자 후기</a> &nbsp;&nbsp;
         <span style="font-size:12px; font-weight: 100; color:rgb(127, 129, 129);">504개</span> <br><br>
         <i class="fa-solid fa-location-dot" style="color:green;"></i>
-        <span style="font-size:13px; font-weight: bold;">서울 중구 을지로 30</span>
+        <span style="font-size:13px; font-weight: bold;"><%= place.getPlcAddress() %></span>
 
         <br><br>
 
         <div class="explain-text">
             <p>
-                롯데호텔은 서울,월드,울산,제주,부산을 잇는 국내 최대의 특 1급
-                호텔체인과 마포, 김포공항의 비즈니스 호텔, <br>
-                나아가 러시아 모스크바에 6성급 호텔을
-                오픈하며 글로벌 리딩 호텔&리조트 기업으로 발돋움하고 있습니다. <br><br>
-                세련되고 모던한 감각, <br>
-                편안하고 안락한 객실과 세심한 배려가 묻어나는 서비스가 있습니다.
+                <%= place.getPlcText() %>
             </p>
         </div>
 
         <br><br>
 
         <div class = "bottom" style="width:100%">
-            <fieldset id = "mForm">
+            <fieldset id = "mForm" class="myweb">
                 <div class = "selectTitle">
                     <button type="button" class="btn-div" id = "n" name="search" onclick="show(this);">놀거리</button>
                     <button type="button" class="btn-div" id = "m" name="search" onclick="show(this);">맛집</button>
                     <button type="button" class="btn-div" id = "s" name="search" onclick="show(this);">숙소</button>
     
-                    <div id = "nsearch" class = "box" style="border:1px solid black; padding:20px; text-align: center;">
-
-                        <div class="img-container">
-                            <div>
-                                <div class="img-box" style="width:270px; height:270px;">
-                                    <img src = "../image/롯데호텔.png" width = "100%" height = "230px" style="border-radius:20px;"> 
-                                    <div style="font-size:20px; font-weight:bold;">롯데호텔</div>
+                     <div id = "nsearch" class = "box" style="padding:20px; text-align: center;">  <!-- border:1px solid black; -->
+            <% if(!playPath.isEmpty()) { %>
+                         <% for(int i=0; i<playPath.size(); i++){ %>
+                        <div class="outer7">
+                            <div class="outer8">
+                                <div class="outer9" style="width:270px; height:270px;">
+                                    <img src="<%=playPath.get(i).getFilePath() %><%=playPath.get(i).getOriginName() %>" width = "122%" height = "198px"> 
                                 </div>
                             </div>
-                            
-                            <div>
-                                <div class="img-box" style="width:270px; height:270px;">
-                                    <img src = "../image/롯데호텔2.png" width = "100%" height = "230px" style="border-radius:20px;"> 
-                                    <div style="font-size:20px; font-weight:bold;">KH호텔</div>
-                                </div>
-                            </div>
-
-                            <div>
-                                <div class="img-box" style="width:270px; height:270px;">
-                                    <img src = "../image/image2.png" width = "100%" height = "230px" style="border-radius:20px;"> 
-                                    <div style="font-size:20px; font-weight:bold;">시나브로호텔</div>
-                                </div>
-                            </div>
-
-                            <div style="margin-left:15%;">
-                                <div class="img-box" style="width:270px; height:270px;">
-                                    <img src = "../image/gyeongju.jpg" width = "100%" height = "230px" style="border-radius:20px;"> 
-                                    <div style="font-size:20px; font-weight:bold;">구름호텔</div>
-                                </div>
-                            </div>
-
-                            <div>
-                                <div class="img-box" style="width:270px; height:270px;">
-                                    <img src = "../image/gangnam.jpg" width = "100%" height = "230px" style="border-radius:20px;"> 
-                                    <div style="font-size:20px; font-weight:bold;">돈가스호텔</div>
-                                </div>
-                            </div>
-                    
-                        </div>
-
-                    </div>
-                
-
-
-
-                    <div id = "msearch" class = "box box2"  style="border:1px solid black; padding:20px;"> 
-                        <div class="img-container">
-                            <div>
-                                <div class="img-box" style="width:270px; height:270px;">
-                                    <img src = "../image/image2.png" width = "100%" height = "230px" style="border-radius:20px;"> 
-                                    <div style="font-size:20px; font-weight:bold;">롯데호텔</div>
-                                </div>
-                            </div>
-                            
-                            <div>
-                                <div class="img-box" style="width:270px; height:270px;">
-                                    <img src = "../image/image2.png" width = "100%" height = "230px" style="border-radius:20px;"> 
-                                    <div style="font-size:20px; font-weight:bold;">롯데호텔</div>
-                                </div>
-                            </div>
-
-                            <div>
-                                <div class="img-box" style="width:270px; height:270px;">
-                                    <img src = "../image/image2.png" width = "100%" height = "230px" style="border-radius:20px;"> 
-                                    <div style="font-size:20px; font-weight:bold;">롯데호텔</div>
-                                </div>
-                            </div>
-
-                            <div style="margin-left:15%;">
-                                <div class="img-box" style="width:270px; height:270px;">
-                                    <img src = "../image/image2.png" width = "100%" height = "230px" style="border-radius:20px;"> 
-                                    <div style="font-size:20px; font-weight:bold;">롯데호텔</div>
-                                </div>
-                            </div>
-
-                            <div>
-                                <div class="img-box" style="width:270px; height:270px;">
-                                    <img src = "../image/image2.png" width = "100%" height = "230px" style="border-radius:20px;"> 
-                                    <div style="font-size:20px; font-weight:bold;">롯데호텔</div>
-                                </div>
-                            </div>
-                    
-                        </div>
-
-                    
-                    </div>
-                
+                          
+                            <div style="font-size:20px; font-weight:bold; margin-left: 25%; margin-top: 20px;"><input type="button" onclick="<%=playInfo.get(i).getPlcName() %>();" value="<%=playInfo.get(i).getPlcName() %>" style="border: 0; background-color: white; font-weight: bold;"></div>
+                               <div style="text-align:center; margin: 70px; margin-left: -130px">
+                                  <span><%=playInfo.get(i).getPlcAddress() %></span><br>
+                                  <span><%=playInfo.get(i).getPlcPnumber() %></span>
+                               </div>
+                        </div> 
+                           <%} %>
+                        <%} %>
+                      </div>
 
 
 
 
-                    <div id = "ssearch" class = "box box2" style="border:1px solid black; padding:20px;">
-                        <div class="img-container">
-                            <div>
-                                <div class="img-box" style="width:270px; height:270px;">
-                                    <img src = "../image/image1.png" width = "100%" height = "230px" style="border-radius:20px;"> 
-                                    <div style="font-size:20px; font-weight:bold;">롯데호텔</div>
-                                </div>
-                            </div>
-                            
-                            <div>
-                                <div class="img-box" style="width:270px; height:270px;">
-                                    <img src = "../image/image1.png" width = "100%" height = "230px" style="border-radius:20px;"> 
-                                    <div style="font-size:20px; font-weight:bold;">롯데호텔</div>
-                                </div>
-                            </div>
+            <div id="msearch" class="box box2" style="padding: 20px;">
+<%--                <% --%>
+<!--                    if (!foodPath.isEmpty()) { -->
+<%--                %> --%>
+<%--                <% --%>
+<!--                    for (int i = 0; i < foodPath.size(); i++) { -->
+<%--                %> --%>
+               <div class="outer7">
+                  <div class="outer8">
+                     <div class="outer9" style="width: 270px; height: 270px;">
+                        <img
+<%--                            src="<%=foodPath.get(i).getFilePath()%><%=foodPath.get(i).getOriginName()%>" --%>
+                           width="122%" height="198px">
+                     </div>
+                  </div>
 
-                            <div>
-                                <div class="img-box" style="width:270px; height:270px;">
-                                    <img src = "../image/image1.png" width = "100%" height = "230px" style="border-radius:20px;"> 
-                                    <div style="font-size:20px; font-weight:bold;">롯데호텔</div>
-                                </div>
-                            </div>
+                  <div
+                     style="font-size: 20px; font-weight: bold; margin-left: 25%; margin-top: 20px;">
+                     <input type="button"
+<%--                         onclick="<%=foodInfo.get(i).getPlcName()%>();" --%>
+<%--                         value="<%=foodInfo.get(i).getPlcName()%>" --%>
+                        style="border: 0; background-color: white; font-weight: bold;">
+                  </div>
+                  <div style="text-align: center; margin: 70px; margin-left: -130px">
+<%--                      <span><%=foodInfo.get(i).getPlcAddress()%></span><br> <span><%=foodInfo.get(i).getPlcPnumber()%></span> --%>
+                  </div>
+               </div>
+<%--                <% --%>
+<!--                    } -->
+<%--                %> --%>
+<%--                <% --%>
+<!--                    } -->
+<%--                %> --%>
+            </div>
 
-                            <div style="margin-left:15%;">
-                                <div class="img-box" style="width:270px; height:270px;">
-                                    <img src = "../image/image1.png" width = "100%" height = "230px" style="border-radius:20px;"> 
-                                    <div style="font-size:20px; font-weight:bold;">롯데호텔</div>
-                                </div>
-                            </div>
 
-                            <div>
-                                <div class="img-box" style="width:270px; height:270px;">
-                                    <img src = "../image/image1.png" width = "100%" height = "230px" style="border-radius:20px;"> 
-                                    <div style="font-size:20px; font-weight:bold;">롯데호텔</div>
-                                </div>
-                            </div>
-                    
-                        </div>
 
-                    </div>
+
+
+            <div id = "ssearch" class = "box box2" style=" padding:20px;">
+                       <%
+                  if (!hotelPath.isEmpty()) {
+               %>
+               <%
+                  for (int i = 0; i < hotelPath.size(); i++) {
+               %>
+               <div class="outer7">
+                  <div class="outer8">
+                     <div class="outer9" style="width: 270px; height: 270px;">
+                        <img
+                           src="<%=hotelPath.get(i).getFilePath()%><%=hotelPath.get(i).getOriginName()%>"
+                           width="122%" height="198px">
+                     </div>
+                  </div>
+
+                  <div style="font-size:20px; font-weight:bold; margin-left: 25%; margin-top: 20px;"><input type="button" onclick="<%=hotelInfo.get(i).getPlcName() %>();" value="<%=hotelInfo.get(i).getPlcName() %>" style="border: 0; background-color: white; font-weight: bold;"></div>
+                               <div style="text-align:center; margin: 70px; margin-left: -130px">
+                                  <span><%=hotelInfo.get(i).getPlcAddress() %></span><br>
+                                  <span><%=hotelInfo.get(i).getPlcPnumber() %></span>
+                               </div>
+                        </div> 
+               <%
+                  }
+               %>
+               <%
+                  }
+               %>
                 </div>
             </fieldset>
         </div>
         
-    </div>
-
     <script>
         function show(element){
             let tag = document.getElementsByClassName("box");
@@ -249,10 +250,42 @@
                 }
             }
         }
+
+
         
     </script>
-
-
+   <script>
+        <%if (!playPath.isEmpty()) {%>
+                    <%for (int i = 0; i < playPath.size(); i++) {%>
+         function <%=playInfo.get(i).getPlcName()%>(){
+             location.href = "<%=request.getContextPath()%>/selectPlay.pe?placeName=<%=playInfo.get(i).getPlcName()%>";
+          }
+           <%}%>
+      <%}%>
+      
+      <%if (!hotelPath.isEmpty()) {%>
+        <%for (int i = 0; i < hotelPath.size(); i++) {%>
+      function <%=hotelInfo.get(i).getPlcName()%>(){
+         location.href = "<%=request.getContextPath()%>/selectHotel.pe?placeName=<%=hotelInfo.get(i).getPlcName()%>&dareaName=<%= dareaName %>";
+      }
+         <%}%>
+      <%}%>
+      
+<%--       <%if (!foodPath.isEmpty()) {%> --%>
+<%--         <%for (int i = 0; i < foodPath.size(); i++) {%> --%>
+<%--       function <%=foodInfo.get(i).getPlcName()%>(){ --%>
+<%--          location.href = "<%=request.getContextPath()%>/selectFood.pe?placeName=<%=foodInfo.get(i).getPlcName()%>"; --%>
+//       }
+<%--          <%}%> --%>
+<%--       <%}%> --%>
+    </script>
     
+    
+    <script>
+    	function Goreservation(){
+    		location.href = "<%= request.getContextPath()%>/ ?memNo=<%= place.getPlcCode() %>&plcCode=<%= loginUser.getMemberNo() %>";
+    	}
+    
+    </script>
 </body>
 </html>
