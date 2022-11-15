@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.ontrip.detailArea.service.DetailAreaService;
 import com.ontrip.image.vo.Image;
-import com.ontrip.location.service.LocationService;
 import com.ontrip.place.model.service.PlaceService;
 import com.ontrip.place.model.vo.Place;
 
@@ -47,6 +46,14 @@ public class selectPlaceController extends HttpServlet {
 		//놀거리 정보(이름, 주소, 전화번호) 가져오기
 		ArrayList<Place> playInfo = new PlaceService().selectPlayInfo(dareaCode);
 		request.setAttribute("playInfo", playInfo);
+		
+		// 숙소 사진 불러오기
+		ArrayList<Image> hotelPath = new DetailAreaService().selectHotelPath(dareaCode);
+		request.setAttribute("hotelPath", hotelPath);
+
+		// 놀거리 정보(이름, 주소, 전화번호) 가져오기
+		ArrayList<Place> hotelInfo = new PlaceService().selectHotelInfo(dareaCode);
+		request.setAttribute("hotelInfo", hotelInfo);
 		
 		request.getRequestDispatcher("views/location/selectPlace.jsp").forward(request, response);
 	}

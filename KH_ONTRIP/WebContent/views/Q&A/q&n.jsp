@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -102,9 +103,7 @@
 </head>
 <body>
     <%@ include file="../common/navbar.jsp" %>
-<%--     <%@ include file="../common/managerNavbar.jsp" %> --%>
-    <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 
     <div class="outer">
         <div class="title">

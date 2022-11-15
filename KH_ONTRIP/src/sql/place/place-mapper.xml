@@ -6,9 +6,19 @@
 	FROM "Place"
 	WHERE DAREA_CODE = ? AND CATEGORY_CODE = 'PP'
 	</entry>
+<<<<<<< HEAD
 
 	<entry key="selectPlace">
 	
 	
 	</entry>
+=======
+	
+	<entry key="selectHotelInfo">
+	SELECT PLC_NAME, PLC_ADDRESS, PLC_PNUMBER
+	FROM "Place"
+	WHERE DAREA_CODE = ? AND CATEGORY_CODE = 'HH'
+	</entry>
+	
+>>>>>>> 1eeb2292e0b17de0f90e40559682af1d0e06dfe5
 </properties>

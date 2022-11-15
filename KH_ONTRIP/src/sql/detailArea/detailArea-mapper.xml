@@ -18,4 +18,10 @@
 		FROM "Image" 
 		WHERE  DAREA_CODE = ? AND CATEGORY_CODE='PP'
 	</entry>
+	
+	<entry key="selectHotelPath">
+		SELECT FILE_PATH, ORIGIN_NAME
+		FROM "Image" 
+		WHERE  DAREA_CODE = ? AND CATEGORY_CODE='HH'
+	</entry>
 </properties>
