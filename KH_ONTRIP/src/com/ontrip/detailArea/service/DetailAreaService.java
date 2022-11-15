@@ -40,5 +40,15 @@ public class DetailAreaService {
 		return playPath;
 	}
 	
+	public ArrayList<Image> selectHotelPath(String dareaCode){
+		Connection conn = getConnection();
+		
+		ArrayList<Image> hotelPath = new DetailAreaDao().selectHotelPath(dareaCode, conn);
+		
+		close();
+		
+		return hotelPath;
+	}
+	
 	
 }

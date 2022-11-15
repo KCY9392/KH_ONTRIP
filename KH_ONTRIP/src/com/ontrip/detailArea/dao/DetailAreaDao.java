@@ -118,4 +118,36 @@ private Properties prop = new Properties();
 		}
 		return playPath;
 	}
+	
+	public ArrayList<Image> selectHotelPath(String dareaCode, Connection conn){
+		ArrayList<Image> hotelPath = new ArrayList<>();
+		
+		PreparedStatement psmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("selectHotelPath");
+		
+		try {
+			psmt = conn.prepareStatement(sql);
+			
+			psmt.setString(1, dareaCode);
+			
+			rset = psmt.executeQuery();
+			
+			while(rset.next()) {
+				hotelPath.add(new Image(
+							 rset.getString("FILE_PATH"),
+							 rset.getString("ORIGIN_NAME")));
+			}
+			System.out.println(hotelPath);
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rset);
+			close(psmt);
+		}
+		return hotelPath;
+	}
+	
 }

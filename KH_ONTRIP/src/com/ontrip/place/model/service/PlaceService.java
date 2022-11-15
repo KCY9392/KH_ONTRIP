@@ -18,4 +18,13 @@ public class PlaceService {
 		
 		return playInfo;
 	}
+	
+	public ArrayList<Place> selectHotelInfo(String dareaCode){
+		Connection conn = getConnection();
+		ArrayList<Place> hotelInfo = new PlaceDao().selectHotelInfo(dareaCode, conn);
+		
+		close();
+		
+		return hotelInfo;
+	}
 }

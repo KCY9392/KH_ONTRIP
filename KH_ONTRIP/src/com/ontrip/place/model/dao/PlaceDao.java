@@ -9,9 +9,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Properties;
 
-import com.ontrip.image.vo.Image;
-import com.ontrip.location.dao.LocationDao;
 import com.ontrip.place.model.vo.Place;
+import static com.ontrip.common.JDBCTemplate.*;
 
 public class PlaceDao {
 	
@@ -62,17 +61,36 @@ public class PlaceDao {
 		return playInfo;
 	}
 
-
-
-	private void close(PreparedStatement psmt) {
-		// TODO Auto-generated method stub
+	public ArrayList<Place> selectHotelInfo(String dareaCode, Connection conn){
+		ArrayList<Place> hotelInfo = new ArrayList<Place>();
 		
+		PreparedStatement psmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("selectHotelInfo");
+		
+		try {
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, dareaCode);
+			
+			rset = psmt.executeQuery();
+			
+			while(rset.next()) {
+				hotelInfo.add(new Place(
+							 rset.getString("PLC_NAME"),
+							 rset.getString("PLC_ADDRESS"),
+							 rset.getString("PLC_PNUMBER")));
+			}
+			System.out.println(hotelInfo);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(psmt);
+		}
+		
+		return hotelInfo;
 	}
 
-
-
-	private void close(ResultSet rset) {
-		// TODO Auto-generated method stub
-		
-	}
+	
 }
