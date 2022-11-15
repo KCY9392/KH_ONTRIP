@@ -40,6 +40,16 @@ public class DetailAreaService {
 		return playPath;
 	}
 	
+	public ArrayList<Image> selectFoodPath(String dareaCode){
+		Connection conn = getConnection();
+		
+		ArrayList<Image> foodPath = new DetailAreaDao().selectFoodPath(dareaCode, conn);
+		
+		close();
+		
+		return foodPath;
+	}
+	
 	public ArrayList<Image> selectHotelPath(String dareaCode){
 		Connection conn = getConnection();
 		
@@ -49,6 +59,7 @@ public class DetailAreaService {
 		
 		return hotelPath;
 	}
+	
 	
 	
 }

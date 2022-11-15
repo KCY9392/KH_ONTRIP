@@ -88,6 +88,37 @@ private Properties prop = new Properties();
 		return filePath;
 	}
 	
+	public ArrayList<Image> selectFoodPath(String dareaCode, Connection conn){
+		ArrayList<Image> foodPath = new ArrayList<>();
+		
+		PreparedStatement psmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("selectFoodPath");
+		
+		try {
+			psmt = conn.prepareStatement(sql);
+			
+			psmt.setString(1, dareaCode);
+			
+			rset = psmt.executeQuery();
+			
+			while(rset.next()) {
+				foodPath.add(new Image(
+							 rset.getString("FILE_PATH"),
+							 rset.getString("ORIGIN_NAME")));
+			}
+			System.out.println(foodPath);
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rset);
+			close(psmt);
+		}
+		return foodPath;
+	}
+	
 	public ArrayList<Image> selectPlayPath(String dareaCode, Connection conn){
 		ArrayList<Image> playPath = new ArrayList<>();
 		

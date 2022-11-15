@@ -13,4 +13,21 @@
 	WHERE DAREA_CODE = ? AND CATEGORY_CODE = 'HH'
 	</entry>
 	
+	<entry key="selectFoodInfo">
+	SELECT PLC_NAME, PLC_ADDRESS, PLC_PNUMBER
+	FROM "Place"
+	WHERE DAREA_CODE = ? AND CATEGORY_CODE = 'FF'
+	</entry>
+	
+	<entry key="searchPlacePath">
+	SELECT FILE_PATH, ORIGIN_NAME
+	FROM "Image"
+	WHERE ORIGIN_NAME LIKE ?
+	</entry>
+	
+	<entry key="searchPlaceInfo">
+	SELECT CATEGORY_CODE, PLC_NAME, PLC_ADDRESS, PLC_PNUMBER
+	FROM "Place"
+	WHERE PLC_NAME LIKE ?
+	</entry>
 </properties>

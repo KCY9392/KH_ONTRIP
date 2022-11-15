@@ -24,4 +24,10 @@
 		FROM "Image" 
 		WHERE  DAREA_CODE = ? AND CATEGORY_CODE='HH'
 	</entry>
+	
+	<entry key="selectFoodPath">
+		SELECT FILE_PATH, ORIGIN_NAME
+		FROM "Image" 
+		WHERE  DAREA_CODE = ? AND CATEGORY_CODE='FF'
+	</entry>
 </properties>

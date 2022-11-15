@@ -6,6 +6,8 @@
    ArrayList<Image> filePath = (ArrayList<Image>)request.getAttribute("filePath");
    ArrayList<Image> playPath = (ArrayList<Image>)request.getAttribute("playPath");
    ArrayList<Place> playInfo = (ArrayList<Place>)request.getAttribute("playInfo");
+   ArrayList<Image> foodPath = (ArrayList<Image>)request.getAttribute("foodPath");
+   ArrayList<Place> foodInfo = (ArrayList<Place>)request.getAttribute("foodInfo");
    ArrayList<Image> hotelPath = (ArrayList<Image>)request.getAttribute("hotelPath");
    ArrayList<Place> hotelInfo = (ArrayList<Place>)request.getAttribute("hotelInfo");
 %>
@@ -167,11 +169,39 @@
 
 
 
-            <div id="msearch" class="box box2"
-               style=" padding: 20px;">
+            <div id="msearch" class="box box2" style="padding: 20px;">
+               <%
+                  if (!foodPath.isEmpty()) {
+               %>
+               <%
+                  for (int i = 0; i < foodPath.size(); i++) {
+               %>
+               <div class="outer7">
+                  <div class="outer8">
+                     <div class="outer9" style="width: 270px; height: 270px;">
+                        <img
+                           src="<%=foodPath.get(i).getFilePath()%><%=foodPath.get(i).getOriginName()%>"
+                           width="122%" height="198px">
+                     </div>
+                  </div>
 
-               
-
+                  <div
+                     style="font-size: 20px; font-weight: bold; margin-left: 25%; margin-top: 20px;">
+                     <input type="button"
+                        onclick="<%=foodInfo.get(i).getPlcName()%>();"
+                        value="<%=foodInfo.get(i).getPlcName()%>"
+                        style="border: 0; background-color: white; font-weight: bold;">
+                  </div>
+                  <div style="text-align: center; margin: 70px; margin-left: -130px">
+                     <span><%=foodInfo.get(i).getPlcAddress()%></span><br> <span><%=foodInfo.get(i).getPlcPnumber()%></span>
+                  </div>
+               </div>
+               <%
+                  }
+               %>
+               <%
+                  }
+               %>
             </div>
 
 
@@ -179,64 +209,33 @@
 
 
             <div id = "ssearch" class = "box box2" style=" padding:20px;">
-<%-- <%--                        <% --%> --%>
-<!--                    if (!hotelPath.isEmpty()) { -->
-<%-- 		               %>  --%>
-<%--                <% --%>
-<!--                    for (int i = 0; i < hotelPath.size(); i++) { -->
-<%--                %> --%>
+                       <%
+                  if (!hotelPath.isEmpty()) {
+               %>
+               <%
+                  for (int i = 0; i < hotelPath.size(); i++) {
+               %>
                <div class="outer7">
                   <div class="outer8">
                      <div class="outer9" style="width: 270px; height: 270px;">
-<!--                         <img -->
-<%--                            src="<%=hotelPath.get(i).getFilePath()%><%=hotelPath.get(i).getOriginName()%>" --%>
-<!--                            width="122%" height="198px"> -->
+                        <img
+                           src="<%=hotelPath.get(i).getFilePath()%><%=hotelPath.get(i).getOriginName()%>"
+                           width="122%" height="198px">
                      </div>
                   </div>
 
-                  <div
-                     style="font-size: 20px; font-weight: bold; margin-left: 25%; margin-top: 20px;">
-                     <input type="button"
-                        onclick=""
-                        value=""
-                        style="border: 0; background-color: white; font-weight: bold;">
-                  </div>
-                  <div style="text-align: center; margin: 70px; margin-left: -130px">
-                     <span></span><br> <span></span>
-                  </div>
-               </div>
-<%--                <% --%>
-<%--                %> --%>
-<%--                <% --%>
-<%--                %> --%>
-				<div id = "ssearch" class = "box box2" style=" padding:20px;">
-                       <%
-						if (!hotelPath.isEmpty()) {
-					%>
-					<%
-						for (int i = 0; i < hotelPath.size(); i++) {
-					%>
-					<div class="outer7">
-						<div class="outer8">
-							<div class="outer9" style="width: 270px; height: 270px;">
-								<img
-									src="<%=hotelPath.get(i).getFilePath()%><%=hotelPath.get(i).getOriginName()%>"
-									width="122%" height="198px">
-							</div>
-						</div>
-
-						<div style="font-size:20px; font-weight:bold; margin-left: 25%; margin-top: 20px;"><input type="button" onclick="<%=hotelInfo.get(i).getPlcName() %>();" value="<%=hotelInfo.get(i).getPlcName() %>" style="border: 0; background-color: white; font-weight: bold;"></div>
-	                            <div style="text-align:center; margin: 70px; margin-left: -130px">
-		                            <span><%=hotelInfo.get(i).getPlcAddress() %></span><br>
-		                            <span><%=hotelInfo.get(i).getPlcPnumber() %></span>
-	                            </div>
+                  <div style="font-size:20px; font-weight:bold; margin-left: 25%; margin-top: 20px;"><input type="button" onclick="<%=hotelInfo.get(i).getPlcName() %>();" value="<%=hotelInfo.get(i).getPlcName() %>" style="border: 0; background-color: white; font-weight: bold;"></div>
+                               <div style="text-align:center; margin: 70px; margin-left: -130px">
+                                  <span><%=hotelInfo.get(i).getPlcAddress() %></span><br>
+                                  <span><%=hotelInfo.get(i).getPlcPnumber() %></span>
+                               </div>
                         </div> 
-					<%
-						}
-					%>
-					<%
-						}
-					%>
+               <%
+                  }
+               %>
+               <%
+                  }
+               %>
                 </div>
             </fieldset>
         </div>
@@ -261,9 +260,25 @@
         <%if (!playPath.isEmpty()) {%>
                     <%for (int i = 0; i < playPath.size(); i++) {%>
          function <%=playInfo.get(i).getPlcName()%>(){
-             location.href = "<%=request.getContextPath()%>/selectPlace.pe?placeName=<%=playInfo.get(i).getPlcName()%>";
+             location.href = "<%=request.getContextPath()%>/selectPlay.pe?placeName=<%=playInfo.get(i).getPlcName()%>";
           }
            <%}%>
+      <%}%>
+      
+      <%if (!hotelPath.isEmpty()) {%>
+        <%for (int i = 0; i < hotelPath.size(); i++) {%>
+      function <%=hotelInfo.get(i).getPlcName()%>(){
+         location.href = "<%=request.getContextPath()%>/selectHotel.pe?placeName=<%=hotelInfo.get(i).getPlcName()%>";
+      }
+         <%}%>
+      <%}%>
+      
+      <%if (!foodPath.isEmpty()) {%>
+        <%for (int i = 0; i < foodPath.size(); i++) {%>
+      function <%=foodInfo.get(i).getPlcName()%>(){
+         location.href = "<%=request.getContextPath()%>/selectFood.pe?placeName=<%=foodInfo.get(i).getPlcName()%>";
+      }
+         <%}%>
       <%}%>
     </script>
 </body>

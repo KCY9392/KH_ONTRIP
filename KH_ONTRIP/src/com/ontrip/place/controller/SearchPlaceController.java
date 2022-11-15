@@ -1,23 +1,29 @@
 package com.ontrip.place.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.ontrip.image.vo.Image;
+import com.ontrip.place.model.service.PlaceService;
+import com.ontrip.place.model.vo.Place;
+
 /**
- * Servlet implementation class SelectHotelController
+ * Servlet implementation class SearchPlaceController
  */
-@WebServlet("/selectHotel.pe")
-public class SelectHotelController extends HttpServlet {
+@WebServlet("/searchPlace.se")
+public class SearchPlaceController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public SelectHotelController() {
+    public SearchPlaceController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -26,7 +32,16 @@ public class SelectHotelController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getRequestDispatcher("views/location/clickHotel.jsp").forward(request, response);
+		String word = request.getParameter("word");
+		// 검색한 시설 사진 불러오기
+		ArrayList<Image> placePath = new PlaceService().searchPlacePath(word);
+		request.setAttribute("placePath", placePath);
+		
+		// 검색한 시설 정보 불러오기
+		ArrayList<Place> placeInfo = new PlaceService().searchPlaceInfo(word);
+		request.setAttribute("placeInfo", placeInfo);
+		
+		request.getRequestDispatcher("views/location/searchPlace.jsp").forward(request, response);
 	}
 
 	/**

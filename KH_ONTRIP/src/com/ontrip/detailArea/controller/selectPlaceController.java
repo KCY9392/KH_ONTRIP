@@ -47,11 +47,18 @@ public class selectPlaceController extends HttpServlet {
 		ArrayList<Place> playInfo = new PlaceService().selectPlayInfo(dareaCode);
 		request.setAttribute("playInfo", playInfo);
 		
+		// 맛집 사진 불러오기
+		ArrayList<Image> foodPath = new DetailAreaService().selectFoodPath(dareaCode);
+		request.setAttribute("foodPath", foodPath);
+
+		// 숙소 정보(이름, 주소, 전화번호) 가져오기
+		request.setAttribute("foodInfo", foodInfo);
+				
 		// 숙소 사진 불러오기
 		ArrayList<Image> hotelPath = new DetailAreaService().selectHotelPath(dareaCode);
 		request.setAttribute("hotelPath", hotelPath);
 
-		// 놀거리 정보(이름, 주소, 전화번호) 가져오기
+		// 숙소 정보(이름, 주소, 전화번호) 가져오기
 		ArrayList<Place> hotelInfo = new PlaceService().selectHotelInfo(dareaCode);
 		request.setAttribute("hotelInfo", hotelInfo);
 		
