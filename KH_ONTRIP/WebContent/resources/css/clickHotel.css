@@ -98,18 +98,26 @@ div{
     width: 930px;
     height: 650px;
     margin: auto;
-    display: none;
     margin-top:20px;
 }
 .box img{
     margin:auto;
     /* width:100%; */
     overflow: hidden;
-    float:left;
+    display: flex;
+}
+.box2{
+    display:none;
 }
 button[type=button]{
     border-radius: 10px;
     border:1px solid hotpink;
     font-weight: bold;
 }
-
+.img-box{
+    float:left;
+    padding:20px;
+}
+.img-container{
+    margin-left:3.7%;
+}

@@ -1,5 +1,4 @@
-package com.ontrip.member.controller;
-
+package com.ontrip.member.controller.login;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -7,19 +6,17 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.ontrip.member.model.service.MemberService;
-
 /**
- * Servlet implementation class IdCheckController
+ * Servlet implementation class FIndPageController
  */
-@WebServlet("/idCheck.me")
-public class IdCheckController extends HttpServlet {
+@WebServlet("/find.me")
+public class FIndPageController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public IdCheckController() {
+    public FIndPageController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -28,15 +25,7 @@ public class IdCheckController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String checkId = request.getParameter("checkId");
-		
-		int count = new MemberService().idCheck(checkId);
-		
-		if(count > 0) { // 중복된 아이디 존재 (사용불가)
-			response.getWriter().print("NNNNN");
-		}else { // 존재하는 아이디가 없음(사용가능)
-			response.getWriter().print("NNNNY");
-		}
+		request.getRequestDispatcher("views/common/find.jsp").forward(request, response);
 	}
 
 	/**

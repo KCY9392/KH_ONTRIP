@@ -1,9 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%
-    String contextPath = request.getContextPath();
-%>
-
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -11,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>온트립(OnTrip) - 예약숙소조회</title>
-    <link rel="stylesheet" href="resources/css/res_DetailHotelList.css">
+    <link href="<%= request.getContextPath() %>/resources/css/myPageReservationDetail.css" rel="stylesheet" >
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     <script
         src="https://code.jquery.com/jquery-3.6.1.min.js"
@@ -21,7 +17,8 @@
 </head>
 <body>
     <%@ include file="../common/navbar.jsp" %>
-	<%@ include file="../common/myPageNavbar.jsp" %>  
+
+    <%@ include file="../common/myPageNavbar.jsp" %>
 
       <div class="container">
         <div class="center" style="width:600px; height:650px; margin-left:35%; margin-top:100px; border:1px solid black; ">

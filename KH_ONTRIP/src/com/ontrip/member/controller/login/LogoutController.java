@@ -1,5 +1,4 @@
-package com.ontrip.member.controller;
-
+package com.ontrip.member.controller.login;
 import java.io.IOException;
 
 import javax.servlet.RequestDispatcher;

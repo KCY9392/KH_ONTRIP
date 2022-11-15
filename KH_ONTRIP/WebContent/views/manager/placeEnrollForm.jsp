@@ -28,9 +28,11 @@
     
     <div class="outer1">
         <br>
-        <h1 style = "text-align : center;">메인관리</h1>
+        <h1 style = "text-align : center;">제목 : </h1>
         <br>&nbsp;
+
         
+    </div>
 
 </body>
 </html>

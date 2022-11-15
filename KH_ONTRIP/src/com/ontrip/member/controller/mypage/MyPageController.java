@@ -1,4 +1,4 @@
-package com.ontrip.member.controller;
+package com.ontrip.member.controller.mypage;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -7,34 +7,19 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- * Servlet implementation class MypagePwdCheck
- */
-@WebServlet("/myPwdcheck.me")
-public class MypagePwdCheckController extends HttpServlet {
+@WebServlet("/mypage.me")
+public class MyPageController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public MypagePwdCheckController() {
+    public MyPageController() {
         super();
-        
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		request.getRequestDispatcher("views/myPage/myPagePwdCheck.jsp").forward(request, response);
+		 request.getRequestDispatcher("views/member/mypage.jsp").forward(request, response);
 	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
+	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
 		doGet(request, response);
 	}
 

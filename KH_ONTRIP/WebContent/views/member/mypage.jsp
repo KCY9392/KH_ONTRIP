@@ -27,6 +27,7 @@
         border-left: 0;
         border-right: 0;
     }
+    
  
 </style>
 </head>
@@ -53,32 +54,32 @@
             	<table align = center>
                 <tr>
                     <td>여행자 이름 :&nbsp;</td>
-                    <td><input type = "text" name = "userName" value = "<%=userName %>"></td>
+                    <td><input type = "text" name = "userName" value = "<%=userName %>" readonly></td>
                     <td></td>
                 </tr>
                 <tr>
                     <td>성별 :&nbsp;</td>
-                    <td><input type = "text" name = "userGender" value = "<%=userGender %>"></td>
+                    <td><input type = "text" name = "userGender" value = "<%=userGender %>" readonly></td>
                     <td></td>
                 </tr>
                 <tr>
                     <td>아이디 :&nbsp;</td>
-                    <td><input type = "text" name = "userId" value = "<%=userId %>"></td>
+                    <td><input type = "text" name = "userId" value = "<%=userId %>" readonly></td>
                     <td></td>
                 </tr>
                 <tr>
                     <td>휴대폰 번호 :&nbsp;</td>
-                    <td><input type = "text" name = "userPhoneNumber" value = "<%=userPhoneNumber %>"></td>
+                    <td><input type = "text" name = "userPhoneNumber" value = "<%=userPhoneNumber %>" readonly></td>
                     <td></td>
                 </tr>
                 <tr>
                     <td>생년월일 :&nbsp;</td>
-                    <td><input type = "text" name = "userBirth" value = "<%=userBirth %>"></td>
+                    <td><input type = "text" name = "userBirth" value = "<%=userBirth %>" readonly></td>
                     <td></td>
                 </tr>
                 <tr>
                     <td>가입한 날짜 :&nbsp;</td>
-                    <td><input type = "text" name = "userEnrollDate" value = "<%=userEnrollDate %>"></td>
+                    <td><input type = "text" name = "userEnrollDate" value = "<%=userEnrollDate %>" readonly></td>
                     <td></td>
                 </tr>
             </table>
@@ -95,6 +96,8 @@
     	function myPagePwdCheck(){
     		location.href = "<%=request.getContextPath()%>/myPwdcheck.me";
     	}
+    	
+    	
     </script>
 
 </body>

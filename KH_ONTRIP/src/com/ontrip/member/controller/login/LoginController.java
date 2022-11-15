@@ -1,5 +1,4 @@
-package com.ontrip.member.controller;
-
+package com.ontrip.member.controller.login;
 import com.ontrip.member.model.service.MemberService;
 import com.ontrip.member.model.vo.Member;
 

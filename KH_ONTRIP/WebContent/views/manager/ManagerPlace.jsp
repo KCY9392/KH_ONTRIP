@@ -43,7 +43,7 @@
         border:none;
     }
     .box{
-    	size: big;
+       size: big;
         width: 980px;
         height: 800px;
         margin: auto;
@@ -53,33 +53,33 @@
     }
     
     .num1{
-    	width:100px;	
+       width:100px;   
     }
     
     .num2{
-    	width:600px;
+       width:600px;
     }
     
     .num3{
-    	width:400px;
+       width:400px;
     }
 
-	#insertPlace{
-		position: absolute;    /*절대값으로 위치를 설정*/
+   #insertPlace{
+      position: absolute;    /*절대값으로 위치를 설정*/
         left: 1330px;    /* x축 */
         top: 220px;
         width:130px;
         height: 40px;
         background-color:darkseagreen;
         border:none;
-	}
-	
+   }
+   
 </style>
 <!-- CSS only -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
 </head>
 <body> 
-	<%@ include file="../common/adnavbar.jsp" %>
+   <%@ include file="../common/adnavbar.jsp" %>
     <%@ include file="../common/managerNavbar.jsp" %>  
     
     <div class="outer1">
@@ -137,23 +137,23 @@
                         <br>
                         ◀&nbsp;&nbsp;&nbsp;1&nbsp;&nbsp;&nbsp;2&nbsp;&nbsp;&nbsp;<strong>3</strong>&nbsp;&nbsp;&nbsp;4&nbsp;&nbsp;&nbsp;6&nbsp;&nbsp;&nbsp;7&nbsp;&nbsp;&nbsp;8&nbsp;&nbsp;&nbsp;9&nbsp;&nbsp;&nbsp;10&nbsp;&nbsp;&nbsp;▶
 <!--                     <div align="center" class="paging-area"> -->
-					
-<%-- 						<% if(currentPage != 1) { %> --%>
-<%-- 							<button onclick="doPageClick(<%= currentPage-1 %>)">&lt;</button> --%>
-<%-- 						<% } %> --%>
-						
-<%-- 						<% for(int i = startPage; i<= endPage; i++) { %> --%>
-<%-- 							<% if(i != currentPage) { %> --%>
-<%-- 								<button onclick="doPageClick(<%=i %>)"><%= i %></button> --%>
-<%-- 							<% } else { %> --%>
-<%-- 								<button disabled><%= i %></button>	 --%>
-<%-- 							<% } %> --%>
-<%-- 						<% } %> --%>
-						
-<%-- 						<% if(currentPage != maxPage) { %> --%>
-<%-- 							<button onclick="doPageClick(<%= currentPage + 1 %>)">&gt;</button> --%>
-<%-- 						<% } %> --%>
-<!-- 					</div> --> 
+               
+<%--                   <% if(currentPage != 1) { %> --%>
+<%--                      <button onclick="doPageClick(<%= currentPage-1 %>)">&lt;</button> --%>
+<%--                   <% } %> --%>
+                  
+<%--                   <% for(int i = startPage; i<= endPage; i++) { %> --%>
+<%--                      <% if(i != currentPage) { %> --%>
+<%--                         <button onclick="doPageClick(<%=i %>)"><%= i %></button> --%>
+<%--                      <% } else { %> --%>
+<%--                         <button disabled><%= i %></button>    --%>
+<%--                      <% } %> --%>
+<%--                   <% } %> --%>
+                  
+<%--                   <% if(currentPage != maxPage) { %> --%>
+<%--                      <button onclick="doPageClick(<%= currentPage + 1 %>)">&gt;</button> --%>
+<%--                   <% } %> --%>
+<!--                </div> --> 
                     </div>
                 
                     <div id = "eatsearch" class = "box"> 
@@ -197,23 +197,23 @@
                         ◀&nbsp;&nbsp;&nbsp;1&nbsp;&nbsp;&nbsp;2&nbsp;&nbsp;&nbsp;<strong>3</strong>&nbsp;&nbsp;&nbsp;4&nbsp;&nbsp;&nbsp;6&nbsp;&nbsp;&nbsp;7&nbsp;&nbsp;&nbsp;8&nbsp;&nbsp;&nbsp;9&nbsp;&nbsp;&nbsp;10&nbsp;&nbsp;&nbsp;▶
                     
 <!--                     <div align="center" class="paging-area"> -->
-					
-<%-- 						<% if(currentPage != 1) { %> --%>
-<%-- 							<button onclick="doPageClick(<%= currentPage-1 %>)">&lt;</button> --%>
-<%-- 						<% } %> --%>
-						
-<%-- 						<% for(int i = startPage; i<= endPage; i++) { %> --%>
-<%-- 							<% if(i != currentPage) { %> --%>
-<%-- 								<button onclick="doPageClick(<%=i %>)"><%= i %></button> --%>
-<%-- 							<% } else { %> --%>
-<%-- 								<button disabled><%= i %></button>	 --%>
-<%-- 							<% } %> --%>
-<%-- 						<% } %> --%>
-						
-<%-- 						<% if(currentPage != maxPage) { %> --%>
-<%-- 							<button onclick="doPageClick(<%= currentPage + 1 %>)">&gt;</button> --%>
-<%-- 						<% } %> --%>
-<!-- 					</div> -->
+               
+<%--                   <% if(currentPage != 1) { %> --%>
+<%--                      <button onclick="doPageClick(<%= currentPage-1 %>)">&lt;</button> --%>
+<%--                   <% } %> --%>
+                  
+<%--                   <% for(int i = startPage; i<= endPage; i++) { %> --%>
+<%--                      <% if(i != currentPage) { %> --%>
+<%--                         <button onclick="doPageClick(<%=i %>)"><%= i %></button> --%>
+<%--                      <% } else { %> --%>
+<%--                         <button disabled><%= i %></button>    --%>
+<%--                      <% } %> --%>
+<%--                   <% } %> --%>
+                  
+<%--                   <% if(currentPage != maxPage) { %> --%>
+<%--                      <button onclick="doPageClick(<%= currentPage + 1 %>)">&gt;</button> --%>
+<%--                   <% } %> --%>
+<!--                </div> -->
                     </div>
                 
                     <div id = "sleepsearch" class = "box">
@@ -257,23 +257,23 @@
                         ◀&nbsp;&nbsp;&nbsp;1&nbsp;&nbsp;&nbsp;2&nbsp;&nbsp;&nbsp;<strong>3</strong>&nbsp;&nbsp;&nbsp;4&nbsp;&nbsp;&nbsp;6&nbsp;&nbsp;&nbsp;7&nbsp;&nbsp;&nbsp;8&nbsp;&nbsp;&nbsp;9&nbsp;&nbsp;&nbsp;10&nbsp;&nbsp;&nbsp;▶
                     
 <!--                     <div align="center" class="paging-area"> -->
-					
-<%-- 						<% if(currentPage != 1) { %> --%>
-<%-- 							<button onclick="doPageClick(<%= currentPage-1 %>)">&lt;</button> --%>
-<%-- 						<% } %> --%>
-						
-<%-- 						<% for(int i = startPage; i<= endPage; i++) { %> --%>
-<%-- 							<% if(i != currentPage) { %> --%>
-<%-- 								<button onclick="doPageClick(<%=i %>)"><%= i %></button> --%>
-<%-- 							<% } else { %> --%>
-<%-- 								<button disabled><%= i %></button>	 --%>
-<%-- 							<% } %> --%>
-<%-- 						<% } %> --%>
-						
-<%-- 						<% if(currentPage != maxPage) { %> --%>
-<%-- 							<button onclick="doPageClick(<%= currentPage + 1 %>)">&gt;</button> --%>
-<%-- 						<% } %> --%>
-<!-- 					</div> -->
+               
+<%--                   <% if(currentPage != 1) { %> --%>
+<%--                      <button onclick="doPageClick(<%= currentPage-1 %>)">&lt;</button> --%>
+<%--                   <% } %> --%>
+                  
+<%--                   <% for(int i = startPage; i<= endPage; i++) { %> --%>
+<%--                      <% if(i != currentPage) { %> --%>
+<%--                         <button onclick="doPageClick(<%=i %>)"><%= i %></button> --%>
+<%--                      <% } else { %> --%>
+<%--                         <button disabled><%= i %></button>    --%>
+<%--                      <% } %> --%>
+<%--                   <% } %> --%>
+                  
+<%--                   <% if(currentPage != maxPage) { %> --%>
+<%--                      <button onclick="doPageClick(<%= currentPage + 1 %>)">&gt;</button> --%>
+<%--                   <% } %> --%>
+<!--                </div> -->
                     </div>
                 </div>
             </fieldset>
@@ -282,9 +282,9 @@
         <br><br><br>
     
         <script>
-			function insertPlace(){
-				location.href = "<%=request.getContextPath()%>/placeinsert.bo"
-			}
+         function insertPlace(){
+            location.href = "<%=request.getContextPath()%>/placeinsert.bo"
+         }
         
         
             function show(element){
@@ -299,25 +299,25 @@
                 }
             }
 
-			$(function(){
-				$(".list-area>tbody>tr").click(function(){
-					// 클릭시 해당 공지사항의 번호를 넘겨야함.
-					// 해당 tr요소의 자손중에서 첫번째 td의 영역의 내용이 필요.
-					
-					let bno = $(this).children().eq(0).text();// 1 , 2
-					//현재내가클릭한tr의 자손들중 0번째에 위치한 자식의 textnode내용을 가져온다.
-					
-					//요청할 url?키=밸류&키=밸류&키=밸류
-					// 물음표 뒤의 내요을 쿼리스트링이라고 부른다. => 직접 만들어서 넘겨야함.
-<%-- 					location.href= '<%=contextPath %>/detail.bo?bno='+ bno;				 --%>
-				});
-			})
-			
-			function doPageClick(currentPage){
-<%-- 				location.href = "<%=contextPath%>/list.bo?currentPage="+currentPage; --%>
-			}
-			
-		</script>
+         $(function(){
+            $(".list-area>tbody>tr").click(function(){
+               // 클릭시 해당 공지사항의 번호를 넘겨야함.
+               // 해당 tr요소의 자손중에서 첫번째 td의 영역의 내용이 필요.
+               
+               let bno = $(this).children().eq(0).text();// 1 , 2
+               //현재내가클릭한tr의 자손들중 0번째에 위치한 자식의 textnode내용을 가져온다.
+               
+               //요청할 url?키=밸류&키=밸류&키=밸류
+               // 물음표 뒤의 내요을 쿼리스트링이라고 부른다. => 직접 만들어서 넘겨야함.
+<%--                location.href= '<%=contextPath %>/detail.bo?bno='+ bno;             --%>
+            });
+         })
+         
+         function doPageClick(currentPage){
+<%--             location.href = "<%=contextPath%>/list.bo?currentPage="+currentPage; --%>
+         }
+         
+      </script>
             
     </div>
 

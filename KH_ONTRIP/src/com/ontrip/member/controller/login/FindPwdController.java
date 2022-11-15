@@ -1,8 +1,5 @@
-package com.ontrip.member.controller;
-
+package com.ontrip.member.controller.login;
 import java.io.IOException;
-
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -13,16 +10,16 @@ import javax.servlet.http.HttpSession;
 import com.ontrip.member.model.service.MemberService;
 
 /**
- * Servlet implementation class FindIdController
+ * Servlet implementation class FindPwdController
  */
-@WebServlet("/findId.me")
-public class FindIdController extends HttpServlet {
+@WebServlet("/findPwd.me")
+public class FindPwdController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       MemberService ms = new MemberService();
+       
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public FindIdController() {
+    public FindPwdController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -35,11 +32,12 @@ public class FindIdController extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		
 		String memberName = request.getParameter("memberName");
+		String memberId = request.getParameter("memberId");
 		String phone = request.getParameter("phone");
 		
-		String memberId = ms.findId(memberName, phone);
+		String memberPwd = new MemberService().findPwd(memberName, memberId, phone);
 		
-		request.setAttribute("memberId", memberId);
+		request.setAttribute("memberPwd", memberPwd);
 		
 		if(memberId == null) {
 			request.setAttribute("errorMsg", "존재하지않는 회원입니다.");
@@ -49,7 +47,7 @@ public class FindIdController extends HttpServlet {
 		}else {
 			HttpSession session = request.getSession();
 			
-			session.setAttribute("alertMsg", memberId+"입니다.");
+			session.setAttribute("alertMsg", memberPwd+"입니다.");
 			
 			request.getRequestDispatcher("views/common/find.jsp").forward(request, response);
 			

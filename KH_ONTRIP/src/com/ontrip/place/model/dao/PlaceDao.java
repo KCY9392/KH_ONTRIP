@@ -1,5 +1,7 @@
 package com.ontrip.place.model.dao;
 
+import static com.ontrip.common.JDBCTemplate.close;
+
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.sql.Connection;
@@ -8,6 +10,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Properties;
+import com.ontrip.common.JDBCTemplate.*;
 
 import com.ontrip.image.vo.Image;
 import com.ontrip.location.dao.LocationDao;
@@ -62,17 +65,20 @@ public class PlaceDao {
 		return playInfo;
 	}
 
+	   public ArrayList<Place> selectPlace(String placeName, Connection conn) {
+	      
+	      ArrayList<Place> place = new ArrayList<>();
+	      
+	      PreparedStatement psmt = null;
+	      
+	      ResultSet rset = null;
+	      
+	      String sql = prop.getProperty("selectPlace");
+	      
+	      
+	      
+	      return place;
+	   }
 
-
-	private void close(PreparedStatement psmt) {
-		// TODO Auto-generated method stub
-		
-	}
-
-
-
-	private void close(ResultSet rset) {
-		// TODO Auto-generated method stub
-		
-	}
+	
 }

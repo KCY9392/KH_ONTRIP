@@ -1,4 +1,4 @@
-package com.ontrip.member.controller;
+package com.ontrip.member.controller.mypage;
 
 import java.io.IOException;
 import javax.servlet.ServletException;

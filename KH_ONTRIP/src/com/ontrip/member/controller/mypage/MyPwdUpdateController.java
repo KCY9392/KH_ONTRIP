@@ -1,4 +1,4 @@
-package com.ontrip.member.controller;
+package com.ontrip.member.controller.mypage;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -12,18 +12,18 @@ import com.ontrip.member.model.service.MemberService;
 import com.ontrip.member.model.vo.Member;
 
 /**
- * Servlet implementation class MemberDeleteOk
+ * Servlet implementation class MyPwdUpdate
  */
-@WebServlet("/memberDeleteOk.me")
-public class MemberDeleteOk extends HttpServlet {
+@WebServlet("/myPwdUpdate.me")
+public class MyPwdUpdateController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MemberDeleteOk() {
+    public MyPwdUpdateController() {
         super();
- 
+  
     }
 
 	/**
@@ -31,20 +31,26 @@ public class MemberDeleteOk extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		request.setCharacterEncoding("UTF-8");
+		
+		String updatePwd = request.getParameter("newPwd");
+		String memberId = request.getParameter("userId");
+		String memberPwd = request.getParameter("userPwd");
+		System.out.println(updatePwd);
+		Member myUpdatePwd = new MemberService().updateMyPwd(updatePwd , memberId , memberPwd);
+		
 		HttpSession session = request.getSession();
-		String memberId = ((Member) session.getAttribute("loginUser")).getMemberId();
-		String memberPwd = ((Member) session.getAttribute("loginUser")).getMemberPwd();
 		
-		int result = new MemberService().deleteMember(memberId , memberPwd);
-		
-		if(result > 0) {
-			session.setAttribute("alertMsg", "그동안 온트립을 이용해주셔서 감사합니다.");
-			session.removeAttribute("loginUser");
-			request.getRequestDispatcher("views/common/loginForm.jsp").forward(request, response);
+		if(myUpdatePwd == null) {
+			session.setAttribute("alertMsg", "비밀번호 변경에 실패했습니다.");
+			response.sendRedirect(request.getContextPath()+"/newpwd.me");
 		}else {
-			request.setAttribute("errorMsg", "회원탈퇴에 실패하였습니다.");
-			request.getRequestDispatcher("views/common/mainForm.jsp").forward(request, response);
+			session.setAttribute("alertMsg", "비밀번호 변경에 성공하였습니다.");
+			session.setAttribute("loginUser", myUpdatePwd);
+			response.sendRedirect(request.getContextPath()+"/mypage.me");
 		}
+		
+		
 		
 	}
 

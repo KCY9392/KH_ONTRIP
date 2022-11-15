@@ -15,26 +15,7 @@
 </head>
 <body>
     <%@ include file="../common/navbar.jsp" %>
-
-      <br><br><br><br>
-
-      <div class="left-categoryBox">
-        <div class="userResult">
-            <button type="button" id = "n" name="search">메인 관리</button>
-        </div>
-        <div class="reserveResult">
-            <button type="button" id = "n" name="search">회원 관리</button>
-        </div>
-        <div class="heartResult">
-            <button type="button" id = "n" name="search">등록 후기</button>
-        </div>
-        <div class="reviewResult">
-            <button type="button" id = "n" name="search">문의사항 관리</button>
-        </div>
-        <div class="statusResult">
-            <button type="button" id = "n" name="search">Q&A 관리</button>
-        </div>
-      </div>
+    <%@ include file="../common/managerNavbar.jsp" %>  
 
       <br><br><br><br>
       

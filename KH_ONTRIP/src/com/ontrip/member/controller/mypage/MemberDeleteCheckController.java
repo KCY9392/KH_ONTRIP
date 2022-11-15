@@ -1,4 +1,4 @@
-package com.ontrip.member.controller;
+package com.ontrip.member.controller.mypage;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -12,45 +12,28 @@ import com.ontrip.member.model.service.MemberService;
 import com.ontrip.member.model.vo.Member;
 
 /**
- * Servlet implementation class MyPwdUpdate
+ * Servlet implementation class MemberDeleteTrueController
  */
-@WebServlet("/myPwdUpdate.me")
-public class MyPwdUpdateController extends HttpServlet {
+@WebServlet("/MemberDeleteCheckController.me")
+public class MemberDeleteCheckController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MyPwdUpdateController() {
+    public MemberDeleteCheckController() {
         super();
-  
+
     }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	
+		// 체크한 탈퇴사유 및 기타 개선사항 db로 보낼 코드 작성.
 		
-		request.setCharacterEncoding("UTF-8");
-		
-		String updatePwd = request.getParameter("newPwd");
-		String memberId = request.getParameter("userId");
-		String memberPwd = request.getParameter("userPwd");
-		System.out.println(updatePwd);
-		Member myUpdatePwd = new MemberService().updateMyPwd(updatePwd , memberId , memberPwd);
-		
-		HttpSession session = request.getSession();
-		
-		if(myUpdatePwd == null) {
-			session.setAttribute("alertMsg", "비밀번호 변경에 실패했습니다.");
-			response.sendRedirect(request.getContextPath()+"/newpwd.me");
-		}else {
-			session.setAttribute("alertMsg", "비밀번호 변경에 성공하였습니다.");
-			session.setAttribute("loginUser", myUpdatePwd);
-			response.sendRedirect(request.getContextPath()+"/mypage.me");
-		}
-		
-		
+		request.getRequestDispatcher("views/member/memberDeleteCheck.jsp").forward(request, response);
 		
 	}
 

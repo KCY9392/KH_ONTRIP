@@ -6,6 +6,7 @@
    ArrayList<Image> filePath = (ArrayList<Image>)request.getAttribute("filePath");
    ArrayList<Image> playPath = (ArrayList<Image>)request.getAttribute("playPath");
    ArrayList<Place> playInfo = (ArrayList<Place>)request.getAttribute("playInfo");
+   ArrayList<Image> hotelPath = (ArrayList<Image>)request.getAttribute("hotelPath");
 %>
 <!DOCTYPE html>
 <html>
@@ -143,8 +144,8 @@
                     <button type="button" class="btn-div" id = "s" name="search" onclick="show(this);">숙소</button>
     
                      <div id = "nsearch" class = "box" style="padding:20px; text-align: center;">  <!-- border:1px solid black; -->
-				<% if(!playPath.isEmpty()) { %>
-                			<% for(int i=0; i<playPath.size(); i++){ %>
+            <% if(!playPath.isEmpty()) { %>
+                         <% for(int i=0; i<playPath.size(); i++){ %>
                         <div class="outer7">
                             <div class="outer8">
                                 <div class="outer9" style="width:270px; height:270px;">
@@ -152,110 +153,67 @@
                                 </div>
                             </div>
                           
-                            <div style="font-size:20px; font-weight:bold; margin-left: 25%; margin-top: 20px;"><input type="button" value="<%=playInfo.get(i).getPlcName() %>" style="border: 0; background-color: white; font-weight: bold;"></div>
-	                            <div style="text-align:center; margin: 70px; margin-left: -130px">
-		                            <span><%=playInfo.get(i).getPlcAddress() %></span><br>
-		                            <span><%=playInfo.get(i).getPlcPnumber() %></span>
-	                            </div>
+                            <div style="font-size:20px; font-weight:bold; margin-left: 25%; margin-top: 20px;"><input type="button" onclick="<%=playInfo.get(i).getPlcName() %>();" value="<%=playInfo.get(i).getPlcName() %>" style="border: 0; background-color: white; font-weight: bold;"></div>
+                               <div style="text-align:center; margin: 70px; margin-left: -130px">
+                                  <span><%=playInfo.get(i).getPlcAddress() %></span><br>
+                                  <span><%=playInfo.get(i).getPlcPnumber() %></span>
+                               </div>
                         </div> 
-                        	<%} %>
+                           <%} %>
                         <%} %>
                       </div>
-                
-
-
-
-                    <div id = "msearch" class = "box box2"  style="border:1px solid black; padding:20px;"> 
-                        <div class="img-container">
-                            <div>
-                                <div class="img-box" style="width:270px; height:270px;">
-                                    <img src = "../image/image2.png" width = "100%" height = "230px" style="border-radius:20px;"> 
-                                    <div style="font-size:20px; font-weight:bold;">롯데호텔</div>
-                                </div>
-                            </div>
-                            
-                            <div>
-                                <div class="img-box" style="width:270px; height:270px;">
-                                    <img src = "../image/image2.png" width = "100%" height = "230px" style="border-radius:20px;"> 
-                                    <div style="font-size:20px; font-weight:bold;">롯데호텔</div>
-                                </div>
-                            </div>
-
-                            <div>
-                                <div class="img-box" style="width:270px; height:270px;">
-                                    <img src = "../image/image2.png" width = "100%" height = "230px" style="border-radius:20px;"> 
-                                    <div style="font-size:20px; font-weight:bold;">롯데호텔</div>
-                                </div>
-                            </div>
-
-                            <div style="margin-left:15%;">
-                                <div class="img-box" style="width:270px; height:270px;">
-                                    <img src = "../image/image2.png" width = "100%" height = "230px" style="border-radius:20px;"> 
-                                    <div style="font-size:20px; font-weight:bold;">롯데호텔</div>
-                                </div>
-                            </div>
-
-                            <div>
-                                <div class="img-box" style="width:270px; height:270px;">
-                                    <img src = "../image/image2.png" width = "100%" height = "230px" style="border-radius:20px;"> 
-                                    <div style="font-size:20px; font-weight:bold;">롯데호텔</div>
-                                </div>
-                            </div>
-                    
-                        </div>
-
-                    
-                    </div>
-                
 
 
 
 
-                    <div id = "ssearch" class = "box box2" style="border:1px solid black; padding:20px;">
-                        <div class="img-container">
-                            <div>
-                                <div class="img-box" style="width:270px; height:270px;">
-                                    <img src = "../image/image1.png" width = "100%" height = "230px" style="border-radius:20px;"> 
-                                    <div style="font-size:20px; font-weight:bold;">롯데호텔</div>
-                                </div>
-                            </div>
-                            
-                            <div>
-                                <div class="img-box" style="width:270px; height:270px;">
-                                    <img src = "../image/image1.png" width = "100%" height = "230px" style="border-radius:20px;"> 
-                                    <div style="font-size:20px; font-weight:bold;">롯데호텔</div>
-                                </div>
-                            </div>
+            <div id="msearch" class="box box2"
+               style=" padding: 20px;">
 
-                            <div>
-                                <div class="img-box" style="width:270px; height:270px;">
-                                    <img src = "../image/image1.png" width = "100%" height = "230px" style="border-radius:20px;"> 
-                                    <div style="font-size:20px; font-weight:bold;">롯데호텔</div>
-                                </div>
-                            </div>
+               
 
-                            <div style="margin-left:15%;">
-                                <div class="img-box" style="width:270px; height:270px;">
-                                    <img src = "../image/image1.png" width = "100%" height = "230px" style="border-radius:20px;"> 
-                                    <div style="font-size:20px; font-weight:bold;">롯데호텔</div>
-                                </div>
-                            </div>
+            </div>
 
-                            <div>
-                                <div class="img-box" style="width:270px; height:270px;">
-                                    <img src = "../image/image1.png" width = "100%" height = "230px" style="border-radius:20px;"> 
-                                    <div style="font-size:20px; font-weight:bold;">롯데호텔</div>
-                                </div>
-                            </div>
-                    
-                        </div>
 
-                    </div>
+
+
+
+            <div id = "ssearch" class = "box box2" style=" padding:20px;">
+<%--                        <% --%>
+// //                   if (!hotelPath.isEmpty()) {
+<%-- 		               %>  --%>
+<%--                <% --%>
+//                   for (int i = 0; i < hotelPath.size(); i++) {
+<%--                %> --%>
+               <div class="outer7">
+                  <div class="outer8">
+                     <div class="outer9" style="width: 270px; height: 270px;">
+<!--                         <img -->
+<%--                            src="<%=hotelPath.get(i).getFilePath()%><%=hotelPath.get(i).getOriginName()%>" --%>
+<!--                            width="122%" height="198px"> -->
+                     </div>
+                  </div>
+
+                  <div
+                     style="font-size: 20px; font-weight: bold; margin-left: 25%; margin-top: 20px;">
+                     <input type="button"
+                        onclick=""
+                        value=""
+                        style="border: 0; background-color: white; font-weight: bold;">
+                  </div>
+                  <div style="text-align: center; margin: 70px; margin-left: -130px">
+                     <span></span><br> <span></span>
+                  </div>
+               </div>
+<%--                <% --%>
+//                   }
+<%--                %> --%>
+<%--                <% --%>
+//                   }
+<%--                %> --%>
                 </div>
             </fieldset>
         </div>
         
-
     <script>
         function show(element){
             let tag = document.getElementsByClassName("box");
@@ -272,7 +230,14 @@
 
         
     </script>
- 
-
+   <script>
+        <%if (!playPath.isEmpty()) {%>
+                    <%for (int i = 0; i < playPath.size(); i++) {%>
+         function <%=playInfo.get(i).getPlcName()%>(){
+             location.href = "<%=request.getContextPath()%>/selectPlace.pe?placeName=<%=playInfo.get(i).getPlcName()%>";
+          }
+           <%}%>
+      <%}%>
+    </script>
 </body>
 </html>

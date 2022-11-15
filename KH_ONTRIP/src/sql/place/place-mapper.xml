@@ -7,4 +7,8 @@
 	WHERE DAREA_CODE = ? AND CATEGORY_CODE = 'PP'
 	</entry>
 
+	<entry key="selectPlace">
+	
+	
+	</entry>
 </properties>

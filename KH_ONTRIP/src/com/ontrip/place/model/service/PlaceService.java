@@ -18,4 +18,12 @@ public class PlaceService {
 		
 		return playInfo;
 	}
+
+	public ArrayList<Place> selectPlace(String placeName) {
+		
+		Connection conn = getConnection();
+		ArrayList<Place> placeInfo = new PlaceDao().selectPlace(placeName, conn);
+		return null;
+	}
+	
 }

@@ -1,4 +1,4 @@
-package com.ontrip.member.controller;
+package com.ontrip.member.controller.memberEnroll;
 
 import java.io.IOException;
 import java.util.Date;
