@@ -18,7 +18,7 @@
 
       <br><br><br><br>
       <table class="table" style="width:1000px">
-        <h1 style="font-weight:900; margin-left:50%;">예약 숙소</h1>
+        <span style="font-weight:900; font-size:40px; margin-left:-10%;">예약 숙소</span>
         <thead>
           <tr class="table-secondary">
             <th scope="col">번호</th>
@@ -69,9 +69,9 @@
         </tbody>
       </table>
 
-      <br><br><br><br><br><br>
+      <br><br><br><br><br>
 
-      <button class="btn btn-num1">&lt;</button>
+      <button style="margin-left:-9%;" class="btn btn-num1">&lt;</button>
       <button class="btn btn-num2">1</button>
       <button class="btn btn-num3">2</button>
       <button class="btn btn-num4">3</button>

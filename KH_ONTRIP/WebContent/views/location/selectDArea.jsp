@@ -68,7 +68,20 @@
 	    font-weight : bolder;
 	    font-size:35px;
 	} 
-    
+    .slide-in {
+		  animation: change 0.5s ease forwards;
+		}
+		
+		@keyframes change {
+		  from {
+		    transform: translateY(50%);
+		    visibility: visible;
+		  }
+		
+		  to {
+		    transform: translateY(0%);
+		  }
+		}
 </style>
 
 
@@ -86,7 +99,7 @@
 	<br>
     <br><br><br><br>
     
-    <div class="header">
+    <div class="header slide-in">
     
         <h1 class = "locationtitle"><%=localName %></h1>
         <h4>&nbsp;</h4>
@@ -95,7 +108,7 @@
 
     <br><br>
 
-    <div style="width: 80%; margin:auto; text-align: center;">
+    <div class="slide-in" style="width: 80%; margin:auto; text-align: center;">
         <div class="row" id="cityList" style=" margin:auto;">
             <table border="1" width="30" height="20">
                 <tr>

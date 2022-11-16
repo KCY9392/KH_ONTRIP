@@ -43,22 +43,26 @@ public class LoginController extends HttpServlet {
 		
 		if(loginUser == null) { // login 실패 => 에러페이지 응답
 			
+			HttpSession session = request.getSession();
+			
 			if(memberId.equals("admin")&&memberPwd.equals("1234")) { //관리자계정으로 로그인하였을경우
 				request.getRequestDispatcher("views/manager/ManagerPlace.jsp").forward(request, response);
 			}else {
+				
 			
-			request.setAttribute("errorMsg", "로그인에 실패하였습니다");
+			session.setAttribute("alertMsg", "0");
 			
-			RequestDispatcher view = request.getRequestDispatcher("views/common/errorPage.jsp");
+			response.sendRedirect(request.getContextPath());
 			
-			view.forward(request, response);
+			
 			}
 		}else { // login 성공 
 			
 			HttpSession session = request.getSession();
 			session.setAttribute("loginUser", loginUser);
 			
-			session.setAttribute("alertMsg", "로그인에 성공하였습니다");
+			session.setAttribute("alertMsg", "1");
+
 			response.sendRedirect(request.getContextPath());
 		}
 	}

@@ -10,9 +10,9 @@
         background-color: white;
         color: black;
         width: 1000px;
-        height: 800px;
+        height: 650px;
         margin: auto;
-        margin-top: 150px;
+        margin-top: 100px;
         margin-left: 480px;
         box-sizing: border-box;
     }
@@ -27,14 +27,11 @@
     .table thead{
         background: rgba(211, 211, 211, 0.326);
     }
-
-
-    
     .selectTitle{
         text-align: center;
     }
     #mForm{
-        border: none
+        border: none;
     }
     #play , #eat , #sleep{
         width:315px;
@@ -73,6 +70,7 @@
         background-color:darkseagreen;
         border:none;
    }
+
    
 </style>
 <!-- CSS only -->
@@ -86,7 +84,8 @@
         <br>
         <h1 style = "text-align : center;">메인관리</h1>
         <br>&nbsp;
-        <button type="button" class="btn btn-primary btn-lg" id="insertPlace" onclick="insertPlace();">작성하기</button>
+        <button type="button" class="btn btn-primary btn-lg" id="insertPlace" onclick="insertPlace();"
+        	style="margin-top:40px;">작성하기</button>
         <br><br>
 
 
@@ -97,8 +96,8 @@
                     <button type="button" class="btn btn-primary btn-lg"id = "eat" name="search" onclick="show(this);">맛집</button>
                     <button type="button" class="btn btn-primary btn-lg"id = "sleep" name="search" onclick="show(this);">숙소</button>
     
-                    <div id = "playsearch" class = "box">
-                        <table class="table, table table-bordered">
+                    <div id = "playsearch" class = "box" style="height:400px;">
+                        <table class="table table-bordered" style="margin-left:0; margin-top:40px;">
                             <thead>
                                 <tr>
                                     <td class="num1">번호</td>
@@ -156,8 +155,8 @@
 <!--                </div> --> 
                     </div>
                 
-                    <div id = "eatsearch" class = "box"> 
-                        <table class="table, table table-bordered">
+                    <div id = "eatsearch" class = "box" style="height:400px;"> 
+                        <table class="table table-bordered" style="margin-left:0; margin-top:40px;">
                             <thead>
                                 <tr>
                                     <td class="num1">번호</td>
@@ -216,8 +215,8 @@
 <!--                </div> -->
                     </div>
                 
-                    <div id = "sleepsearch" class = "box">
-                        <table class="table, table table-bordered">
+                    <div id = "sleepsearch" class = "box" style="height:400px;">
+                        <table class="table, table table-bordered" style="margin-left:0; margin-top:40px;">
                             <thead>
                                 <tr>
                                     <td class="num1">번호</td>

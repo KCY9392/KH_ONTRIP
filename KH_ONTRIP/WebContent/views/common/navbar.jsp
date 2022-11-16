@@ -16,6 +16,15 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link href="<%= request.getContextPath() %>/resources/css/mainForm.css" rel="stylesheet" >
+<style>
+	.btn-outline-success:hover{
+		background-color:white;
+		font-size:16px;
+		font-weight:700;
+		transition: all 200ms;
+	}
+</style>
+
 </head>
 <body>
 

@@ -13,7 +13,8 @@
         height: 800px;
         /* border: 1px solid black; */
         margin: auto;
-        margin-top: 150px;
+        margin-top: 40px;
+        margin-left:27%;
         box-sizing: border-box;
         /* text-align: center; */
     }

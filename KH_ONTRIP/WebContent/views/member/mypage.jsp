@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>온트립(OnTrip) - 회원정보</title>
 <style>
     .outer1{
         background-color: white; /* 해당사이트의 고유한 색상으로 작성 */
@@ -13,7 +13,7 @@
         height: 800px;
         /* border: 1px solid black; */
         margin: auto;
-        margin-top: 50px;
+        margin-left:27%;
         box-sizing: border-box;
         text-align: center;
     }
@@ -26,6 +26,13 @@
         border-top: 0;
         border-left: 0;
         border-right: 0;
+    }
+    table{
+    	font-size:20px;
+    }
+    .btn-sm{
+    	width:100px;
+    	height:50px;
     }
     
  
@@ -46,7 +53,7 @@
     <div class="outer1">
         <br><br><br><br><br><br>
         
-        <h1 style = "text-align : center;">여행자 정보</h1>
+        <h1 style = "text-align : center; font-size:40px;">여행자 정보</h1>
         <br><br><br>
         
         <form id = "myPage-form" action = "<%=request.getContextPath() %>mypage.me" method = "post">

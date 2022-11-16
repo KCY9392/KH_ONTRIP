@@ -31,8 +31,8 @@
         .left-categoryBox{
             width:15%;
             height:91vh;
-            background-color: antiquewhite;
-            margin-top: -17px;
+            margin-top: -3px;
+            background-color:white;
             float:left;
         }
         #n{

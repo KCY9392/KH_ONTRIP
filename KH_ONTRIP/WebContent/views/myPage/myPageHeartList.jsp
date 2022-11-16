@@ -22,12 +22,13 @@
             text-align: center;
             height:500px;
         }
-        th, td {
+        table th, table td {
             border: 1px solid #444444;
             border-top: 1px solid #444444;
             border-bottom: 1px solid #444444;
             padding: 10px;
         }
+      
       </style>
 </head>
 <body>
@@ -40,15 +41,15 @@
       <br><br><br><br>
 
       <div class="container">
-        <div class="center" style="width:1200px; height:750px; margin-left:15%; margin-top: -50px;">
+        <div class="center" style="width:1200px; height:750px; margin-left:10%; margin-top: -50px;">
                 <div class="centerTitle" style="text-align: center; margin-top:20px;">
-                    <h2>찜목록</h2>
+                    <h2 style="margin-left:-5%; font-size:40px; font-weight:bold;]">찜목록</h2>
                 </div>
                 <br><br>
 
                 <div class="centerDiv">
                   <div class="table-div">
-                    <table>
+                    <table style="border:1px solid black;">
                         <tr class="t0">
                             <th>
                                 카테고리명

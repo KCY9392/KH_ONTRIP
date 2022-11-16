@@ -18,7 +18,7 @@
 
       <br><br><br><br>
       <table class="table" style="width:1000px">
-        <h1 style="font-weight:900; margin-left:50%;">등록 후기</h1>
+        <span style="font-weight:900; font-size:40px; margin-left:-10%;">등록 후기</span>
         <thead>
           <tr class="table-secondary">
             <th scope="col">번호</th>
@@ -71,7 +71,7 @@
 
       <br><br><br><br><br><br>
 
-      <button class="btn btn-num1"><</button>
+      <button style="margin-left:-9%;" class="btn btn-num1" class="btn btn-num1"><</button>
       <button class="btn btn-num2">1</button>
       <button class="btn btn-num3">2</button>
       <button class="btn btn-num4">3</button>

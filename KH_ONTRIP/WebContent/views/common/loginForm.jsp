@@ -10,6 +10,7 @@
 	String alertMsg = (String) session.getAttribute("alertMsg");
 	// 서비스 요청전 : null
 	// 서비스 요청성공후 : alert로 띄워줄 메시지 문구.
+
 %>
 
 
@@ -26,6 +27,7 @@
         integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="
         crossorigin="anonymous">
     </script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
     
     <style>
         body{
@@ -57,7 +59,7 @@
         input[type=text]:focus, input[type=password]:focus{
             background-color: rgb(215, 255, 206);
         }
-        button{
+        .btn{
             cursor: pointer;
             background-color: rgb(249, 219, 173);
             width:100px;
@@ -114,32 +116,91 @@
             margin-top: -20px;
             font-weight: 900;
         }
+        .btn-start{
+        	color:rgb(57, 57, 58); 
+        	font-weight:600; 
+			width:200px; 
+			height:80px; 
+			border:none; 
+			background-color:rgb(215, 255, 206); 
+			font-size:25px;
+			box-shadow: 0 0 10px yellowgreen;
+        }
+        .btn-start:hover{
+        	cursor:pointer;
+			background-color: beige;       
+        }
+        .btn-start:active{
+        	background-color: rgb(237, 190, 115);
+        }
+        
+		.slide-in {
+		  animation: change 0.5s ease forwards;
+		}
+		
+		@keyframes change {
+		  from {
+		    transform: translateY(100%);
+		    visibility: visible;
+		  }
+		
+		  to {
+		    transform: translateY(0%);
+		  }
+		}
     </style>
 </head>
 <body>
 	<script>
-		let msg = "<%= alertMsg%>"; // let msg = 성공적으로 로그인이 되었습니다.
 		
-		if(msg != "null"){
-			alert(msg);
-			// 알림창을 띄워준후 session에 담긴 해당메세지는 지워줘야함.
-			// 안그러면 menubar.jsp가 로딩될때마다 매번 alert가 계속 뜰것
+
+		let msg = "<%= alertMsg %>"; // let msg = 성공적으로 로그인이 되었습니다.
+		const Toast = Swal.mixin({
+		    toast: true,
+		    position: 'center-center',
+		    showConfirmButton: false,
+		    timer: 2000,
+		    timerProgressBar: true,
+		    didOpen: (toast) => {
+		        toast.addEventListener('mouseenter', Swal.stopTimer)
+		        toast.addEventListener('mouseleave', Swal.resumeTimer)
+		    }
+		});
+		
+		if(msg != "null" && msg == "1"){
+			Toast.fire({
+			    icon: 'success',
+			    title: '성공적으로 로그인이 되었습니다.'
+			    
+			});
 			
-			<% session.removeAttribute("alertMsg");%>
-		}
+	      }else if(msg != "null" && msg == "0"){
+				Toast.fire({
+				    icon: 'error',
+				    title: '로그인에 실패했습니다.'
+				    
+				});
+	      }
+			  <% session.removeAttribute("alertMsg");%>
+			
+	      
+			
+ 		
+	
 	</script>
+		
 			<div class="headContainer">
 				<a href="#"> <span class="headOnTrip">OnTrip</span> &nbsp; <span
 					class="headText">MAKE YOUR ROUTE OPTIMIZED</span>
 				</a>
 			</div>
-	
+		
 			<div class="video">
 				<video src="시퀀스 01.mp4" autoplay muted loop>
 				</video>
 			</div>
 	
-	
+		
 			<div class="container">
 				<div class="centerText">
 					<p>바쁜 현대인들을위한</p>
@@ -149,7 +210,7 @@
 				<div class="title">
 					<p>On Trip</p>
 				</div>
-	
+		
 	
 	<% if(loginUser == null) { %>
 			<form id="login-form" action="<%= contextPath %>/login.me" method="post">
@@ -169,11 +230,13 @@
 	<% } else { %>
     	<!-- 로그인 성공 후 -->
     	<div id = "user-info">
-    		<b><%= loginUser.getMemberName() %></b>님 환영합니다.<br><br>
+    		<b><%= loginUser.getMemberName() %></b>님 환영합니다.<br><br><br>
     		<div align="center">
-    			<button class="btn btn-login" onclick="mainForm();">시작하기</button>
+    			<button class="btn-start slide-in" onclick="mainForm();"
+    				style="">시작하기</button>
     		</div>
     	</div>
+    
     <% } %>
 	<script>
         function agreePage(){

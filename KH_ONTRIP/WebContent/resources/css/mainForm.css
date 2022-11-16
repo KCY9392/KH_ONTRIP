@@ -30,7 +30,6 @@ h1{
     line-height: 1em;
     font-size: 0;
 }
-
 .imgbox img {
     backface-visibility: hidden;
     transition: all 200ms ease-in-out;
@@ -93,3 +92,4 @@ h1{
         font-size: 14px;
     }
 }
+
