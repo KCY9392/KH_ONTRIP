@@ -202,6 +202,17 @@ public class PlaceDao {
  		}
  		return dareaCode;
  	}
+ 	
+ 	
+ 	//시설상세창에서 시설사진 띄우기
+ 	public ArrayList<Image> selectPlaceImages(int plcCode, Connection conn) {
+ 		
+ 		ArrayList<Image> placeImages = new ArrayList<>();
+ 		
+ 		
+ 		
+ 		return null;
+ 	}
  
    
 // 검색창
@@ -270,4 +281,6 @@ public class PlaceDao {
       
       return placeInfo;
    }
+
+
 } 

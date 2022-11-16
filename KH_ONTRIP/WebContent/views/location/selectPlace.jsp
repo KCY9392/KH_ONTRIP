@@ -260,7 +260,7 @@
         <%if (!playPath.isEmpty()) {%>
                     <%for (int i = 0; i < playPath.size(); i++) {%>
          function <%=playInfo.get(i).getPlcName()%>(){
-             location.href = "<%=request.getContextPath()%>/selectPlay.pe?placeName=<%=playInfo.get(i).getPlcName()%>";
+             location.href = "<%=request.getContextPath()%>/selectPlay.pe?placeName=<%=playInfo.get(i).getPlcName()%>&dareaName=<%=dareaName %>";
           }
            <%}%>
       <%}%>

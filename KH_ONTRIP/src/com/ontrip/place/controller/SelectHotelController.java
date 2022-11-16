@@ -25,7 +25,7 @@ public class SelectHotelController extends HttpServlet {
 
 	
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    	request.setCharacterEncoding("UTF-8");
+    			request.setCharacterEncoding("UTF-8");
     			
     			String placeName = request.getParameter("placeName");
     			String dareaName = request.getParameter("dareaName");
@@ -38,6 +38,11 @@ public class SelectHotelController extends HttpServlet {
     			
     			String dareaCode = new PlaceService().findDareaCode(dareaName);
     			
+    			// 시설사진
+    			ArrayList<Image> placeImages = new PlaceService().selectPlaceImages(place.getPlcCode());
+    			
+    			
+    		//밑에 놀거리,숙소,맛집 버튼눌렀을 시, 나오는 사진과 정보
     			// 놀거리 사진 불러오기
     		      ArrayList<Image> playPath = new DetailAreaService().selectPlayPath(dareaCode);
     		      request.setAttribute("playPath", playPath);
@@ -54,6 +59,8 @@ public class SelectHotelController extends HttpServlet {
     		      // 놀거리 정보(이름, 주소, 전화번호) 가져오기
     		      ArrayList<Place> hotelInfo = new PlaceService().selectHotelInfo(dareaCode);
     		      request.setAttribute("hotelInfo", hotelInfo);
+    		      
+    		      
     			
     			request.getRequestDispatcher("views/location/clickHotel.jsp").forward(request, response);
     		}

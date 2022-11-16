@@ -12,7 +12,7 @@
 	String dareaName = (String)request.getAttribute("dareaName");
 	
 	//시설사진띄우기
-	
+	ArrayList<Image> placeImages = (ArrayList<Image>)request.getAttribute("placeImages");
 	
 	
 	
@@ -258,7 +258,7 @@
         <%if (!playPath.isEmpty()) {%>
                     <%for (int i = 0; i < playPath.size(); i++) {%>
          function <%=playInfo.get(i).getPlcName()%>(){
-             location.href = "<%=request.getContextPath()%>/selectPlay.pe?placeName=<%=playInfo.get(i).getPlcName()%>";
+             location.href = "<%=request.getContextPath()%>/selectPlay.pe?placeName=<%=playInfo.get(i).getPlcName()%>&dareaName=<%= dareaName %>";
           }
            <%}%>
       <%}%>

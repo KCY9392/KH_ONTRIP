@@ -64,6 +64,20 @@ public class PlaceService {
 	   return dareaCode;
    }
    
+   		//시설사진가져오기
+
+	public ArrayList<Image> selectPlaceImages(int plcCode) {
+		
+		Connection conn = getConnection();
+		
+		ArrayList<Image> placeImages = new PlaceDao().selectPlaceImages(plcCode, conn);
+		
+		close();
+		
+		return placeImages;
+	}
+
+   
    
 //메인창에서 검색키워드로 시설사진, 정보 찾기 
    public ArrayList<Image> searchPlacePath(String word){
