@@ -203,16 +203,69 @@ public class PlaceDao {
  		return dareaCode;
  	}
  	
+ 	//시설코드가져오기
+ 	public String findPlaceCode(String placeName, Connection conn) {
+ 		
+ 		String placeCode = "";
+ 		
+ 		PreparedStatement psmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("findPlaceCode");
+		
+		try {
+			psmt = conn.prepareStatement(sql);
+			
+			psmt.setString(1, placeName);
+			
+			rset = psmt.executeQuery();
+			
+			if(rset.next()) {
+				placeCode = rset.getString("PLC_CODE");
+			}
+			System.out.println(placeCode);
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rset);
+			close(psmt);
+		}
+		return placeCode;
+ 	}
  	
  	//시설상세창에서 시설사진 띄우기
- 	public ArrayList<Image> selectPlaceImages(int plcCode, Connection conn) {
+ 	public ArrayList<Image> selectPlaceImages(String placeName, Connection conn) {
  		
  		ArrayList<Image> placeImages = new ArrayList<>();
  		
- 		
- 		
- 		return null;
- 	}
+		PreparedStatement psmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("selectPlaceImages");
+		
+		try {
+			psmt = conn.prepareStatement(sql);
+			
+			psmt.setString(1,placeName);
+			
+			rset = psmt.executeQuery();
+			
+			while(rset.next()) {
+				placeImages.add(new Image(
+							 rset.getString("FILE_PATH"),
+							 rset.getString("ORIGIN_NAME")));
+			}
+			System.out.println(placeImages);
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rset);
+			close(psmt);
+		}
+		return placeImages;
+	}
  
    
 // 검색창
@@ -281,6 +334,8 @@ public class PlaceDao {
       
       return placeInfo;
    }
+
+
 
 
 } 

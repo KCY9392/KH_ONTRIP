@@ -12,15 +12,15 @@
 	String dareaName = (String)request.getAttribute("dareaName");
 	
 	//시설사진띄우기
-	
+		ArrayList<Image> placeImages = (ArrayList<Image>)request.getAttribute("placeImages");
 	
 	
 	//밑에 놀거리, 숙소, 맛집 버튼별 사진나오게하기
 	ArrayList<Image> filePath = (ArrayList<Image>)request.getAttribute("filePath");
    	ArrayList<Image> playPath = (ArrayList<Image>)request.getAttribute("playPath");
    	ArrayList<Place> playInfo = (ArrayList<Place>)request.getAttribute("playInfo");
-//  ArrayList<Image> foodPath = (ArrayList<Image>)request.getAttribute("foodPath");
-//  ArrayList<Place> foodInfo = (ArrayList<Place>)request.getAttribute("foodInfo");
+    ArrayList<Image> foodPath = (ArrayList<Image>)request.getAttribute("foodPath");
+    ArrayList<Place> foodInfo = (ArrayList<Place>)request.getAttribute("foodInfo");
    	ArrayList<Image> hotelPath = (ArrayList<Image>)request.getAttribute("hotelPath");
    	ArrayList<Place> hotelInfo = (ArrayList<Place>)request.getAttribute("hotelInfo");
    	
@@ -31,7 +31,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=\, initial-scale=1.0">
-    <title>온트립(OnTrip) - 숙소</title>
+    <title>온트립(OnTrip) - 놀거리</title>
 
     <link rel="stylesheet" href="<%= request.getContextPath() %>/resources/css/clickHotel.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
@@ -165,17 +165,17 @@
 
 
             <div id="msearch" class="box box2" style="padding: 20px;">
-<%--                <% --%>
-<!--                    if (!foodPath.isEmpty()) { -->
-<%--                %> --%>
-<%--                <% --%>
-<!--                    for (int i = 0; i < foodPath.size(); i++) { -->
-<%--                %> --%>
+               <%
+                   if (!foodPath.isEmpty()) { 
+              %> 
+               <% 
+                    for (int i = 0; i < foodPath.size(); i++) { 
+              %> 
                <div class="outer7">
                   <div class="outer8">
                      <div class="outer9" style="width: 270px; height: 270px;">
                         <img
-<%--                            src="<%=foodPath.get(i).getFilePath()%><%=foodPath.get(i).getOriginName()%>" --%>
+                           src="<%=foodPath.get(i).getFilePath()%><%=foodPath.get(i).getOriginName()%>"
                            width="122%" height="198px">
                      </div>
                   </div>
@@ -183,20 +183,20 @@
                   <div
                      style="font-size: 20px; font-weight: bold; margin-left: 25%; margin-top: 20px;">
                      <input type="button"
-<%--                         onclick="<%=foodInfo.get(i).getPlcName()%>();" --%>
-<%--                         value="<%=foodInfo.get(i).getPlcName()%>" --%>
+                        onclick="<%=foodInfo.get(i).getPlcName()%>();"
+                        value="<%=foodInfo.get(i).getPlcName()%>"
                         style="border: 0; background-color: white; font-weight: bold;">
                   </div>
                   <div style="text-align: center; margin: 70px; margin-left: -130px">
-<%--                      <span><%=foodInfo.get(i).getPlcAddress()%></span><br> <span><%=foodInfo.get(i).getPlcPnumber()%></span> --%>
+                     <span><%=foodInfo.get(i).getPlcAddress()%></span><br> <span><%=foodInfo.get(i).getPlcPnumber()%></span>
                   </div>
                </div>
-<%--                <% --%>
-<!--                    } -->
-<%--                %> --%>
-<%--                <% --%>
-<!--                    } -->
-<%--                %> --%>
+               <%
+                    }
+              %> 
+               <%
+                    }
+                %> 
             </div>
 
 
@@ -268,13 +268,13 @@
          <%}%>
       <%}%>
       
-<%--       <%if (!foodPath.isEmpty()) {%> --%>
-<%--         <%for (int i = 0; i < foodPath.size(); i++) {%> --%>
-<%--       function <%=foodInfo.get(i).getPlcName()%>(){ --%>
-<%--          location.href = "<%=request.getContextPath()%>/selectFood.pe?placeName=<%=foodInfo.get(i).getPlcName()%>"; --%>
-//       }
-<%--          <%}%> --%>
-<%--       <%}%> --%>
+      <%if (!foodPath.isEmpty()) {%>
+        <%for (int i = 0; i < foodPath.size(); i++) {%>
+      function <%=foodInfo.get(i).getPlcName()%>(){
+         location.href = "<%=request.getContextPath()%>/selectFood.pe?placeName=<%=foodInfo.get(i).getPlcName()%>&dareaName=<%= dareaName %>";
+      }
+         <%}%>
+      <%}%>
     </script>
     
     

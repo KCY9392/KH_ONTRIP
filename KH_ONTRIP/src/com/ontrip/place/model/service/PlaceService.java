@@ -63,20 +63,31 @@ public class PlaceService {
 	   
 	   return dareaCode;
    }
-   
-   		//시설사진가져오기
+   		
+   //시설사진가져오기
 
-	public ArrayList<Image> selectPlaceImages(int plcCode) {
+	public ArrayList<Image> selectPlaceImages(String placeName) {
 		
 		Connection conn = getConnection();
 		
-		ArrayList<Image> placeImages = new PlaceDao().selectPlaceImages(plcCode, conn);
+		ArrayList<Image> placeImages = new PlaceDao().selectPlaceImages(placeName, conn);
 		
 		close();
 		
 		return placeImages;
 	}
 
+	//시설코드가져오기
+	public String findPlaceCode(String placeName) {
+		
+		Connection conn = getConnection();
+		
+		String placeCode = new PlaceDao().findPlaceCode(placeName, conn);
+		
+		close();
+		
+		return placeCode;
+	}
    
    
 //메인창에서 검색키워드로 시설사진, 정보 찾기 
@@ -98,6 +109,6 @@ public class PlaceService {
       return placeInfo;
    }
 
-   
+
 
 } 
