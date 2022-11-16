@@ -39,6 +39,7 @@ public class SelectHotelController extends HttpServlet {
     			String dareaCode = new PlaceService().findDareaCode(dareaName);
     			
     			String placeCode = new PlaceService().findPlaceCode(placeName);
+    			request.setAttribute("placeCode", placeCode);
     			
     			// 시설사진
     			ArrayList<Image> placeImages = new PlaceService().selectPlaceImages(placeName);
