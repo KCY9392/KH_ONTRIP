@@ -60,7 +60,7 @@
                 </div>
                 
                 
-                <div class="image-show" id="image-show"></div>
+                <div class="image-show" id="image-show1"></div>
             </div>
 
             <!-- 이미지 첨부파일 -->
@@ -88,7 +88,7 @@
                 </div>
                 
                 
-                <div class="image-show" id="image-show"></div>
+                <div class="image-show" id="image-show2"></div>
             </div>
 
             <!-- 이미지 첨부파일 -->
@@ -116,11 +116,11 @@
                 </div>
                 
                 
-                
+                <div class="image-show" id="image-show3"></div>
             </div>
             
-            <br><br><br><br><br><br><br><br><br><br><br>
-            <br>
+            <br><br><br><br><br><br><br><br><br><br><br><br>
+            
             <span>작성자 : admin</span> <br><br>
 
             <div style="font-size:20px; padding:10px;">
@@ -161,12 +161,10 @@
             <span>내용</span> <br>
             <textarea name="content" cols="50" rows="5">
 더운 여름 시원한 서핑 체험하세욧!
-            </textarea> <br><br><br>
-            
-            <button type="button" style="border:none; background-color: beige; font-size:15px; font-weight:bold; padding:12px; width:150px;">등록</button>
+            </textarea>
         </div> 
 
-	
+
 
 
 
@@ -182,31 +180,37 @@
                     document.getElementById('image-upload').style.visibility = 'hidden';
 
                     document.getElementById('fileName').textContent = null;     //기존 파일 이름 지우기
+                    
                 }
 
 
                 function loadFile1(input) {
-                    var file = input.files[0];
+                    
 
-                    var name = document.getElementById('fileName');
-                    name.textContent = file.name;
+                        var file = input.files[0];
+    
+                        var name = document.getElementById('fileName');
+                        name.textContent = file.name;
+    
+                        name.style.fontSize = "12px";
+    
+                        var newImage = document.createElement("img");
+                        newImage.setAttribute("class", 'img');
+    
+                        newImage.src = URL.createObjectURL(file);   
+    
+                        newImage.style.width = "15%";
+                        newImage.style.height = "15%";  
+                        newImage.style.objectFit = "contain";
+                        newImage.style.marginLeft = "-84%";
+                        newImage.style.marginTop = "-31%";
+                        newImage.style.zIndex = "1";
+    
+                        var container = document.getElementById('image-show1');
+                        container.replaceChildren();
+                        container.appendChild(newImage);
+                        
 
-                    name.style.fontSize = "12px";
-
-                    var newImage = document.createElement("img");
-                    newImage.setAttribute("class", 'img');
-
-                    newImage.src = URL.createObjectURL(file);   
-
-                    newImage.style.width = "15%";
-                    newImage.style.height = "15%";  
-                    newImage.style.objectFit = "contain";
-                    newImage.style.marginLeft = "-84.5%";
-                    newImage.style.marginTop = "-31%";
-                    newImage.style.zIndex = "1";
-
-                    var container = document.getElementById('image-show');
-                    container.appendChild(newImage);
                 };
 
                 function loadFile2(input) {
@@ -225,11 +229,12 @@
                     newImage.style.width = "15%";
                     newImage.style.height = "15%";  
                     newImage.style.objectFit = "contain";
-                    newImage.style.marginLeft = "-54%";
+                    newImage.style.marginLeft = "-84.5%";
                     newImage.style.marginTop = "-31%";
                     newImage.style.zIndex = "1";
 
-                    var container = document.getElementById('image-show');
+                    var container = document.getElementById('image-show2');
+                    container.replaceChildren();
                     container.appendChild(newImage);
                 };
 
@@ -249,11 +254,12 @@
                     newImage.style.width = "15%";
                     newImage.style.height = "15%";   
                     newImage.style.objectFit = "contain";
-                    newImage.style.marginLeft = "-23%";
+                    newImage.style.marginLeft = "-84.5%";
                     newImage.style.marginTop = "-31%";
                     newImage.style.zIndex = "1";
 
-                    var container = document.getElementById('image-show');
+                    var container = document.getElementById('image-show3');
+                    container.replaceChildren();
                     container.appendChild(newImage);
                 };
 
