@@ -85,7 +85,7 @@
         <h1 style = "text-align : center;">메인관리</h1>
         <br>&nbsp;
         <button type="button" class="btn btn-primary btn-lg" id="insertPlace" onclick="insertPlace();"
-        	style="margin-top:40px;">작성하기</button>
+        	style="margin-top:40px;">등록하기</button>
         <br><br>
 
 
