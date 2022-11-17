@@ -30,6 +30,7 @@
                                 <button type="submit">답변등록</button>
                                 </form>
                                 <form action="/KH_ONTRIP/manager/questions" method="get">
+
                                     <div><button type="submit">목록으로</button></div>
                                 </form>
                             </div>

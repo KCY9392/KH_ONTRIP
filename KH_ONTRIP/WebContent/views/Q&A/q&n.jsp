@@ -161,7 +161,7 @@
         <pre id="htitle" style="color:gray;"><img src="views/Q&A/기능.png" width="50px">&nbsp;&nbsp;기능</pre>
         <hr width="70%" style="margin-top: -10px;">
         <br>
-        <div id="q" class="divForm1" name="divForm1"><b id="bfont">Q . 찜목록 기능은 어떻게 사용하나요?</b></div>
+        <ditrp;gtfrdsv id="q" class="divForm1" name="divForm1"><b id="bfont">Q . 찜목록 기능은 어떻게 사용하나요?</b></ditrpv>
         <p id="p" class="divForm2">A . 테스트 중이에요 </p>
         <br>
         <div id="q" class="divForm1" name="divForm1"><b id="bfont">Q . 검색 기능은 어떻게 사용하나요?</b></div>

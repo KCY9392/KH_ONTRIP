@@ -1,18 +1,17 @@
 package com.ontrip.detailArea.controller;
 
-import java.io.IOException;
-import java.util.ArrayList;
+import com.ontrip.detailArea.service.DetailAreaService;
+import com.ontrip.image.vo.Image;
+import com.ontrip.place.model.service.PlaceService;
+import com.ontrip.place.model.vo.Place;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import com.ontrip.detailArea.service.DetailAreaService;
-import com.ontrip.image.vo.Image;
-import com.ontrip.place.model.service.PlaceService;
-import com.ontrip.place.model.vo.Place;
+import java.io.IOException;
+import java.util.ArrayList;
 
 @WebServlet("/selectPlace.no")
 public class selectPlaceController extends HttpServlet {

@@ -1,18 +1,17 @@
 package com.ontrip.place.controller;
 
-import java.io.IOException;
-import java.util.ArrayList;
+import com.ontrip.detailArea.service.DetailAreaService;
+import com.ontrip.image.vo.Image;
+import com.ontrip.place.model.service.PlaceService;
+import com.ontrip.place.model.vo.Place;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import com.ontrip.detailArea.service.DetailAreaService;
-import com.ontrip.image.vo.Image;
-import com.ontrip.place.model.service.PlaceService;
-import com.ontrip.place.model.vo.Place;
+import java.io.IOException;
+import java.util.ArrayList;
 
 @WebServlet("/selectHotel.pe")
 public class SelectHotelController extends HttpServlet {
@@ -40,7 +39,8 @@ public class SelectHotelController extends HttpServlet {
     			
     			String placeCode = new PlaceService().findPlaceCode(placeName);
     			request.setAttribute("placeCode", placeCode);
-    			
+    			request.setAttribute("placeCode", placeCode);
+
     			// 시설사진
     			ArrayList<Image> placeImages = new PlaceService().selectPlaceImages(placeName);
     			request.setAttribute("placeImages", placeImages);

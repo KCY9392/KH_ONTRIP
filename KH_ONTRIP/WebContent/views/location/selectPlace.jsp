@@ -286,7 +286,7 @@
       <%if (!foodPath.isEmpty()) {%>
         <%for (int i = 0; i < foodPath.size(); i++) {%>
       function <%=foodInfo.get(i).getPlcName()%>(){
-         location.href = "<%=request.getContextPath()%>/selectFood.pe?placeName=<%=foodInfo.get(i).getPlcName()%>&dareaName=<%=dareaName %>";
+         location.href = "<%=request.getContextPath()%>/selectFood.pe?placeName=<%=foodInfo.get(i).getPlcName()%>";
       }
          <%}%>
       <%}%>

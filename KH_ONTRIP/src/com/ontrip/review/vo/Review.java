@@ -1,24 +1,23 @@
 package com.ontrip.review.vo;
 
-import java.util.Date;
+import java.sql.Date;
 
 public class Review {
 	
 	private int revCode;
 	private int plcCode;
 	private int memberNo;
-	private Date revDate;
+	private java.sql.Date revDate;
 	private String revText;
 	private String status;
-	private Date revChangeDate;
-	
-	public Review() {
-		
-	}
+	private java.sql.Date revChangeDate;
+	private String categoryName;
 
-	public Review(int revCode, int plcCode, int memberNo, Date revDate, String revText, String status,
-			Date revChangeDate) {
-		super();
+
+	public Review() {
+
+	}
+	public Review(int revCode, int plcCode, int memberNo, Date revDate, String revText, String status, Date revChangeDate, String categoryName) {
 		this.revCode = revCode;
 		this.plcCode = plcCode;
 		this.memberNo = memberNo;
@@ -26,6 +25,7 @@ public class Review {
 		this.revText = revText;
 		this.status = status;
 		this.revChangeDate = revChangeDate;
+		this.categoryName = categoryName;
 	}
 
 	public int getRevCode() {
@@ -84,11 +84,25 @@ public class Review {
 		this.revChangeDate = revChangeDate;
 	}
 
+	public String getCategoryName() {
+		return categoryName;
+	}
+
+	public void setCategoryName(String categoryName) {
+		this.categoryName = categoryName;
+	}
+
 	@Override
 	public String toString() {
-		return "Review [revCode=" + revCode + ", plcCode=" + plcCode + ", memberNo=" + memberNo + ", revDate=" + revDate
-				+ ", revText=" + revText + ", status=" + status + ", revChangeDate=" + revChangeDate + "]";
+		return "Review{" +
+				"revCode=" + revCode +
+				", plcCode=" + plcCode +
+				", memberNo=" + memberNo +
+				", revDate=" + revDate +
+				", revText='" + revText + '\'' +
+				", status='" + status + '\'' +
+				", revChangeDate=" + revChangeDate +
+				", categoryName='" + categoryName + '\'' +
+				'}';
 	}
-	
-
 }

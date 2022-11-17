@@ -1,7 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="com.ontrip.location.vo.Location, com.ontrip.detailArea.vo.DetailArea ,com.ontrip.image.vo.Image,
+    pageEncoding="UTF-8" import="com.ontrip.location.vo.Location,
+    com.ontrip.detailArea.vo.DetailArea ,com.ontrip.image.vo.Image,
     java.util.ArrayList"%>
-    
+<%@ page import="com.ontrip.detailArea.vo.DetailArea" %>
+
 <%
 	String localName = (String)request.getParameter("localName");
 	String localText = (String)request.getAttribute("localText");

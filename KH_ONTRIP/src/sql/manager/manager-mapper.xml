@@ -32,6 +32,7 @@
 
 
 
+
     <!--    QNA -->
 
     <entry key="saveQna">
@@ -41,8 +42,75 @@
     </entry>
 
     <entry key="selectByCategory">
-
         select * from "QnA" where QA_CATEGORY = ?
+    </entry>
+
+
+    <!--    QNA -->
+
+
+
+    <!--   등록후기 & 페이징처리  -->
+    <entry key="ReviewPaging">
+
+<!--        select * from (select rownum rn , a.* from(select * from "Review" order by q_code desc where rev_category = ?) A ) where rn between ? and ?-->
+
+
+<!--        select * from ( select rownum rn , a.* from(select r.rev_code  ,p.plc_name ,p.category_code , m.mem_name ,r.rev_date from "Review" r-->
+<!--        inner join "Place" p on r.plc_code = p.plc_code inner join "Member" m on r.mem_no = m.mem_no order by rev_code desc where p.category_code = ?) A ) where rn between ? and ?-->
+
+        select * from (select rownum rn, a.* from (select r.rev_code, p.plc_name, p.category_code, m.mem_name, r.rev_date from "Review" r
+        inner join "Place" p on r.plc_code = p.plc_code
+        inner join "Member" m on r.mem_no = m.mem_no
+        where p.category_code = ?
+        order by r.rev_code desc) A)
+        where rn between ? and ?
+    </entry>
+
+
+    <entry key="getReviewTotal">
+
+        select count(*) as total from "Review"
+
+    </entry>
+
+
+
+    <entry key="reviewDetailed">
+
+        select p.plc_name, m.mem_name, r.rev_date , r.rev_text , s.rev_star , s.rev_c , s.rev_s , s.rev_p from "Review" r
+        inner join "Place" p on r.plc_code = p.plc_code
+        inner join "Member" m on r.mem_no = m.mem_no
+        inner join "Score" s on r.REV_CODE = s.REV_CODE
+        where r.REV_CODE = ?
+
+    </entry>
+
+
+    <entry key="deleteReview">
+        delete from "Review" where REV_CODE = ?
+
+    </entry>
+
+
+    <!--   등록후기 & 페이징처리  -->
+
+
+
+
+
+
+
+
+
+    <!--    예약페이지-->
+
+
+
+    <entry key="saveRev">
+
+        insert into "Reservation"(RN_CODE , PLC_CODE , MEM_NO , RN_NAME , RN_ADULT , RN_CHILD , RN_COUNT , ROOM_TYPE , RN_PHONE , RN_CIN , RN_COUT)
+        values(SEQ_RN.nextval , ?,?,?,?,?,?,?,?,?,?)
 
 
     </entry>
@@ -52,9 +120,11 @@
 
 
 
+    <!--    예약페이지-->
 
 
-    <!--    QNA -->
+
+
 
 
 

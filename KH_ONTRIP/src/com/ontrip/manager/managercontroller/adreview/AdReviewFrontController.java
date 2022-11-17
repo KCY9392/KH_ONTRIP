@@ -1,10 +1,7 @@
 package com.ontrip.manager.managercontroller.adreview;
 
 
-import com.ontrip.manager.managercontroller.adque.QueFrontController;
-import com.ontrip.manager.managercontroller.adreview.controller.AdReviewController;
-import com.ontrip.manager.managercontroller.adreview.controller.AdReviewDeleteController;
-import com.ontrip.manager.managercontroller.adreview.controller.AdReviewListController;
+import com.ontrip.manager.managercontroller.adreview.controller.*;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -23,10 +20,11 @@ public class AdReviewFrontController extends HttpServlet {
     private Map<String, ReviewFrontController> controllerMap = new HashMap<>();
 
     public AdReviewFrontController() {
-
-        controllerMap.put("/KH_ONTRIP/manager/reviews", new AdReviewListController());
-        controllerMap.put("/KH_ONTRIP/manager/reviews/review", new AdReviewController());
-        controllerMap.put("/KH_ONTRIP/manager/reviews/review/delete", new AdReviewDeleteController());
+        controllerMap.put("/KH_ONTRIP/manager/reviews/play", new PlayingReviewController());
+        controllerMap.put("/KH_ONTRIP/manager/reviews/acco", new AccoReviewController());
+        controllerMap.put("/KH_ONTRIP/manager/reviews/rst", new RstReviewController());
+        controllerMap.put("/KH_ONTRIP/manager/reviews/review", new ReviewDetailedController());
+        controllerMap.put("/KH_ONTRIP/manager/reviews/delete", new AdReviewDeleteController());
 
     }
 
@@ -41,7 +39,11 @@ public class AdReviewFrontController extends HttpServlet {
 
         ReviewFrontController reviewFrontController = controllerMap.get(requestURI);
 
-        reviewFrontController.process(request, response);
+        try {
+            reviewFrontController.process(request, response);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
 
     }
 

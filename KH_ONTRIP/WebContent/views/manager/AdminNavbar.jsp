@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-         pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"
+         %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -44,41 +44,33 @@
     <div class="outers">
       <div class="adminMain">
         <form method="get" action="/KH_ONTRIP/manager/main">
-        <button type="submit" id = "n" name="search">메인 관리</button>
+          <button type="submit" id = "n" name="search">메인 관리</button>
         </form>
       </div>
       <div class="reserveResult">
         <form method="get" action="/KH_ONTRIP/manager/members">
-        <button type="submit" id = "n" name="search">회원 관리</button>
+          <button type="submit" id = "n" name="search">회원 관리</button>
         </form>
       </div>
       <div class="heartResult">
-        <form method="get" action="/KH_ONTRIP/manager/reviews">
-        <button type="submit" id = "n" name="search">등록 후기</button>
+        <form method="post" action="/KH_ONTRIP/manager/reviews/play?category=PP">
+          <button type="submit" id = "n" >등록 후기</button>
         </form>
       </div>
       <div class="reviewResult">
         <form method="get" action="/KH_ONTRIP/manager/questions">
-          <button type="submit" id = "n" name="search">문의사항관리</button>
+          <button type="submit" id="n" name="search">문의사항관리</button>
         </form>
       </div>
       <div class="statusResult">
-<!--         <form method="get" action="/KH_ONTRIP/manager/qnas"> -->
-<!--           <button type="submit" id = "n" name="search" onclick="qnaForm();">Q&A관리</button> -->
-<!--         </form> -->
-	<button type="submit" id = "n" name="search" onclick="qnaForm();">Q&A관리</button>
+        <form method="get" action="/KH_ONTRIP/manager/qnas">
+          <button type="submit" id = "n" name="search">Q&A관리</button>
+        </form>
       </div>
     </div>
   </div>
-  
-  <script>
-         	function qnaForm(){
-         		location.href = "<%=request.getContextPath()%>/qnaForm.me";	
-         	}
-  </script>
 
 </fieldset>
-
 
 </body>
 </html>
