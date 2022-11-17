@@ -3,12 +3,26 @@
     com.ontrip.place.model.vo.Place , java.util.ArrayList"%>
 <%
    String dareaName = (String)request.getAttribute("dareaName");
+
+   //상세지역사진
    ArrayList<Image> filePath = (ArrayList<Image>)request.getAttribute("filePath");
+   
+   //놀거리사진
    ArrayList<Image> playPath = (ArrayList<Image>)request.getAttribute("playPath");
+   
+   //놀거리정보
    ArrayList<Place> playInfo = (ArrayList<Place>)request.getAttribute("playInfo");
+   
+   //맛집사진
    ArrayList<Image> foodPath = (ArrayList<Image>)request.getAttribute("foodPath");
+   
+   //맛집정보
    ArrayList<Place> foodInfo = (ArrayList<Place>)request.getAttribute("foodInfo");
+   
+   //숙소사진
    ArrayList<Image> hotelPath = (ArrayList<Image>)request.getAttribute("hotelPath");
+   
+   //숙소정보
    ArrayList<Place> hotelInfo = (ArrayList<Place>)request.getAttribute("hotelInfo");
 %>
 <!DOCTYPE html>
@@ -111,10 +125,6 @@
 <body>
 
     <%@ include file="../common/navbar.jsp" %>
-    
-    <%
-       
-    %>
 
     <br><br><br><br><br><br>
     
@@ -128,11 +138,11 @@
             <div class = "right">
              <table>
                 <tr>
-<%--                     <td><img src="<%=filePath.get(0).getFilePath()%><%=filePath.get(0).getOriginName() %>" ></td> --%>
-<%--                     <td><img src="<%=filePath.get(1).getFilePath()%><%=filePath.get(1).getOriginName() %>" ></td> --%>
+                    <td><img src="<%=filePath.get(0).getFilePath()%><%=filePath.get(0).getOriginName() %>" ></td>
+                    <td><img src="<%=filePath.get(1).getFilePath()%><%=filePath.get(1).getOriginName() %>" ></td>
                 </tr>
                 <tr>
-<%--                    <td  colspan = "2"><img src="<%=filePath.get(2).getFilePath()%><%=filePath.get(2).getOriginName() %>" ></td> --%>
+                   <td  colspan = "2"><img src="<%=filePath.get(2).getFilePath()%><%=filePath.get(2).getOriginName() %>" ></td>
                 </tr>               
             </table>
             </div>

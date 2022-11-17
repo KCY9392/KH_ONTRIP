@@ -10,7 +10,9 @@
 	<entry key="selectFilePath">
 		SELECT FILE_PATH, ORIGIN_NAME
 		FROM "Image"
+        JOIN "Detailed Area" USING(DAREA_CODE)
 		WHERE "DAREA_CODE" = ?
+        AND FILE_PATH = 'resources/detailedArea_Img/'
 	</entry>
 	
 	<entry key="selectPlayPath">
