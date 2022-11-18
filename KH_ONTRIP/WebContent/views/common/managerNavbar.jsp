@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>새로만든 마이페이지 navbar</title>
+    <title>관리자용 초록창버튼바</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     <style>
         body{
@@ -66,7 +66,7 @@
 
     <div class="left-categoryBox">
         <div class="userResult">
-            <button type="button" id = "n" name="search" onclick="">메인 관리</button>
+            <button type="button" id = "n" name="search" onclick="location.href='<%= request.getContextPath() %>/placeList.mn'">메인 관리</button>
         </div>
         <div class="reserveResult">
             <button type="button" id = "n" name="search" onclick="">회원 관리</button>
@@ -83,6 +83,7 @@
       </div>
 
       <script>
+      
          	function qnaForm(){
          		location.href = "<%=request.getContextPath()%>/qnaForm.me";	
          	}

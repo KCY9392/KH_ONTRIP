@@ -1,5 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+<%
+	String alertMsg = (String) session.getAttribute("alertMsg");
+	// 서비스 요청전 : null
+	// 서비스 요청성공후 : alert로 띄워줄 메시지 문구.
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -77,8 +83,9 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
 </head>
 <body> 
-   <%@ include file="../common/adnavbar.jsp" %>
-    <%@ include file="../common/managerNavbar.jsp" %>  
+  <%@ include file="../common/adnavbar.jsp" %>
+
+  <%@ include file="../common/managerNavbar.jsp" %>  
     
     <div class="outer1">
         <br>
@@ -282,7 +289,7 @@
     
         <script>
          function insertPlace(){
-            location.href = "<%=request.getContextPath()%>/placeinsert.bo"
+            location.href = "<%=request.getContextPath()%>/PlaceEnroll.mn"
          }
         
         
@@ -316,6 +323,35 @@
 <%--             location.href = "<%=contextPath%>/list.bo?currentPage="+currentPage; --%>
          }
          
+         
+         let msg = "<%= alertMsg %>"; // let msg = 시설등록에 성공하였습니다.
+     	const Toast = Swal.mixin({
+     		toast: true,
+     		position: 'center-center',
+     		showConfirmButton: false,
+     		timer: 2000,
+     		timerProgressBar: true,
+     		didOpen: (toast) => {
+     			toast.addEventListener('mouseenter', Swal.stopTimer)
+     			toast.addEventListener('mouseleave', Swal.resumeTimer)
+     		}
+     	});
+
+     	if(msg != "null" && msg == "1"){
+     		Toast.fire({
+     			icon: 'success',
+     			title: '시설등록에 성공하였습니다.'
+
+     		});
+
+     	}else if(msg != "null" && msg == "0"){
+     		Toast.fire({
+     			icon: 'error',
+     			title: '시설등록에 실패하였습니다.'
+
+     		});
+     	}
+     	<% session.removeAttribute("alertMsg");%>
       </script>
             
     </div>

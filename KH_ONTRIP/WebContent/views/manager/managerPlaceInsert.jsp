@@ -20,21 +20,67 @@
         integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="
         crossorigin="anonymous">
     </script>
+    <style>
+       
+       select{
+          border:2px solid rgb(239, 243, 138);
+          border-radius: 10px;
+          padding:5px;
+       }
+       select:focus{
+          border:1px solid green;
+          box-sizing: border-box;
+          border-radius: 10px;
+          outline: 3px solid yellowgreen;
+          border-radius: 10px;
+       }
+       input{
+          border:none;
+          border-bottom:1px solid gray;
+       }
+       span{
+          font-weight:bold;
+          font-size:18px;
+          color:rgb(2, 148, 12);
+       }
+       .input-box input{
+          border:none;
+          border-bottom:1px solid gray;
+       }
+       input[name=placeName]{
+          height:40px;
+       }
+       input:focus{
+          height:25px;
+          outline:none;
+          border-color:lightgrey;
+          box-shadow:0 0 5px grey;
+       }
+       .container-div{
+          border:none;
+          box-shadow:0 0 5px grey;
+       }
+    </style>
 </head>
 <body>
-    <%@ include file="../common/navbar.jsp" %>
-
-     
-
-     	
-        <%@ include file="../common/managerNavbar.jsp" %> 
+    <%@ include file="../common/adnavbar.jsp" %>        
+    <%@ include file="../common/managerNavbar.jsp" %> 
 
         <br><br><br><br>
-
+      
+   <form method="post" action="<%= request.getContextPath()%>/PlaceInsert.mn">
+         
+      
          <div class="container-div">
-            <span>제목 : </span>
-            <input type="text" name="title" placeholder="제목을 입력하세요."> <br><br>
+            <span style="font-size:20px;">시설이름 : &nbsp;</span>
+            <input type="text" name="placeName" placeholder="시설이름을 입력하세요."> <br><br>
 
+      <select name="category" id="category" style="width:150px; height:40px; float:left; margin-top:-60px;" required>  
+                <option value="PP">놀거리</option>
+                <option value="HH">맛집</option>
+                <option value="FF">숙소</option>
+        </select>
+      
             <!-- 이미지 첨부파일 -->
             <div class="img-container">
                 <div class="image-upload" id="image-upload">
@@ -42,21 +88,17 @@
                     <form method="post" enctype="multipart/form-data">
                         <div class="button">
                             <label for="chooseFile1" style="margin-bottom:-20px;">
-                                👉 CLICK HERE! 👈
+                                👉 CLICK HERE 👈
                             </label>
                         </div>
-                        <input type="file" id="chooseFile1" name="chooseFile" accept="image/*" onchange="loadFile1(this)">
+                        <input type="file" id="chooseFile1" name="file1" accept="image/*" onchange="loadFile1(this)" required>
                     </form>
         
                     <div class="fileContainer">
                         <div class="fileInput">
-                            <p id="fileName"></p>
+                            <p id="fileName" name="file1"></p>
                         </div>
-                        
-                   
-
                     </div>
-                   
                 </div>
                 
                 
@@ -70,21 +112,17 @@
                     <form method="post" enctype="multipart/form-data">
                         <div class="button">
                             <label for="chooseFile2" style="margin-bottom:-20px;">
-                                👉 CLICK HERE! 👈
+                                👉 CLICK HERE 👈
                             </label>
                         </div>
-                        <input type="file" id="chooseFile2" name="chooseFile" accept="image/*" onchange="loadFile2(this)">
+                        <input type="file" id="chooseFile2" name="file2" accept="image/*" onchange="loadFile2(this)" required>
                     </form>
         
                     <div class="fileContainer">
                         <div class="fileInput">
                             <p id="fileName2"></p>
                         </div>
-                        
-                        
                     </div>
-                    
-                   
                 </div>
                 
                 
@@ -98,21 +136,17 @@
                     <form method="post" enctype="multipart/form-data">
                         <div class="button">
                             <label for="chooseFile3" style="margin-bottom:-20px;">
-                                👉 CLICK HERE! 👈
+                                👉 CLICK HERE 👈
                             </label>
                         </div>
-                        <input type="file" id="chooseFile3" name="chooseFile" accept="image/*" onchange="loadFile3(this)">
+                        <input type="file" id="chooseFile3" name="file3" accept="image/*" onchange="loadFile3(this)" required>
                     </form>
         
                     <div class="fileContainer">
                         <div class="fileInput">
                             <p id="fileName3"></p>
                         </div>
-                        
-                        
                     </div>
-                    
-                   
                 </div>
                 
                 
@@ -121,23 +155,23 @@
             
             <br><br><br><br><br><br><br><br><br><br><br><br>
             
-            <span>작성자 : admin</span> <br><br>
+            <span style="color:black; font-size:17px;">작성자 : admin</span> <br><br>
 
             <div style="font-size:20px; padding:10px;">
-            <span>대표지역</span>
-            <span style="margin-left:70px;">세부지역</span><br>
+            <span style="color:grey;">대표지역</span>
+            <span style="margin-left:70px; color:grey;">세부지역</span><br>
             </div>
 
-            <select onchange="addressKindChange(this);" name="addressKind" id="addressKind" style="width:150px; height:50px;">  
-                <option value="a">서울</option>
-                <option value="b">제주도</option>
-                <option value="c">경기도</option>
-                <option value="d">강원도</option>
-                <option value="e">충청도</option>
-                <option value="f">전라도</option>
-                <option value="g">경상도</option>
+            <select onchange="addressKindChange(this);" name="addressKind" id="addressKind" style="width:150px; height:50px;" required>  
+                <option value="L1">서울</option>
+                <option value="L3">제주도</option>
+                <option value="L2">경기도</option>
+                <option value="L4">강원도</option>
+                <option value="L5">충청도</option>
+                <option value="L6">전라도</option>
+                <option value="L7">경상도</option>
             </select>
-            <select name="addressDetailKind" id="addressDetailKind" style="width:150px; height:50px;">
+            <select name="addressDetailKind" id="addressDetailKind" style="width:150px; height:50px;" required> 
                 <option>선택해주세요.</option>
                 <option>종로</option>
                 <option>용산</option>
@@ -146,27 +180,28 @@
             
             <br><br>
 
-            <span>대표자 : </span>
-            <input type="text" name="adminName"> <br><br>
-            <span>주소 : </span>
-            <input type="text" name="areaAddress"> <br><br>
-            <span>전화번호 : </span>
-            <input type="text" name="telephone"> <br><br>
-            <br>
-            <span>위도 : </span>
-            <input type="text" name="latitude"> <br><br>
-            <span>경도 : </span>
-            <input type="text" name="longitude"> <br><br>
-
-            <span>내용</span> <br>
-            <textarea name="content" cols="50" rows="5">
-더운 여름 시원한 서핑 체험하세욧!
-            </textarea>
-        </div> 
-
-
-
-
+         <div class="input-box">
+               <span>대표자 : &nbsp;</span>
+               <input type="text" name="placeBName" required> <br><br>
+               <span>주소 : &nbsp;</span>
+               <input type="text" name="areaAddress" required> <br><br>
+               <span>전화번호 : &nbsp;</span>
+               <input type="text" name="telephone" required> <br><br>
+               <br>
+               <span>위도 : &nbsp;</span>
+               <input type="text" name="latitude" required> <br><br>
+               <span>경도 : &nbsp;</span>
+               <input type="text" name="longitude" required> <br><br>
+   
+               <span>내용</span> <br>
+               <textarea name="content" cols="50" rows="5" required>
+               </textarea>
+            </div>
+            <br><br>
+            
+      <button type="submit" style="border:none; width:150px; height:50px; background-color:bisque; font-weight:900; font-size:15px; border-radius:5px;">등록</button>
+        </form>
+       </div> 
 
 
             <script>
@@ -192,7 +227,7 @@
                         var name = document.getElementById('fileName');
                         name.textContent = file.name;
     
-                        name.style.fontSize = "12px";
+                        name.style.fontSize = "13px";
     
                         var newImage = document.createElement("img");
                         newImage.setAttribute("class", 'img');
@@ -202,7 +237,7 @@
                         newImage.style.width = "15%";
                         newImage.style.height = "15%";  
                         newImage.style.objectFit = "contain";
-                        newImage.style.marginLeft = "-84%";
+                        newImage.style.marginLeft = "-85%";
                         newImage.style.marginTop = "-31%";
                         newImage.style.zIndex = "1";
     
@@ -219,7 +254,7 @@
                     var name = document.getElementById('fileName2');
                     name.textContent = file.name;
 
-                    name.style.fontSize = "12px";
+                    name.style.fontSize = "13px";
 
                     var newImage = document.createElement("img");
                     newImage.setAttribute("class", 'img');
@@ -244,7 +279,7 @@
                     var name = document.getElementById('fileName3');
                     name.textContent = file.name;
 
-                    name.style.fontSize = "12px";
+                    name.style.fontSize = "13px";
 
                     var newImage = document.createElement("img");
                     newImage.setAttribute("class", 'img');
@@ -276,19 +311,19 @@
                     let gyeongsang = ["부산", "대구", "경주"];
                     let target = document.getElementById('addressDetailKind');
                     let d;
-                    if(e.value == "a") {
+                    if(e.value == "L1") {
                          d = seoul;
-                    } else if(e.value == "b"){
+                    } else if(e.value == "L3"){
                          d = jeju;
-                    } else if(e.value == "c"){
+                    } else if(e.value == "L2"){
                          d = gyeonggi;
-                    } else if(e.value == "d"){
+                    } else if(e.value == "L4"){
                          d = gangwon;
-                    } else if(e.value == "e"){
+                    } else if(e.value == "L5"){
                         d = chung;
-                    } else if(e.value == "f"){
+                    } else if(e.value == "L6"){
                          d = junla;
-                    } else if(e.value == "g"){
+                    } else if(e.value == "L7"){
                         d = gyeongsang;
                     }
                     d.unshift(default_option);

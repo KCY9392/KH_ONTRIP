@@ -334,6 +334,104 @@ public class PlaceDao {
       
       return placeInfo;
    }
+   
+   //관리자 시설등록시, 상세지역이름으로 상세지역코드 가져오기
+	public String selectDAreaCode(String dAreaName, Connection conn) {
+		
+		String dareaCode = "";
+		
+		PreparedStatement psmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("selectDAreaCode");
+		
+		try {
+			psmt = conn.prepareStatement(sql);
+			
+			psmt.setString(1, dAreaName);
+			
+			rset = psmt.executeQuery();
+			
+			if(rset.next()) {
+				dareaCode = rset.getString("DAREA_CODE");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+	         close(rset);
+	         close(psmt);
+	    }
+	      
+	    return dareaCode;
+	}
+
+	//관리자페이지에서 시설등록하기
+	public int insertPlace(Place place, Connection conn) {
+		
+		int result = 0;
+		
+		PreparedStatement psmt = null;
+		
+		String sql = prop.getProperty("insertPlace");
+		
+//		INSERT INTO "Place" 
+//		(PLC_CODE, 
+//		 CATEGORY_CODE, 
+//		 DAREA_CODE, 
+//		 PLC_NAME, 
+//		 PLC_ADDRESS, 
+//		 PLC_TEXT, 
+//		 PLC_BNAME,
+//		 PLC_PNUMBER, 
+//		 PLC_LA, 
+//		 PLC_LO, 
+//		 LOCAL_CODE)
+//		 
+//		VALUES(SEQ_PLC.NEXTVAL, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+		
+		try {
+			psmt = conn.prepareStatement(sql);
+			
+			psmt.setString(1, place.getCategoryCode());
+			psmt.setString(2, place.getDareaCode());
+			psmt.setString(3, place.getPlcName());
+			psmt.setString(4, place.getPlcAddress());
+			psmt.setString(5, place.getPlcText());
+			psmt.setString(6, place.getPlcBname());
+			psmt.setString(7, place.getPlcPnumber());
+			psmt.setFloat(8, place.getPlcLa());
+			psmt.setFloat(9, place.getPlcLo());
+			psmt.setString(10, place.getLocalCode());
+			
+			result = psmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+	         close(psmt);
+	    }
+	      
+	    return result;
+	}
+
+	//관리자페이지에서 시설등록시, 이미지 데베에 업로드하기
+	public int insertPlaceImages(ArrayList<Image> list, Connection conn) {
+		
+		int result = 0;
+		
+		PreparedStatement psmt = null;
+		
+		String sql = prop.getProperty("insertPlaceImages");
+		
+		try {
+			psmt = conn.prepareStatement(sql);
+			
+			psmt.setString(parameterIndex, x);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return 0;
+	}
 
 
 

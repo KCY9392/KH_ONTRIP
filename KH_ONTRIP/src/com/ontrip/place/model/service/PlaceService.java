@@ -109,6 +109,46 @@ public class PlaceService {
       return placeInfo;
    }
 
+   
+   //관리자페이지에서 메인관리 - 시설등록시, 상세지역이름으로 상세지역코드 가져오기
+   public String selectDAreaCode(String dAreaName) {
+	   
+	   Connection conn = getConnection();
+	   String DAreaCode = new PlaceDao().selectDAreaCode(dAreaName, conn);
+	   close();
+	   return DAreaCode;
+   }
+
+   //관리자페이지에서 시설등록하기
+	public int insertPlace(Place place) {
+		
+		Connection conn = getConnection();
+		int result = new PlaceDao().insertPlace(place, conn);
+		
+		if(result > 0) {			
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		close();
+		return result;
+	}
+
+	//관리자페이지에서 시설등록시, 데베에 이미지 파일 업로드하기
+	public int insertPlaceImages(ArrayList<Image> list) {
+		
+		Connection conn = getConnection();
+		int result = new PlaceDao().insertPlaceImages(list, conn);
+		
+		if(result>0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		
+		return 0;
+	}
+
 
 
 } 

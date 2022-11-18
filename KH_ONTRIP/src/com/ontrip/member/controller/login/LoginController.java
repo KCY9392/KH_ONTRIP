@@ -46,7 +46,8 @@ public class LoginController extends HttpServlet {
 			HttpSession session = request.getSession();
 			
 			if(memberId.equals("admin")&&memberPwd.equals("1234")) { //관리자계정으로 로그인하였을경우
-				request.getRequestDispatcher("views/manager/ManagerPlace.jsp").forward(request, response);
+				
+				request.getRequestDispatcher("/placeList.mn").forward(request, response);
 			}else {
 				
 			

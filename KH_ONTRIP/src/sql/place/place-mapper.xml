@@ -67,4 +67,56 @@
 	</entry>
 	
 	
+<!-- 관리자페이지에서 메인관리 시설등록 시, 상세지역이름으로 상세지역코드가져오기 -->
+	<entry key="selectDAreaCode">
+	SELECT DAREA_CODE
+	FROM "Detailed Area"
+	WHERE DAREA_NAME = ?
+	</entry>
+	
+<!-- 관리자페이지에서 시설등록하기 -->	
+	<entry key="insertPlace">
+	INSERT INTO "Place" 
+	(PLC_CODE, 
+	 CATEGORY_CODE, 
+	 DAREA_CODE, 
+	 PLC_NAME, 
+	 PLC_ADDRESS, 
+	 PLC_TEXT, 
+	 PLC_BNAME,
+	 PLC_PNUMBER, 
+	 PLC_LA, 
+	 PLC_LO,  
+	 LOCAL_CODE)
+	 
+	VALUES(SEQ_PLC.NEXTVAL, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+	</entry>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 </properties>
