@@ -89,7 +89,6 @@ form{
 </head>
 <body>
 
-    <%@ include file="../common/navbar.jsp" %>
     <%@ include file="../common/myPageNavbar.jsp" %>  
 
     <div class="outer1">

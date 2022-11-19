@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+	<entry key="insertHeart">
+		INSERT INTO "Heart"(MEM_NO, PLC_CODE)
+		VALUES(? , ?)
+	</entry>
+	
+	<entry key="deleteHeart">
+		DELETE FROM "Heart"
+		WHERE MEM_NO = ? AND PLC_CODE = ?
+	</entry>
+	
+	<entry key="selectHeart">
+		SELECT c.CATEGORY_NAME, p.PLC_NAME, h.HEART_DATE, PLC_CODE, i.FILE_PATH, i.ORIGIN_NAME
+		FROM "Heart" h
+		JOIN "Place" p USING (PLC_CODE)
+		JOIN "Category" c USING(CATEGORY_CODE)
+        JOIN "Image" i USING(PLC_CODE)
+		WHERE MEM_NO = ?
+	</entry>
+	
+	<entry key="deleteHeartList">
+		DELETE FROM "Heart"
+		WHERE PLC_CODE IN (SELECT PLC_CODE
+                            FROM "Place"
+                            WHERE PLC_NAME IN( @))
+	</entry>
+	
+	
+</properties>

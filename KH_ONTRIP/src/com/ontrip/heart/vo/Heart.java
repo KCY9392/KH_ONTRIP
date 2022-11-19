@@ -4,28 +4,58 @@ import java.util.Date;
 
 public class Heart {
 	
-    private int memberCode; // 회원번호 (PK) // SQL : MEM_NO2    // VARCHAR2(20)
-    private int playCode;   // 시설코드 (FK) // SQL : PLC_CODE   // VARCHAR2(20)
+
+	private int memberNo; // 회원번호 (PK) // SQL : MEM_NO2    // VARCHAR2(20)
+    private int plcCode;   // 시설코드 (FK) // SQL : PLC_CODE   // VARCHAR2(20)
     private Date heartDate; // 찜한날짜      // SQL : HEART_DATE // VARCHAR2(20)
+    private String categoryName;
+    private String placeName;
+    private String filePath;
+    private String originName;
     
     public Heart() {
     	
     }
 
-	public int getMemberCode() {
-		return memberCode;
+	public Heart(int memberNo, int placeCode, Date heartDate) {
+		super();
+		this.memberNo = memberNo;
+		this.plcCode = placeCode;
+		this.heartDate = heartDate;
 	}
 
-	public void setMemberCode(int memberCode) {
-		this.memberCode = memberCode;
+
+	
+	public Heart(String categoryName, String placeName, Date heartDate, int placeCode, String filePath, String originName) {
+		super();
+		this.categoryName = categoryName;
+		this.placeName = placeName;
+		this.heartDate = heartDate;
+		this.plcCode = placeCode;
+		this.filePath = filePath;
+		this.originName = originName;
 	}
 
-	public int getPlayCode() {
-		return playCode;
+	public Heart(int memberNo, int plcCode) {
+		super();
+		this.memberNo = memberNo;
+		this.plcCode = plcCode;
 	}
 
-	public void setPlayCode(int playCode) {
-		this.playCode = playCode;
+	public int getMemberNo() {
+		return memberNo;
+	}
+
+	public void setMemberNo(int memberNo) {
+		this.memberNo = memberNo;
+	}
+
+	public int getPlcCode() {
+		return plcCode;
+	}
+
+	public void setPlcCode(int plcCode) {
+		this.plcCode = plcCode;
 	}
 
 	public Date getHeartDate() {
@@ -36,17 +66,44 @@ public class Heart {
 		this.heartDate = heartDate;
 	}
 
-	public Heart(int memberCode, int playCode, Date heartDate) {
-		super();
-		this.memberCode = memberCode;
-		this.playCode = playCode;
-		this.heartDate = heartDate;
+	public String getCategoryName() {
+		return categoryName;
+	}
+
+	public void setCategoryName(String categoryName) {
+		this.categoryName = categoryName;
+	}
+
+	public String getPlaceName() {
+		return placeName;
+	}
+
+	public void setPlaceName(String placeName) {
+		this.placeName = placeName;
+	}
+
+	public String getFilePath() {
+		return filePath;
+	}
+
+	public void setFilePath(String filePath) {
+		this.filePath = filePath;
+	}
+
+	public String getOriginName() {
+		return originName;
+	}
+
+	public void setOriginName(String originName) {
+		this.originName = originName;
 	}
 
 	@Override
 	public String toString() {
-		return "Heart [memberCode=" + memberCode + ", playCode=" + playCode + ", heartDate=" + heartDate + "]";
+		return "Heart [memberNo=" + memberNo + ", plcCode=" + plcCode + ", heartDate=" + heartDate + ", categoryName="
+				+ categoryName + ", placeName=" + placeName + ", filePath=" + filePath + ", originName=" + originName
+				+ "]";
 	}
-    
+
     
 }

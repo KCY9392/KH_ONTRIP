@@ -1,5 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="java.util.Date"%>
+    pageEncoding="UTF-8" import="java.util.Date, com.ontrip.member.model.vo.Member"%>
+
+<%
+	Member loginUser2 = (Member) session.getAttribute("loginUser");
+%>
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -62,6 +67,9 @@
     </style>
 </head>
 <body>
+
+
+ 	
       <br><br><br><br>
 
     <div class="left-categoryBox">
@@ -75,7 +83,7 @@
             <button type="button" id = "n" name="search" onclick="myHeart();">찜 목록</button>
         </div>
         <div class="reviewResult">
-            <button type="button" id = "n" name="search" onclick="myReview();">등록 후기</button>
+            <button type="button"  id = "n" name="search" onclick="myReview();">등록 후기</button>
         </div>
         <div class="statusResult">
             <button type="button" id = "n" name="search"  onclick = "deleteMember();">회원 탈퇴</button>
@@ -92,7 +100,7 @@
             }
             
             function myHeart(){
-               location.href = "<%=request.getContextPath()%>/mypageHeartList.me";
+               location.href = "<%=request.getContextPath()%>/mypageHeartList.me?memberNo=<%=loginUser2.getMemberNo()%>";
             }
             
             function myReview(){

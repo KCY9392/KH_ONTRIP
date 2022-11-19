@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.ontrip.detailArea.service.DetailAreaService;
+import com.ontrip.heart.vo.Heart;
 import com.ontrip.image.vo.Image;
 import com.ontrip.place.model.service.PlaceService;
 import com.ontrip.place.model.vo.Place;
@@ -41,7 +42,8 @@ public class SelectFoodController extends HttpServlet {
 		ArrayList<Image> placeImages = new PlaceService().selectPlaceImages(placeName);
 		request.setAttribute("placeImages", placeImages);
 		
-		
+		String placeCode = new PlaceService().findPlaceCode(placeName);
+		request.setAttribute("placeCode", placeCode);
 		
 		// 놀거리 사진 불러오기
 	      ArrayList<Image> playPath = new DetailAreaService().selectPlayPath(dareaCode);
@@ -64,10 +66,16 @@ public class SelectFoodController extends HttpServlet {
 			ArrayList<Image> foodPath = new DetailAreaService().selectFoodPath(dareaCode);
 			request.setAttribute("foodPath", foodPath);
 
-			// 맛집 정보(이름, 주소, 전화번호) 가져오기
+		// 맛집 정보(이름, 주소, 전화번호) 가져오기
 			ArrayList<Place> foodInfo = new PlaceService().selectFoodInfo(dareaCode);
 			request.setAttribute("foodInfo", foodInfo);
-		
+			
+		// 찜 정보 가져오기
+			int memberCode = Integer.parseInt(request.getParameter("memberNo"));
+			int placeCode2 = Integer.parseInt((String) request.getAttribute("placeCode"));
+			Heart ht = new PlaceService().selectHeart(memberCode, placeCode2);
+			
+			request.setAttribute("ht", ht);
 		
 		request.getRequestDispatcher("views/location/clickFood.jsp").forward(request, response);
 	}

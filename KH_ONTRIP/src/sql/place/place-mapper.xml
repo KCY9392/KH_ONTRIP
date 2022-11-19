@@ -115,8 +115,13 @@
 	</entry>
 	
 	
-	
-	
+   <!-- 로그인시 찜 유지하기 위한 찜 조회  -->
+   <entry key="selectHeart">
+      SELECT *
+      FROM "Heart"
+      WHERE MEM_NO = ? AND PLC_CODE = ?
+   </entry>
+
 	
 	
 	

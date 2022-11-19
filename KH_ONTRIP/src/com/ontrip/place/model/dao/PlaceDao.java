@@ -9,6 +9,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Properties;
 
+import com.ontrip.heart.vo.Heart;
 import com.ontrip.image.vo.Image;
 import com.ontrip.place.model.vo.Place;
 import static com.ontrip.common.JDBCTemplate.*;
@@ -318,11 +319,13 @@ public class PlaceDao {
          rset = psmt.executeQuery();
          
          while(rset.next()) {
-            placeInfo.add(new Place(
-                        rset.getString("CATEGORY_CODE"),
-                              rset.getString("PLC_NAME"),
-                              rset.getString("PLC_ADDRESS"),
-                              rset.getString("PLC_PNUMBER")));
+        	 placeInfo.add(new Place(
+                     rset.getString("CATEGORY_CODE"),
+                       rset.getString("PLC_NAME"),
+                       rset.getString("PLC_ADDRESS"),
+                       rset.getString("PLC_PNUMBER"),
+                       rset.getString("DAREA_NAME")));
+
          }
          System.out.println(placeInfo);
       } catch (SQLException e) {
@@ -486,6 +489,37 @@ public class PlaceDao {
 		return placeCode;
 	}
 
+	  // 로그인시 찜 유지하기 위한 객체 생성
+	   public Heart selectHeart(int memberCode, int placeCode2, Connection conn) {
+	         Heart ht = null;
+	         
+	         ResultSet rset = null;
+	         
+	         PreparedStatement psmt = null;
+	         
+	         String sql = prop.getProperty("selectHeart");
+	         
+	         try {
+	         psmt = conn.prepareStatement(sql);
+	         
+	         psmt.setInt(1, memberCode);
+	         psmt.setInt(2, placeCode2);
+	         rset = psmt.executeQuery();
+	         
+	         if(rset.next())  {
+	            ht = new Heart(
+	                        rset.getInt("MEM_NO"),
+	                       rset.getInt("PLC_CODE"));
+	         }
+	      } catch (SQLException e) {
+	         e.printStackTrace();
+	      } finally {
+	         close(rset);
+	         close(psmt);
+	      } 
+	         return ht;
+	         
+	      }
 
 
 

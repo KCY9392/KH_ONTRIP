@@ -18,6 +18,8 @@ public class Place {
     private float plcLa; // 시설위도 // SQL : PLC_LA // NUMBER
     private float plcLo; // 시설경도 // SQL : PLC_LO // NUMBER
     private String status; // 삭제여부 // SQL : STATUS // VARCHAR2(1) // DEFAULT 'N'
+    private String dareaName;
+    
     public Place() {
     	
     }
@@ -25,8 +27,8 @@ public class Place {
     
     
     public Place(int plcCode, String categoryCode, String localCode, String dareaCode, String plcName,
-			String plcAddress, String plcText, String plcBname, String plcPnumber, Date plcDate, float plcLa, float plcLo,
-			String status) {
+			String plcAddress, String plcText, String plcBname, String plcPnumber, Date plcDate, float plcLa,
+			float plcLo, String status, String dareaName) {
 		super();
 		this.plcCode = plcCode;
 		this.categoryCode = categoryCode;
@@ -41,6 +43,7 @@ public class Place {
 		this.plcLa = plcLa;
 		this.plcLo = plcLo;
 		this.status = status;
+		this.dareaName = dareaName;
 	}
 
 
@@ -69,12 +72,13 @@ public class Place {
 		this.plcLo = plcLo;
 	}
 
-	public Place(String categoryCode, String plcName, String plcAddress, String plcPnumber) {
+	public Place(String categoryCode, String plcName, String plcAddress, String plcPnumber, String dareaName) {
 	      super();
 	      this.categoryCode = categoryCode;
 	      this.plcName = plcName;
 	      this.plcAddress = plcAddress;
 	      this.plcPnumber = plcPnumber;
+	      this.dareaName = dareaName;
 	   }
 
 	
@@ -94,6 +98,21 @@ public class Place {
 
 	public String getCategoryCode() {
 		return categoryCode;
+	}
+
+
+
+
+
+
+	public String getDareaName() {
+		return dareaName;
+	}
+
+
+
+	public void setDareaName(String dareaName) {
+		this.dareaName = dareaName;
 	}
 
 
@@ -241,7 +260,6 @@ public class Place {
 		return "Place [plcCode=" + plcCode + ", categoryCode=" + categoryCode + ", localCode=" + localCode
 				+ ", dareaCode=" + dareaCode + ", plcName=" + plcName + ", plcAddress=" + plcAddress + ", plcText="
 				+ plcText + ", plcBname=" + plcBname + ", plcPnumber=" + plcPnumber + ", plcDate=" + plcDate
-				+ ", plcLa=" + plcLa + ", plcLo=" + plcLo + ", status=" + status + "]";
+				+ ", plcLa=" + plcLa + ", plcLo=" + plcLo + ", status=" + status + ", dareaName=" + dareaName + "]";
 	}
-
 }

@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.ontrip.detailArea.service.DetailAreaService;
+import com.ontrip.heart.vo.Heart;
 import com.ontrip.image.vo.Image;
 import com.ontrip.place.model.service.PlaceService;
 import com.ontrip.place.model.vo.Place;
@@ -37,6 +38,9 @@ public class SelectPlayController extends HttpServlet {
 		request.setAttribute("dareaName", dareaName);
 		
 		String dareaCode = new PlaceService().findDareaCode(dareaName);
+		
+		String placeCode = new PlaceService().findPlaceCode(placeName);
+		request.setAttribute("placeCode", placeCode);
 		
 		// 시설사진
 		ArrayList<Image> placeImages = new PlaceService().selectPlaceImages(placeName);
@@ -68,6 +72,12 @@ public class SelectPlayController extends HttpServlet {
 			ArrayList<Place> foodInfo = new PlaceService().selectFoodInfo(dareaCode);
 			request.setAttribute("foodInfo", foodInfo);
 		
+			// 찜 정보 가져오기
+			int memberCode = Integer.parseInt(request.getParameter("memberNo"));
+			int placeCode2 = Integer.parseInt((String) request.getAttribute("placeCode"));
+			Heart ht = new PlaceService().selectHeart(memberCode, placeCode2);
+			
+			request.setAttribute("ht", ht);
 		
 		request.getRequestDispatcher("views/location/clickPlay.jsp").forward(request, response);
 	}

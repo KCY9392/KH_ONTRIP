@@ -3,26 +3,12 @@
     com.ontrip.place.model.vo.Place , java.util.ArrayList"%>
 <%
    String dareaName = (String)request.getAttribute("dareaName");
-
-   //상세지역사진
    ArrayList<Image> filePath = (ArrayList<Image>)request.getAttribute("filePath");
-   
-   //놀거리사진
    ArrayList<Image> playPath = (ArrayList<Image>)request.getAttribute("playPath");
-   
-   //놀거리정보
    ArrayList<Place> playInfo = (ArrayList<Place>)request.getAttribute("playInfo");
-   
-   //맛집사진
    ArrayList<Image> foodPath = (ArrayList<Image>)request.getAttribute("foodPath");
-   
-   //맛집정보
    ArrayList<Place> foodInfo = (ArrayList<Place>)request.getAttribute("foodInfo");
-   
-   //숙소사진
    ArrayList<Image> hotelPath = (ArrayList<Image>)request.getAttribute("hotelPath");
-   
-   //숙소정보
    ArrayList<Place> hotelInfo = (ArrayList<Place>)request.getAttribute("hotelInfo");
 %>
 <!DOCTYPE html>
@@ -125,6 +111,10 @@
 <body>
 
     <%@ include file="../common/navbar.jsp" %>
+    
+    <%
+       
+    %>
 
     <br><br><br><br><br><br>
     
@@ -270,7 +260,7 @@
         <%if (!playPath.isEmpty()) {%>
                     <%for (int i = 0; i < playPath.size(); i++) {%>
          function <%=playInfo.get(i).getPlcName()%>(){
-             location.href = "<%=request.getContextPath()%>/selectPlay.pe?placeName=<%=playInfo.get(i).getPlcName()%>&dareaName=<%=dareaName %>";
+             location.href = "<%=request.getContextPath()%>/selectPlay.pe?placeName=<%=playInfo.get(i).getPlcName()%>&dareaName=<%=dareaName %>&memberNo=<%=loginUser.getMemberNo()%>";
           }
            <%}%>
       <%}%>
@@ -278,7 +268,7 @@
       <%if (!hotelPath.isEmpty()) {%>
         <%for (int i = 0; i < hotelPath.size(); i++) {%>
       function <%=hotelInfo.get(i).getPlcName()%>(){
-         location.href = "<%=request.getContextPath()%>/selectHotel.pe?placeName=<%=hotelInfo.get(i).getPlcName()%>&dareaName=<%=dareaName %>";
+         location.href = "<%=request.getContextPath()%>/selectHotel.pe?placeName=<%=hotelInfo.get(i).getPlcName()%>&dareaName=<%=dareaName %>&memberNo=<%=loginUser.getMemberNo()%>";
       }
          <%}%>
       <%}%>
@@ -286,7 +276,7 @@
       <%if (!foodPath.isEmpty()) {%>
         <%for (int i = 0; i < foodPath.size(); i++) {%>
       function <%=foodInfo.get(i).getPlcName()%>(){
-         location.href = "<%=request.getContextPath()%>/selectFood.pe?placeName=<%=foodInfo.get(i).getPlcName()%>";
+         location.href = "<%=request.getContextPath()%>/selectFood.pe?placeName=<%=foodInfo.get(i).getPlcName()%>&dareaName=<%=dareaName %>&memberNo=<%=loginUser.getMemberNo()%>";
       }
          <%}%>
       <%}%>

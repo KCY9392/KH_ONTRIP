@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" import="java.util.ArrayList, com.ontrip.place.model.vo.Place,
-    com.ontrip.image.vo.Image"%>
+    com.ontrip.image.vo.Image,  com.ontrip.heart.vo.Heart"%>
 <%
     String contextPath = request.getContextPath();
 
@@ -14,7 +14,9 @@
 	//시설사진띄우기
 		ArrayList<Image> placeImages = (ArrayList<Image>)request.getAttribute("placeImages");
 	
-	
+	//시설코드 넘기기
+	String placeCode = (String)request.getAttribute("placeCode");
+		
 	//밑에 놀거리, 숙소, 맛집 버튼별 사진나오게하기
 	ArrayList<Image> filePath = (ArrayList<Image>)request.getAttribute("filePath");
    	ArrayList<Image> playPath = (ArrayList<Image>)request.getAttribute("playPath");
@@ -24,6 +26,7 @@
    	ArrayList<Image> hotelPath = (ArrayList<Image>)request.getAttribute("hotelPath");
    	ArrayList<Place> hotelInfo = (ArrayList<Place>)request.getAttribute("hotelInfo");
    	
+   	Heart ht = (Heart)request.getAttribute("ht");
 %>
 <!DOCTYPE html>
 <html lang="ko">
@@ -65,7 +68,24 @@
         height: 100%;
         /* border: 1px solid red; */
     }
-
+    
+	.heart {
+            color: transparent;
+            text-shadow: 0 0 2px rgb(255, 255, 255), 0 0 0 #000;
+            display: flex;
+            flex-direction: row-reverse;
+            font-size: 2.5rem;
+            line-height: 2.5rem;
+            justify-content: space-around;
+            padding: 0 0.2em;
+            text-align: center;
+            width: 5em;
+            background-color: white;
+        }
+        .heart.done {
+          color: inherit;
+          text-shadow: 0;
+        }
 </style>
 </head>
 <body>
@@ -79,9 +99,7 @@
             <b><%= dareaName %>놀거리</b> &nbsp;&nbsp;
             <b><%= placeName %></b> &nbsp;&nbsp;
             
-            <button style="background-color: rgb(44, 144, 72); color:white; border-radius:10px; border:3px solid rgb(44, 144, 72);">
-                <i class="fa-regular fa-heart fa-lg"></i>
-            </button> &nbsp;&nbsp;
+            <button  type="submit" class="heart <% if(ht != null){ %> done<% } %>" style="border: 0; width: 30px; height: 30px; margin-top:-40px; margin-left:800px ">❤️</button> &nbsp;&nbsp;
             
         </div>
         <br>
@@ -255,7 +273,7 @@
         <%if (!playPath.isEmpty()) {%>
                     <%for (int i = 0; i < playPath.size(); i++) {%>
          function <%=playInfo.get(i).getPlcName()%>(){
-             location.href = "<%=request.getContextPath()%>/selectPlay.pe?placeName=<%=playInfo.get(i).getPlcName()%>&dareaName=<%= dareaName %>";
+             location.href = "<%=request.getContextPath()%>/selectPlay.pe?placeName=<%=playInfo.get(i).getPlcName()%>&dareaName=<%= dareaName %>&memberNo=<%=loginUser.getMemberNo()%>";
           }
            <%}%>
       <%}%>
@@ -263,7 +281,7 @@
       <%if (!hotelPath.isEmpty()) {%>
         <%for (int i = 0; i < hotelPath.size(); i++) {%>
       function <%=hotelInfo.get(i).getPlcName()%>(){
-         location.href = "<%=request.getContextPath()%>/selectHotel.pe?placeName=<%=hotelInfo.get(i).getPlcName()%>&dareaName=<%= dareaName %>";
+         location.href = "<%=request.getContextPath()%>/selectHotel.pe?placeName=<%=hotelInfo.get(i).getPlcName()%>&dareaName=<%= dareaName %>&memberNo=<%=loginUser.getMemberNo()%>";
       }
          <%}%>
       <%}%>
@@ -271,12 +289,54 @@
       <%if (!foodPath.isEmpty()) {%>
         <%for (int i = 0; i < foodPath.size(); i++) {%>
       function <%=foodInfo.get(i).getPlcName()%>(){
-         location.href = "<%=request.getContextPath()%>/selectFood.pe?placeName=<%=foodInfo.get(i).getPlcName()%>&dareaName=<%= dareaName %>";
+         location.href = "<%=request.getContextPath()%>/selectFood.pe?placeName=<%=foodInfo.get(i).getPlcName()%>&dareaName=<%= dareaName %>&memberNo=<%=loginUser.getMemberNo()%>";
       }
          <%}%>
       <%}%>
     </script>
     
+    <script>
+	    $(function(){
+
+			$(".heart").click(function(){
+				if(this.classList.contains('done')){
+					$.ajax({
+						url : "deleteHeart.ht",
+						data : {
+							memNo : <%= loginUser.getMemberNo() %>,
+							plcCode : <%= placeCode %>
+							},
+						type : "post",
+						success : function(result){// 익명함수, 매개변수로 서블릿으로부터 전달받은 값
+							console.log(result);
+							$(".heart done").text(result);
+							$('.heart').toggleClass("done");
+						},
+						error : function(){
+							console.log("ajax통신 실패!");
+						}
+					})
+				}else{
+					$.ajax({
+						url : "insertHeart.ht",
+						data : {
+							memNo : <%= loginUser.getMemberNo() %>,
+							plcCode : <%= placeCode %>
+							},
+						type : "post",
+						success : function(result){// 익명함수, 매개변수로 서블릿으로부터 전달받은 값
+							console.log(result);
+							$(".heart done").text(result);
+							$(".heart").toggleClass("done");
+						},
+						error : function(){
+							console.log("ajax통신 실패!");
+						}
+					})
+				}
+			});
+		})
+	</script>
     
 </body>
 </html>

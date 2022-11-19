@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .heart {
+            color: transparent;
+            text-shadow: 0 0 2px rgb(255, 255, 255), 0 0 0 #000;
+            display: flex;
+            flex-direction: row-reverse;
+            font-size: 2.5rem;
+            line-height: 2.5rem;
+            justify-content: space-around;
+            padding: 0 0.2em;
+            text-align: center;
+            width: 5em;
+            background-color: white;
+        }
+        .heart.done {
+          color: inherit;
+          text-shadow: 0;
+        }
+      
+        </style>
+</head>
+<body>
+  <button  type="submit" class="heart" style="border: 0; width: 30px; height: 30px; margin-top:-40px; margin-left:1000px ">❤️</button>
+
+<script src="//code.jquery.com/jquery.min.js"></script>
+<script>
+    $(".heart").click(function() {
+      $(this).toggleClass("done");
+    })
+</script>
+</body>
+</html>
+
+<button style="background-color: rgb(44, 144, 72); color:white; border-radius:10px; border:3px solid rgb(44, 144, 72);">
+  <i class="fa-regular fa-heart fa-lg"></i>
+</button> 

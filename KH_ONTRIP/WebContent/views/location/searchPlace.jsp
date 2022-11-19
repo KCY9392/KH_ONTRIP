@@ -94,15 +94,15 @@
 			<%for (int i = 0; i < placePath.size(); i++) {%>
 				<%if(placeInfo.get(i).getCategoryCode().equals("PP")){%>
 				function <%=placeInfo.get(i).getPlcName()%>(){
-				location.href = "<%=request.getContextPath()%>/selectPlay.pe?placeName=<%=placeInfo.get(i).getPlcName()%>";
+				location.href = "<%=request.getContextPath()%>/selectPlay.pe?placeName=<%=placeInfo.get(i).getPlcName()%>&dareaName=<%=placeInfo.get(i).getDareaName() %>&memberNo=<%=loginUser.getMemberNo()%>";
 				}
 				<%} else if(placeInfo.get(i).getCategoryCode().equals("HH")){%>
 					function <%=placeInfo.get(i).getPlcName()%>(){
-					location.href = "<%=request.getContextPath()%>/selectHotel.pe?placeName=<%=placeInfo.get(i).getPlcName()%>";
+					location.href = "<%=request.getContextPath()%>/selectHotel.pe?placeName=<%=placeInfo.get(i).getPlcName()%>&dareaName=<%=placeInfo.get(i).getDareaName() %>&memberNo=<%=loginUser.getMemberNo()%>";
 					}
 				<% } else { %>
 					function <%=placeInfo.get(i).getPlcName()%>(){
-					location.href = "<%=request.getContextPath()%>/selectFood.pe?placeName=<%=placeInfo.get(i).getPlcName()%>";
+					location.href = "<%=request.getContextPath()%>/selectFood.pe?placeName=<%=placeInfo.get(i).getPlcName()%>&dareaName=<%=placeInfo.get(i).getDareaName() %>&memberNo=<%=loginUser.getMemberNo()%>";
 					}
 				<% }%>
 		<%}%>

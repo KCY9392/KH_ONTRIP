@@ -184,10 +184,13 @@
                url : "idCheck.me",
                data : {checkId : $memberId.val()},
                success : function(result){
-                  if(result == "NNNNN"){ // 사용불가능한 아이디
+            	   if($memberId.val() == "") {
+                 	  alert("아이디를 입력해주세요");
+                       $memberId.focus();
+                   }else if(result == "NNNNN"){ // 사용불가능한 아이디
                      alert("이미 존재하거나 회원탈퇴한 아이디입니다.");
                      $memberId.focus();
-                  } else{
+                  }else{
                      if(confirm("사용가능한 아이디입니다. 사용하시겠습니까?")){
                         $("button:button[name=checkSelct]").attr("disabled",false);
                      }else{ // 사용안함

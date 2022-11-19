@@ -3,7 +3,7 @@
 <%
     String contextPath = request.getContextPath();
 
-	int placeCode = Integer.parseInt((String)request.getAttribute("placeCode"));
+	int placeCode = Integer.parseInt((String)request.getParameter("placeCode"));
 	
 	String categoryCode = ((String)request.getAttribute("categoryCode"));
 	

@@ -30,10 +30,12 @@
 
   <br>
 
-  <div class="input-group mb-3" style="width:700px; height:50px; margin:auto;">
-    <input style="border:2px solid rgb(206, 204, 204);" type="text" class="form-control" aria-label="Recipient's username" aria-describedby="button-addon2">
-    <button style="border:2px solid rgb(206, 204, 204); color:burlywood; font-weight: bold;" class="btn btn-outline-secondary" type="button" id="button-addon2">검색</button>
-  </div>
+    <form action="<%=request.getContextPath() %>/searchPlace.se" id="enroll-form" method="post">
+     <div class="input-group mb-3" style="width:700px; height:50px; margin:auto;">
+       <input style="border:2px solid rgb(206, 204, 204);" type="text" class="form-control" aria-label="Recipient's username" aria-describedby="button-addon2" name="word">
+       <button style="border:2px solid rgb(206, 204, 204); color:burlywood; font-weight: bold;" class="btn btn-outline-secondary" type="submit" id="button-addon2">검색</button>
+     </div>
+  </form>
 
   <br><br><br>
   

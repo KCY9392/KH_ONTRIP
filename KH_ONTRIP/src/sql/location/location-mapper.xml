@@ -19,5 +19,6 @@
 		SELECT FILE_PATH, ORIGIN_NAME
 	   	FROM "Image"
   		WHERE "LOCAL_CODE" = ?
+  		AND FILE_PATH = 'resources/location_Img/'
 	</entry>
 </properties>

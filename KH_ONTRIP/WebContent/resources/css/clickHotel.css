@@ -40,14 +40,14 @@ div{
 .title-container>button{
     margin-top: 10px;
 }
-.title-container>button:nth-child(3){
-    border:none;
-    background-color: rgb(92, 92, 237);
-    color:white;
-    border-radius: 10px;
-    height:35px;
-    margin-right:100px;
-}
+/* .title-container>button:nth-child(3){ */
+/*     border:none; */
+/*     background-color: rgb(92, 92, 237); */
+/*     color:white; */
+/*     border-radius: 10px; */
+/*     height:35px; */
+/*     margin-right:100px; */
+/* } */
 
 .body-container{
     text-align: center;

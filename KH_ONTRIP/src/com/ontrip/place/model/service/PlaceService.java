@@ -3,6 +3,7 @@ package com.ontrip.place.model.service;
 import java.sql.Connection;
 import java.util.ArrayList;
 
+import com.ontrip.heart.vo.Heart;
 import com.ontrip.image.vo.Image;
 import com.ontrip.place.model.dao.PlaceDao;
 import com.ontrip.place.model.vo.Place;
@@ -163,6 +164,15 @@ public class PlaceService {
 		
 		return placeCode;
 	}
+	// 찜 조회하기 위한 메소드
+   public Heart selectHeart(int memberCode, int placeCode2){
+         Connection conn = getConnection();
+         Heart ht = new PlaceDao().selectHeart(memberCode, placeCode2, conn);
+         
+         close();
+         
+         return ht;
+      }
 
 
 
