@@ -74,6 +74,13 @@
 	WHERE DAREA_NAME = ?
 	</entry>
 	
+<!-- 관리자페이지에서 시설등록시, 시설코드 생성하기 -->	
+	<entry key="placeCodenext">
+	SELECT SEQ_FILE.NEXTVAL AS pno
+	FROM DUAL
+	</entry>
+	
+	
 <!-- 관리자페이지에서 시설등록하기 -->	
 	<entry key="insertPlace">
 	INSERT INTO "Place" 
@@ -90,11 +97,22 @@
 	 LOCAL_CODE)
 	 
 	VALUES(SEQ_PLC.NEXTVAL, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+	</entry>	
+	
+
+<!-- 관리자페이지에서 시설등록 사진등록하기 -->
+	<entry key="insertPlaceImages">
+	INSERT INTO "Image"
+   (FILE_NO, 
+   PLC_CODE, 
+   ORIGIN_NAME, 
+   FILE_PATH, 
+   DAREA_CODE, 
+   STATUS, 
+   LOCAL_CODE, 
+   CATEGORY_CODE)
+   VALUES(SEQ_FILE.NEXTVAL, ?, ?, ?, ?, 'Y', ?, ?)
 	</entry>
-	
-	
-	
-	
 	
 	
 	

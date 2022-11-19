@@ -2,6 +2,8 @@
     pageEncoding="UTF-8"%>
 <%
     String contextPath = request.getContextPath();
+
+	String placeCode = String.valueOf(request.getAttribute("placeCode"));
 %>
 
 <!DOCTYPE html>
@@ -67,8 +69,8 @@
     <%@ include file="../common/managerNavbar.jsp" %> 
 
         <br><br><br><br>
-      
-   <form method="post" action="<%= request.getContextPath()%>/PlaceInsert.mn">
+     
+   <form method="post" action="<%= request.getContextPath()%>/PlaceInsert.mn?placeCode=<%= placeCode %>" enctype="multipart/form-data">
          
       
          <div class="container-div">
@@ -80,80 +82,6 @@
                 <option value="HH">맛집</option>
                 <option value="FF">숙소</option>
         </select>
-      
-            <!-- 이미지 첨부파일 -->
-            <div class="img-container">
-                <div class="image-upload" id="image-upload">
-        
-                    <form method="post" enctype="multipart/form-data">
-                        <div class="button">
-                            <label for="chooseFile1" style="margin-bottom:-20px;">
-                                👉 CLICK HERE 👈
-                            </label>
-                        </div>
-                        <input type="file" id="chooseFile1" name="file1" accept="image/*" onchange="loadFile1(this)" required>
-                    </form>
-        
-                    <div class="fileContainer">
-                        <div class="fileInput">
-                            <p id="fileName" name="file1"></p>
-                        </div>
-                    </div>
-                </div>
-                
-                
-                <div class="image-show" id="image-show1"></div>
-            </div>
-
-            <!-- 이미지 첨부파일 -->
-            <div class="img-container">
-                <div class="image-upload" id="image-upload">
-        
-                    <form method="post" enctype="multipart/form-data">
-                        <div class="button">
-                            <label for="chooseFile2" style="margin-bottom:-20px;">
-                                👉 CLICK HERE 👈
-                            </label>
-                        </div>
-                        <input type="file" id="chooseFile2" name="file2" accept="image/*" onchange="loadFile2(this)" required>
-                    </form>
-        
-                    <div class="fileContainer">
-                        <div class="fileInput">
-                            <p id="fileName2"></p>
-                        </div>
-                    </div>
-                </div>
-                
-                
-                <div class="image-show" id="image-show2"></div>
-            </div>
-
-            <!-- 이미지 첨부파일 -->
-            <div class="img-container">
-                <div class="image-upload" id="image-upload">
-        
-                    <form method="post" enctype="multipart/form-data">
-                        <div class="button">
-                            <label for="chooseFile3" style="margin-bottom:-20px;">
-                                👉 CLICK HERE 👈
-                            </label>
-                        </div>
-                        <input type="file" id="chooseFile3" name="file3" accept="image/*" onchange="loadFile3(this)" required>
-                    </form>
-        
-                    <div class="fileContainer">
-                        <div class="fileInput">
-                            <p id="fileName3"></p>
-                        </div>
-                    </div>
-                </div>
-                
-                
-                <div class="image-show" id="image-show3"></div>
-            </div>
-            
-            <br><br><br><br><br><br><br><br><br><br><br><br>
             
             <span style="color:black; font-size:17px;">작성자 : admin</span> <br><br>
 
@@ -208,97 +136,7 @@
                 var submit = document.getElementById('submitButton');
                 // submit.onclick = showImage;    
 
-                function showImage() {
-                    var newImage = document.getElementById('image-show').lastElementChild;
-                    newImage.style.visibility = "visible";
-                    
-                    document.getElementById('image-upload').style.visibility = 'hidden';
-
-                    document.getElementById('fileName').textContent = null;     //기존 파일 이름 지우기
-                    
-                }
-
-
-                function loadFile1(input) {
-                    
-
-                        var file = input.files[0];
-    
-                        var name = document.getElementById('fileName');
-                        name.textContent = file.name;
-    
-                        name.style.fontSize = "13px";
-    
-                        var newImage = document.createElement("img");
-                        newImage.setAttribute("class", 'img');
-    
-                        newImage.src = URL.createObjectURL(file);   
-    
-                        newImage.style.width = "15%";
-                        newImage.style.height = "15%";  
-                        newImage.style.objectFit = "contain";
-                        newImage.style.marginLeft = "-85%";
-                        newImage.style.marginTop = "-31%";
-                        newImage.style.zIndex = "1";
-    
-                        var container = document.getElementById('image-show1');
-                        container.replaceChildren();
-                        container.appendChild(newImage);
-                        
-
-                };
-
-                function loadFile2(input) {
-                    var file = input.files[0];
-
-                    var name = document.getElementById('fileName2');
-                    name.textContent = file.name;
-
-                    name.style.fontSize = "13px";
-
-                    var newImage = document.createElement("img");
-                    newImage.setAttribute("class", 'img');
-
-                    newImage.src = URL.createObjectURL(file);   
-
-                    newImage.style.width = "15%";
-                    newImage.style.height = "15%";  
-                    newImage.style.objectFit = "contain";
-                    newImage.style.marginLeft = "-84.5%";
-                    newImage.style.marginTop = "-31%";
-                    newImage.style.zIndex = "1";
-
-                    var container = document.getElementById('image-show2');
-                    container.replaceChildren();
-                    container.appendChild(newImage);
-                };
-
-                function loadFile3(input) {
-                    var file = input.files[0];
-
-                    var name = document.getElementById('fileName3');
-                    name.textContent = file.name;
-
-                    name.style.fontSize = "13px";
-
-                    var newImage = document.createElement("img");
-                    newImage.setAttribute("class", 'img');
-
-                    newImage.src = URL.createObjectURL(file);   
-
-                    newImage.style.width = "15%";
-                    newImage.style.height = "15%";   
-                    newImage.style.objectFit = "contain";
-                    newImage.style.marginLeft = "-84.5%";
-                    newImage.style.marginTop = "-31%";
-                    newImage.style.zIndex = "1";
-
-                    var container = document.getElementById('image-show3');
-                    container.replaceChildren();
-                    container.appendChild(newImage);
-                };
-
-
+                
 
                 function addressKindChange(e) {
                     let default_option = "선택해주세요";
@@ -337,10 +175,5 @@
                     }
                 }
             </script>
-
-
-        
-        
-   
 </body>
 </html>

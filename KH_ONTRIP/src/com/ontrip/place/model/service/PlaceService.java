@@ -149,6 +149,21 @@ public class PlaceService {
 		return 0;
 	}
 
+	//시설등록하기 버튼 누를경우, placeCode를 시퀀스 nextval시켜서 가져오기
+	public int placeCodenext() {
+		
+		Connection conn = getConnection();
+		int placeCode = new PlaceDao().placeCodenext(conn);
+		
+		if(placeCode > 0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		
+		return placeCode;
+	}
+
 
 
 } 

@@ -21,8 +21,6 @@ public class AdMainListController extends HttpServlet {
 		
 		request.setCharacterEncoding("UTF-8");
 		
-		
-		
 		request.getRequestDispatcher("views/manager/ManagerPlace.jsp").forward(request, response);
 	}
 

@@ -417,6 +417,7 @@ public class PlaceDao {
 	//관리자페이지에서 시설등록시, 이미지 데베에 업로드하기
 	public int insertPlaceImages(ArrayList<Image> list, Connection conn) {
 		
+		int result1 = 0;
 		int result = 0;
 		
 		PreparedStatement psmt = null;
@@ -424,13 +425,65 @@ public class PlaceDao {
 		String sql = prop.getProperty("insertPlaceImages");
 		
 		try {
+			
 			psmt = conn.prepareStatement(sql);
 			
-			psmt.setString(parameterIndex, x);
+			// PLC_CODE, ORIGIN_NAME, FILE_PATH, DAREA_CODE, LOCAL_CODE, CATEGORY_CODE
+            for( Image img : list) {
+                // 반복문이 돌아갈때마다 미완성된 sql문을 담은 psmt객체를 생성
+                
+            	psmt.setInt(1, img.getPlcCode());
+                psmt.setString(2, img.getOriginName());
+                psmt.setString(3, img.getFilePath());
+                psmt.setString(4, img.getDareaCode());
+                psmt.setString(5, img.getLocalCode());
+                psmt.setString(6, img.getCategoryCode());
+                
+                // 실행하고 결과값 받기
+                result1 = psmt.executeUpdate();
+                
+                // for문안에서 결과값을 체크해주는 변수 필요하다해서 result2가 필요
+                
+                if(result1 == 0) {
+                    result = 0;
+                }else {
+                	result = 1;
+                }
+			}
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			close(psmt);
 		}
-		return 0;
+		return result;
+	}
+
+	//시설등록하기 버튼 누를경우, placeCode를 시퀀스 nextval시켜서 가져오기
+	public int placeCodenext(Connection conn) {
+		
+		int placeCode = 0;
+		
+		PreparedStatement psmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("placeCodenext");
+		
+		try {
+			psmt = conn.prepareStatement(sql);
+			
+			rset = psmt.executeQuery();
+			
+			if(rset.next()) {
+				placeCode = rset.getInt("pno");
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(psmt);
+		}
+		return placeCode;
 	}
 
 

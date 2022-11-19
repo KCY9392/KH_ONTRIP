@@ -5,7 +5,7 @@ import java.util.Date;
 public class Image {
 
     private int fileNo; // 파일번호(PK) // SQL : FILE_NO // NUMBER
-    private String plcCode; // 시설코드(FK) // SQL : PLC_CODE // CHAR(2)
+    private int plcCode; // 시설코드(FK) // SQL : PLC_CODE // CHAR(2)
     private String originName;
     private String changeName;
     private String filePath; // 저장폴더경로 // SQL : FILE_PATH // VARCHAR2(100)
@@ -14,13 +14,14 @@ public class Image {
     private String iStatus; // 삭제여부 // SQL : IMG_STATUS // VARCHAR2(1) // DEFAULT 'N'
     private String localCode;
     private String categoryCode;
+    private String dareaCode;
     
     public Image() {
     	
     }
 
-	public Image(int fileNo, String plcCode, String originName, String changeName, String filePath, Date uploadDate,
-			int fileLevel, String iStatus, String localCode, String categoryCode) {
+	public Image(int fileNo, int plcCode, String originName, String changeName, String filePath, Date uploadDate,
+			int fileLevel, String iStatus, String localCode, String categoryCode, String dareaCode) {
 		super();
 		this.fileNo = fileNo;
 		this.plcCode = plcCode;
@@ -32,6 +33,7 @@ public class Image {
 		this.iStatus = iStatus;
 		this.localCode = localCode;
 		this.categoryCode = categoryCode;
+		this.dareaCode = dareaCode;
 	}
 
 	public Image(String filePath, String originName) {
@@ -48,11 +50,11 @@ public class Image {
 		this.fileNo = fileNo;
 	}
 
-	public String getPlcCode() {
+	public int getPlcCode() {
 		return plcCode;
 	}
 
-	public void setPlcCode(String plcCode) {
+	public void setPlcCode(int plcCode) {
 		this.plcCode = plcCode;
 	}
 
@@ -119,14 +121,27 @@ public class Image {
 	public void setCategoryCode(String categoryCode) {
 		this.categoryCode = categoryCode;
 	}
+	
+	
+
+	public String getDareaCode() {
+		return dareaCode;
+	}
+
+	public void setDareaCode(String dareaCode) {
+		this.dareaCode = dareaCode;
+	}
 
 	@Override
 	public String toString() {
 		return "Image [fileNo=" + fileNo + ", plcCode=" + plcCode + ", originName=" + originName + ", changeName="
 				+ changeName + ", filePath=" + filePath + ", uploadDate=" + uploadDate + ", fileLevel=" + fileLevel
-				+ ", iStatus=" + iStatus + ", localCode=" + localCode + ", categoryCode=" + categoryCode + "]";
+				+ ", iStatus=" + iStatus + ", localCode=" + localCode + ", categoryCode=" + categoryCode
+				+ ", dareaCode=" + dareaCode + "]";
 	}
 
+	
+	
     
     
 

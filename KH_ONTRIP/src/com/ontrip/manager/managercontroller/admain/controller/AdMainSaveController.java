@@ -13,7 +13,6 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
 
-import com.ontrip.common.MyFileRenamePolicy;
 import com.ontrip.image.vo.Image;
 import com.ontrip.place.model.service.PlaceService;
 import com.ontrip.place.model.vo.Place;
@@ -31,7 +30,6 @@ public class AdMainSaveController extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		if(ServletFileUpload.isMultipartContent(request)) {
 		
 		request.setCharacterEncoding("UTF-8");
 		
@@ -68,57 +66,12 @@ public class AdMainSaveController extends HttpServlet {
 		//시설설명텍스트
 		String plcText = request.getParameter("content");
 		
-		
-		
-		//첨부사진
-		
-			
-		
-		// 1_1. 전송용량 제한
-        int maxSize = 10 * 1024 * 1024; // 10mByte
-        
-        // 1_2. 저장할 폴더의 물리적인 경로
-        
-        String savePath = "";
-        if(categoryCode.equals("PP")) {
-        	savePath = request.getServletContext().getRealPath("/resources/play_Img/");
-        }else if(categoryCode.equals("HH")){
-        	savePath = request.getServletContext().getRealPath("/resources/food_Img/");
-        }else {
-        	savePath = request.getServletContext().getRealPath("/resources/hotel_Img/");
-        }
-        
-        // 2. 전달된 파일명 수정 작업 후 서버에 업로드
-        MultipartRequest multiRequest = new MultipartRequest(request,savePath, maxSize, "UTF-8");
-        
-        
-        // Image에 여러번 insert할 데이터 뽑기
-        // 단, 여러개의 첨부파일이 있을것이기때문에, Image객체들을 ArrayList에 담을 것임
-        // => 적어도 1개 이상은 담길예정
-        ArrayList<Image> list = new ArrayList<>();
-        
-        for(int i=1; i<=3; i++) { // file의 개수는 최대4개이고, 파일name을 file1,file2,file3,file4로 넘겼기때문에 i=1부터
-            
-            String key = "file"+i;
-            
-            if(multiRequest.getOriginalFileName(key) != null) {
-                //첨부파일이 있는 경우
-                // Attachment객체 생성 + 원본명, 수정명, 파일경로 넣기 + 파일level 담기
-                // list에 추가하기
-                Image img = new Image();
-                img.setOriginName(multiRequest.getOriginalFileName(key));
-                img.setFilePath(savePath);
-                img.setFileLevel(i); // 시설대표이미지 1, 시설상세이미지 2 3
-                
-                list.add(img);
-            }
-        }
-        
-        int result1 = new PlaceService().insertPlaceImages(list);
-        
+		//시설코드
+		int plcCode = Integer.parseInt(request.getParameter("placeCode"));
 		
 		Place place = new Place();
 		
+		place.setPlcCode(plcCode);
 		place.setCategoryCode(categoryCode);
 		place.setLocalCode(localCode);
 		place.setDareaCode(dareaCode);
@@ -132,18 +85,19 @@ public class AdMainSaveController extends HttpServlet {
 		
 		System.out.println(place);
 		
-		int result2 = new PlaceService().insertPlace(place);
+		int result = new PlaceService().insertPlace(place);
 		
-		HttpSession session = request.getSession();
-		
-		if(result1>0 && result2>0) {//시설등록 성공
-			session.setAttribute("alertMsg", "1");
-			request.getRequestDispatcher("views/manager/ManagerPlace.jsp").forward(request, response);
-			
-		}else {//시설등록 실패
-			session.setAttribute("alertMsg", "0");
+		if(result>0) {
+			//시설등록은 성공 -> 다음 이미지 등록하기
+			request.setAttribute("categoryCode", categoryCode);
+			request.setAttribute("placeCode", plcCode);
+			request.setAttribute("dareaCode", dareaCode);
+			request.getRequestDispatcher("views/manager/managerplaceInsertImg.jsp").forward(request, response);
+
+		}else {
+		//시설등록 실패 -> 다시 페이지 초기화시키면서 재로딩
+		response.sendRedirect("views/manager/managerplaceInsert.jsp");
 		}
-	  }
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
