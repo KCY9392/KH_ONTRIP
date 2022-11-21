@@ -66,7 +66,7 @@
 
     <div class="left-categoryBox">
         <div class="userResult">
-            <button type="button" id = "n" name="search" onclick="location.href='<%= request.getContextPath() %>/placeList.mn'">메인 관리</button>
+            <button type="button" id = "n" name="search" onclick="location.href='<%= request.getContextPath() %>/placeList.mn?categoryCode=PP'">메인 관리</button>
         </div>
         <div class="reserveResult">
             <button type="button" id = "n" name="search" onclick="">회원 관리</button>

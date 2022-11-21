@@ -91,7 +91,7 @@ private Properties prop = new Properties();
 							 rset.getDate("HEART_DATE"),
 							 rset.getInt("PLC_CODE"),
 							 rset.getString("FILE_PATH"),
-							 rset.getString("ORIGIN_NAME")));
+							 rset.getString("CHANGE_NAME")));
 			}
 			System.out.println(htList);
 			

@@ -133,8 +133,9 @@
                <%
                   for (int i = 0; i < placeImages.size(); i++) {
                %>
-               <img src="<%=placeImages.get(i).getFilePath()%><%=placeImages.get(i).getOriginName()%>" alt="">
-            
+               <div style="width: 318px; height:237px;">
+               <img src="<%=placeImages.get(i).getFilePath()%><%=placeImages.get(i).getOriginName()%>" >
+               </div>
             <% } %>
             <% } %>
             <!-- 지도를 표시할 div -->

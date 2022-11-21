@@ -147,3 +147,16 @@ label {
 .img {
     position: absolute;
 }
+.place-image {
+    width:300px;
+    display:flex;
+}
+.place-image img{
+    width:220px;
+}
+.img2{
+    margin-left:38%;
+}
+.img3{
+    margin-left: 35%;
+}

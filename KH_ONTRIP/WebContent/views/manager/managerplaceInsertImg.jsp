@@ -3,13 +3,13 @@
 <%
     String contextPath = request.getContextPath();
 
-	Place p = ((Place)request.getAttribute("place"));
-	
-	int placeCode = p.getPlcCode();
-	String categoryCode = p.getCategoryCode();
-	String dareaCode = p.getDareaCode();
-	String localCode = p.getLocalCode();
-	
+   Place p = ((Place)request.getAttribute("place"));
+   
+   int placeCode = p.getPlcCode();
+   String categoryCode = p.getCategoryCode();
+   String dareaCode = p.getDareaCode();
+   String localCode = p.getLocalCode();
+   
 %>
 
 <!DOCTYPE html>

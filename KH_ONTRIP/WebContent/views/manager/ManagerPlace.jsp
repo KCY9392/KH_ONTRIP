@@ -6,6 +6,9 @@
 	// 서비스 요청전 : null
 	// 서비스 요청성공후 : alert로 띄워줄 메시지 문구.
 %>
+
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -76,8 +79,21 @@
         background-color:darkseagreen;
         border:none;
    }
+	.buttons{
+            display: flex;
+            justify-content: center;
+            align-items: center;
 
+        }
+   td > a{
+   	color: black;
+   	text-decoration: none;
+   }
    
+   tr a{
+   	color: black;
+   	text-decoration: none;
+   }
 </style>
 <!-- CSS only -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
@@ -96,262 +112,102 @@
         <br><br>
 
 
-        <div>
-            <fieldset id = "mForm">
-                <div class = "selectTitle">
-                    <button type="button" class="btn btn-primary btn-lg"id = "play" name="search" onclick="show(this);">놀거리</button>
-                    <button type="button" class="btn btn-primary btn-lg"id = "eat" name="search" onclick="show(this);">맛집</button>
-                    <button type="button" class="btn btn-primary btn-lg"id = "sleep" name="search" onclick="show(this);">숙소</button>
-    
-                    <div id = "playsearch" class = "box" style="height:400px;">
-                        <table class="table table-bordered" style="margin-left:0; margin-top:40px;">
-                            <thead>
-                                <tr>
-                                    <td class="num1">번호</td>
-                                    <td class="num2">시설 이름</td>
-                                    <td class="num3">등록 날짜</td>
-                                </tr>
-                            </thead>
-                            <tbody class="table-group-divider">
-                                <tr>
-                                    <th scope="row">1</th>
-                                    <td>낚시장</td>
-                                    <td>2022-11-12</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">2</th>
-                                    <td>캠핑장</td>
-                                    <td>2022-11-13</td>
-                                    </tr>
-                                <tr>
-                                    <th scope="row">3</th>
-                                    <td>수영장</td>
-                                    <td>2022-11-13</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">4</th>
-                                    <td>번지점프</td>
-                                    <td>2022-11-13</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">5</th>
-                                    <td>번지점프</td>
-                                    <td>2022-11-13</td>
-                                </tr>
-                            </tbody>
-                          </table>
-                        <br>
-                        ◀&nbsp;&nbsp;&nbsp;1&nbsp;&nbsp;&nbsp;2&nbsp;&nbsp;&nbsp;<strong>3</strong>&nbsp;&nbsp;&nbsp;4&nbsp;&nbsp;&nbsp;6&nbsp;&nbsp;&nbsp;7&nbsp;&nbsp;&nbsp;8&nbsp;&nbsp;&nbsp;9&nbsp;&nbsp;&nbsp;10&nbsp;&nbsp;&nbsp;▶
-<!--                     <div align="center" class="paging-area"> -->
-               
-<%--                   <% if(currentPage != 1) { %> --%>
-<%--                      <button onclick="doPageClick(<%= currentPage-1 %>)">&lt;</button> --%>
-<%--                   <% } %> --%>
-                  
-<%--                   <% for(int i = startPage; i<= endPage; i++) { %> --%>
-<%--                      <% if(i != currentPage) { %> --%>
-<%--                         <button onclick="doPageClick(<%=i %>)"><%= i %></button> --%>
-<%--                      <% } else { %> --%>
-<%--                         <button disabled><%= i %></button>    --%>
-<%--                      <% } %> --%>
-<%--                   <% } %> --%>
-                  
-<%--                   <% if(currentPage != maxPage) { %> --%>
-<%--                      <button onclick="doPageClick(<%= currentPage + 1 %>)">&gt;</button> --%>
-<%--                   <% } %> --%>
-<!--                </div> --> 
-                    </div>
-                
-                    <div id = "eatsearch" class = "box" style="height:400px;"> 
-                        <table class="table table-bordered" style="margin-left:0; margin-top:40px;">
-                            <thead>
-                                <tr>
-                                    <td class="num1">번호</td>
-                                    <td class="num2">시설 이름</td>
-                                    <td class="num3">등록 날짜</td>
-                                </tr>
-                            </thead>
-                            <tbody class="table-group-divider">
-                                <tr>
-                                    <th scope="row">1</th>
-                                    <td>강릉순두부</td>
-                                    <td>2022-11-12</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">2</th>
-                                    <td>부산구석집</td>
-                                    <td>2022-11-13</td>
-                                    </tr>
-                                <tr>
-                                    <th scope="row">3</th>
-                                    <td>강남맛집</td>
-                                    <td>2022-11-13</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">4</th>
-                                    <td>용산맛집</td>
-                                    <td>2022-11-13</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">5</th>
-                                    <td>용산맛집</td>
-                                    <td>2022-11-13</td>
-                                </tr>
-                            </tbody>
-                          </table>
-                        <br>
-                        ◀&nbsp;&nbsp;&nbsp;1&nbsp;&nbsp;&nbsp;2&nbsp;&nbsp;&nbsp;<strong>3</strong>&nbsp;&nbsp;&nbsp;4&nbsp;&nbsp;&nbsp;6&nbsp;&nbsp;&nbsp;7&nbsp;&nbsp;&nbsp;8&nbsp;&nbsp;&nbsp;9&nbsp;&nbsp;&nbsp;10&nbsp;&nbsp;&nbsp;▶
-                    
-<!--                     <div align="center" class="paging-area"> -->
-               
-<%--                   <% if(currentPage != 1) { %> --%>
-<%--                      <button onclick="doPageClick(<%= currentPage-1 %>)">&lt;</button> --%>
-<%--                   <% } %> --%>
-                  
-<%--                   <% for(int i = startPage; i<= endPage; i++) { %> --%>
-<%--                      <% if(i != currentPage) { %> --%>
-<%--                         <button onclick="doPageClick(<%=i %>)"><%= i %></button> --%>
-<%--                      <% } else { %> --%>
-<%--                         <button disabled><%= i %></button>    --%>
-<%--                      <% } %> --%>
-<%--                   <% } %> --%>
-                  
-<%--                   <% if(currentPage != maxPage) { %> --%>
-<%--                      <button onclick="doPageClick(<%= currentPage + 1 %>)">&gt;</button> --%>
-<%--                   <% } %> --%>
-<!--                </div> -->
-                    </div>
-                
-                    <div id = "sleepsearch" class = "box" style="height:400px;">
-                        <table class="table, table table-bordered" style="margin-left:0; margin-top:40px;">
-                            <thead>
-                                <tr>
-                                    <td class="num1">번호</td>
-                                    <td class="num2">시설 이름</td>
-                                    <td class="num3">등록 날짜</td>
-                                </tr>
-                            </thead>
-                            <tbody class="table-group-divider">
-                                <tr>
-                                    <th scope="row">1</th>
-                                    <td>강남호텔</td>
-                                    <td>2022-11-12</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">2</th>
-                                    <td>강남호텔</td>
-                                    <td>2022-11-13</td>
-                                    </tr>
-                                <tr>
-                                    <th scope="row">3</th>
-                                    <td>강남호텔</td>
-                                    <td>2022-11-13</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">4</th>
-                                    <td>강남호텔</td>
-                                    <td>2022-11-13</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">5</th>
-                                    <td>강남호텔</td>
-                                    <td>2022-11-13</td>
-                                </tr>
-                            </tbody>
-                          </table>
-                        <br>
-                        ◀&nbsp;&nbsp;&nbsp;1&nbsp;&nbsp;&nbsp;2&nbsp;&nbsp;&nbsp;<strong>3</strong>&nbsp;&nbsp;&nbsp;4&nbsp;&nbsp;&nbsp;6&nbsp;&nbsp;&nbsp;7&nbsp;&nbsp;&nbsp;8&nbsp;&nbsp;&nbsp;9&nbsp;&nbsp;&nbsp;10&nbsp;&nbsp;&nbsp;▶
-                    
-<!--                     <div align="center" class="paging-area"> -->
-               
-<%--                   <% if(currentPage != 1) { %> --%>
-<%--                      <button onclick="doPageClick(<%= currentPage-1 %>)">&lt;</button> --%>
-<%--                   <% } %> --%>
-                  
-<%--                   <% for(int i = startPage; i<= endPage; i++) { %> --%>
-<%--                      <% if(i != currentPage) { %> --%>
-<%--                         <button onclick="doPageClick(<%=i %>)"><%= i %></button> --%>
-<%--                      <% } else { %> --%>
-<%--                         <button disabled><%= i %></button>    --%>
-<%--                      <% } %> --%>
-<%--                   <% } %> --%>
-                  
-<%--                   <% if(currentPage != maxPage) { %> --%>
-<%--                      <button onclick="doPageClick(<%= currentPage + 1 %>)">&gt;</button> --%>
-<%--                   <% } %> --%>
-<!--                </div> -->
-                    </div>
-                </div>
-            </fieldset>
-        </div>
-     
-        <br><br><br>
+		<div class="buttons">
+			<form action="/KH_ONTRIP/placeList.mn?categoryCode=PP"
+				method="post">
+				<button type="submit">놀거리</button>
+			</form>
+			<form action="/KH_ONTRIP/placeList.mn?categoryCode=HH"
+				method="post">
+				<button type="submit">숙소</button>
+			</form>
+			<form action="/KH_ONTRIP/placeList.mn?categoryCode=FF"
+				method="post">
+				<button type="submit">맛집</button>
+			</form>
+		</div>
+		<table class="table table-bordered">
+			<thead>
+				<tr>
+					<th>번호</th>
+					<th>시설</th>
+					<th>등록일</th>
+				</tr>
+			</thead>
+
+			<tbody>
+				<c:forEach var="plc" items="${placeList}">
+					<tr>
+						<td>${plc.plcCode}</td>
+						<td><a
+							href="<%=request.getContextPath() %>/placeDetail.mn?plcName=${plc.plcName}&categoryCode=${plc.categoryCode}">${plc.plcName}</a></td>
+						<td>${plc.plcDate}</td>
+					</tr>
+				</c:forEach>
+			</tbody>
+
+			<tbody>
+				<tr class="paging">
+					<td colspan="5">
+						<ul class="pagination">
+
+							<c:if test="${page.prev }">
+								<li><a
+									href="<%=request.getContextPath() %>/placeList.mn?pageNum=${page.startPage - 1 }&amount=${page.amount}&categoryCode=${categoryCode}">이전</a></li>
+							</c:if>
+
+							<c:forEach var="num" begin="${page.startPage }"
+								end="${page.endPage }">
+								<li class="${page.pageNum eq num ? 'active' : '' }"><a
+									href="<%=request.getContextPath() %>/placeList.mn?pageNum=${num }&amount=${page.amount}&categoryCode=${categoryCode}">${num }</a></li>
+							</c:forEach>
+
+							<c:if test="${page.next }">
+								<li><a
+									href="<%=request.getContextPath() %>/placeList.mn?pageNum=${page.endPage + 1 }&amount=${page.amount}&categoryCode=${categoryCode}">다음</a></li>
+							</c:if>
+						</ul>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+
+		<br><br><br>
     
         <script>
          function insertPlace(){
             location.href = "<%=request.getContextPath()%>/PlaceEnroll.mn"
          }
-        
-        
-            function show(element){
-                let tag = document.getElementsByClassName("box");
-    
-                for(let i=0; i<tag.length; i++){
-                    if(element.id+"search" == tag[i].id){
-                        tag[i].style.display = "block";
-                    }else{
-                        tag[i].style.display = "none";
-                    }
-                }
-            }
 
-         $(function(){
-            $(".list-area>tbody>tr").click(function(){
-               // 클릭시 해당 공지사항의 번호를 넘겨야함.
-               // 해당 tr요소의 자손중에서 첫번째 td의 영역의 내용이 필요.
-               
-               let bno = $(this).children().eq(0).text();// 1 , 2
-               //현재내가클릭한tr의 자손들중 0번째에 위치한 자식의 textnode내용을 가져온다.
-               
-               //요청할 url?키=밸류&키=밸류&키=밸류
-               // 물음표 뒤의 내요을 쿼리스트링이라고 부른다. => 직접 만들어서 넘겨야함.
-<%--                location.href= '<%=contextPath %>/detail.bo?bno='+ bno;             --%>
-            });
-         })
          
-         function doPageClick(currentPage){
-<%--             location.href = "<%=contextPath%>/list.bo?currentPage="+currentPage; --%>
-         }
-         
-         
-         let msg = "<%= alertMsg %>"; // let msg = 시설등록에 성공하였습니다.
-     	const Toast = Swal.mixin({
-     		toast: true,
-     		position: 'center-center',
-     		showConfirmButton: false,
-     		timer: 2000,
-     		timerProgressBar: true,
-     		didOpen: (toast) => {
-     			toast.addEventListener('mouseenter', Swal.stopTimer)
-     			toast.addEventListener('mouseleave', Swal.resumeTimer)
-     		}
-     	});
+<%--          let msg = "<%= alertMsg %>"; // let msg = 시설등록에 성공하였습니다. --%>
+//      	const Toast = Swal.mixin({
+//      		toast: true,
+//      		position: 'center-center',
+//      		showConfirmButton: false,
+//      		timer: 2000,
+//      		timerProgressBar: true,
+//      		didOpen: (toast) => {
+//      			toast.addEventListener('mouseenter', Swal.stopTimer)
+//      			toast.addEventListener('mouseleave', Swal.resumeTimer)
+//      		}
+//      	});
 
-     	if(msg != "null" && msg == "1"){
-     		Toast.fire({
-     			icon: 'success',
-     			title: '시설등록에 성공하였습니다.'
+//      	if(msg != "null" && msg == "1"){
+//      		Toast.fire({
+//      			icon: 'success',
+//      			title: '시설등록에 성공하였습니다.'
 
-     		});
+//      		});
 
-     	}else if(msg != "null" && msg == "0"){
-     		Toast.fire({
-     			icon: 'error',
-     			title: '시설등록에 실패하였습니다.'
+//      	}else if(msg != "null" && msg == "0"){
+//      		Toast.fire({
+//      			icon: 'error',
+//      			title: '시설등록에 실패하였습니다.'
 
-     		});
-     	}
-     	<% session.removeAttribute("alertMsg");%>
+//      		});
+//      	}
+<%--      	<% session.removeAttribute("alertMsg");%> --%>
       </script>
             
     </div>

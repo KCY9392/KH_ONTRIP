@@ -73,7 +73,7 @@
 				<div class="outer8">
 					<div class="outer9" style="width: 270px; height: 270px;">
 						<img
-							src="<%=placePath.get(i).getFilePath() %><%=placePath.get(i).getOriginName() %>"
+							src="<%= request.getContextPath() %>/<%=placePath.get(i).getFilePath()+placePath.get(i).getChangeName() %>"
 							width="122%" height="198px">
 					</div>
 				</div>

@@ -128,7 +128,7 @@
 						
 						<% if(!darea.isEmpty()) { %>
                   <% for( DetailArea d : darea){ %>
-						<button name=<%= d.getLocalCode() %> onclick="<%= d.getdAreaCode()%>();" id="darea-btn" type="button" class="btn btn-secondary btn-lg"><%= d.getdAreaName() %></button>
+						<button name=<%= d.getLocalCode() %> onclick="movedArea('<%= d.getdAreaCode()%>');" id="darea-btn" type="button" class="btn btn-secondary btn-lg"><%= d.getdAreaName() %></button>
 						&nbsp;&nbsp;&nbsp;
 				  <% }  %>
 				<% } %>
@@ -140,13 +140,10 @@
             </table>
     
     		<script>
-    		<% if(!darea.isEmpty()) { %>
-            	<% for( DetailArea d : darea){ %>
-					function <%= d.getdAreaCode()%>(){
-		    			location.href = "<%=request.getContextPath()%>/selectPlace.no?dareaCode=<%= d.getdAreaCode()%>";
-		    		}
-			  	<% }  %>
-			<% } %>
+    		function movedArea(dareaCode){
+    			location.href= "<%=request.getContextPath()%>"+"/selectPlace.no?dareaCode="+ dareaCode;
+    		}
+    		
     		</script>
         </div>
     </div>

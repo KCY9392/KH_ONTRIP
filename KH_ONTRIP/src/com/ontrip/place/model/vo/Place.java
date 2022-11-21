@@ -18,6 +18,8 @@ public class Place {
     private float plcLa; // 시설위도 // SQL : PLC_LA // NUMBER
     private float plcLo; // 시설경도 // SQL : PLC_LO // NUMBER
     private String status; // 삭제여부 // SQL : STATUS // VARCHAR2(1) // DEFAULT 'N'
+    private String categoryName;
+    private String localName;
     private String dareaName;
     
     public Place() {
@@ -26,7 +28,11 @@ public class Place {
 
     
     
-    public Place(int plcCode, String categoryCode, String localCode, String dareaCode, String plcName,
+
+
+
+
+	public Place(int plcCode, String categoryCode, String localCode, String dareaCode, String plcName,
 			String plcAddress, String plcText, String plcBname, String plcPnumber, Date plcDate, float plcLa,
 			float plcLo, String status, String dareaName) {
 		super();
@@ -81,7 +87,34 @@ public class Place {
 	      this.dareaName = dareaName;
 	   }
 
-	
+    public Place(int plcCode, String plcName, Date plcDate, String categoryCode) {
+		super();
+		this.plcCode = plcCode;
+		this.plcName = plcName;
+		this.plcDate = plcDate;
+		this.categoryCode = categoryCode;
+	}
+
+	public Place(String plcName, String plcAddress, String plcText, String plcBname, String plcPnumber, float plcLa,
+			float plcLo, String categoryName, String localName, String dareaName, String categoryCode) {
+		super();
+		this.plcName = plcName;
+		this.plcAddress = plcAddress;
+		this.plcText = plcText;
+		this.plcBname = plcBname;
+		this.plcPnumber = plcPnumber;
+		this.plcLa = plcLa;
+		this.plcLo = plcLo;
+		this.categoryName = categoryName;
+		this.localName = localName;
+		this.dareaName = dareaName;
+		this.categoryName = categoryName;
+	}
+
+
+
+
+
 
 
 	public int getPlcCode() {
@@ -255,11 +288,41 @@ public class Place {
 
 
 
+	public String getCategoryName() {
+		return categoryName;
+	}
+
+
+
+	public void setCategoryName(String categoryName) {
+		this.categoryName = categoryName;
+	}
+
+
+
+	public String getLocalName() {
+		return localName;
+	}
+
+
+
+	public void setLocalName(String localName) {
+		this.localName = localName;
+	}
+
+
+
+
+
+
+
 	@Override
 	public String toString() {
 		return "Place [plcCode=" + plcCode + ", categoryCode=" + categoryCode + ", localCode=" + localCode
 				+ ", dareaCode=" + dareaCode + ", plcName=" + plcName + ", plcAddress=" + plcAddress + ", plcText="
 				+ plcText + ", plcBname=" + plcBname + ", plcPnumber=" + plcPnumber + ", plcDate=" + plcDate
-				+ ", plcLa=" + plcLa + ", plcLo=" + plcLo + ", status=" + status + ", dareaName=" + dareaName + "]";
+				+ ", plcLa=" + plcLa + ", plcLo=" + plcLo + ", status=" + status + ", categoryName=" + categoryName
+				+ ", localName=" + localName + ", dareaName=" + dareaName + "]";
 	}
+
 }

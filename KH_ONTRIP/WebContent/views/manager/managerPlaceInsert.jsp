@@ -3,6 +3,7 @@
 <%
     String contextPath = request.getContextPath();
 
+   String placeCode = String.valueOf(request.getAttribute("placeCode"));
 %>
 
 <!DOCTYPE html>
@@ -70,7 +71,7 @@
 
         <br><br><br><br>
      
-   <form method="post" action="<%= request.getContextPath()%>/PlaceInsert.mn">
+   <form method="post" action="<%= request.getContextPath()%>/PlaceInsert.mn?placeCode=<%= placeCode %>">
          
       
          <div class="container-div">
@@ -79,8 +80,8 @@
 
       <select name="category" id="category" style="width:150px; height:40px; float:left; margin-top:-60px;" required>  
                 <option value="PP">놀거리</option>
-                <option value="HH">맛집</option>
-                <option value="FF">숙소</option>
+                <option value="FF">맛집</option>
+                <option value="HH">숙소</option>
         </select>
             
             <span style="color:black; font-size:17px;">작성자 : admin</span> <br><br>
@@ -118,7 +119,7 @@
                
                <br>
                
-   			   <span>주소 : &nbsp;</span>
+               <span>주소 : &nbsp;</span>
                <input type="text" name="areaAddress" id="address">
                <button type="button" id="searchBtn">검색</button>
                <div id="map" style="width:100%;height:350px;"></div>
@@ -129,7 +130,7 @@
                <span>경도 : &nbsp;</span>
                <input type="text" name="longitude" required> <br><br>
                
-	   		   <br>
+               <br>
                <span>시설설명</span> <br>
                <textarea name="content" cols="50" rows="5" required>
                </textarea>
@@ -137,8 +138,8 @@
             <br><br>
             
       <button type="submit" style="border:none; width:150px; height:50px; background-color:bisque; font-weight:900; font-size:15px; border-radius:5px;">등록</button>
-       </div> 
         </form>
+       </div> 
 
 
             <script>

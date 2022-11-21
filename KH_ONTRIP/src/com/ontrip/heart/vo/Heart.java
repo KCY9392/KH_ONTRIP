@@ -12,7 +12,7 @@ public class Heart {
     private String placeName;
     private String filePath;
     private String originName;
-    
+    private String changeName;
     public Heart() {
     	
     }
@@ -26,14 +26,14 @@ public class Heart {
 
 
 	
-	public Heart(String categoryName, String placeName, Date heartDate, int placeCode, String filePath, String originName) {
+	public Heart(String categoryName, String placeName, Date heartDate, int placeCode, String filePath, String changeName) {
 		super();
 		this.categoryName = categoryName;
 		this.placeName = placeName;
 		this.heartDate = heartDate;
 		this.plcCode = placeCode;
 		this.filePath = filePath;
-		this.originName = originName;
+		this.changeName = changeName;
 	}
 
 	public Heart(int memberNo, int plcCode) {
@@ -98,12 +98,22 @@ public class Heart {
 		this.originName = originName;
 	}
 
+	
+	public String getChangeName() {
+		return changeName;
+	}
+
+	public void setChangeName(String changeName) {
+		this.changeName = changeName;
+	}
+
 	@Override
 	public String toString() {
 		return "Heart [memberNo=" + memberNo + ", plcCode=" + plcCode + ", heartDate=" + heartDate + ", categoryName="
 				+ categoryName + ", placeName=" + placeName + ", filePath=" + filePath + ", originName=" + originName
-				+ "]";
+				+ ", changeName=" + changeName + "]";
 	}
+
 
     
 }

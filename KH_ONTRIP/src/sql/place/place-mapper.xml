@@ -6,19 +6,19 @@
 	<entry key="selectPlayInfo">
 	SELECT PLC_NAME, PLC_ADDRESS, PLC_PNUMBER
 	FROM "Place"
-	WHERE DAREA_CODE = ? AND CATEGORY_CODE = 'PP'
+	WHERE STATUS = 'Y' AND DAREA_CODE = ? AND CATEGORY_CODE = 'PP'
 	</entry>
 	
 	<entry key="selectHotelInfo">
 	SELECT PLC_NAME, PLC_ADDRESS, PLC_PNUMBER
 	FROM "Place"
-	WHERE DAREA_CODE = ? AND CATEGORY_CODE = 'HH'
+	WHERE STATUS = 'Y' AND DAREA_CODE = ? AND CATEGORY_CODE = 'HH'
 	</entry>
 	
 	<entry key="selectFoodInfo">
 	SELECT PLC_NAME, PLC_ADDRESS, PLC_PNUMBER
 	FROM "Place"
-	WHERE DAREA_CODE = ? AND CATEGORY_CODE = 'FF'
+	WHERE STATUS = 'Y' AND DAREA_CODE = ? AND CATEGORY_CODE = 'FF'
 	</entry>
 	
 	
@@ -27,7 +27,7 @@
 	SELECT PLC_CODE, CATEGORY_CODE, DAREA_CODE,PLC_ADDRESS, PLC_TEXT, PLC_BNAME, PLC_PNUMBER,
 	PLC_LA, PLC_LO 
 	FROM "Place"
-	WHERE PLC_NAME = ?
+	WHERE STATUS = 'Y' AND PLC_NAME = ?
 	</entry>
 	
 	<entry key="findDareaCode">
@@ -47,7 +47,7 @@
 	<entry key="selectPlaceImages">
 		SELECT FILE_PATH, CHANGE_NAME, FILE_NO
 		FROM "Image"
-		WHERE PLC_CODE = (SELECT PLC_CODE 
+		WHERE STATUS = 'Y' AND PLC_CODE IN (SELECT PLC_CODE 
 							FROM "Place"
 							WHERE PLC_NAME = ?)
 	</entry>
@@ -55,9 +55,9 @@
 	
 <!-- 메인창에서 검색 -->
 	<entry key="searchPlacePath">
-   SELECT FILE_PATH, ORIGIN_NAME
+   SELECT FILE_NO, FILE_PATH, CHANGE_NAME
    FROM "Image"
-   WHERE STATUS = 'Y' AND ORIGIN_NAME LIKE ?
+   WHERE STATUS = 'Y' AND ORIGIN_NAME LIKE '%1%' AND ORIGIN_NAME LIKE ?
    </entry>
    
    <entry key="searchPlaceInfo">

@@ -12,12 +12,12 @@
 	</entry>
 	
 	<entry key="selectHeart">
-		SELECT c.CATEGORY_NAME, p.PLC_NAME, h.HEART_DATE, PLC_CODE, i.FILE_PATH, i.ORIGIN_NAME
+		SELECT c.CATEGORY_NAME, p.PLC_NAME, h.HEART_DATE, PLC_CODE, i.FILE_PATH, i.CHANGE_NAME
 		FROM "Heart" h
 		JOIN "Place" p USING (PLC_CODE)
 		JOIN "Category" c USING(CATEGORY_CODE)
         JOIN "Image" i USING(PLC_CODE)
-		WHERE MEM_NO = ?
+		WHERE i.STATUS = 'Y' AND MEM_NO = ? AND ORIGIN_NAME LIKE '%1%'
 	</entry>
 	
 	<entry key="deleteHeartList">

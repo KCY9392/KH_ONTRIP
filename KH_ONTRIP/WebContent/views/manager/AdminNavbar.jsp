@@ -43,7 +43,7 @@
   <div class="outer">
     <div class="outers">
       <div class="adminMain">
-        <form method="get" action="/KH_ONTRIP/manager/main">
+        <form method="get" action="/KH_ONTRIP/manager/placeList.mn?category=PP">
           <button type="submit" id = "n" name="search">메인 관리</button>
         </form>
       </div>

@@ -127,20 +127,8 @@
             
             <% } %>
             <% } %>
-            <!-- 지도를 표시할 div -->
-        <div id="map" style="width:100%;height:350px;"></div>
 
-        <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=3c46a61fbdf9ee1c5956f08d7c2deaf8"></script>
-        <script>
-            var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
-                mapOption = { 
-                    center: new kakao.maps.LatLng(<%= place.getPlcLa() %>, <%= place.getPlcLo() %>), // 지도의 중심좌표
-                    level: 3 // 지도의 확대 레벨
-                };
-
-            // 지도를 표시할 div와  지도 옵션으로  지도를 생성
-            var map = new kakao.maps.Map(mapContainer, mapOption); 
-        </script> 
+        
         </div>
         
 
@@ -149,8 +137,10 @@
         <a href="" class="review">방문자 후기</a> &nbsp;&nbsp;
         <span style="font-size:12px; font-weight: 100; color:rgb(127, 129, 129);">504개</span> <br><br>
         <i class="fa-solid fa-location-dot" style="color:green;"></i>
-        <span style="font-size:13px; font-weight: bold;"><%= place.getPlcAddress() %></span>
+        <span style="font-size:13px; font-weight: bold;"><%= place.getPlcAddress() %></span><br><br>
 
+            <!-- 지도를 표시할 div -->
+        <div id="map" style="width:50%;height:350px; margin-left:380px;"></div>
         <br><br>
 
         <div class="explain-text">
@@ -348,6 +338,27 @@
 			});
 		})
 	</script>
-    
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=3c46a61fbdf9ee1c5956f08d7c2deaf8"></script>
+         <script>
+            var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+                mapOption = { 
+                    center: new kakao.maps.LatLng(${place.plcLa}, ${place.plcLo}), // 지도의 중심좌표
+                    level: 3 // 지도의 확대 레벨
+                };
+            
+               // 지도를 생성합니다    
+               var map = new kakao.maps.Map(mapContainer, mapOption);
+               
+            // 마커가 표시될 위치입니다 
+               var markerPosition  = new kakao.maps.LatLng(${place.plcLa}, ${place.plcLo}); 
+
+               // 마커를 생성합니다
+               var marker = new kakao.maps.Marker({
+                   position: markerPosition
+               });
+
+               // 마커가 지도 위에 표시되도록 설정합니다
+               marker.setMap(map);
+             </script>
 </body>
 </html>

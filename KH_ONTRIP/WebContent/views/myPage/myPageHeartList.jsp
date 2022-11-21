@@ -79,7 +79,7 @@
 		                        <tr class="t1">
 		                            <td><%=htList.get(i).getCategoryName() %></td>
 		                            <!-- value값은 일부러 만들어 놓은거라 밑에 주석되어있는 코드를 쓰면 됨. -->
-		                            <td><img src="<%=htList.get(i).getFilePath() %><%=htList.get(i).getOriginName() %>" style="width:300px; height:200px;"></td>
+		                            <td style=" width: 400px; height:300px;"><img src="<%= request.getContextPath() %>/<%=htList.get(i).getFilePath()+htList.get(i).getChangeName() %>" style="width:100%; height:100%;"></td>
 		                            <td><%=htList.get(i).getPlaceName() %></td>
 		                            <td><%=htList.get(i).getHeartDate() %></td>
 		                            <td><input type="checkbox" name="placeName" value="<%= htList.get(i).getPlaceName() %>"></td>
