@@ -13,24 +13,18 @@ import com.ontrip.image.vo.Image;
 import com.ontrip.place.model.service.PlaceService;
 import com.ontrip.place.model.vo.Place;
 
-/**
- * Servlet implementation class SearchPlaceController
- */
+
+//메인창에서 검색창에 시설검색시 searchPlace.jsp(시설들이 쫙 나오는 창)으로 넘어가는 controller
 @WebServlet("/searchPlace.se")
 public class SearchPlaceController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
+    
     public SearchPlaceController() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
+	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String word = request.getParameter("word");
 		// 검색한 시설 사진 불러오기
@@ -44,11 +38,8 @@ public class SearchPlaceController extends HttpServlet {
 		request.getRequestDispatcher("views/location/searchPlace.jsp").forward(request, response);
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
+	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 

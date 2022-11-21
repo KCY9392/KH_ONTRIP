@@ -45,7 +45,7 @@
 	
 	<!-- 시설상세창 이미지 띄우기 -->
 	<entry key="selectPlaceImages">
-		SELECT FILE_PATH, ORIGIN_NAME
+		SELECT FILE_PATH, CHANGE_NAME, FILE_NO
 		FROM "Image"
 		WHERE PLC_CODE = (SELECT PLC_CODE 
 							FROM "Place"
@@ -55,17 +55,17 @@
 	
 <!-- 메인창에서 검색 -->
 	<entry key="searchPlacePath">
-	SELECT FILE_PATH, ORIGIN_NAME
-	FROM "Image"
-	WHERE ORIGIN_NAME LIKE ?
-	</entry>
-	
-	<entry key="searchPlaceInfo">
-	SELECT CATEGORY_CODE, PLC_NAME, PLC_ADDRESS, PLC_PNUMBER, d.DAREA_NAME
-	FROM "Place"
-	JOIN "Detailed Area" d USING(DAREA_CODE)
-	WHERE PLC_NAME LIKE ?
-	</entry>
+   SELECT FILE_PATH, ORIGIN_NAME
+   FROM "Image"
+   WHERE STATUS = 'Y' AND ORIGIN_NAME LIKE ?
+   </entry>
+   
+   <entry key="searchPlaceInfo">
+   SELECT CATEGORY_CODE, PLC_NAME, PLC_ADDRESS, PLC_PNUMBER, d.DAREA_NAME
+   FROM "Place"
+   JOIN "Detailed Area" d USING(DAREA_CODE)
+   WHERE STATUS = 'Y' AND PLC_NAME LIKE ?
+   </entry>
 	
 	
 <!-- 관리자페이지에서 메인관리 시설등록 시, 상세지역이름으로 상세지역코드가져오기 -->
@@ -73,12 +73,6 @@
 	SELECT DAREA_CODE
 	FROM "Detailed Area"
 	WHERE DAREA_NAME = ?
-	</entry>
-	
-<!-- 관리자페이지에서 시설등록시, 시설코드 생성하기 -->	
-	<entry key="placeCodenext">
-	SELECT SEQ_FILE.NEXTVAL AS pno
-	FROM DUAL
 	</entry>
 	
 	
@@ -111,8 +105,9 @@
    DAREA_CODE, 
    STATUS, 
    LOCAL_CODE, 
-   CATEGORY_CODE)
-   VALUES(SEQ_FILE.NEXTVAL, ?, ?, ?, ?, 'Y', ?, ?)
+   CATEGORY_CODE,
+   CHANGE_NAME)
+   VALUES(SEQ_FILE.NEXTVAL, ?, ?, ?, ?, 'Y', ?, ?, ?)
 	</entry>
 	
 	
@@ -124,8 +119,12 @@
    </entry>
 
 	
-	
-	
+	<!-- 관리자페이지 - 시설등록시, 등록한 시설의 시설코드 가져오기 -->
+	<entry key="selectPlaceCode">
+	SELECT PLC_CODE
+	FROM "Place"
+	WHERE PLC_NAME = ?
+	</entry>
 	
 	
 	

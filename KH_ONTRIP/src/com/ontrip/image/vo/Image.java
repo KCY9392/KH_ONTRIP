@@ -41,6 +41,15 @@ public class Image {
 		this.originName = originName;
 		this.filePath = filePath;
 	}
+	
+	
+
+	public Image(String filePath, String changeName, int fileNo) {
+		super();
+		this.filePath = filePath;
+		this.changeName = changeName;
+		this.fileNo = fileNo;
+	}
 
 	public int getFileNo() {
 		return fileNo;

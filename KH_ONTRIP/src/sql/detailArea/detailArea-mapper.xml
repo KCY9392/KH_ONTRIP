@@ -16,19 +16,19 @@
 	</entry>
 	
 	<entry key="selectPlayPath">
-		SELECT FILE_PATH, ORIGIN_NAME
+		SELECT FILE_NO, FILE_PATH, CHANGE_NAME
 		FROM "Image" 
-		WHERE  DAREA_CODE = ? AND CATEGORY_CODE='PP'
+		WHERE  DAREA_CODE = ? AND CATEGORY_CODE='PP' AND ORIGIN_NAME LIKE '%1%'
 	</entry>
 	
 	<entry key="selectHotelPath">
-		SELECT FILE_PATH, ORIGIN_NAME
+		SELECT FILE_PATH, CHANGE_NAME
 		FROM "Image" 
 		WHERE  DAREA_CODE = ? AND CATEGORY_CODE='HH'
 	</entry>
 	
 	<entry key="selectFoodPath">
-		SELECT FILE_PATH, ORIGIN_NAME
+		SELECT FILE_PATH, CHANGE_NAME
 		FROM "Image" 
 		WHERE  DAREA_CODE = ? AND CATEGORY_CODE='FF'
 	</entry>

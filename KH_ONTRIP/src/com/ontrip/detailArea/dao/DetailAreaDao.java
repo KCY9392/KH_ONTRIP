@@ -106,7 +106,8 @@ private Properties prop = new Properties();
 			while(rset.next()) {
 				foodPath.add(new Image(
 							 rset.getString("FILE_PATH"),
-							 rset.getString("ORIGIN_NAME")));
+							 rset.getString("CHANGE_NAME"),
+							 rset.getInt("FILE_NO")));
 			}
 			System.out.println(foodPath);
 			
@@ -137,7 +138,8 @@ private Properties prop = new Properties();
 			while(rset.next()) {
 				playPath.add(new Image(
 							 rset.getString("FILE_PATH"),
-							 rset.getString("ORIGIN_NAME")));
+							 rset.getString("CHANGE_NAME"),
+							 rset.getInt("FILE_NO")));
 			}
 			System.out.println(playPath);
 			
@@ -168,7 +170,8 @@ private Properties prop = new Properties();
 			while(rset.next()) {
 				hotelPath.add(new Image(
 							 rset.getString("FILE_PATH"),
-							 rset.getString("ORIGIN_NAME")));
+							 rset.getString("CHANGE_NAME"),
+							 rset.getInt("FILE_NO")));
 			}
 			System.out.println(hotelPath);
 			

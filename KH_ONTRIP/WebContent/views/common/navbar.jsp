@@ -2,6 +2,7 @@
     pageEncoding="UTF-8" import="com.ontrip.member.model.vo.Member"%>
 <%
 
+
 	Member loginUser = (Member) session.getAttribute("loginUser");
 	// 로그인전 or 로그인 실패 : null
 	// 로그인 성공후 : 로그인한 회원의 정보가 담긴 member객체.

@@ -117,8 +117,16 @@
         <br><br>
 
         <div class="img-hotel">
-            <img src="../image/롯데호텔.png" alt=""> <!-- 해당 사진 1-->
-            <img src="../image/롯데호텔2.png" alt=""> <!-- 해당 사진 2-->
+            <%
+                  if (!placeImages.isEmpty()) {
+               %>
+               <%
+                  for (int i = 0; i < placeImages.size(); i++) {
+               %>
+               <img src="<%= request.getContextPath() %>/<%=placeImages.get(i).getFilePath()+placeImages.get(i).getChangeName() %>" alt="">
+            
+            <% } %>
+            <% } %>
             <!-- 지도를 표시할 div -->
         <div id="map" style="width:100%;height:350px;"></div>
 
@@ -134,6 +142,7 @@
             var map = new kakao.maps.Map(mapContainer, mapOption); 
         </script> 
         </div>
+        
 
         <br>
 
@@ -158,6 +167,7 @@
                     <button type="button" class="btn-div" id = "n" name="search" onclick="show(this);">놀거리</button>
                     <button type="button" class="btn-div" id = "m" name="search" onclick="show(this);">맛집</button>
                     <button type="button" class="btn-div" id = "s" name="search" onclick="show(this);">숙소</button>
+                 </div>
     
                      <div id = "nsearch" class = "box" style="padding:20px; text-align: center;">  <!-- border:1px solid black; -->
             <% if(!playPath.isEmpty()) { %>
@@ -165,7 +175,7 @@
                         <div class="outer7">
                             <div class="outer8">
                                 <div class="outer9" style="width:270px; height:270px;">
-                                    <img src="<%=playPath.get(i).getFilePath() %><%=playPath.get(i).getOriginName() %>" width = "122%" height = "198px"> 
+                                    <img src="<%= request.getContextPath() %>/<%=playPath.get(i).getFilePath()+playPath.get(i).getChangeName() %>" width = "122%" height = "198px"> 
                                 </div>
                             </div>
                           
@@ -193,7 +203,7 @@
                   <div class="outer8">
                      <div class="outer9" style="width: 270px; height: 270px;">
                         <img
-                           src="<%=foodPath.get(i).getFilePath()%><%=foodPath.get(i).getOriginName()%>"
+                           src="<%= request.getContextPath() %>/<%=foodPath.get(i).getFilePath()+foodPath.get(i).getChangeName() %>"
                            width="122%" height="198px">
                      </div>
                   </div>
@@ -232,7 +242,7 @@
                   <div class="outer8">
                      <div class="outer9" style="width: 270px; height: 270px;">
                         <img
-                           src="<%=hotelPath.get(i).getFilePath()%><%=hotelPath.get(i).getOriginName()%>"
+                           src="<%= request.getContextPath() %>/<%=hotelPath.get(i).getFilePath()+hotelPath.get(i).getChangeName() %>"
                            width="122%" height="198px">
                      </div>
                   </div>
@@ -251,6 +261,7 @@
                %>
                 </div>
             </fieldset>
+        </div>
         </div>
         
     <script>

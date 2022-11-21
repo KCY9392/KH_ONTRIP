@@ -24,9 +24,6 @@ public class AdMainSaveFormController extends HttpServlet {
 		
 		request.setCharacterEncoding("UTF-8");
 		
-		int placeCode = new PlaceService().placeCodenext();
-		request.setAttribute("placeCode", placeCode);
-		
 		request.getRequestDispatcher("views/manager/managerPlaceInsert.jsp").forward(request, response);
 	}
 

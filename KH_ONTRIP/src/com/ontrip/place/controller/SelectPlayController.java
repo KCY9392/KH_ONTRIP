@@ -8,14 +8,17 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.ontrip.detailArea.service.DetailAreaService;
 import com.ontrip.heart.vo.Heart;
 import com.ontrip.image.vo.Image;
+import com.ontrip.member.model.vo.Member;
 import com.ontrip.place.model.service.PlaceService;
 import com.ontrip.place.model.vo.Place;
 
 
+//상세지역창에서 놀거리선택시, clickPlay.jsp로 넘어가는 controller
 @WebServlet("/selectPlay.pe")
 public class SelectPlayController extends HttpServlet {
 	private static final long serialVersionUID = 1L;

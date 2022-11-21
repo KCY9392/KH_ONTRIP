@@ -15,6 +15,9 @@ import com.ontrip.image.vo.Image;
 import com.ontrip.place.model.service.PlaceService;
 import com.ontrip.place.model.vo.Place;
 
+
+//상세지역창에서 맛집을 클릭 시, clickfood.jsp로 넘어가는 controller
+
 @WebServlet("/selectFood.pe")
 public class SelectFoodController extends HttpServlet {
 	private static final long serialVersionUID = 1L;

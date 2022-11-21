@@ -26,7 +26,7 @@ public class LoginController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		
-		System.out.println("들어오니");
+		System.out.println("로그인하는중");
 		
 		request.setCharacterEncoding("UTF-8");
 		

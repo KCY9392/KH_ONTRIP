@@ -147,23 +147,10 @@ public class PlaceService {
 			rollback(conn);
 		}
 		
-		return 0;
+		return result;
 	}
 
-	//시설등록하기 버튼 누를경우, placeCode를 시퀀스 nextval시켜서 가져오기
-	public int placeCodenext() {
-		
-		Connection conn = getConnection();
-		int placeCode = new PlaceDao().placeCodenext(conn);
-		
-		if(placeCode > 0) {
-			commit(conn);
-		}else {
-			rollback(conn);
-		}
-		
-		return placeCode;
-	}
+	
 	// 찜 조회하기 위한 메소드
    public Heart selectHeart(int memberCode, int placeCode2){
          Connection conn = getConnection();
@@ -173,6 +160,15 @@ public class PlaceService {
          
          return ht;
       }
+
+   //관리자페이지 - 시설등록에서 시설정보작성하고 등록된 시설코드(plcCode) 가져오기
+	public int selectplaceCode(String plcName) {
+		
+		Connection conn = getConnection();
+		int placeCode = new PlaceDao().selectplaceCode(plcName, conn);
+		close();
+		return placeCode;
+	}
 
 
 

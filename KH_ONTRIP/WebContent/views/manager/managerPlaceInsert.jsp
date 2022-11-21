@@ -3,7 +3,6 @@
 <%
     String contextPath = request.getContextPath();
 
-	String placeCode = String.valueOf(request.getAttribute("placeCode"));
 %>
 
 <!DOCTYPE html>
@@ -71,7 +70,7 @@
 
         <br><br><br><br>
      
-   <form method="post" action="<%= request.getContextPath()%>/PlaceInsert.mn?placeCode=<%= placeCode %>">
+   <form method="post" action="<%= request.getContextPath()%>/PlaceInsert.mn">
          
       
          <div class="container-div">
@@ -110,31 +109,36 @@
             <br><br>
 
          <div class="input-box">
+         
                <span>대표자 : &nbsp;</span>
                <input type="text" name="placeBName" required> <br><br>
-               <span>주소 : &nbsp;</span>
-               <input type="text" name="areaAddress" required> <br><br>
+               
                <span>전화번호 : &nbsp;</span>
                <input type="text" name="telephone" required> <br><br>
+               
                <br>
-               <span>위도 : &nbsp;</span>
-               <input type="text" name="latitude" required> <br><br>
-               <span>경도 : &nbsp;</span>
-               <input type="text" name="longitude" required> <br><br>
+               
    			   <span>주소 : &nbsp;</span>
-               <input type="text" name="detailAddress" id="address">
+               <input type="text" name="areaAddress" id="address">
                <button type="button" id="searchBtn">검색</button>
                <div id="map" style="width:100%;height:350px;"></div>
-	   
-               <span>내용</span> <br>
+               
+               <span>위도 : &nbsp;</span>
+               <input type="text" name="latitude" required> <br><br>
+               
+               <span>경도 : &nbsp;</span>
+               <input type="text" name="longitude" required> <br><br>
+               
+	   		   <br>
+               <span>시설설명</span> <br>
                <textarea name="content" cols="50" rows="5" required>
                </textarea>
             </div>
             <br><br>
             
       <button type="submit" style="border:none; width:150px; height:50px; background-color:bisque; font-weight:900; font-size:15px; border-radius:5px;">등록</button>
-        </form>
        </div> 
+        </form>
 
 
             <script>

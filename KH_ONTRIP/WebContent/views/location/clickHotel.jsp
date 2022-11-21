@@ -270,6 +270,7 @@
                 </div>
             </fieldset>
         </div>
+       </div>
         
     <script>
         function show(element){

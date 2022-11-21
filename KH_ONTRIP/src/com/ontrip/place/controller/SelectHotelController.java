@@ -14,6 +14,8 @@ import com.ontrip.image.vo.Image;
 import com.ontrip.place.model.service.PlaceService;
 import com.ontrip.place.model.vo.Place;
 
+
+// 상세지역창에서 숙소를 클릭 시, clickhotel.jsp로 넘어가는 controller
 @WebServlet("/selectHotel.pe")
 public class SelectHotelController extends HttpServlet {
    private static final long serialVersionUID = 1L;

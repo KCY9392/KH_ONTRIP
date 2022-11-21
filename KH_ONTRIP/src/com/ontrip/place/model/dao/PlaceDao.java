@@ -255,7 +255,8 @@ public class PlaceDao {
 			while(rset.next()) {
 				placeImages.add(new Image(
 							 rset.getString("FILE_PATH"),
-							 rset.getString("ORIGIN_NAME")));
+							 rset.getString("CHANGE_NAME"),
+							 rset.getInt("FILE_NO")));
 			}
 			System.out.println(placeImages);
 			
@@ -435,17 +436,29 @@ public class PlaceDao {
             for( Image img : list) {
                 // 반복문이 돌아갈때마다 미완성된 sql문을 담은 psmt객체를 생성
                 
+//            	INSERT INTO "Image"
+//            	   (FILE_NO, 
+//            	   PLC_CODE, 
+//            	   ORIGIN_NAME, 
+//            	   FILE_PATH, 
+//            	   DAREA_CODE, 
+//            	   STATUS, 
+//            	   LOCAL_CODE, 
+//            	   CATEGORY_CODE,
+//            	   CHANGE_NAME)
+//            	   VALUES(SEQ_FILE.NEXTVAL, ?, ?, ?, ?, 'Y', ?, ?, ?)
+            	
             	psmt.setInt(1, img.getPlcCode());
                 psmt.setString(2, img.getOriginName());
                 psmt.setString(3, img.getFilePath());
                 psmt.setString(4, img.getDareaCode());
                 psmt.setString(5, img.getLocalCode());
                 psmt.setString(6, img.getCategoryCode());
+                psmt.setString(7, img.getChangeName());
                 
                 // 실행하고 결과값 받기
                 result1 = psmt.executeUpdate();
                 
-                // for문안에서 결과값을 체크해주는 변수 필요하다해서 result2가 필요
                 
                 if(result1 == 0) {
                     result = 0;
@@ -461,33 +474,7 @@ public class PlaceDao {
 		return result;
 	}
 
-	//시설등록하기 버튼 누를경우, placeCode를 시퀀스 nextval시켜서 가져오기
-	public int placeCodenext(Connection conn) {
-		
-		int placeCode = 0;
-		
-		PreparedStatement psmt = null;
-		ResultSet rset = null;
-		
-		String sql = prop.getProperty("placeCodenext");
-		
-		try {
-			psmt = conn.prepareStatement(sql);
-			
-			rset = psmt.executeQuery();
-			
-			if(rset.next()) {
-				placeCode = rset.getInt("pno");
-			}
-			
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			close(rset);
-			close(psmt);
-		}
-		return placeCode;
-	}
+
 
 	  // 로그인시 찜 유지하기 위한 객체 생성
 	   public Heart selectHeart(int memberCode, int placeCode2, Connection conn) {
@@ -520,6 +507,38 @@ public class PlaceDao {
 	         return ht;
 	         
 	      }
+
+	//관리자페이지 - 시설등록에서 시설정보작성하고 등록된 시설코드(plcCode) 가져오기
+	public int selectplaceCode(String plcName, Connection conn) {
+
+		int placeCode = 0;
+		
+		PreparedStatement psmt = null;
+		
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("selectPlaceCode");
+		
+		try {
+			psmt = conn.prepareStatement(sql);
+			
+			psmt.setString(1, plcName);
+			
+			rset = psmt.executeQuery();
+			
+			if(rset.next()) {
+				placeCode = rset.getInt("PLC_CODE");
+			}
+			
+			System.out.println(placeCode);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+	         close(rset);
+	         close(psmt);
+	    } 
+		return placeCode;
+	}
 
 
 

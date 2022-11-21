@@ -66,12 +66,9 @@ public class AdMainSaveController extends HttpServlet {
 		//시설설명텍스트
 		String plcText = request.getParameter("content");
 		
-		//시설코드
-		int plcCode = Integer.parseInt(request.getParameter("placeCode"));
 		
 		Place place = new Place();
 		
-		place.setPlcCode(plcCode);
 		place.setCategoryCode(categoryCode);
 		place.setLocalCode(localCode);
 		place.setDareaCode(dareaCode);
@@ -83,15 +80,17 @@ public class AdMainSaveController extends HttpServlet {
 		place.setPlcLa(plcLa);
 		place.setPlcLo(plcLo);
 		
-		System.out.println(place);
-		
 		int result = new PlaceService().insertPlace(place);
 		
+		//위에서 insert된(등록)된 시설의 시설코드 가져오기
+		int placeCode = new PlaceService().selectplaceCode(place.getPlcName());
+		place.setPlcCode(placeCode);
+		
 		if(result>0) {
+			//시설정보등록 성공 alert창 띄울까용 말까용
+			
 			//시설등록은 성공 -> 다음 이미지 등록하기
-			request.setAttribute("categoryCode", categoryCode);
-			request.setAttribute("placeCode", plcCode);
-			request.setAttribute("dareaCode", dareaCode);
+			request.setAttribute("place", place);
 			request.getRequestDispatcher("views/manager/managerplaceInsertImg.jsp").forward(request, response);
 
 		}else {
