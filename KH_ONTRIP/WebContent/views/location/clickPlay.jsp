@@ -162,7 +162,7 @@
                      <div id = "nsearch" class = "box" style="padding:20px; text-align: center;">  <!-- border:1px solid black; -->
             <% if(!playPath.isEmpty()) { %>
                          <% for(int i=0; i<playPath.size(); i++){ %>
-                        <div class="outer7">
+                        <div class="outer7" onclick="movePlay('<%= playInfo.get(i).getPlcName() %>','<%= playInfo.get(i).getDareaName()%>', '<%= loginUser.getMemberNo() %>')">
                             <div class="outer8">
                                 <div class="outer9" style="width:270px; height:270px;">
                                     <img src="<%= request.getContextPath() %>/<%=playPath.get(i).getFilePath()+playPath.get(i).getChangeName() %>" width = "122%" height = "198px"> 
@@ -189,7 +189,7 @@
                <% 
                     for (int i = 0; i < foodPath.size(); i++) { 
               %> 
-               <div class="outer7">
+               <div class="outer7" onclick="moveFood('<%= foodInfo.get(i).getPlcName() %>','<%= foodInfo.get(i).getDareaName()%>', '<%= loginUser.getMemberNo() %>')">
                   <div class="outer8">
                      <div class="outer9" style="width: 270px; height: 270px;">
                         <img
@@ -228,7 +228,7 @@
                <%
                   for (int i = 0; i < hotelPath.size(); i++) {
                %>
-               <div class="outer7">
+               <div class="outer7" onclick="moveHotel('<%= hotelInfo.get(i).getPlcName() %>','<%= hotelInfo.get(i).getDareaName()%>', '<%= loginUser.getMemberNo() %>')">
                   <div class="outer8">
                      <div class="outer9" style="width: 270px; height: 270px;">
                         <img
@@ -271,29 +271,17 @@
         
     </script>
    <script>
-        <%if (!playPath.isEmpty()) {%>
-                    <%for (int i = 0; i < playPath.size(); i++) {%>
-         function <%=playInfo.get(i).getPlcName()%>(){
-             location.href = "<%=request.getContextPath()%>/selectPlay.pe?placeName=<%=playInfo.get(i).getPlcName()%>&dareaName=<%= dareaName %>&memberNo=<%=loginUser.getMemberNo()%>";
-          }
-           <%}%>
-      <%}%>
-      
-      <%if (!hotelPath.isEmpty()) {%>
-        <%for (int i = 0; i < hotelPath.size(); i++) {%>
-      function <%=hotelInfo.get(i).getPlcName()%>(){
-         location.href = "<%=request.getContextPath()%>/selectHotel.pe?placeName=<%=hotelInfo.get(i).getPlcName()%>&dareaName=<%= dareaName %>&memberNo=<%=loginUser.getMemberNo()%>";
-      }
-         <%}%>
-      <%}%>
-      
-      <%if (!foodPath.isEmpty()) {%>
-        <%for (int i = 0; i < foodPath.size(); i++) {%>
-      function <%=foodInfo.get(i).getPlcName()%>(){
-         location.href = "<%=request.getContextPath()%>/selectFood.pe?placeName=<%=foodInfo.get(i).getPlcName()%>&dareaName=<%= dareaName %>&memberNo=<%=loginUser.getMemberNo()%>";
-      }
-         <%}%>
-      <%}%>
+   function movePlay(placeName, dareaName, memberNo){
+		location.href= "<%=request.getContextPath()%>"+"/selectPlay.pe?placeName="+ placeName+ "&dareaName=" +dareaName+  "&memberNo=" +memberNo;
+	}
+	
+	function moveFood(placeName, dareaName, memberNo){
+		location.href= "<%=request.getContextPath()%>"+"/selectFood.pe?placeName="+ placeName+ "&dareaName=" +dareaName+  "&memberNo=" +memberNo;
+	}
+	
+	function moveHotel(placeName, dareaName, memberNo){
+		location.href= "<%=request.getContextPath()%>"+"/selectHotel.pe?placeName="+ placeName+ "&dareaName=" +dareaName+  "&memberNo=" +memberNo;
+	}
     </script>
     
     <script>

@@ -133,25 +133,11 @@
                <%
                   for (int i = 0; i < placeImages.size(); i++) {
                %>
-               <div style="width: 318px; height:237px;">
-               <img src="<%=placeImages.get(i).getFilePath()%><%=placeImages.get(i).getOriginName()%>" >
-               </div>
+               <img src="<%= request.getContextPath() %>/<%=placeImages.get(i).getFilePath()+placeImages.get(i).getChangeName() %>" >
             <% } %>
             <% } %>
-            <!-- 지도를 표시할 div -->
-        <div id="map" style="width:100%;height:350px;"></div>
 
-        <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=3c46a61fbdf9ee1c5956f08d7c2deaf8"></script>
-        <script>
-            var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
-                mapOption = { 
-                    center: new kakao.maps.LatLng(<%= place.getPlcLa() %>, <%= place.getPlcLo() %>), // 지도의 중심좌표
-                    level: 3 // 지도의 확대 레벨
-                };
-
-            // 지도를 표시할 div와  지도 옵션으로  지도를 생성
-            var map = new kakao.maps.Map(mapContainer, mapOption); 
-        </script> 
+       
         </div>
 
         <br>
@@ -161,6 +147,8 @@
         <i class="fa-solid fa-location-dot" style="color:green;"></i>
         <span style="font-size:13px; font-weight: bold;"><%= place.getPlcAddress() %></span>
 
+            <!-- 지도를 표시할 div -->
+        <div id="map" style="width:50%;height:350px; margin-left:380px;"></div>
         <br><br>
 
         <div class="explain-text">
@@ -181,7 +169,7 @@
                      <div id = "nsearch" class = "box" style="padding:20px; text-align: center;">  <!-- border:1px solid black; -->
             <% if(!playPath.isEmpty()) { %>
                          <% for(int i=0; i<playPath.size(); i++){ %>
-                        <div class="outer7">
+                        <div class="outer7" onclick="movePlay('<%= playInfo.get(i).getPlcName() %>','<%= playInfo.get(i).getDareaName()%>', '<%= loginUser.getMemberNo() %>')">
                             <div class="outer8">
                                 <div class="outer9" style="width:270px; height:270px;">
                                     <img src="<%=playPath.get(i).getFilePath() %><%=playPath.get(i).getOriginName() %>" width = "122%" height = "198px"> 
@@ -208,7 +196,7 @@
             <% 
                   for (int i = 0; i < foodPath.size(); i++) { 
                %> 
-               <div class="outer7">
+               <div class="outer7" onclick="moveFood('<%= foodInfo.get(i).getPlcName() %>','<%= foodInfo.get(i).getDareaName()%>', '<%= loginUser.getMemberNo() %>')">
                   <div class="outer8">
                      <div class="outer9" style="width: 270px; height: 270px;">
                         <img
@@ -247,7 +235,7 @@
                <%
                   for (int i = 0; i < hotelPath.size(); i++) {
                %>
-               <div class="outer7">
+               <div class="outer7" onclick="moveHotel('<%= hotelInfo.get(i).getPlcName() %>','<%= hotelInfo.get(i).getDareaName()%>', '<%= loginUser.getMemberNo() %>')">
                   <div class="outer8">
                      <div class="outer9" style="width: 270px; height: 270px;">
                         <img
@@ -290,29 +278,17 @@
         
     </script>
    <script>
-        <%if (!playPath.isEmpty()) {%>
-                    <%for (int i = 0; i < playPath.size(); i++) {%>
-         function <%=playInfo.get(i).getPlcName()%>(){
-             location.href = "<%=request.getContextPath()%>/selectPlay.pe?placeName=<%=playInfo.get(i).getPlcName()%>&dareaName=<%= dareaName %>&memberNo=<%=loginUser.getMemberNo()%>";
-          }
-           <%}%>
-      <%}%>
-      
-      <%if (!hotelPath.isEmpty()) {%>
-        <%for (int i = 0; i < hotelPath.size(); i++) {%>
-      function <%=hotelInfo.get(i).getPlcName()%>(){
-         location.href = "<%=request.getContextPath()%>/selectHotel.pe?placeName=<%=hotelInfo.get(i).getPlcName()%>&dareaName=<%= dareaName %>&memberNo=<%=loginUser.getMemberNo()%>";
-      }
-         <%}%>
-      <%}%>
-      
-      <%if (!foodPath.isEmpty()) {%>
-        <%for (int i = 0; i < foodPath.size(); i++) {%>
-      function <%=foodInfo.get(i).getPlcName()%>(){
-         location.href = "<%=request.getContextPath()%>/selectFood.pe?placeName=<%=foodInfo.get(i).getPlcName()%>&dareaName=<%= dareaName %>&memberNo=<%=loginUser.getMemberNo()%>";
-      }
-         <%}%>
-      <%}%>
+   function movePlay(placeName, dareaName, memberNo){
+		location.href= "<%=request.getContextPath()%>"+"/selectPlay.pe?placeName="+ placeName+ "&dareaName=" +dareaName+  "&memberNo=" +memberNo;
+	}
+	
+	function moveFood(placeName, dareaName, memberNo){
+		location.href= "<%=request.getContextPath()%>"+"/selectFood.pe?placeName="+ placeName+ "&dareaName=" +dareaName+  "&memberNo=" +memberNo;
+	}
+	
+	function moveHotel(placeName, dareaName, memberNo){
+		location.href= "<%=request.getContextPath()%>"+"/selectHotel.pe?placeName="+ placeName+ "&dareaName=" +dareaName+  "&memberNo=" +memberNo;
+	}
     </script>
     
     
@@ -364,5 +340,28 @@
          });
       })
    </script>
+   
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=3c46a61fbdf9ee1c5956f08d7c2deaf8"></script>
+        <script>
+           var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+               mapOption = { 
+                   center: new kakao.maps.LatLng(${place.plcLa}, ${place.plcLo}), // 지도의 중심좌표
+                   level: 3 // 지도의 확대 레벨
+               };
+           
+              // 지도를 생성합니다    
+              var map = new kakao.maps.Map(mapContainer, mapOption);
+              
+           // 마커가 표시될 위치입니다 
+              var markerPosition  = new kakao.maps.LatLng(${place.plcLa}, ${place.plcLo}); 
+
+              // 마커를 생성합니다
+              var marker = new kakao.maps.Marker({
+                  position: markerPosition
+              });
+
+              // 마커가 지도 위에 표시되도록 설정합니다
+              marker.setMap(map);
+            </script>
 </body>
 </html>
