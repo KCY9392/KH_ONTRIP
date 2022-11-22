@@ -87,14 +87,16 @@
    </entry>
    
    
-   <entry key="detailPlace">
-    SELECT c.CATEGORY_NAME, p.PLC_NAME, l.LOCAL_NAME, d.DAREA_NAME, p.PLC_BNAME, p.PLC_ADDRESS, p.PLC_PNUMBER, p.PLC_LA, p.PLC_LO, p.PLC_TEXT, CATEGORY_CODE
-   FROM "Place" p
-   JOIN "Category" c USING(CATEGORY_CODE)
-   JOIN "Location" l USING(LOCAL_CODE)
-   JOIN "Detailed Area" d USING(DAREA_CODE) 
-   WHERE PLC_NAME = ?
+   <entry key="detailPlaceImage">
+   SELECT FILE_NO, FILE_PATH, CHANGE_NAME
+   FROM "Image"
+   WHERE PLC_CODE = (SELECT PLC_CODE
+                     FROM "Place"
+                     WHERE PLC_NAME = ?)
+   ORDER BY CHANGE_NAME
    </entry>
+
+
    
    
    <entry key="deletePlace">
@@ -110,10 +112,6 @@
    					 FROM "Place"
    					 WHERE PLC_NAME= ? )
    </entry>
-
-
-
-
 
 
     <entry key="deleteMember">
