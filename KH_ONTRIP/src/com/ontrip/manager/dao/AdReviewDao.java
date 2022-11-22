@@ -81,7 +81,7 @@ public class AdReviewDao {
 
 
 
-    public int getTotal(Connection con) throws SQLException {
+    public int getTotal(Connection con , String category) throws SQLException {
 
         int result = 0 ;
 
@@ -96,6 +96,7 @@ public class AdReviewDao {
 
         try {
             pstmt = con.prepareStatement(sql);
+            pstmt.setString(1,category);
             rs = pstmt.executeQuery();
 
             if (rs.next()) {

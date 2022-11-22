@@ -14,7 +14,7 @@ public class AdQnaFormController implements QnaFrontController {
     @Override
     public void process(HttpServletRequest request, HttpServletResponse response)throws IOException, ServletException {
 
-        String viewPath = "/views/manager/adqna/qnaSaveForm.jsp";
+        String viewPath = "/views/manager/adqna/qnaSaveForm2.jsp";
         RequestDispatcher requestDispatcher = request.getRequestDispatcher(viewPath);
         requestDispatcher.forward(request, response);
 

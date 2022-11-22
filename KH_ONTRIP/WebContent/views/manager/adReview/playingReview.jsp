@@ -1,79 +1,105 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: jay
-  Date: 2022/11/14
-  Time: 7:20 PM
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+         pageEncoding="UTF-8"%>
+<%
+    String contextPath = request.getContextPath();
+%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <title>Title</title>
-    <style>
-        .buttons{
-            display: flex;
-            justify-content: center;
-            align-items: center;
-
-        }
-    </style>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>온트립(OnTrip) - 후기관리</title>
+    <link rel="stylesheet" href="resources/css/review_manager.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
 </head>
 <body>
-<div class="buttons">
+<%@ include file="../../common/navbar.jsp" %>
+<%@ include file="../../common/managerNavbar.jsp" %>
+
+<br><br><br><br>
+
+<h1 style="font-weight:900; margin-left:50%; margin-top:-20px;">후기 관리</h1><br>
+
 <form action="/KH_ONTRIP/manager/reviews/play?category=PP" method="post">
-    <button type="submit">놀거리</button>
+    <button class="btn-click" id="q" name="tb" onclick="show(this);" style="margin-left:26%;">놀거리</button>
 </form>
 <form action="/KH_ONTRIP/manager/reviews/play?category=HH" method="post">
-    <button type="submit">숙소</button>
+    <button class="btn-click" id="w" name="tb" onclick="show(this);">숙소</button>
 </form>
 <form action="/KH_ONTRIP/manager/reviews/play?category=FF" method="post">
-    <button type="submit">맛집</button>
+    <button class="btn-click" id="e" name="tb" onclick="show(this);">맛집</button>
 </form>
-</div>
-<table class="table table-bordered">
-    <thead>
-    <tr>
-        <th>번호</th>
-        <th>시설</th>
-        <th>작성자</th>
-        <th>작성일</th>
-    </tr>
-    </thead>
 
-    <tbody>
-    <c:forEach var="vo" items="${list}">
-        <tr>
-            <td>${vo.revCode}</td>
-            <td><a href="/KH_ONTRIP/manager/reviews/review?revCode=${vo.revCode}&categoryCode=${vo.category}">${vo.plcName}</a></td>
-            <td>${vo.memName}</td>
-            <td><fmt:formatDate value="${vo.rnDate }" pattern="yyyy-mm-dd" /></td>
+<div class="table1" id="qtb">
+    <table class="table" id="qtb" style="width:1000px;">
+
+        <thead>
+        <tr class="table-secondary">
+            <th scope="col">번호</th>
+            <th scope="col">이용시설</th>
+            <th scope="col">작성자</th>
+            <th scope="col">날짜</th>
         </tr>
-    </c:forEach>
-    </tbody>
+        </thead>
 
-    <tbody>
-    <tr class="paging">
-        <td colspan="5">
-            <ul class="pagination">
 
-                <c:if test="${page.prev }">
-                    <li><a href="/KH_ONTRIP/manager/reviews/play?pageNum=${page.startPage - 1 }&amount=${page.amount}&category=${category}">이전</a></li>
-                </c:if>
+        <tbody>
 
-                <c:forEach var="num" begin="${page.startPage }" end="${page.endPage }">
-                    <li  class="${page.pageNum eq num ? 'active' : '' }">
-                        <a href="/KH_ONTRIP/manager/reviews/play?pageNum=${num }&amount=${page.amount}&category=${category}">${num }</a></li>
-                </c:forEach>
+        <c:forEach var="vo" items="${list}">
 
-                <c:if test="${page.next }">
-                    <li><a href="/KH_ONTRIP/manager/reviews/play?pageNum=${page.endPage + 1 }&amount=${page.amount}&category=${category}">다음</a></li>
-                </c:if>
-            </ul>
-        </td>
-    </tr>
-    </tbody>
-</table>
+            <tr>
+                <th scope="row">${vo.revCode}</th>
+                <td><a href="/KH_ONTRIP/manager/reviews/review?revCode=${vo.revCode}&categoryCode=${vo.category}">${vo.plcName}</a></td>
+                <td>${vo.memName}</td>
+                <td><fmt:formatDate value="${vo.rnDate }" pattern="yyyy-mm-dd" /></td>
+            </tr>
+
+        </c:forEach>
+
+
+
+        </tbody>
+    </table>
+
+    <br><br><br><br><br><br>
+
+    <div class="paging">
+        <c:if test="${page.prev }">
+            <button class="btn btn-num1"><a href="/KH_ONTRIP/manager/reviews/play?pageNum=${page.startPage - 1 }&amount=${page.amount}&category=${category}"><</a></button>
+        </c:if>
+
+        <c:forEach var="num" begin="${page.startPage }" end="${page.endPage }">
+            <button class="btn btn-num2 ${page.pageNum eq num ? 'active' : '' }">
+                <a href="/KH_ONTRIP/manager/reviews/play?pageNum=${num }&amount=${page.amount}&category=${category}">${num }</a>
+            </button>
+        </c:forEach>
+
+        <c:if test="${page.next }">
+            <button class="btn btn-num6"><a href="/KH_ONTRIP/manager/reviews/play?pageNum=${page.endPage + 1 }&amount=${page.amount}&category=${category}">></a></button>
+        </c:if>
+    </div>
+
+
+</div>
+
+
+
+<script>
+    function show(element){
+        let tag = document.getElementsByClassName("table1");
+
+        for(let i=0; i<tag.length; i++){
+            if(element.id+"tb" == tag[i].id){
+                tag[i].style.display = "block";
+            }else{
+                tag[i].style.display = "none";
+
+            }
+        }
+    }
+</script>
 </body>
 </html>

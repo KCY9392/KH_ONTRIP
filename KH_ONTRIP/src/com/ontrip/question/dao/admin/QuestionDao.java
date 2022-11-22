@@ -1,5 +1,7 @@
 package com.ontrip.question.dao.admin;
 
+import com.ontrip.question.vo.MemberQuestionBoard;
+import com.ontrip.question.vo.MemberQuestionDetailed;
 import com.ontrip.question.vo.Question;
 
 import java.io.FileInputStream;
@@ -67,14 +69,14 @@ public class QuestionDao {
         return result;
     }
 
-    public Question questionByCode(int qCode , Connection con) throws SQLException {
+    public MemberQuestionDetailed questionByCode(int qCode , Connection con) throws SQLException {
         String sql = prop.getProperty("questionByCode");
 
         PreparedStatement psmt = null;
 
         ResultSet rs = null;
 
-        Question question = new Question();
+        MemberQuestionDetailed question = new MemberQuestionDetailed();
 
         try {
             psmt = con.prepareStatement(sql);
@@ -83,13 +85,9 @@ public class QuestionDao {
 
             if (rs.next()) {
                 question.setqCode(rs.getInt("Q_CODE"));
-                question.setMemNo(rs.getInt("MEM_NO"));
                 question.setqTitle(rs.getString("Q_TITLE"));
                 question.setqContent(rs.getString("Q_CONTENT"));
-                question.setqDate(rs.getDate("Q_DATE"));
                 question.setaContent(rs.getString("A_CONTENT"));
-                question.setqCount(rs.getInt("Q_COUNT"));
-                question.setStatus(rs.getString("STATUS"));
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -100,11 +98,11 @@ public class QuestionDao {
     }
 
 
-    public List<Question> getList(int pageNum , int amount , Connection con) throws SQLException {
+    public List<MemberQuestionBoard> getList(int pageNum , int amount , Connection con) throws SQLException {
 
-        List<Question> questions = new ArrayList<>();
+        List<MemberQuestionBoard> questions = new ArrayList<>();
 
-        String sql = prop.getProperty("questionPaging");
+        String sql = prop.getProperty("memberQueList");
 
         PreparedStatement psmt = null;
 
@@ -122,16 +120,14 @@ public class QuestionDao {
 
             while (rs.next()) {
 
-                Question question = new Question();
+                MemberQuestionBoard question = new MemberQuestionBoard();
 
                 question.setqCode(rs.getInt("Q_CODE"));
-                question.setMemNo(rs.getInt("MEM_NO"));
                 question.setqTitle(rs.getString("Q_TITLE"));
-                question.setqContent(rs.getString("Q_CONTENT"));
                 question.setqDate(rs.getDate("Q_DATE"));
                 question.setaContent(rs.getString("A_CONTENT"));
-                question.setqCount(rs.getInt("Q_COUNT"));
-                question.setStatus(rs.getString("STATUS"));
+                question.setMemName(rs.getString("MEM_NAME"));
+                question.setMemNum(rs.getInt("MEM_NO"));
 
                 questions.add(question);
             }

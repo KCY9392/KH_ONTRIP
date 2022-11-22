@@ -1,0 +1,162 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+html,
+body {
+    font-family: 'Noto Sans KR', sans-serif !important;
+    -webkit-overflow-scrolling: touch !important;
+    touch-action: manipulation;
+    margin:0;
+
+}
+div{
+    box-sizing: border-box;
+}
+nav{
+    position:fixed;
+}
+h1{
+    text-align: center;
+    font-weight:900;
+}
+.imgbox {
+    display: block;
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+    border:none;
+}
+.imgbox .box-cover {
+    line-height: 1em;
+    font-size: 0;
+}
+
+.imgbox img {
+    backface-visibility: hidden;
+    transition: all 200ms ease-in-out;
+    -moz-transition: all 200ms ease-in-out;
+    -ms-transition: all 200ms ease-in-out;
+    -o-transition: all 200ms ease-in-out;
+    transform: scale(1);
+    -webkit-transform: scale(1);
+    -ms-transform: scale(1);
+}
+
+.imgbox .box-details {
+    pointer-events: none;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    padding: 30px;
+}
+
+.imgbox:hover img {
+    transform: scale(1.2);
+    -webkit-transform: scale(1.2);
+    -ms-transform: scale(1.2);
+}
+.nav_b{
+    font-size: 30px;
+    padding-left: 40px;
+    color:rgb(155, 205, 138);
+}
+.nav_h{
+    font-size:small;
+}
+.nav_brand{
+    margin-left: 50px;
+}
+hr{
+    width: 550px;
+}
+.rn_navbar{
+    margin: auto;
+    width: 100%;
+    float: left;
+    box-sizing: border-box;
+    border: 1px solid rgb(160, 160, 160);
+    background-color: rgb(240, 206, 84);
+    padding: 40px;
+    position: fixed;
+}
+.hotel{
+    padding-left: 15%;
+    color: rgb(34, 34, 34);
+    /* background-color: rgb(155, 205, 138); */
+    font-size: 30px;
+    font-weight: 900;
+
+}
+.outer{
+    float: right;
+    box-sizing: border-box;
+    text-align: center;
+}
+#checkIn, #checkOut, #day{
+    padding-top: 100px;
+    font-size: 25px;
+    font-weight: 900;
+    margin-left: 50px;
+    color:rgb(77, 76, 76);
+}
+
+.container{
+    margin:auto;
+    text-align: center;
+    width: 1000px;
+    height: 700px;
+
+}
+.selectRn{
+    border-right: solid 1px black;
+    border-left: solid 1px black;
+    text-align: left;
+
+}
+#info{
+    margin:auto;
+    width: 500px;
+    text-align: center;
+    background-color: rgb(238, 235, 235);
+    border: 1px solid rgb(196, 192, 192);
+}
+#info2{
+    margin:auto;
+    width: 850px;
+    border-radius: 15px;
+    border: 1px solid rgb(196, 192, 192);
+}
+.pay-info{
+    width:800px;
+    height:33px;
+}
+
+.span_name, .adult, .child, .room-no,.room-type, .span_phone, .hotel_name{
+    font-size: 20px;
+    font-weight: 900;
+    margin-left: 220px;
+}
+hr{
+    width:300px;
+}
+input{
+    border:none;
+    border-bottom : 1px solid black;
+}
+select {
+    width:100px;
+    padding: 5px;
+    border: 1px solid rgb(49, 154, 0);
+    border-radius: 5px;
+}
+.btn-pay{
+    border:none;
+    background-color: bisque;
+    padding:5px;
+    border:2px solid green;
+    border-radius: 10px;
+    width:150px;
+    height:50px;
+    font-size: 16px;
+    font-weight: bold;
+}

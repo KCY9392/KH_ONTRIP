@@ -6,6 +6,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Properties;
 
@@ -63,5 +64,32 @@ public class RevDao {
         }
 
     }
+
+
+    public String getPlaceName(Connection con, int placeCode) throws SQLException {
+
+        String placeName = null ;
+
+        String sql = prop.getProperty("getPlaceName");
+
+        PreparedStatement pstmt = null;
+        ResultSet rset = null;
+
+        try {
+            pstmt = con.prepareStatement(sql);
+            pstmt.setInt(1,placeCode);
+            rset = pstmt.executeQuery();
+            if (rset.next()) {
+                placeName = rset.getString("PLC_NAME");
+            }
+        }
+        catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            close(rset);
+            close(pstmt);
+        }
+        return placeName;
+        }
 
 }

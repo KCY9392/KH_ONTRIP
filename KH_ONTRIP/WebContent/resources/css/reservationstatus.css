@@ -1,0 +1,39 @@
+.container1{
+    text-align: center;
+    margin:15%;
+}
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.slide-in {
+    animation: change 0.5s ease forwards;
+}
+
+@keyframes change {
+    from {
+        transform: translateY(100%);
+        /* visibility: hidden; */
+    }
+
+    to {
+        transform: translateY(0%);
+    }
+}
+button{
+    border:none;
+    width:200px;
+    height:80px;
+    font-size: 20px;
+    font-weight: bold;
+    background-color: rgb(247, 239, 228);
+    border-radius: 20px;
+}
+button:hover{
+    background-color: rgb(245, 230, 208);
+    font-size: 21px;
+}
+button:active{
+    background-color: rgb(240, 211, 168);
+}

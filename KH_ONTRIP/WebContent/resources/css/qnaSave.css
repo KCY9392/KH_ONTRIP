@@ -1,0 +1,79 @@
+@charset "UTF-8";
+
+body{
+    text-align: center;
+}
+.title{
+    margin:auto;
+    margin-top:-30px;
+    height: 100px;
+    border: 2px solid white;
+    background-color: rgba(143, 212, 143, 0.911);;
+
+    /* rgba(143, 212, 143, 0.911); => 연두색 */
+}
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+html,
+body {
+    font-family: 'Noto Sans KR', sans-serif !important;
+    -webkit-overflow-scrolling: touch !important;
+    touch-action: manipulation;
+    margin:0;
+}
+div{
+    box-sizing: border-box;
+}
+nav{
+    position:fixed;
+}
+.nav_b{
+    font-size: 30px;
+    padding-left: 40px;
+    color:rgb(155, 205, 138);
+}
+.nav_h{
+    font-size:small;
+}
+.nav_brand{
+    margin-left: 50px;
+}
+#qnaTitle{
+    font-size: 40px;
+    color: white;
+    font-weight: bold;
+    padding:10px;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+h3{
+    color:rgb(116, 116, 130);
+    font-weight: 900;
+}
+textarea{
+    resize: none;
+    border:1px solid rgb(162, 189, 129);
+    padding:5px;
+    border-radius: 5px;
+}
+select{
+    width: 200px;
+    padding: .8em .5em;
+    border: 1px solid #999;
+    font-family: inherit;
+    border-radius: 5px;
+
+}
+button{
+    border:none;
+    border-radius: 5px;
+    padding:5px;
+    width:150px;
+    height:50px;
+    font-weight: 600;
+}
+button:hover{
+    background-color: rgb(213, 213, 213);
+}
+button:active{
+    background-color: rgb(170, 163, 163);
+}

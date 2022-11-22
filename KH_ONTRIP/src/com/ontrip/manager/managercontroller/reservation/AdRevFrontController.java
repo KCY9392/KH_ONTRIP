@@ -1,9 +1,7 @@
 package com.ontrip.manager.managercontroller.reservation;
 
 
-import com.ontrip.manager.managercontroller.reservation.controller.RevFormController;
-import com.ontrip.manager.managercontroller.reservation.controller.RevPayController;
-import com.ontrip.manager.managercontroller.reservation.controller.RevSuccessController;
+import com.ontrip.manager.managercontroller.reservation.controller.*;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.text.ParseException;
 import java.util.HashMap;
 import java.util.Map;
@@ -23,8 +22,10 @@ public class AdRevFrontController extends HttpServlet {
     public AdRevFrontController() {
 
         controllerMap.put("/KH_ONTRIP/reservation/saveform", new RevFormController());
-        controllerMap.put("/KH_ONTRIP/reservation/save", new RevPayController());
-        controllerMap.put("/KH_ONTRIP/order/paySuccess" , new RevSuccessController());
+        controllerMap.put("/KH_ONTRIP/reservation/save", new RevSaveController());
+        controllerMap.put("/KH_ONTRIP/reservation/pay", new RevPayController());
+        controllerMap.put("/KH_ONTRIP/reservation/order/paySuccess" , new RevSuccessController());
+        controllerMap.put("/KH_ONTRIP/reservation/order/payFail" , new RevFailController());
 
     }
 
@@ -32,7 +33,7 @@ public class AdRevFrontController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
             doProcess(request, response);
-        } catch (ParseException e) {
+        } catch (ParseException | SQLException e) {
             throw new RuntimeException(e);
         }
     }
@@ -42,9 +43,11 @@ public class AdRevFrontController extends HttpServlet {
             doProcess(request, response);
         } catch (ParseException e) {
             throw new RuntimeException(e);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
         }
     }
-    protected void doProcess(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, ParseException {
+    protected void doProcess(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, ParseException, SQLException {
         //get이든 post든 어떤 방식으로 요청으로 들어오든 로직은 여기에 작성.
 
         System.out.println("Main´FrontController.service");

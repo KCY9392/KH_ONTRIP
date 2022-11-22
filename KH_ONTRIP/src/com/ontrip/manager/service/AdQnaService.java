@@ -45,4 +45,12 @@ public class AdQnaService {
     }
 
 
+    public void deleteQna(int qaCode) throws SQLException {
+        Connection con = JDBCTemplate.getConnection();
+
+        adQnaDao.deleteQna(con, qaCode);
+
+    }
+
+
 }

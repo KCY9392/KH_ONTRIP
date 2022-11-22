@@ -4,7 +4,7 @@ package com.ontrip.manager.managercontroller.adque.controller;
 import com.ontrip.manager.managercontroller.adque.QueFrontController;
 import com.ontrip.manager.service.AdQuestionService;
 import com.ontrip.manager.vo.Page;
-import com.ontrip.question.vo.Question;
+import com.ontrip.question.vo.MemberQuestionBoard;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -34,7 +34,7 @@ public class AdQueListController implements QueFrontController {
             amount = Integer.parseInt(request.getParameter("amount"));
         }
 
-        List<Question> list = adQuestionService.getList(pageNum, amount);
+        List<MemberQuestionBoard> list = adQuestionService.getList(pageNum, amount);
         int total = adQuestionService.getTotal();
 
         System.out.println("total = " + total);

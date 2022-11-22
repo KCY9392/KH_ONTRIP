@@ -2,7 +2,8 @@ package com.ontrip.manager.service;
 
 import com.ontrip.common.JDBCTemplate;
 import com.ontrip.question.dao.admin.QuestionDao;
-import com.ontrip.question.vo.Question;
+import com.ontrip.question.vo.MemberQuestionBoard;
+import com.ontrip.question.vo.MemberQuestionDetailed;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -20,9 +21,9 @@ public class AdQuestionService {
 
 
 
-    public List<Question> getList(int pageNum, int amount) throws SQLException {
+    public List<MemberQuestionBoard> getList(int pageNum, int amount) throws SQLException {
         Connection con = JDBCTemplate.getConnection();
-        List<Question> list = dao.getList(pageNum, amount, con);
+        List<MemberQuestionBoard> list = dao.getList(pageNum, amount, con);
         return list;
     }
 
@@ -33,9 +34,9 @@ public class AdQuestionService {
     }
 
 
-    public Question getByCode(int qCode) throws SQLException {
+    public MemberQuestionDetailed getByCode(int qCode) throws SQLException {
         Connection con = JDBCTemplate.getConnection();
-        Question question = dao.questionByCode(qCode , con);
+        MemberQuestionDetailed question = dao.questionByCode(qCode , con);
         return question;
     }
 

@@ -89,9 +89,19 @@ public class AdQnaDao {
     }
 
 
+    public void deleteQna(Connection con, int qaCode) throws SQLException {
 
+        String sql = prop.getProperty("deleteQna");
+        PreparedStatement pstmt = null;
 
-
-
-
+        try {
+            pstmt = con.prepareStatement(sql);
+            pstmt.setInt(1, qaCode);
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            close(pstmt);
+        }
+        }
 }

@@ -3,7 +3,7 @@ package com.ontrip.manager.managercontroller.adque.controller;
 
 import com.ontrip.manager.managercontroller.adque.QueFrontController;
 import com.ontrip.manager.service.AdQuestionService;
-import com.ontrip.question.vo.Question;
+import com.ontrip.question.vo.MemberQuestionDetailed;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -22,11 +22,11 @@ public class AdAnsFormController implements QueFrontController {
         int i = Integer.parseInt(qCode);
 
 
-        Question byCode = adQuestionService.getByCode(i);
+        MemberQuestionDetailed byCode = adQuestionService.getByCode(i);
 
         request.setAttribute("byCode", byCode);
 
-        String viewPath = "/views/manager/adquestion/questionform.jsp";
+        String viewPath = "/views/manager/adquestion/questionform2.jsp";
 
         RequestDispatcher requestDispatcher = request.getRequestDispatcher(viewPath);
         requestDispatcher.forward(request, response);

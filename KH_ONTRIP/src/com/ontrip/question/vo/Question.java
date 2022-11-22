@@ -4,20 +4,21 @@ import java.sql.Date;
 
 public class Question {
 
-    private int qCode;
+    private Integer qCode;
+	// 성우  , Integer타입 변경
 	private int memNo;
 	private String qTitle;
 	private String qContent;
 	private Date qDate;
 	private String aContent;
-	private int qCount;
+	private Integer qCount;
 	private String status;
 
     public Question() {
     	
     }
 
-	public Question(int qCode, int memNo, String qTitle, String qContent, Date qDate, String aContent, int qCount, String status) {
+	public Question(Integer qCode, int memNo, String qTitle, String qContent, Date qDate, String aContent, Integer qCount, String status) {
 		this.qCode = qCode;
 		this.memNo = memNo;
 		this.qTitle = qTitle;
@@ -28,11 +29,12 @@ public class Question {
 		this.status = status;
 	}
 
-	public int getqCode() {
+
+	public Integer getqCode() {
 		return qCode;
 	}
 
-	public void setqCode(int qCode) {
+	public void setqCode(Integer qCode) {
 		this.qCode = qCode;
 	}
 
@@ -76,11 +78,11 @@ public class Question {
 		this.aContent = aContent;
 	}
 
-	public int getqCount() {
+	public Integer getqCount() {
 		return qCount;
 	}
 
-	public void setqCount(int qCount) {
+	public void setqCount(Integer qCount) {
 		this.qCount = qCount;
 	}
 

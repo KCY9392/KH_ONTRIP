@@ -26,9 +26,9 @@ public class AdReviewService {
     }
 
 
-    public int getTotal() throws SQLException {
+    public int getTotal(String category) throws SQLException {
         Connection con = JDBCTemplate.getConnection();
-        return adReviewDao.getTotal(con);
+        return adReviewDao.getTotal(con , category);
     }
 
 

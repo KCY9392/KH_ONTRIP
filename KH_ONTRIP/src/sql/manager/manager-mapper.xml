@@ -5,7 +5,7 @@
 <!--    문의사항 & 페이징처리 쿼리 -->
 
     <entry key="insertQuestion">
-     INSERT INTO "Questions"(Q_CODE , MEM_NO , Q_TITLE , Q_CONTENT , Q_DATE , A_CONTENT , Q_COUNT , STATUS )values(SEQ_Q.NEXTVAL,?,?,?,?,?,?,?)
+     INSERT INTO "Questions"(Q_CODE , MEM_NO , Q_TITLE , Q_CONTENT , A_CONTENT)values(SEQ_Q.NEXTVAL,?,?,?,?)
     </entry>
 
     <entry key="questionByCode">
@@ -46,16 +46,23 @@
     </entry>
 
 
+
+    <entry key="deleteQna">
+
+
+        delete from "QnA" where QA_CODE = ?
+
+
+    </entry>
+
+
     <!--    QNA -->
 
 
 
     <!--   등록후기 & 페이징처리  -->
     <entry key="ReviewPaging">
-
 <!--        select * from (select rownum rn , a.* from(select * from "Review" order by q_code desc where rev_category = ?) A ) where rn between ? and ?-->
-
-
 <!--        select * from ( select rownum rn , a.* from(select r.rev_code  ,p.plc_name ,p.category_code , m.mem_name ,r.rev_date from "Review" r-->
 <!--        inner join "Place" p on r.plc_code = p.plc_code inner join "Member" m on r.mem_no = m.mem_no order by rev_code desc where p.category_code = ?) A ) where rn between ? and ?-->
 
@@ -70,7 +77,10 @@
 
     <entry key="getReviewTotal">
 
-        select count(*) as total from "Review"
+<!--        select count(*) as total from "Review"-->
+
+
+        select count(*) as total from "Review" r inner join "Place" p on r.plc_code = p.plc_code where category_code = ?
 
     </entry>
 
@@ -116,6 +126,11 @@
     </entry>
 
 
+    <entry key="getPlaceName">
+
+        select * from "Place" where PlC_CODE = ?
+
+    </entry>
 
 
 
@@ -127,6 +142,38 @@
 
 
 
+
+
+
+    <!--    멤버 문의사항 & 페이징처리 쿼리 -->
+
+
+   <entry key="memberQueList">
+
+       select * from (select rownum rn, a.* from (select q.Q_CODE , q.Q_TITLE , q.Q_DATE ,q.A_CONTENT ,  m.MEM_NAME , m.MEM_NO  from "Questions" q inner join "Member" m on m.MEM_NO = q.MEM_NO
+       order by q.Q_CODE desc) A)
+       where rn between ? and ?
+
+   </entry>
+
+    <entry key="updateQuestion">
+
+        update "Questions" set q_title = ? ,q_content = ?  where Q_CODE = ?
+
+    </entry>
+
+
+
+    <entry key="deleteQuestion">
+
+
+        delete from "Questions" where Q_CODE = ?
+
+
+    </entry>
+
+
+    <!--    멤버문의사항 & 페이징처리 쿼리 -->
 
 
 

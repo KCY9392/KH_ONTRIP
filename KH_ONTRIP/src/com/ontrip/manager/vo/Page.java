@@ -1,5 +1,6 @@
 package com.ontrip.manager.vo;
 
+
 public class Page {
 
     private int startPage ; //게시글 회면 첫번째 번호

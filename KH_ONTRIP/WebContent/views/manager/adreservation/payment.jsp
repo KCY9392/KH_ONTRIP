@@ -24,9 +24,9 @@
       pg : 'kakaopay',
       pay_method : 'card',
       merchant_uid : 'merchant_' + new Date().getTime(),
-      name : '호텔',
-      amount : '${totalPrice}',
-      buyer_email : 'KH@example.com',
+      name : '${placeName}',
+      amount : '1',
+      buyer_email : 'KH_ONTRIP@example.com',
       buyer_name : '${rnName}',
       buyer_tel : '${rnPhone}',
       buyer_addr : 'KH_ONTRIP',
@@ -63,14 +63,12 @@
         msg = '결제에 실패하였습니다.';
         msg += '에러내용 : ' + rsp.error_msg;
         //실패시 이동할 페이지
-        location.href="<%=request.getContextPath()%>/order/payFail";
+        location.href="<%=request.getContextPath()%>/reservation/order/payFail";
         alert(msg);
       }
     });
 
   });
 </script>
-<input type="hidden" value="${rnName}">
-
 </body>
 </html>

@@ -1,21 +1,19 @@
 package com.ontrip.manager.managercontroller.admain.controller;
 
 
-import java.io.IOException;
-import java.util.ArrayList;
+import com.ontrip.common.MyFileRenamePolicy;
+import com.ontrip.image.vo.Image;
+import com.ontrip.place.model.service.PlaceService;
+import com.oreilly.servlet.MultipartRequest;
+import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
-
-import com.ontrip.common.MyFileRenamePolicy;
-import com.ontrip.image.vo.Image;
-import com.ontrip.place.model.service.PlaceService;
-import com.oreilly.servlet.MultipartRequest;
+import java.io.IOException;
+import java.util.ArrayList;
 
 
 //시설이미지 등록하기
@@ -43,7 +41,7 @@ public class AdMainSaveImgController extends HttpServlet {
 		System.out.println(localCode);
 		
 		
-		if(ServletFileUpload.isMultipartContent(request)) {
+		if(ServletFileUpload.isMultipartContent((jakarta.servlet.http.HttpServletRequest) request)) {
 			
 			// 1_1. 전송용량 제한
 	        int maxSize = 10 * 1024 * 1024; // 10mByte

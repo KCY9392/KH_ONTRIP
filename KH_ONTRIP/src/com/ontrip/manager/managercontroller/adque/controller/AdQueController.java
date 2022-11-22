@@ -3,7 +3,7 @@ package com.ontrip.manager.managercontroller.adque.controller;
 
 import com.ontrip.manager.managercontroller.adque.QueFrontController;
 import com.ontrip.manager.service.AdQuestionService;
-import com.ontrip.question.vo.Question;
+import com.ontrip.question.vo.MemberQuestionDetailed;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -24,11 +24,22 @@ public class AdQueController implements QueFrontController {
 
         System.out.println("i = " + i);
 
-        Question questionByCode = adQuestionService.getByCode(i);
+        MemberQuestionDetailed questionByCode = adQuestionService.getByCode(i);
+
+
+        boolean isUpdated = false;
+
+        if (questionByCode.getaContent() == null) {
+            isUpdated = true;
+        }
+
+
+
+        request.setAttribute("isUpdated", isUpdated);
 
         request.setAttribute("questionByCode", questionByCode);
 
-        String viewPath = "/views/manager/adquestion/questionDetailed.jsp";
+        String viewPath = "/views/manager/adquestion/questionDetailed2.jsp";
 
         RequestDispatcher requestDispatcher = request.getRequestDispatcher(viewPath);
 

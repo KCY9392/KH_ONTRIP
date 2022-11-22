@@ -64,32 +64,24 @@
 <body>
       <br><br><br><br>
 
-    <div class="left-categoryBox">
-        <div class="userResult">
-            <button type="button" id = "n" name="search" onclick="location.href='<%= request.getContextPath() %>/placeList.mn?categoryCode=PP'">메인 관리</button>
-        </div>
-        <div class="reserveResult">
-            <button type="button" id = "n" name="search" onclick="">회원 관리</button>
-        </div>
-        <div class="heartResult">
-            <button type="button" id = "n" name="search" onclick="">등록 후기</button>
-        </div>
-        <div class="reviewResult">
-            <button type="button" id = "n" name="search" onclick="">문의사항 관리</button>
-        </div>
-        <div class="statusResult">
-            <button type="button" id = "n" name="search" onclick="qnaForm();">Q&A 관리</button>
-        </div>
+      <div class="left-categoryBox">
+          <div class="userResult">
+              <button type="button" id = "n" name="search" onclick="">메인 관리</button>
+          </div>
+          <div class="reserveResult">
+              <button type="button" id = "n" name="search" onclick="location.href='/KH_ONTRIP/manager/members'">회원 관리</button>
+          </div>
+          <div class="heartResult">
+              <button type="button" id = "n" name="search" onclick="location.href='/KH_ONTRIP/manager/reviews/play?category=PP'">등록 후기</button>
+          </div>
+          <div class="reviewResult">
+              <button type="button" id = "n" name="search" onclick="location.href='/KH_ONTRIP/manager/questions'">문의사항 관리</button>
+          </div>
+          <div class="statusResult">
+              <button type="button" id = "n" name="search" onclick="location.href='/KH_ONTRIP/manager/qnas'">Q&A 관리</button>
+          </div>
       </div>
 
-      <script>
-      
-         	function qnaForm(){
-         		location.href = "<%=request.getContextPath()%>/qnaForm.me";	
-         	}
-         	
-         </script>
-    </fieldset>
 
     
 </body>

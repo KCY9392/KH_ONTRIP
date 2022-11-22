@@ -1,8 +1,8 @@
 package com.ontrip.member.controller.login;
+
 import com.ontrip.member.model.service.MemberService;
 import com.ontrip.member.model.vo.Member;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -53,7 +53,6 @@ public class LoginController extends HttpServlet {
 				
 			
 			session.setAttribute("alertMsg", "0");
-			
 			response.sendRedirect(request.getContextPath());
 			
 			

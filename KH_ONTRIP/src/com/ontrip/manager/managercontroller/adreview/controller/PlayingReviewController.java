@@ -21,8 +21,8 @@ public class PlayingReviewController  implements ReviewFrontController {
     public void process(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException, SQLException {
 
 
-        int amount = 5;
-        int pageNum = 1;
+        int amount = 5; // 페이지수
+        int pageNum = 1; // 시작페이지
 
         String category = request.getParameter("category");
 
@@ -35,7 +35,7 @@ public class PlayingReviewController  implements ReviewFrontController {
             amount = Integer.parseInt(request.getParameter("amount"));
         }
 
-        int total = adReviewService.getTotal();
+        int total = adReviewService.getTotal(category);
 
         Page page = new Page(pageNum, amount, total);
 
