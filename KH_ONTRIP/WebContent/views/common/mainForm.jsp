@@ -26,7 +26,7 @@
 
   <hr style="border-bottom:5px solid black; width:600px; margin:auto;"> <br>
   
-  <div class="center-hash"># 해시태그를 검색창에 추가해주세요</div>
+  <div class="center-hash">* 검색하고싶은 내용을 검색창에 추가해주세요</div>
 
   <br>
 
@@ -42,7 +42,7 @@
 <div style="width: 90%; margin:auto; text-align: center;">
   <div class="row" id="cityList" style=" margin:auto; ">
     
-    <div class="col s12 m6 l3" name="asia" >
+    <div class="col s12 m6 l3" name="asia">
       <input type="hidden" value="서울">
       <a href="<%=request.getContextPath() %>/mainForm.no?localName=서울&localCode=L1" onclick="" style="color:inherit; text-decoration: none!important;"  aria-expanded="false">
         <div class="card city-card-style" style="margin:0; border: none !important; ">

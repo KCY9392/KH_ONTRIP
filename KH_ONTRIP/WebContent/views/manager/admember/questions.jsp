@@ -81,8 +81,9 @@
     </style>
 </head>
 <body>
+
 <%@ include file="../../common/adnavbar.jsp" %>
-<%@ include file="../../common/managerNavbar.jsp" %>
+<%@ include file="../../../views/common/managerNavbar.jsp" %>
 
 
 

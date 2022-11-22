@@ -16,7 +16,7 @@
 </head>
 <body>
 <%@ include file="../../common/navbar.jsp" %>
-<%@ include file="../../common/managerNavbar.jsp" %>
+<%@ include file="../../../views/common/managerNavbar.jsp" %>./../common/managerNavbar.jsp" %>
 
 
 <div style="text-align:center; margin-top:20px;">
