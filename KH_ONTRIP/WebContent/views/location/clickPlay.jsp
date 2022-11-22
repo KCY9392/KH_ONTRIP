@@ -78,7 +78,8 @@
             line-height: 2.5rem;
             justify-content: space-around;
             padding: 0 0.2em;
-            text-align: center;
+            float: right;
+			margin-right: 100px;
             width: 5em;
             background-color: white;
         }
@@ -86,6 +87,12 @@
           color: inherit;
           text-shadow: 0;
         }
+         pre{
+       	  overflow: auto;
+       	  white-space: pre-wrap;
+       	  font-family: Verdana, Arial, Helvetica, sans-serif;
+       	  font-size: small;
+       }
 </style>
 </head>
 <body>
@@ -99,7 +106,7 @@
             <b><%= dareaName %>놀거리</b> &nbsp;&nbsp;
             <b><%= placeName %></b> &nbsp;&nbsp;
             
-            <button  type="submit" class="heart <% if(ht != null){ %> done<% } %>" style="border: 0; width: 30px; height: 30px; margin-top:-40px; margin-left:800px ">❤️</button> &nbsp;&nbsp;
+            <button  type="submit" class="heart <% if(ht != null){ %> done<% } %>" style="border: 0; width: 30px; height: 30px;">❤️</button> &nbsp;&nbsp;
             
         </div>
         <br>
@@ -134,19 +141,17 @@
 
         <br>
 
-        <a href="" class="review">방문자 후기</a> &nbsp;&nbsp;
-        <span style="font-size:12px; font-weight: 100; color:rgb(127, 129, 129);">504개</span> <br><br>
         <i class="fa-solid fa-location-dot" style="color:green;"></i>
         <span style="font-size:13px; font-weight: bold;"><%= place.getPlcAddress() %></span><br><br>
 
             <!-- 지도를 표시할 div -->
-        <div id="map" style="width:50%;height:350px; margin-left:380px;"></div>
+        <div id="map" style="width:50%;height:350px; margin-left:320px;"></div>
         <br><br>
 
         <div class="explain-text">
-            <p>
-                <%= place.getPlcText() %>
-            </p>
+            <pre>
+<%= place.getPlcText() %>
+            </pre>
         </div>
 
         <br><br>
@@ -162,7 +167,7 @@
                      <div id = "nsearch" class = "box" style="padding:20px; text-align: center;">  <!-- border:1px solid black; -->
             <% if(!playPath.isEmpty()) { %>
                          <% for(int i=0; i<playPath.size(); i++){ %>
-                        <div class="outer7" onclick="movePlay('<%= playInfo.get(i).getPlcName() %>','<%= playInfo.get(i).getDareaName()%>', '<%= loginUser.getMemberNo() %>')">
+                        <div class="outer7" onclick="movePlay('<%= playInfo.get(i).getPlcName() %>','<%= dareaName%>', '<%= loginUser.getMemberNo() %>')">
                             <div class="outer8">
                                 <div class="outer9" style="width:270px; height:270px;">
                                     <img src="<%= request.getContextPath() %>/<%=playPath.get(i).getFilePath()+playPath.get(i).getChangeName() %>" width = "122%" height = "198px"> 
@@ -189,7 +194,7 @@
                <% 
                     for (int i = 0; i < foodPath.size(); i++) { 
               %> 
-               <div class="outer7" onclick="moveFood('<%= foodInfo.get(i).getPlcName() %>','<%= foodInfo.get(i).getDareaName()%>', '<%= loginUser.getMemberNo() %>')">
+               <div class="outer7" onclick="moveFood('<%= foodInfo.get(i).getPlcName() %>','<%= dareaName%>', '<%= loginUser.getMemberNo() %>')">
                   <div class="outer8">
                      <div class="outer9" style="width: 270px; height: 270px;">
                         <img
@@ -228,7 +233,7 @@
                <%
                   for (int i = 0; i < hotelPath.size(); i++) {
                %>
-               <div class="outer7" onclick="moveHotel('<%= hotelInfo.get(i).getPlcName() %>','<%= hotelInfo.get(i).getDareaName()%>', '<%= loginUser.getMemberNo() %>')">
+               <div class="outer7" onclick="moveHotel('<%= hotelInfo.get(i).getPlcName() %>','<%= dareaName%>', '<%= loginUser.getMemberNo() %>')">
                   <div class="outer8">
                      <div class="outer9" style="width: 270px; height: 270px;">
                         <img

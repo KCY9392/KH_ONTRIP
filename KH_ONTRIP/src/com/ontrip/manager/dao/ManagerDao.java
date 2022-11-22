@@ -1,6 +1,7 @@
 package com.ontrip.manager.dao;
 
 import com.ontrip.common.model.vo.PageInfo;
+import com.ontrip.image.vo.Image;
 import com.ontrip.member.model.dao.MemberDao;
 import com.ontrip.member.model.vo.Member;
 import com.ontrip.place.model.vo.Place;
@@ -267,6 +268,40 @@ public class ManagerDao {
 		close(psmt);
 	}
 	  return result2;
+   }
+   
+   public ArrayList<Image> detailPlaceImage(String placeName, Connection conn) {
+	   ArrayList<Image> placeImg = new ArrayList<Image>();
+	   
+	   PreparedStatement psmt = null;
+	   
+	   ResultSet rset = null;
+	   
+	   String sql = prop.getProperty("detailPlaceImage");
+	   
+	   try {
+		psmt = conn.prepareStatement(sql);
+		
+		psmt.setString(1, placeName);
+		
+		rset = psmt.executeQuery();
+		
+		while(rset.next()) {
+			placeImg.add( new Image( 
+					 rset.getString("FILE_PATH"),
+					 rset.getString("CHANGE_NAME"),
+					 rset.getInt("FILE_NO")));
+		}
+		
+		
+	} catch (SQLException e) {
+		e.printStackTrace();
+	} finally {
+		close(rset);
+		close(psmt);
+	}
+	   return placeImg;
+	   
    }
 	   
 }

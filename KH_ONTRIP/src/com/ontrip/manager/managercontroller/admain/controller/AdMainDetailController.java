@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.ontrip.image.vo.Image;
 import com.ontrip.manager.service.ManagerService;
 import com.ontrip.place.model.vo.Place;
 
@@ -36,6 +37,10 @@ public class AdMainDetailController extends HttpServlet {
 		Place place = new ManagerService().detailPlace(placeName);
 		
 		request.setAttribute("place", place);
+		
+		ArrayList<Image> placeImg = new ManagerService().detailPlaceImage(placeName);
+		
+		request.setAttribute("placeImg", placeImg);
 		
 		request.getRequestDispatcher("views/manager/managerPlaceDetail.jsp").forward(request, response);
 	}

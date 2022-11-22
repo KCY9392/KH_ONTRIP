@@ -69,7 +69,7 @@
 
 			<% if(!placePath.isEmpty()) { %>
 			<% for(int i=0; i<placePath.size(); i++){ %>
-			<div class="outer7">
+			<div class="outer7"onclick="moveHotel('<%= placeInfo.get(i).getPlcName() %>','<%= placeInfo.get(i).getDareaName()%>', '<%= loginUser.getMemberNo() %>')">
 				<div class="outer8">
 					<div class="outer9" style="width: 270px; height: 270px;">
 						<img
@@ -90,23 +90,17 @@
 		</fieldset>
 	</div>
 	<script>
-	<%if (!placePath.isEmpty()) {%>
-			<%for (int i = 0; i < placePath.size(); i++) {%>
-				<%if(placeInfo.get(i).getCategoryCode().equals("PP")){%>
-				function <%=placeInfo.get(i).getPlcName()%>(){
-				location.href = "<%=request.getContextPath()%>/selectPlay.pe?placeName=<%=placeInfo.get(i).getPlcName()%>&dareaName=<%=placeInfo.get(i).getDareaName() %>&memberNo=<%=loginUser.getMemberNo()%>";
-				}
-				<%} else if(placeInfo.get(i).getCategoryCode().equals("HH")){%>
-					function <%=placeInfo.get(i).getPlcName()%>(){
-					location.href = "<%=request.getContextPath()%>/selectHotel.pe?placeName=<%=placeInfo.get(i).getPlcName()%>&dareaName=<%=placeInfo.get(i).getDareaName() %>&memberNo=<%=loginUser.getMemberNo()%>";
-					}
-				<% } else { %>
-					function <%=placeInfo.get(i).getPlcName()%>(){
-					location.href = "<%=request.getContextPath()%>/selectFood.pe?placeName=<%=placeInfo.get(i).getPlcName()%>&dareaName=<%=placeInfo.get(i).getDareaName() %>&memberNo=<%=loginUser.getMemberNo()%>";
-					}
-				<% }%>
-		<%}%>
-	<%}%>
+		function movePlay(placeName, dareaName, memberNo){
+			location.href= "<%=request.getContextPath()%>"+"/selectPlay.pe?placeName="+ placeName+ "&dareaName=" +dareaName+  "&memberNo=" +memberNo;
+		}
+		
+		function moveFood(placeName, dareaName, memberNo){
+			location.href= "<%=request.getContextPath()%>"+"/selectFood.pe?placeName="+ placeName+ "&dareaName=" +dareaName+  "&memberNo=" +memberNo;
+		}
+		
+		function moveHotel(placeName, dareaName, memberNo){
+			location.href= "<%=request.getContextPath()%>"+"/selectHotel.pe?placeName="+ placeName+ "&dareaName=" +dareaName+  "&memberNo=" +memberNo;
+		}
 
 	</script>
 </body>

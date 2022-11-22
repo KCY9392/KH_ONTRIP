@@ -86,6 +86,17 @@
    WHERE PLC_NAME = ?
    </entry>
    
+   
+   <entry key="detailPlace">
+    SELECT c.CATEGORY_NAME, p.PLC_NAME, l.LOCAL_NAME, d.DAREA_NAME, p.PLC_BNAME, p.PLC_ADDRESS, p.PLC_PNUMBER, p.PLC_LA, p.PLC_LO, p.PLC_TEXT, CATEGORY_CODE
+   FROM "Place" p
+   JOIN "Category" c USING(CATEGORY_CODE)
+   JOIN "Location" l USING(LOCAL_CODE)
+   JOIN "Detailed Area" d USING(DAREA_CODE) 
+   WHERE PLC_NAME = ?
+   </entry>
+   
+   
    <entry key="deletePlace">
    UPDATE "Place"
    SET STATUS = 'N'
@@ -137,80 +148,6 @@
         WHERE MEM_ID = ? AND MEM_PWD = ?
     </entry>
    
-   
-   
-   
-   
-   
-   
-<!--     메인 관리 목록 조회 쿼리 -->
-<!-- 	<entry key="selectPlayList"> -->
-<!-- 	SELECT * -->
-<!-- 	FROM ( -->
-<!-- 		SELECT ROWNUM RNUM, A.* -->
-<!-- 		FROM ( -->
-<!-- 			SELECT PLC_CODE, PLC_NAME, PLC_DATE -->
-<!-- 			FROM "Place" -->
-<!-- 			WHERE CATEGORY_CODE = 'PP' -->
-<!-- 			  AND STATUS = 'N' -->
-<!-- 			ORDER BY PLC_DATE DESC -->
-<!-- 			) A -->
-<!-- 		) -->
-<!-- 	WHERE RNUM BETWEEN ? AND ? -->
-<!-- 	</entry> -->
-	
-<!-- 	 메인 관리 목록 조회 쿼리  -->
-<!-- 	<entry key="selectFoodList"> -->
-<!-- 	SELECT * -->
-<!-- 	FROM ( -->
-<!-- 		SELECT ROWNUM RNUM, A.* -->
-<!-- 		FROM ( -->
-<!-- 			SELECT PLC_CODE, PLC_NAME, PLC_DATE -->
-<!-- 			FROM "Place" -->
-<!-- 			WHERE CATEGORY_CODE = 'FF' -->
-<!-- 			  AND STATUS = 'N' -->
-<!-- 			ORDER BY PLC_DATE DESC -->
-<!-- 			) A -->
-<!-- 		) -->
-<!-- 	WHERE RNUM BETWEEN ? AND ? -->
-<!-- 	</entry> -->
-	
-<!-- 	메인 관리 목록 조회 쿼리  -->
-<!-- 	<entry key="selectHotelList"> -->
-<!-- 	SELECT * -->
-<!-- 	FROM ( -->
-<!-- 		SELECT ROWNUM RNUM, A.* -->
-<!-- 		FROM ( -->
-<!-- 			SELECT PLC_CODE, PLC_NAME, PLC_DATE -->
-<!-- 			FROM "Place" -->
-<!-- 			WHERE CATEGORY_CODE = 'HH' -->
-<!-- 			  AND STATUS = 'N' -->
-<!-- 			ORDER BY PLC_DATE DESC -->
-<!-- 			) A -->
-<!-- 		) -->
-<!-- 	WHERE RNUM BETWEEN ? AND ? -->
-<!-- 	</entry> -->
-   
-<!--    <entry key = "selectListPlayCount"> -->
-<!-- 		SELECT COUNT(*) COUNT -->
-<!-- 		FROM "Place" -->
-<!-- 		WHERE STATUS = 'N' -->
-<!-- 		AND CATEGORY_CODE = 'PP' -->
-<!-- 	</entry> -->
-	
-<!-- 	<entry key = "selectListFoodCount"> -->
-<!-- 	SELECT COUNT(*) COUNT -->
-<!-- 		FROM "Place" -->
-<!-- 		WHERE STATUS = 'N' -->
-<!-- 		AND CATEGORY_CODE = 'FF' -->
-<!-- 	</entry> -->
-	
-<!-- 	<entry key = "selectListHotelCount"> -->
-<!-- 	SELECT COUNT(*) COUNT -->
-<!-- 		FROM "Place" -->
-<!-- 		WHERE STATUS = 'N' -->
-<!-- 		AND CATEGORY_CODE = 'HH' -->
-<!-- 	</entry> -->
 	
 	
 </properties>

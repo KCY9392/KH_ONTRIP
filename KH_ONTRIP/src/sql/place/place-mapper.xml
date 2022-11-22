@@ -7,18 +7,21 @@
 	SELECT PLC_NAME, PLC_ADDRESS, PLC_PNUMBER
 	FROM "Place"
 	WHERE STATUS = 'Y' AND DAREA_CODE = ? AND CATEGORY_CODE = 'PP'
+	ORDER BY PLC_NAME
 	</entry>
 	
 	<entry key="selectHotelInfo">
 	SELECT PLC_NAME, PLC_ADDRESS, PLC_PNUMBER
 	FROM "Place"
 	WHERE STATUS = 'Y' AND DAREA_CODE = ? AND CATEGORY_CODE = 'HH'
+	ORDER BY PLC_NAME
 	</entry>
 	
 	<entry key="selectFoodInfo">
 	SELECT PLC_NAME, PLC_ADDRESS, PLC_PNUMBER
 	FROM "Place"
 	WHERE STATUS = 'Y' AND DAREA_CODE = ? AND CATEGORY_CODE = 'FF'
+	ORDER BY PLC_NAME
 	</entry>
 	
 	
@@ -58,6 +61,7 @@
    SELECT FILE_NO, FILE_PATH, CHANGE_NAME
    FROM "Image"
    WHERE STATUS = 'Y' AND ORIGIN_NAME LIKE '%1%' AND ORIGIN_NAME LIKE ?
+   ORDER BY CHANGE_NAME
    </entry>
    
    <entry key="searchPlaceInfo">
@@ -65,6 +69,7 @@
    FROM "Place"
    JOIN "Detailed Area" d USING(DAREA_CODE)
    WHERE STATUS = 'Y' AND PLC_NAME LIKE ?
+   ORDER BY PLC_NAME
    </entry>
 	
 	

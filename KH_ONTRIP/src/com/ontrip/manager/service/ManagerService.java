@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.util.ArrayList;
 
 import com.ontrip.common.model.vo.PageInfo;
+import com.ontrip.image.vo.Image;
 import com.ontrip.manager.dao.ManagerDao;
 import com.ontrip.place.model.vo.Place;
 import static com.ontrip.common.JDBCTemplate.*;
@@ -67,6 +68,16 @@ public class ManagerService {
 		close();
 		
 		return result2;
+	}
+	
+	public ArrayList<Image> detailPlaceImage(String placeName) {
+		Connection conn = getConnection();
+		
+		ArrayList<Image> placeImg = new ManagerDao().detailPlaceImage(placeName, conn);
+		
+		close();
+		
+		return placeImg;
 	}
 	
 

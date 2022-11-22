@@ -63,6 +63,7 @@
           border:none;
           box-shadow:0 0 5px grey;
        }
+      
     </style>
 </head>
 <body>
@@ -132,8 +133,7 @@
                
                <br>
                <span>시설설명</span> <br>
-               <textarea name="content" cols="50" rows="5" required>
-               </textarea>
+               <textarea name="content" cols="50" rows="5" required></textarea>
             </div>
             <br><br>
             

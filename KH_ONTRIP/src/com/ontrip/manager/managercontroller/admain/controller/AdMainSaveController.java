@@ -91,7 +91,7 @@ public class AdMainSaveController extends HttpServlet {
 			
 			//시설등록은 성공 -> 다음 이미지 등록하기
 			request.setAttribute("place", place);
-			request.getRequestDispatcher("views/manager/managerplaceInsertImg.jsp").forward(request, response);
+			request.getRequestDispatcher("/placeList.mn?categoryCode=PP").forward(request, response);
 
 		}else {
 		//시설등록 실패 -> 다시 페이지 초기화시키면서 재로딩

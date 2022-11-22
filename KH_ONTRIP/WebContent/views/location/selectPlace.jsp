@@ -186,7 +186,7 @@ table img {
 				<!-- border:1px solid black; -->
 				<% if(!playPath.isEmpty()) { %>
 				<% for(int i=0; i<playPath.size(); i++){ %>
-				<div class="outer7" onclick="movePlay('<%= playInfo.get(i).getPlcName() %>','<%= playInfo.get(i).getDareaName()%>', '<%= User.getMemberNo() %>')">
+				<div class="outer7" onclick="movePlay('<%= playInfo.get(i).getPlcName() %>','<%= dareaName%>', '<%= User.getMemberNo() %>')">
 					<div class="outer8">
 						<div class="outer9" style="width: 270px; height: 270px;">
 							<img
@@ -219,7 +219,7 @@ table img {
 				<%
                    for (int i = 0; i < foodPath.size(); i++) {
                %>
-				<div class="outer7" onclick="moveFood('<%= foodInfo.get(i).getPlcName() %>','<%= foodInfo.get(i).getDareaName()%>', '<%= User.getMemberNo() %>')">
+				<div class="outer7" onclick="moveFood('<%= foodInfo.get(i).getPlcName() %>','<%= dareaName%>', '<%= User.getMemberNo() %>')">
 					<div class="outer8">
 						<div class="outer9" style="width: 270px; height: 270px;">
 							<img
@@ -257,7 +257,7 @@ table img {
 				<%
                    for (int i = 0; i < hotelPath.size(); i++) {
                 %>
-				<div class="outer7" onclick="moveHotel('<%= hotelInfo.get(i).getPlcName() %>','<%= hotelInfo.get(i).getDareaName()%>', '<%= User.getMemberNo() %>')">
+				<div class="outer7" onclick="moveHotel('<%= hotelInfo.get(i).getPlcName() %>','<%= dareaName%>', '<%= User.getMemberNo() %>')">
 					<div class="outer8">
 						<div class="outer9" style="width: 270px; height: 270px;">
 							<img

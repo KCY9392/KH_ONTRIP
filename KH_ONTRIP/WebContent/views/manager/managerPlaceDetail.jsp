@@ -80,14 +80,15 @@
 
       <span style="width:150px; height:40px; float:left; margin-left:50px; margin-top:-50px;"> ${place.categoryName}</span>
       
+
             <div class="place-image">
-                <img class="img1" src="../image/busan.jpg">
+                <img class="img1" src="<%= request.getContextPath() %>/${placeImg[0].filePath}${placeImg[0].changeName}">
 
-                <img class="img2" src="../image/busan.jpg">
+                <img class="img2" src="<%= request.getContextPath() %>/${placeImg[1].filePath}${placeImg[1].changeName}">
 
-                <img class="img3" src="../image/busan.jpg">
+                <img class="img3" src="<%= request.getContextPath() %>/${placeImg[2].filePath}${placeImg[2].changeName}">
             </div>
-            
+
             
             <br><br>
             
