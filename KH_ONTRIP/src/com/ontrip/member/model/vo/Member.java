@@ -59,6 +59,11 @@ public class Member {
 		this.phone = phone;
 		this.memberId = memberId;
 	}
+	
+	public Member(String memberName) {
+		super();
+		this.memberName = memberName;
+	}
 
 	public int getMemberNo() {
 		return memberNo;

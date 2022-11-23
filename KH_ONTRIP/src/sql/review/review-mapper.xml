@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+	<entry key="insertReview">
+		INSERT INTO "Review" (REV_CODE , PLC_CODE , MEM_NO , REV_DATE , REV_TEXT , REV_CHANGEDATE)
+		VALUES(? , 
+	        ?,
+	        ? 
+    		, SYSDATE , ? , SYSDATE
+			)
+	</entry>
+	
+	<entry key="selectRevSeq">
+		SELECT
+			SEQ_RE.NEXTVAL AS rno 
+		FROM DUAL
+	</entry>
+	
+	<entry key="insertScore">
+		INSERT INTO "Score"(
+			SCORE_CODE ,
+			REV_STAR ,
+			REV_C ,
+			REV_S ,
+			REV_P , 
+			REV_CODE)
+		VALUES(SEQ_SCORE.NEXTVAL , ? , ? , ? , ? , ?
+    	)
+	</entry>
+	
+	<entry key="selectListCount">
+		SELECT COUNT(*) COUNT
+		FROM "Review"
+		WHERE STATUS = 'Y'
+	</entry>
+	
+	<entry key="selectPagingList">
+		SELECT *
+		FROM (
+				SELECT  ROWNUM RNUM , A.*
+				FROM (
+							SELECT  REV_CODE,
+									PLC_NAME,
+									REV_DATE,
+									MEM_NAME
+							FROM "Place" 
+							JOIN "Review" R USING (PLC_CODE) 
+							JOIN "Member" USING (MEM_NO) 
+							WHERE PLC_CODE = ? 
+			  			      AND R.STATUS = 'Y'
+							ORDER BY REV_DATE 
+					 ) A
+			)
+        WHERE RNUM BETWEEN ? AND ?
+	</entry>
+	
+	<!-- 후기게시판 리스트 띄우기 -->
+	<entry key="selectListReview">
+		SELECT 
+		    REV_CODE,
+		    PLC_NAME,
+		    REV_DATE,
+		    MEM_NAME
+		FROM "Place"
+		JOIN "Review" USING(PLC_CODE)
+		JOIN "Member" USING(MEM_NO)
+		WHERE PLC_NAME = ?
+		ORDER BY REV_CODE , REV_DATE 
+	</entry>
+	
+	<!-- 게시판에서 한 글을 클릭햇을때 나오는 후기상세조회 -->
+	<entry key="selectReviewDetail">
+		SELECT 
+		    PLC_NAME ,
+		    REV_DATE ,
+		    MEM_NAME ,
+		    REV_STAR ,
+		    REV_C ,
+		    REV_S ,
+		    REV_P ,
+		    REV_TEXT
+		FROM "Place"
+		JOIN "Review" USING(PLC_CODE)
+		JOIN "Member" USING(MEM_NO)
+		JOIN "Score" USING(REV_CODE)
+		WHERE REV_CODE = ?
+	</entry>
+	
+	<entry key="selectMemberName">
+		SELECT
+    		MEM_NAME memberName
+		FROM "Member"
+		WHERE MEM_NO = ?
+	</entry>
+	
+	<entry key="myPagePagingReviewList">
+		SELECT *
+		FROM (
+				SELECT  ROWNUM RNUM , A.*
+				FROM (
+							SELECT  REV_CODE,
+									PLC_NAME,
+									REV_DATE,
+									MEM_NAME
+							FROM "Place" 
+							JOIN "Review" R USING (PLC_CODE) 
+							JOIN "Member" USING (MEM_NO) 
+							WHERE MEM_NO = ?
+			  			      AND R.STATUS = 'Y'
+							ORDER BY REV_DATE 
+					 ) A
+			)
+        WHERE RNUM BETWEEN ? AND ?
+	</entry>
+	
+	<entry key="deleteReview">
+		UPDATE "Review"
+		SET STATUS = 'N'
+		WHERE MEM_NO = ?
+		AND REV_CODE = ?
+	</entry>
+	
+	<entry key="selectMainImage">
+		SELECT FILE_NO , FILE_PATH , CHANGE_NAME
+		FROM "Image" 
+		WHERE PLC_CODE = ? AND ORIGIN_NAME LIKE '%1%'
+	</entry>
+	
+	<entry key="selectHeartCount">
+		SELECT 
+    		COUNT(*) HEARTCOUNT
+		FROM "Heart"
+		WHERE PLC_CODE = ?
+	</entry>
+	
+	<entry key="updateScore">
+		UPDATE "Score"
+		SET REV_STAR = ? ,
+			REV_C = ? ,
+    		REV_S = ? ,
+    		REV_P = ?
+		WHERE REV_CODE = ?
+	</entry>
+	
+	<entry key="updateReview">
+		UPDATE "Review"
+		SET REV_TEXT = ?
+		WHERE REV_CODE = ?
+	</entry>
+</properties>

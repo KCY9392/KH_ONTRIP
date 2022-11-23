@@ -13,6 +13,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>관리자 - 시설 등록 화면</title>
+    <!-- 소스 다운 -->
+<script src="https://unpkg.com/@yaireo/tagify"></script>
+<!-- 폴리필 (구버젼 브라우저 지원) -->
+<script src="https://unpkg.com/@yaireo/tagify/dist/tagify.polyfills.min.js"></script>
+<link href="https://unpkg.com/@yaireo/tagify/dist/tagify.css" rel="stylesheet" type="text/css" />
     <link href="<%= contextPath %>/resources/css/manager_placeInsert.css" rel="stylesheet" >
  
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
@@ -135,6 +140,8 @@
                <span>시설설명</span> <br>
                <textarea name="content" cols="50" rows="5" required></textarea>
             </div>
+            <br>
+            <input name='basic'>
             <br><br>
             
       <button type="submit" style="border:none; width:150px; height:50px; background-color:bisque; font-weight:900; font-size:15px; border-radius:5px;">등록</button>
@@ -269,6 +276,16 @@
                });
             });
             </script>
+            
+           <script>
+			    const input = document.querySelector('input[name=basic]');
+			    let tagify = new Tagify(input); // initialize Tagify
+			    
+			    // 태그가 추가되면 이벤트 발생
+			    tagify.on('add', function() {
+			      console.log(tagify.value); // 입력된 태그 정보 객체
+			    })
+		  </script>
 
             
 </body>

@@ -121,13 +121,8 @@
         </div>
         <br>
         <div style="float:right; margin-right:15px;">
-            <a href="#">
-                <!-- 이용후기페이지로 이동 -->
-                <button class="btn-review1" style="font-weight: bold; color:blueviolet; background-color: cornsilk; border-radius:10px; border:3px solid rgb(44, 144, 72); ">이용후기 보러가기</button>
-            </a>
-            <a href="#">
-                <!-- 이용후기 작성 페이지로 이동 -->
-                <button class="btn-review2" style="font-weight: bold; color:blueviolet; background-color: cornsilk; border-radius:10px; border:3px solid rgb(44, 144, 72); ">후기작성하기</button>
+            <a href="<%=request.getContextPath()%>/review.re?placeName=<%=placeName %>&memberNo=<%=loginUser.getMemberNo()%>&placeCode=<%=placeCode%>" class="review">
+            <button class="btn-review2" style="font-weight: bold; color:blueviolet; background-color: cornsilk; border-radius:10px; border:3px solid rgb(44, 144, 72); ">이용후기 보러가기</button>
             </a>
         </div>
 

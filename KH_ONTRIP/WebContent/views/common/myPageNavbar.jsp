@@ -2,8 +2,9 @@
     pageEncoding="UTF-8" import="java.util.Date, com.ontrip.member.model.vo.Member"%>
 
 <%
-	Member loginUser2 = (Member) session.getAttribute("loginUser");
+   Member loginUser2 = (Member) session.getAttribute("loginUser");
 %>
+
 
 <!DOCTYPE html>
 <html lang="ko">
@@ -104,9 +105,9 @@
             }
             
             function myReview(){
-               location.href = "<%=request.getContextPath()%>/mypageReviewList.me";
-            }
-            
+                location.href = "<%=request.getContextPath()%>/mypageReviewList.me?memberNo=<%=loginUser2.getMemberNo()%>&memberName=<%=loginUser2.getMemberName()%>";
+             }
+
             function deleteMember(){
                 location.href = "<%=request.getContextPath()%>/MemberDelete.me";
             }

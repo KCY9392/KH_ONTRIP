@@ -57,7 +57,7 @@
     	$(function(){
     		$("[name=checkPwdb]").click(function(){
     			if($("input:password[name=checkPwd]").val() == "<%=loginUser.getMemberPwd()%>"){
-    				alert("일치하네용.");
+    				alert("비밀번호가 일치합니다.");
                     location.href = "<%=request.getContextPath()%>/update.me";
     			}else{
     				alert("다시 입력해주세요.");

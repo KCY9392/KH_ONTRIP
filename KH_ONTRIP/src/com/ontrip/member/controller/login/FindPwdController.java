@@ -37,7 +37,7 @@ public class FindPwdController extends HttpServlet {
 		
 		String memberPwd = new MemberService().findPwd(memberName, memberId, phone);
 		
-		request.setAttribute("memberPwd", memberPwd);
+		request.setAttribute("memberPwd", memberPwd); 
 		
 		if(memberId == null) {
 			request.setAttribute("errorMsg", "존재하지않는 회원입니다.");
@@ -47,9 +47,9 @@ public class FindPwdController extends HttpServlet {
 		}else {
 			HttpSession session = request.getSession();
 			
-			session.setAttribute("alertMsg", memberPwd+"입니다.");
+//			session.setAttribute("alertMsg", memberPwd+"입니다.");
 			
-			request.getRequestDispatcher("views/common/find.jsp").forward(request, response);
+			request.getRequestDispatcher("views/common/pwdReveal.jsp").forward(request, response); // 현재 비밀번호 알려는 사이트 => "비밀번호 변경" / "메인으로" 
 			
 		}
 		

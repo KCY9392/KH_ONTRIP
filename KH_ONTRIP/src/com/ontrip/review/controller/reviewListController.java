@@ -1,7 +1,8 @@
-package com.ontrip.member.controller.mypage;
+package com.ontrip.review.controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Date;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,29 +11,62 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.ontrip.common.model.vo.PageInfo;
+import com.ontrip.image.vo.Image;
 import com.ontrip.review.service.ReviewService;
 import com.ontrip.review.vo.Review;
+import com.ontrip.score.service.ScoreService;
+import com.ontrip.score.vo.Score;
 
-
-@WebServlet("/mypageReviewList.me")
-public class ReviewList extends HttpServlet {
+//clickHotel에서 이용후기보러가기 클릭 시, 호출되는 서블릿 -> 후기게시판
+@WebServlet("/review.re")
+public class reviewListController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
    
-    public ReviewList() {
+    public reviewListController() {
         super();
+   
     }
 
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		
+		String placeName = request.getParameter("placeName");
+		int placeCode = Integer.parseInt(request.getParameter("placeCode"));
 		int memberNo = Integer.parseInt(request.getParameter("memberNo"));
-		String memberName = request.getParameter("memberName");
+		System.out.println(memberNo+"통과됨");
 		
-		request.setAttribute("memberNo", memberNo);
-		request.setAttribute("memberName", memberName);
+//		ArrayList<Review> reuList = new ReviewService().selectReviewListUpdate(placeName);
+//		request.setAttribute("reuList", reuList);
 		
-// ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ 마이페이지 등록후기 페이징 처리 시작 ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+		ArrayList<Review> reList = new ReviewService().selectReviewList(placeName);
+		request.setAttribute("reList", reList); // 이거가 찐이에요 대박.
+		System.out.println(reList);
+		request.setAttribute("placeCode", placeCode);
+		System.out.println(placeCode+"통과됨");
+		//plc_code로 리스트띄우기
+		
+		ArrayList<Score> slist = new ScoreService().selectSocreList(placeCode);
+			
+		request.setAttribute("slist", slist);
+		
+		double avgScore = (((slist.get(0).getReviewStar()*2) + slist.get(0).getReview_c() + slist.get(0).getReview_s() +slist.get(0).getReview_p()) / 4);
+		
+		request.setAttribute("avgScore", avgScore);
+		
+		ArrayList<Image> selectMainImagelist = new ReviewService().selectMainImagelist(placeCode);
+		request.setAttribute("selectMainImagelist", selectMainImagelist);
+		
+		int selectHeartCount = new ReviewService().selectHeartCount(placeCode);
+		request.setAttribute("selectHeartCount", selectHeartCount);
+	
+//		request.setAttribute("cScore", cScore); // 소수점 그대로 가져와야함.(고칠방법 찾아보기) // 게시판 페이징 처리 하기.
+		
+		
+		
+		
+		// ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ 페이징 처리 시작 ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
 		
 		
 		
@@ -146,18 +180,22 @@ public class ReviewList extends HttpServlet {
 	    // 2. 현재 사용자가 요청한 페이지에 보여줄 페이징바객체 전달
 	    // request.setAttribute("pi", pi);
 	    
-	 // ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ 마이페이지 등록후기 페이징 처리 종료 ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+	 // ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ 페이징 처리 종료 ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
 	    
 	    // 현재 일반게시판의 게시글들 가져오기	    
-	    ArrayList<Review> mylist = new ReviewService().selectmyPagePagingList(pi , memberNo);
+	    ArrayList<Review> plist = new ReviewService().selectPagingList(pi , placeCode);
 
-	    request.setAttribute("mylist", mylist);
-	    request.setAttribute("pi2", pi);
-			
-		request.getRequestDispatcher("views/myPage/myPageReviewList.jsp").forward(request, response);
+	    
+	    request.setAttribute("plist", plist);
+	    request.setAttribute("pi", pi);
+		
+		request.getRequestDispatcher("views/review/reviewList.jsp").forward(request, response);
+		
 	}
 
+	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	
 		doGet(request, response);
 	}
 

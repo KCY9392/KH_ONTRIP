@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+			
+	<entry key="selectScore">
+		SELECT 
+            ROUND(AVG(NVL(REV_STAR , 0)) , 2),
+            ROUND(AVG(NVL(REV_C , 0)) ,2),
+            ROUND(AVG(NVL(REV_S , 0)) ,2),
+            ROUND(AVG(NVL(REV_P , 0)) ,2)
+		FROM "Score"
+        JOIN "Review" R USING(REV_CODE)
+        WHERE R.PLC_CODE = ?
+	</entry>
+	
+</properties>

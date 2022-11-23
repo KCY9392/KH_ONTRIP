@@ -50,6 +50,13 @@ public class Image {
 		this.changeName = changeName;
 		this.fileNo = fileNo;
 	}
+	
+	public Image(int fileNo , String filePath , String changeName) {
+		super();
+		this.fileNo = fileNo;
+		this.filePath = filePath;
+		this.changeName = changeName;
+	}
 
 	public int getFileNo() {
 		return fileNo;

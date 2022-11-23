@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,41 +8,34 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 <style>
-	 body{
-/* 	 	text-align:center; */
-	 }
-	 div{
-	 	box-sizing:border-box;
-	 }
-     .outer1{ */
-        background-color: white; /* 해당사이트의 고유한 색상으로 작성 */ 
-        color: black; 
-        width: 1000px; 
-        height: 1900px; 
-        /* border: 1px solid black; */ 
-        margin: auto; 
-        margin-top: 50px; 
-        box-sizing: border-box; 
+    .outer{
+        background-color: white; /* 해당사이트의 고유한 색상으로 작성 */
+        color: black;
+        width: 1000px;
+        height: 1900px;
+        /* border: 1px solid black; */
+        margin: auto;
+        margin-top: 350px;
+        box-sizing: border-box;
         /* text-align: center; */
-     } 
-    .title{ 
-    	margin:auto;
-    	margin-top:-30px;
-		height: 100px;
-		border: 2px solid white;
-		background-color: rgba(143, 212, 143, 0.911);;
-		
- 		/* rgba(143, 212, 143, 0.911); => 연두색 */
-    } 
+    }
+    .title{
+        height: 4%;
+        border: 2px solid black;
+        background-color: black;
+        border-left: 0;
+        border-right: 0;
+        border-top: 0;
+        /* rgba(143, 212, 143, 0.911); => 연두색 */
+    }
     #qnaTitle{
         font-size: 40px;
         color: white;
-        font-weight: bold;        
-        padding:10px;
+        font-weight: bold;
+        margin-left: 60px;
+        margin-top: 30px;
         font-family: 'Noto Sans KR', sans-serif;
     }
     .qna{
@@ -53,16 +45,17 @@
         
     }
     #qnap{
-    	text-align:center;
-        margin:auto;
+        margin-left: 250px;
+        margin-top: 60px;
         font-size: 40px;
+        margin-top: 30px;
+        margin-left: 350px;
         font-family: 'Noto Sans KR', sans-serif;
     }
     #htitle{
         font-size: 30px;
         font-weight: bold;
-/*         margin-left: 150px; */
-		
+        margin-left: 150px;
         font-family: 'Noto Sans KR', sans-serif;
     }
     #q{
@@ -98,7 +91,6 @@
         box-sizing: border-box;
         display: none;
         background-color: rgba(248, 248, 248, 0.863);
-        font-size:17px;
     }
     #bfont{
         float: left;
@@ -106,62 +98,49 @@
         font-family: 'Noto Sans KR', sans-serif;
         font-weight: 1000;
     }
-    .fa-lg{
-    	color:coral;
-    }
 </style>
 </head>
 <body>
     <%@ include file="../common/navbar.jsp" %>
+<%--     <%@ include file="../common/managerNavbar.jsp" %> --%>
+    <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-	<br><br><br><br>
-    <div class="outer1">
-    
+    <div class="outer">
         <div class="title">
-            <pre id="qnaTitle" style="text-align:center;">무엇을 도와드릴까요?</pre>
+            <pre id="qnaTitle">무엇을 도와드릴까요?</pre>
         </div>
-        
         <br><br>
-        
         <div class="qna">
-            <br><br><br><br>
-            <pre id="qnap"><i class="fa-regular fa-lightbulb fa-lg"></i>&nbsp;자주 찾는 도움말</pre>
+            <br><br><br><br><br>
+            <img src="전구.png" width="70px" style="margin-left: 450px;">
+            <pre id="qnap">자주 찾는 도움말</pre>
         </div>
-        
-        <br><br><br><br><br><br><br><br><br>
-        
-        <pre id="htitle" style="color:gray;"><img src="views/Q&A/숙소.png" width="50px">&nbsp;&nbsp;숙소</pre>
+        <br><br>
+        <br><br><br><br><br><br><br><br><br><br><br><br>
+        <pre id="htitle"><img src="숙소.png" width="50px">&nbsp;&nbsp;숙소</pre>
         <hr width="70%" style="margin-top: -10px;">
         <br>
-        
         <c:forEach items="${qnaForAccommodation}" var="acco">
         <div id="q" class="divForm1" name="divForm1"><b id="bfont">Q . 숙소 등급 출처는 어디인가요?</b></div>
         <p id="p" class="divForm2">A . 테스트 중이에요 </p> 
-        
         <br>
-        
         <div id="q" class="divForm1" name="divForm1"><b id="bfont">Q . 숙소 리뷰 평점은 믿을만 한가요?</b></div>
         <p id="p" class="divForm2">A . 테스트 중이에요 </p> 
-        
         <br>
-        
         <div id="q" class="divForm1" name="divForm1"><b id="bfont">Q . 리뷰는 누가 작성하나요?</b></div>
         <p id="p" class="divForm2">A . 테스트 중이에요 </p> 
-        
         <br>
-        
         <div id="q" class="divForm1" name="divForm1"><b id="bfont">Q . 숙소 연락처를 알고 싶습니다.</b></div>
         <p id="p" class="divForm2">A . 테스트 중이에요 </p>
         </c:forEach> 
-        
         <br>
         <br>
         <br>
-        
-        <pre id="htitle" style="color:gray;"><img src="views/Q&A/기능.png" width="50px">&nbsp;&nbsp;기능</pre>
+        <pre id="htitle"><img src="기능.png" width="50px">&nbsp;&nbsp;기능</pre>
         <hr width="70%" style="margin-top: -10px;">
         <br>
-        <ditrp;gtfrdsv id="q" class="divForm1" name="divForm1"><b id="bfont">Q . 찜목록 기능은 어떻게 사용하나요?</b></ditrpv>
+        <div id="q" class="divForm1" name="divForm1"><b id="bfont">Q . 찜목록 기능은 어떻게 사용하나요?</b></div>
         <p id="p" class="divForm2">A . 테스트 중이에요 </p>
         <br>
         <div id="q" class="divForm1" name="divForm1"><b id="bfont">Q . 검색 기능은 어떻게 사용하나요?</b></div>
@@ -175,7 +154,7 @@
         <br>
         <br>
         <br>
-        <pre id="htitle" style="color:gray;"><img src="views/Q&A/계정.png" width="50px">&nbsp;&nbsp;계정</pre>
+        <pre id="htitle"><img src="계정.png" width="50px">&nbsp;&nbsp;계정</pre>
         <hr width="70%" style="margin-top: -10px;">
         <br>
         <div id="q" class="divForm1" name="divForm1"><b id="bfont">Q . 계정 정보를 변경하고 싶은데 어떻게 해야하나요?</b></div>
@@ -213,4 +192,4 @@
         });
     </script>
 </body>
-</html>
+</html
