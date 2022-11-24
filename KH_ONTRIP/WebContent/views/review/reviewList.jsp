@@ -224,7 +224,7 @@
                         </div>
                    
                         <div class="outer_bottom">
-                            <img src="<%=selectMainImagelist.get(0).getFilePath()%><%=selectMainImagelist.get(0).getChangeName() %>" style="width: 318px; height:237px;">
+                            <img src="<%=request.getContextPath()%>/<%=selectMainImagelist.get(0).getFilePath()%><%=selectMainImagelist.get(0).getChangeName() %>" style="width: 318px; height:237px;">
                         </div>
 
                         <td></td><br><br><br><br><br><br><br><br>
@@ -248,7 +248,7 @@
                 </table>
             </form>
         </div>
-        <div class="outer2" >
+        <div class="outer2">
             <div class="outer7">
                 <ul>
                     <p id="title"><strong>❤️&nbsp;:&nbsp;<%=selectHeartCount %></strong></p> 
@@ -266,7 +266,7 @@
                         </thead>
                         <tbody>
                                     <tr>
-                                   <% if(!plist.isEmpty()) { %>
+                                   	<% if(!plist.isEmpty()) { %>
                                     <% for(int i = 0; i < plist.size(); i++) { %>
                                         <td><%=plist.get(i).getRevCode()%></td>
                                         <td><%=plist.get(i).getPlaceName()%></td>

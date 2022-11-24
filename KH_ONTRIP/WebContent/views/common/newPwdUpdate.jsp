@@ -10,7 +10,7 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 <style>
-	#outer{
+	#outer1{
         background-color: white; /* 해당사이트의 고유한 색상으로 작성 */
         color: black;
         width: 300px;
@@ -18,27 +18,30 @@
         margin: auto;
         box-sizing: border-box;
         text-align: center;
+		margin-top: 200px;
     }
 </style>
 </head>
 <body class="text-center">
-	<main class="form-signin w-100 m-auto">
-	<!-- 비밀번호 변경 클릭 시 처음 로그인 폼으로 이동하기 -->
-	  <form id = "outer" action="<%=request.getContextPath()%>/newPwdUpdateCheck.le" method="post">
-	    <img class="mb-4" src="/docs/5.2/assets/brand/bootstrap-logo.svg" alt="" width="72" height="57">
-	    <h1 class="h3 mb-3 fw-normal">새로운 비밀번호</h1>
-	    <div class="form-floating">
-	      <input type="email" class="form-control" id="floatingInput" name="newPwd" placeholder="name@example.com">
-	      <h1 class="h3 mb-3 fw-normal">비밀번호 확인</h1>
-	    </div>
-	    <div class="form-floating">
-	      <input type="password" class="form-control" id="floatingPassword" name="checkPwd" placeholder="Password">
-	    </div>
-	    </div>
-	    <button class="w-100 btn btn-lg btn-primary" type="submit" onclick="newPwdUpdate();">비밀번호 변경</button>
-	    <p class="mt-5 mb-3 text-muted">© Ontrip</p>
-	  </form>
-	</main>
+	
+				<!-- 비밀번호 변경 클릭 시 처음 로그인 폼으로 이동하기 -->
+			<form id = "outer1" action="<%=request.getContextPath()%>/newPwdUpdateCheck.le" method="post">
+				
+				<h1 class="h3 mb-3 fw-normal">새로운 비밀번호</h1>
+			<div class="form-floating">
+			<input type="password" class="form-control" id="floatingInput" name="newPwd" placeholder="newPassword"><br>
+			<h1 class="h3 mb-3 fw-normal">비밀번호 확인</h1>
+			</div>
+			<div class="form-floating">
+			<input type="password" class="form-control" id="floatingPassword" name="checkPwd" placeholder="newPassword Check">
+			</div>
+			</div>
+			<br>
+			<button class="w-100 btn btn-lg btn-primary" type="submit" onclick="newPwdUpdate();" style=" background-color: rgb(130, 202, 164); border: 0; ">비밀번호 변경</button>
+			<p class="mt-5 mb-3 text-muted">© Ontrip</p>
+		</form>
+	</div>
+
 	
 	<script>
 		function newPwdUpdate(){

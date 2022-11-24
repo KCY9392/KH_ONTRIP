@@ -31,6 +31,7 @@
         height:200px;
         text-align: center;
         font-weight: bold;
+        margin-left:0 !important;
     }
 
     .table thead{
@@ -94,6 +95,13 @@
    	color: black;
    	text-decoration: none;
    }
+   .adminList{
+        
+   }
+   #btn{
+     width: 350px;
+   }
+
 </style>
 <!-- CSS only -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
@@ -115,62 +123,64 @@
 		<div class="buttons">
 			<form action="/KH_ONTRIP/placeList.mn?categoryCode=PP"
 				method="post">
-				<button type="submit">놀거리</button>
+				<button type="submit" name="btn" id="btn">놀거리</button>
 			</form>
 			<form action="/KH_ONTRIP/placeList.mn?categoryCode=HH"
 				method="post">
-				<button type="submit">숙소</button>
+				<button type="submit" name="btn" id="btn">숙소</button>
 			</form>
 			<form action="/KH_ONTRIP/placeList.mn?categoryCode=FF"
 				method="post">
-				<button type="submit">맛집</button>
+				<button type="submit" name="btn" id="btn">맛집</button>
 			</form>
 		</div>
-		<table class="table table-bordered">
-			<thead>
-				<tr>
-					<th>번호</th>
-					<th>시설</th>
-					<th>등록일</th>
-				</tr>
-			</thead>
-
-			<tbody>
-				<c:forEach var="plc" items="${placeList}">
-					<tr>
-						<td>${plc.plcCode}</td>
-						<td><a
-							href="<%=request.getContextPath() %>/placeDetail.mn?plcName=${plc.plcName}&categoryCode=${plc.categoryCode}">${plc.plcName}</a></td>
-						<td>${plc.plcDate}</td>
-					</tr>
-				</c:forEach>
-			</tbody>
-
-			<tbody>
-				<tr class="paging">
-					<td colspan="5">
-						<ul class="pagination">
-
-							<c:if test="${page.prev }">
-								<li><a
-									href="<%=request.getContextPath() %>/placeList.mn?pageNum=${page.startPage - 1 }&amount=${page.amount}&categoryCode=${categoryCode}">이전</a></li>
-							</c:if>
-
-							<c:forEach var="num" begin="${page.startPage }"
-								end="${page.endPage }">
-								<li class="${page.pageNum eq num ? 'active' : '' }"><a
-									href="<%=request.getContextPath() %>/placeList.mn?pageNum=${num }&amount=${page.amount}&categoryCode=${categoryCode}">${num }</a></li>
-							</c:forEach>
-
-							<c:if test="${page.next }">
-								<li><a
-									href="<%=request.getContextPath() %>/placeList.mn?pageNum=${page.endPage + 1 }&amount=${page.amount}&categoryCode=${categoryCode}">다음</a></li>
-							</c:if>
-						</ul>
-					</td>
-				</tr>
-			</tbody>
-		</table>
+		<div class="adminList">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>번호</th>
+                        <th>시설</th>
+                        <th>등록일</th>
+                    </tr>
+                </thead>
+    
+                <tbody>
+                    <c:forEach var="plc" items="${placeList}">
+                        <tr>
+                            <td>${plc.plcCode}</td>
+                            <td><a
+                                href="<%=request.getContextPath() %>/placeDetail.mn?plcName=${plc.plcName}&categoryCode=${plc.categoryCode}">${plc.plcName}</a></td>
+                            <td>${plc.plcDate}</td>
+                        </tr>
+                    </c:forEach>
+                </tbody>
+    
+                <tbody>
+                    <tr class="paging">
+                        <td colspan="5">
+                            <ul class="pagination">
+    
+                                <c:if test="${page.prev }">
+                                    <li><a
+                                        href="<%=request.getContextPath() %>/placeList.mn?pageNum=${page.startPage - 1 }&amount=${page.amount}&categoryCode=${categoryCode}">이전</a></li>
+                                </c:if>
+    
+                                <c:forEach var="num" begin="${page.startPage }"
+                                    end="${page.endPage }">
+                                    <li class="${page.pageNum eq num ? 'active' : '' }"><a
+                                        href="<%=request.getContextPath() %>/placeList.mn?pageNum=${num }&amount=${page.amount}&categoryCode=${categoryCode}">${num }</a></li>
+                                </c:forEach>
+    
+                                <c:if test="${page.next }">
+                                    <li><a
+                                        href="<%=request.getContextPath() %>/placeList.mn?pageNum=${page.endPage + 1 }&amount=${page.amount}&categoryCode=${categoryCode}">다음</a></li>
+                                </c:if>
+                            </ul>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
 
 		<br><br><br>
     

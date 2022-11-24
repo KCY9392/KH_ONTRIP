@@ -41,7 +41,7 @@ public class AdMainSaveImgController extends HttpServlet {
 		System.out.println(localCode);
 		
 		
-		if(ServletFileUpload.isMultipartContent((jakarta.servlet.http.HttpServletRequest) request)) {
+		if(ServletFileUpload.isMultipartContent(request)) {
 			
 			// 1_1. 전송용량 제한
 	        int maxSize = 10 * 1024 * 1024; // 10mByte
@@ -54,11 +54,11 @@ public class AdMainSaveImgController extends HttpServlet {
 	        	savePath = request.getServletContext().getRealPath("/resources/play_Img/");
 	        	filePath = "/resources/play_Img/";
 	        }else if(categoryCode.equals("HH")){
-	        	savePath = request.getServletContext().getRealPath("/resources/food_Img/");
-	        	filePath = "/resources/food_Img/";
-	        }else {
 	        	savePath = request.getServletContext().getRealPath("/resources/hotel_Img/");
 	        	filePath = "/resources/hotel_Img/";
+	        }else {
+	        	savePath = request.getServletContext().getRealPath("/resources/food_Img/");
+	        	filePath = "/resources/food_Img/";
 	        }
 	        
 	        // 2. 전달된 파일명 수정 작업 후 서버에 업로드
@@ -111,7 +111,7 @@ public class AdMainSaveImgController extends HttpServlet {
 	        if(result1 > 0) {//성공 => list.bo?currentPage=1
 		        
 	            request.getSession().setAttribute("alertMsg", "시설 등록 성공!");
-	            response.sendRedirect(request.getContextPath()+"/placeList.mn?currentPage=1");
+	            response.sendRedirect(request.getContextPath()+"/placeList.mn?currentPage=1&categoryCode=PP");
 	        
 	        }else {//실패 
 	            
