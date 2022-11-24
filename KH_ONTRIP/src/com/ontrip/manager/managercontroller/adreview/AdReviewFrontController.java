@@ -13,18 +13,18 @@ import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
 
-
+/*
+   관리자 리뷰
+ */
 @WebServlet(name = "AdReviewFrontController" , urlPatterns = "/manager/reviews/*")
 public class AdReviewFrontController extends HttpServlet {
 
     private Map<String, ReviewFrontController> controllerMap = new HashMap<>();
 
     public AdReviewFrontController() {
-        controllerMap.put("/KH_ONTRIP/manager/reviews/play", new PlayingReviewController());
-        controllerMap.put("/KH_ONTRIP/manager/reviews/acco", new AccoReviewController());
-        controllerMap.put("/KH_ONTRIP/manager/reviews/rst", new RstReviewController());
-        controllerMap.put("/KH_ONTRIP/manager/reviews/review", new ReviewDetailedController());
-        controllerMap.put("/KH_ONTRIP/manager/reviews/delete", new AdReviewDeleteController());
+        controllerMap.put("/KH_ONTRIP/manager/reviews/play", new PlayingReviewController());   // 문의사항 리스트 jsp
+        controllerMap.put("/KH_ONTRIP/manager/reviews/review", new ReviewDetailedController()); // 문의사항 상세 jsp
+        controllerMap.put("/KH_ONTRIP/manager/reviews/delete", new AdReviewDeleteController()); // 문의사항 삭제 controller
 
     }
 

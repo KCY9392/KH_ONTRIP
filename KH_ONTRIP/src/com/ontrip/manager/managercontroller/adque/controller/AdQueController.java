@@ -27,11 +27,14 @@ public class AdQueController implements QueFrontController {
         MemberQuestionDetailed questionByCode = adQuestionService.getByCode(i);
 
 
-        boolean isUpdated = false;
+//        boolean isUpdated = false;
+//
+//        if (questionByCode.getaContent() == null) {
+//            isUpdated = true;
+//        }
 
-        if (questionByCode.getaContent() == null) {
-            isUpdated = true;
-        }
+        boolean isUpdated = questionByCode.getaContent() == null;
+
 
 
 

@@ -1,24 +1,24 @@
 package com.ontrip.manager.managercontroller.admember.controller;
 
 
+import com.ontrip.manager.MyView;
 import com.ontrip.manager.managercontroller.admember.MemberFrontController;
 import com.ontrip.manager.service.AdMemberService;
 import com.ontrip.member.model.vo.Member;
-
-import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 public class AdMemberListController implements MemberFrontController {
 
     AdMemberService adMemberService = AdMemberService.getInstance();
 
     @Override
-    public void process(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException, SQLException {
+    public MyView process(HttpServletRequest request, HttpServletResponse response)
+        throws IOException, ServletException, SQLException {
 
         System.out.println("MemberMainPage");
 
@@ -26,11 +26,13 @@ public class AdMemberListController implements MemberFrontController {
 
         request.setAttribute("members", members);
 
-        String viewPath = "/views/manager/admember/members.jsp";
+        return new MyView("/views/manager/admember/members.jsp");
 
-        RequestDispatcher dispatcher = request.getRequestDispatcher(viewPath);
+//        String viewPath = "/views/manager/admember/members.jsp";
 
-        dispatcher.forward(request,  response);
+//        RequestDispatcher dispatcher = request.getRequestDispatcher(viewPath);
+//
+//        dispatcher.forward(request, response);
 
 
     }

@@ -16,6 +16,9 @@ import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
 
+/*
+   관리자 qna
+ */
 
 @WebServlet(name = "adQnaFrontController" , urlPatterns = "/manager/qnas/*")
 public class AdQnaFrontController extends HttpServlet {
@@ -24,10 +27,10 @@ public class AdQnaFrontController extends HttpServlet {
 
     public AdQnaFrontController() {
 
-        controllerMap.put("/KH_ONTRIP/manager/qnas", new AdQnaListController());
-        controllerMap.put("/KH_ONTRIP/manager/qnas/saveform", new AdQnaFormController());
-        controllerMap.put("/KH_ONTRIP/manager/qnas/save", new AdQnaSaveController());
-        controllerMap.put("/KH_ONTRIP/manager/qnas/delete", new AdQnaDeleteController());
+        controllerMap.put("/KH_ONTRIP/manager/qnas", new AdQnaListController());     // qna리스트 jsp uri
+        controllerMap.put("/KH_ONTRIP/manager/qnas/saveform", new AdQnaFormController()); // qna등록폼 jsp uri
+        controllerMap.put("/KH_ONTRIP/manager/qnas/save", new AdQnaSaveController()); // qna저장
+        controllerMap.put("/KH_ONTRIP/manager/qnas/delete", new AdQnaDeleteController()); // qna삭제
 
     }
 

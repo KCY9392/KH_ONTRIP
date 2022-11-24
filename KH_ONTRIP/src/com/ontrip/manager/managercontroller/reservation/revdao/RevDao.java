@@ -1,7 +1,8 @@
 package com.ontrip.manager.managercontroller.reservation.revdao;
 
-import com.ontrip.reservation.vo.Reservation;
+import static com.ontrip.common.JDBCTemplate.close;
 
+import com.ontrip.reservation.vo.Reservation;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.sql.Connection;
@@ -10,18 +11,14 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Properties;
 
-import static com.ontrip.common.JDBCTemplate.close;
-
 public class RevDao {
-
 
 
     private static final RevDao instance = new RevDao();
 
-    public static RevDao getInstance(){
-        return  instance  ;
+    public static RevDao getInstance() {
+        return instance;
     }
-
 
 
     private Properties prop = new Properties();
@@ -29,7 +26,6 @@ public class RevDao {
     public RevDao() {
 
         String fileName = RevDao.class.getResource("/sql/manager/manager-mapper.xml").getPath();
-
 
         try {
             prop.loadFromXML(new FileInputStream(fileName));
@@ -56,6 +52,7 @@ public class RevDao {
             pstmt.setString(8, reservation.getRnPhoneNumber());
             pstmt.setDate(9, reservation.getRnCheckIn());
             pstmt.setDate(10, reservation.getRnCheckOut());
+            pstmt.setInt(11, reservation.getRnPrice());
             pstmt.executeQuery();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -68,7 +65,7 @@ public class RevDao {
 
     public String getPlaceName(Connection con, int placeCode) throws SQLException {
 
-        String placeName = null ;
+        String placeName = null;
 
         String sql = prop.getProperty("getPlaceName");
 
@@ -77,19 +74,18 @@ public class RevDao {
 
         try {
             pstmt = con.prepareStatement(sql);
-            pstmt.setInt(1,placeCode);
+            pstmt.setInt(1, placeCode);
             rset = pstmt.executeQuery();
             if (rset.next()) {
                 placeName = rset.getString("PLC_NAME");
             }
-        }
-        catch (SQLException e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         } finally {
             close(rset);
             close(pstmt);
         }
         return placeName;
-        }
+    }
 
 }

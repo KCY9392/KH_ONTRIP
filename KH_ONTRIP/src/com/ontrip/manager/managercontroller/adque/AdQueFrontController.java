@@ -16,6 +16,9 @@ import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
 
+/*
+    관리자 문의사항
+ */
 @WebServlet(name = "AdQueFrontController" , urlPatterns = "/manager/questions/*")
 public class AdQueFrontController extends HttpServlet {
 
@@ -23,10 +26,10 @@ public class AdQueFrontController extends HttpServlet {
 
     public AdQueFrontController() {
 
-        controllerMap.put("/KH_ONTRIP/manager/questions", new AdQueListController());
-        controllerMap.put("/KH_ONTRIP/manager/questions/question", new AdQueController());
-        controllerMap.put("/KH_ONTRIP/manager/questions/answerform", new AdAnsFormController());
-        controllerMap.put("/KH_ONTRIP/manager/questions/answerform/answer", new AdAnsController());
+        controllerMap.put("/KH_ONTRIP/manager/questions", new AdQueListController());   // 문의사항 리스트 jsp
+        controllerMap.put("/KH_ONTRIP/manager/questions/question", new AdQueController()); // 문의사항 상세 jsp
+        controllerMap.put("/KH_ONTRIP/manager/questions/answerform", new AdAnsFormController()); // 문의사항 답변폼 jsp
+        controllerMap.put("/KH_ONTRIP/manager/questions/answerform/answer", new AdAnsController()); // 문의사항 답변 controller
 
     }
 

@@ -28,9 +28,13 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      /* box-shadow:0 0 5px; */
-	  /* background: linear-gradient(90deg, rgb(242, 245, 166) 0%, rgb(245, 245, 245) 35%, rgb(65, 183, 95) 100%); */
     }
+    <style>
+     .container{
+       display: flex;
+       flex-direction: column;
+       align-items: center;
+     }
     .panel-title{
       font-size:35px;
     }
@@ -61,76 +65,27 @@
     .btn-5:active{
       background-color: rgb(180, 177, 177) ;
     }
-    div>button:nth-child(1) , .btn-delete{
+    div>button:nth-child(1){
       background-color: white;
       border:none;
       color:rgb(62, 131, 135);
       font-size: 15px;
       font-weight: 900;
     }
-    div>button:nth-child(1):hover, .btn-delete:hover{
+    div>button:nth-child(1):hover{
       cursor: pointer;
       color:rgb(115, 183, 187);
     }
-    .uk-flex-middle {
-        align-items: center;
-    }
-    .uk-flex-center {
-        justify-content: center;
-    }
-    .uk-flex {
-        display: flex;
-    }
-    .uk-background-cover {
-        background-size: cover;
-    }
-    .uk-background-contain{
-        background-position: 50% 50%;
-        background-repeat: no-repeat;
-    }
-    .uk-section-default {
-        background: rgb(250, 250, 250);
-    }
-
-    .uk-section {
-        padding-top: 70px;
-        padding-bottom: 70px;
-    }
-    .uk-section {
-        display: flow-root;
-        box-sizing: border-box;
-    }
   </style>
-
+  </style>
 </head>
 <body>
 
 <%@ include file="../../common/navbar.jsp" %>
 
-
 <br><br><br><br><br>
 
-     <div class="uk-flex uk-flex-center uk-flex-middle uk-background-cover " style="margin:auto; width: 90vw; height: 60vh; background-image: url(&quot;https://www.myro.co.kr/myro_image/mainN7.jpg&quot;);">
-        <h3 style="color:white; font-size:50px;">ONTRIP &nbsp;&nbsp; 문의사항</h3>
-    </div>
-
-    <br><br><br>
-
-    <div class="uk-section uk-section-default" style="min-width: 90vw; height:20vh;">
-        <div class="uk-container">
-            <div style="text-align: center; margin-top : -1.5%;">
-                <div style="font-size:40px; font-weight:600;">OnTrip</div><br>
-                <div style="color:darkgray">MAKE YOUR ROUTE OPTIMIZED</div>
-            </div>
-        </div>
-    </div>
-
-    <br><br><br>
-
-
-
 <div class="container">
-	<br><br>
   <h2 class="panel-title" style="color:rgb(5, 198, 37);">문의사항 상세조회</h2> <br>
   <div class="form-group" style="text-align:center;">
     <form method="post" action="/KH_ONTRIP/question/queUpdateForm">
@@ -138,29 +93,24 @@
     <span> 내용</span> <br>
     <textarea cols="50" rows="7" readonly>${memberQuestionDetailed.qContent}</textarea>  <br><br>
     <span> 답변 </span> <br>
-    <textarea cols="50" rows="10"readonly>${memberQuestionDetailed.aContent}</textarea>
+    <textarea cols="60" rows="10"readonly>${memberQuestionDetailed.aContent}</textarea>
 
     <br><br>
       <input type="hidden" name="qCode" value="${memberQuestionDetailed.qCode}">
       <input type="hidden" name="qTitle" value="${memberQuestionDetailed.qTitle}">
       <input type="hidden" name="qContent" value="${memberQuestionDetailed.qContent}">
-      
-      <div style="display:flex;">
-	      <c:if test="${isUpdated}">
-	        <button type="submit" class="btn-modify" style="float:left; margin:auto;">수정하기</button>
-	      </c:if>
-	    </form>
-	    
-		<form action="/KH_ONTRIP/question/queDelete?qCode=${memberQuestionDetailed.qCode}" method="post">
-	      <button type="submit" class="btn-delete" style="margin-right:83px;">삭제하기</button>
-	    </form>
-	    </div>
+      <c:if test="${isUpdated}">
+        <button type="submit">수정하기</button>
+      </c:if>
+    </form>
+
     <br><br><br><br>
-    
     <form action="/KH_ONTRIP/question/questions" method="get">
       <div><button type="submit">목록으로</button></div>
     </form>
-    <br><br>
+    <form action="/KH_ONTRIP/question/queDelete?qCode=${memberQuestionDetailed.qCode}" method="get">
+      <button type="submit">삭제하기</button>
+    </form>
   </div>
 </div>
 

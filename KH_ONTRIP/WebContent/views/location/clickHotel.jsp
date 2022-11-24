@@ -294,7 +294,7 @@
     
     <script>
        function Goreservation(){
-          location.href = "<%= request.getContextPath()%>/ ?memNo=<%= loginUser.getMemberNo() %>&plcCode=<%= placeCode %>";
+          location.href = "/KH_ONTRIP/reservation/saveform?memNo=<%= loginUser.getMemberNo() %>&plcCode=<%= placeCode %>";
        }
     
     </script>

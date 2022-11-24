@@ -9,4 +9,34 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
+
+
+
+<!--  <filter>-->
+<!--    <filter-name>loginCheckFilter</filter-name>-->
+<!--    <filter-class>com.ontrip.manager.LoginCheckFilter</filter-class>-->
+<!--  </filter>-->
+
+<!--  <filter-mapping>-->
+<!--    <filter-name>loginCheckFilter</filter-name>-->
+<!--    <url-pattern>/*</url-pattern>-->
+<!--  </filter-mapping>-->
+
+
+
+  <error-page>
+    <error-code>404</error-code>
+    <location>/resources/404error.html</location>
+  </error-page>
+
+  <error-page>
+    <error-code>500</error-code>
+    <location>/resources/500error.html</location>
+  </error-page>
+
+
+
+
+
+
 </web-app>

@@ -17,12 +17,19 @@ public class Reservation {
     private java.sql.Date rnCheckOut; // 체크아웃 날짜
     private java.sql.Date rnDate; // 예약한 날짜
     private String rnStatus; // 삭제 여부(N, Y)
+	private Integer rnPrice;
+
+	private String plcName;
+
 
 	//결제수단 , 결제정보 , 카테고리코드  삭제
 
-    public Reservation() {
-    }
-	public Reservation(Integer rnCode, int placeCode, int memberNo, String rnName, int rnAdult, int rnChild, int rnCount, String rnRoomType, String rnPhoneNumber, Date rnCheckIn, Date rnCheckOut, Date rnDate, String rnStatus) {
+
+	public Reservation() {
+
+	}
+
+	public Reservation(Integer rnCode, int placeCode, int memberNo, String rnName, int rnAdult, int rnChild, int rnCount, String rnRoomType, String rnPhoneNumber, Date rnCheckIn, Date rnCheckOut, Date rnDate, String rnStatus, Integer rnPrice, String plcName) {
 		this.rnCode = rnCode;
 		this.placeCode = placeCode;
 		this.memberNo = memberNo;
@@ -36,7 +43,10 @@ public class Reservation {
 		this.rnCheckOut = rnCheckOut;
 		this.rnDate = rnDate;
 		this.rnStatus = rnStatus;
+		this.rnPrice = rnPrice;
+		this.plcName = plcName;
 	}
+
 
 	public Integer getRnCode() {
 		return rnCode;
@@ -142,6 +152,23 @@ public class Reservation {
 		this.rnStatus = rnStatus;
 	}
 
+	public Integer getRnPrice() {
+		return rnPrice;
+	}
+
+	public void setRnPrice(Integer rnPrice) {
+		this.rnPrice = rnPrice;
+	}
+
+	public String getPlcName() {
+		return plcName;
+	}
+
+	public void setPlcName(String plcName) {
+		this.plcName = plcName;
+	}
+
+
 	@Override
 	public String toString() {
 		return "Reservation{" +
@@ -158,6 +185,8 @@ public class Reservation {
 				", rnCheckOut=" + rnCheckOut +
 				", rnDate=" + rnDate +
 				", rnStatus='" + rnStatus + '\'' +
+				", rnPrice=" + rnPrice +
+				", plcName='" + plcName + '\'' +
 				'}';
 	}
 }

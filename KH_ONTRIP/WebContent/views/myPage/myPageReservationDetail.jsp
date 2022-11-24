@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -31,55 +33,38 @@
                   <div class="table-div">
                     <table>
                         <th>
-                            <tr><span style="font-size:30px; margin-left:20px;">KH호텔</span></tr>
+                            <tr><span style="font-size:30px; margin-left:20px;">${rev.plcName}</span></tr>
                             <tr>
-                                <div style="float:right; width:100px; height:100px; border: 1px solid red;">이미지</div>
+                               <div style="float:right; width:100%; height:100%; border: 1px solid red;"><img width="597px" src="/KH_ONTRIP/resources/hotel_Img/${image.changeName}"</div>
                             </tr>
                         </th>
 
                         <tr>
-                            <td>예약자 : &nbsp;</td>
-                            <!-- value값은 일부러 만들어 놓은거라 밑에 주석되어있는 코드를 쓰면 됨. -->
-                            <td><input type="text" name="userName" value="홍길동"></td>
-                            <!-- <td><input type="text" name="userName" value="<%=userName %>"></td> -->
+                            <td>예약자 : ${rev.rnName}</td>
                             <td></td>
                         </tr>
                         <tr>
-                            <td>휴대폰번호 : &nbsp;</td>
-                            <td><input type="text" name="userPhone" value="010-1234-5678"></td>
-                            <!-- <td><input type="text" name="userPhone" value="<%=userPhone %>"></td> -->
+                            <td>휴대폰번호 :${rev.rnPhoneNumber} &nbsp;</td>
                             <td></td>
                         </tr>
                         <tr>
-                            <td>성인 : &nbsp;</td>
-                            <td><input type="text" name="adult" value="2" size="2">
-                            <!-- <td><input type="text" name="adult" value="<%=adult %>"></td> -->
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 어린이 : &nbsp;
-                            <input type="text" name="child" value="1" size="2"></td>
-                            <!-- <td><input type="text" name="child" value="<%=child %>"></td> -->
+                            <td>성인 : ${rev.rnAdult}&nbsp; </td>
+                            <td>어린이 : ${rev.rnChild}&nbsp; </td>
+
                         </tr>
                         <tr>
-                            <td>객실수 : &nbsp;</td>
-                            <td><input type="text" name="room" value="1" size="2"></td>
-                            <!-- <td><input type="text" name="room" value="<%=room %>"></td> -->
-                            
+                            <td>객실수 : &nbsp;${rev.rnCount}</td>
                         </tr>
                         <tr>
-                            <td>Room Type : &nbsp;</td>
-                            <td><input type="text" name="roomType" value="스위트룸" size="2"></td>
-                            <!-- <td><input type="text" name="roomType" value="<%=roomType %>"></td> -->
+                            <td>Room Type : ${rev.rnRoomType} &nbsp;</td>
                             <td></td>
                         </tr>
                         <tr>
-                            <td>체크인/체크아웃 : &nbsp;</td>
-                            <td><input type="text" name="checkInOut" value="2022-10-31 ~ 2022-11-02"></td>
-                            <!-- <td><input type="text" name="checkInOut" value="<%=checkInOut %>"></td> -->
+                            <td>체크인/체크아웃 : <fmt:formatDate value="${rev.rnCheckIn }" pattern="yyyy-mm-dd" /> ~ <fmt:formatDate value="${rev.rnCheckOut }" pattern="yyyy-mm-dd" /></td>
                             <td></td>
                         </tr>
                         <tr>
-                            <td>가격 : &nbsp;</td>
-                            <td><input type="text" name="price" value="2,000,000 KRW"></td>
-                            <!-- <td><input type="text" name="price" value="<%=price %>"></td> -->
+                            <td>가격 : ${rev.rnPrice} 원&nbsp;</td>
                             <td></td>
                         </tr>
                       

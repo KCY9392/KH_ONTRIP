@@ -13,6 +13,10 @@ import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
 
+
+/*
+  사용자 문의사항
+ */
 @WebServlet(name = "MemberQueFrontController" , urlPatterns = "/question/*")
 public class MemberQueFrontController extends HttpServlet {
 
@@ -20,13 +24,13 @@ public class MemberQueFrontController extends HttpServlet {
     public Map<String, QuFrontController> controllerMap = new HashMap<>();
 
     public MemberQueFrontController() {
-        controllerMap.put("/KH_ONTRIP/question/questions", new MemberQueListController());
-        controllerMap.put("/KH_ONTRIP/question/queDetailed", new MemberQueDetailedController());
-        controllerMap.put("/KH_ONTRIP/question/queUpdateForm", new MemberQueUpdateFormController());
-        controllerMap.put("/KH_ONTRIP/question/queUpdate", new MemberUpdateQueController());
-        controllerMap.put("/KH_ONTRIP/question/queDelete", new MemberDeleteQueController());
-        controllerMap.put("/KH_ONTRIP/question/write", new MemberWriteQueController());
-        controllerMap.put("/KH_ONTRIP/question/form", new MemberQueFormController());
+        controllerMap.put("/KH_ONTRIP/question/questions", new MemberQueListController()); // 문의사항 리스트
+        controllerMap.put("/KH_ONTRIP/question/queDetailed", new MemberQueDetailedController()); // 문의사항 상세
+        controllerMap.put("/KH_ONTRIP/question/queUpdateForm", new MemberQueUpdateFormController()); // 문의사항 업데이트폼
+        controllerMap.put("/KH_ONTRIP/question/queUpdate", new MemberUpdateQueController()); // 문의사항 업데이트
+        controllerMap.put("/KH_ONTRIP/question/queDelete", new MemberDeleteQueController()); // 문의사항 삭제
+        controllerMap.put("/KH_ONTRIP/question/write", new MemberWriteQueController()); // 문의사항 등록
+        controllerMap.put("/KH_ONTRIP/question/form", new MemberQueFormController()); // 문의사항 등록폼
     }
 
 

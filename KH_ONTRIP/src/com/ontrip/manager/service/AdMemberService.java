@@ -14,8 +14,8 @@ public class AdMemberService {
 
     private static final AdMemberService instance = new AdMemberService();
 
-    public static AdMemberService getInstance(){
-        return  instance  ;
+    public static AdMemberService getInstance() {
+        return instance;
     }
 
 
@@ -34,10 +34,9 @@ public class AdMemberService {
 
     public Member adminMemberDetails(int memberNo) throws SQLException {
 
-
         Connection con = JDBCTemplate.getConnection();
 
-        Member member = managerDao.adMinMember(memberNo , con);
+        Member member = managerDao.adMinMember(memberNo, con);
 
         JDBCTemplate.close();
 

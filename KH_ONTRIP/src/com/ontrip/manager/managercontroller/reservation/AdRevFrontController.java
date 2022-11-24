@@ -14,6 +14,9 @@ import java.text.ParseException;
 import java.util.HashMap;
 import java.util.Map;
 
+/*
+  사용자 숙소 예약/결제
+ */
 @WebServlet(name = "AdRevFrontController" , urlPatterns = "/reservation/*")
 public class AdRevFrontController extends HttpServlet {
 
@@ -21,11 +24,11 @@ public class AdRevFrontController extends HttpServlet {
 
     public AdRevFrontController() {
 
-        controllerMap.put("/KH_ONTRIP/reservation/saveform", new RevFormController());
-        controllerMap.put("/KH_ONTRIP/reservation/save", new RevSaveController());
-        controllerMap.put("/KH_ONTRIP/reservation/pay", new RevPayController());
-        controllerMap.put("/KH_ONTRIP/reservation/order/paySuccess" , new RevSuccessController());
-        controllerMap.put("/KH_ONTRIP/reservation/order/payFail" , new RevFailController());
+        controllerMap.put("/KH_ONTRIP/reservation/saveform", new RevFormController()); // 예약하기 폼
+        controllerMap.put("/KH_ONTRIP/reservation/save", new RevSaveController()); // 예약결과호출
+        controllerMap.put("/KH_ONTRIP/reservation/pay", new RevPayController()); // 예약결제
+        controllerMap.put("/KH_ONTRIP/reservation/order/paySuccess" , new RevSuccessController()); //결제성공 / 예약저장
+        controllerMap.put("/KH_ONTRIP/reservation/order/payFail" , new RevFailController()); // 결제실패
 
     }
 

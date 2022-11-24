@@ -1,5 +1,7 @@
 package com.ontrip.manager.managercontroller.reservation.service;
 
+import static com.ontrip.common.JDBCTemplate.close;
+
 import com.ontrip.common.JDBCTemplate;
 import com.ontrip.manager.managercontroller.reservation.revdao.RevDao;
 import com.ontrip.reservation.vo.Reservation;
@@ -51,6 +53,8 @@ public class RevService {
     public void saveRev(Reservation reservation) throws SQLException {
         Connection con = JDBCTemplate.getConnection();
         revDao.saveRev(reservation , con);
+        close();
+
     };
 
 

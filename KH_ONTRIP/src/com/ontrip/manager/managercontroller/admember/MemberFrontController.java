@@ -1,5 +1,6 @@
 package com.ontrip.manager.managercontroller.admember;
 
+import com.ontrip.manager.MyView;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -8,7 +9,7 @@ import java.sql.SQLException;
 
 public interface MemberFrontController {
 
-    public void process(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException, SQLException;
+    public MyView process(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException, SQLException;
 
 
 }

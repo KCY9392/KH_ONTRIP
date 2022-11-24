@@ -1,5 +1,7 @@
 package com.ontrip.manager.managercontroller.que.service;
 
+import static com.ontrip.common.JDBCTemplate.close;
+
 import com.ontrip.common.JDBCTemplate;
 import com.ontrip.manager.managercontroller.que.dao.MemberQueDao;
 import com.ontrip.question.vo.MemberQuestionBoard;
@@ -28,6 +30,7 @@ public class MemberQueService {
 
         ArrayList<MemberQuestionBoard> memberQuestionBoards = memberQueDao.memberQuestionBoards(pageNum, amount, con);
 
+        close();
 
         return memberQuestionBoards;
 
@@ -40,6 +43,8 @@ public class MemberQueService {
 
         int total = memberQueDao.getTotal(con);
 
+        close();
+
         return total;
 
     }
@@ -51,13 +56,22 @@ public class MemberQueService {
 
         memberQueDao.save(question , con);
 
+        close();
+
+
     }
 
 
     public MemberQuestionDetailed getMemberQuestionBoard(int qCode) throws SQLException {
         Connection con = JDBCTemplate.getConnection();
 
-        return memberQueDao.getMemberQuestionBoard(qCode, con);
+        MemberQuestionDetailed memberQuestionBoard = memberQueDao.getMemberQuestionBoard(qCode,
+            con);
+
+        close();
+
+        return memberQuestionBoard;
+
     }
 
 
@@ -66,12 +80,18 @@ public class MemberQueService {
         Connection con = JDBCTemplate.getConnection();
         memberQueDao.updateQuestion(qCode, qTitle, qContent , con);
 
+        close();
+
+
     }
 
 
     public void deleteMember(int qCode) throws SQLException {
         Connection con = JDBCTemplate.getConnection();
         memberQueDao.deleteMember(qCode, con);
+
+        close();
+
 
     }
 }

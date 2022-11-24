@@ -3,7 +3,6 @@ package com.ontrip.manager.service;
 import com.ontrip.common.JDBCTemplate;
 import com.ontrip.manager.dao.AdQnaDao;
 import com.ontrip.qna.vo.Qna;
-
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -15,14 +14,12 @@ public class AdQnaService {
 
     private static final AdQnaService instance = new AdQnaService();
 
-    public static AdQnaService getInstance(){
-        return  instance  ;
+    public static AdQnaService getInstance() {
+        return instance;
     }
 
 
-
-
-    public void saveQna(String question , String answer , String category) throws SQLException {
+    public void saveQna(String question, String answer, String category) throws SQLException {
         Connection con = JDBCTemplate.getConnection();
 
         Qna qna = new Qna();
@@ -30,7 +27,7 @@ public class AdQnaService {
         qna.setQaAnswer(answer);
         qna.setQaCategory(category);
 
-        adQnaDao.saveQna(con,qna);
+        adQnaDao.saveQna(con, qna);
 
 //        close();
 

@@ -11,7 +11,9 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
-
+/*
+   사용자 qna
+ */
 @WebServlet(name = "MemberQnaFrontController" , urlPatterns ="/qnas/*" )
 public class MemberQnaFrontController extends HttpServlet {
 

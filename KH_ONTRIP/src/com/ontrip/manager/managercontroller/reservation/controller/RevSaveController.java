@@ -55,21 +55,23 @@ public class RevSaveController implements RevFrontController {
         java.sql.Date rnCheckin = new java.sql.Date(startDateTime);  //
         java.sql.Date rnCheckout = new java.sql.Date(endDateTime);   //
 
-        Reservation reservation = new Reservation(
-                null , plcCode , memNo , rnName , rnAdult , rnChild , rnCount , rnType , rnPhone , rnCheckin , rnCheckout , null , null
-        );
 
-
-
-
-        HttpSession session = request.getSession();
-        session.setAttribute("reservation", reservation);
-
-        System.out.println("reservation = " + reservation);
 
 
 
         int totalPrice = revService.getPrice(rnType, rnCount, dates);
+
+        Reservation reservation = new Reservation(
+                null , plcCode , memNo , rnName , rnAdult , rnChild , rnCount , rnType , rnPhone , rnCheckin , rnCheckout , null , null, totalPrice,null
+                );
+
+
+        HttpSession session = request.getSession();
+        session.setAttribute("reservation", reservation);
+        System.out.println("reservation = " + reservation);
+
+
+
 
         request.setAttribute("placeName", placeName);
         request.setAttribute("rnName", rnName);

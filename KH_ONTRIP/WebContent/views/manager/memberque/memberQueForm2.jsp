@@ -1,4 +1,4 @@
-<%--
+<%@ page import="java.util.Map" %><%--
   Created by IntelliJ IDEA.
   User: jay
   Date: 2022/11/12
@@ -7,6 +7,8 @@
 --%>
 <%@ page contentType="text/html; charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+
 
 <!DOCTYPE html>
 <html>
@@ -89,9 +91,10 @@
   <h2 class="panel-title" style="color:rgb(5, 198, 37);">문의사항 등록</h2> <br>
   <div class="form-group" style="text-align:center;">
     <form method="post" action="/KH_ONTRIP/question/write">
-    <span> 제목 : <input type="text" name="qTitle"> </span> <br><br>
+    <span> 제목 : <input type="text" name="qTitle" required> </span> <br><br>
     <span> 내용</span> <br>
-    <textarea cols="50" rows="7" name="qContent" ></textarea>  <br><br>
+
+    <textarea cols="50" rows="7" name="qContent" required></textarea>  <br><br>
       <input type="hidden" name="memName" value="${memName}">
       <input type="hidden" name="memNo" value="${memNo}">
       <button type="submit">등록하기</button>
