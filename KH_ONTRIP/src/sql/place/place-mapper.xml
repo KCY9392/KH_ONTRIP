@@ -61,7 +61,7 @@
    SELECT FILE_NO, FILE_PATH, CHANGE_NAME
    FROM "Image"
    WHERE STATUS = 'Y' AND ORIGIN_NAME LIKE '%1%' AND ORIGIN_NAME LIKE ?
-   ORDER BY CHANGE_NAME
+   ORDER BY CHANGE_NAME 
    </entry>
    
    <entry key="searchPlaceInfo">
@@ -81,7 +81,7 @@
                                                                 FROM "HashStorage" s
                                                                 JOIN "Hash" h USING(HAS_NO)
                                                                 WHERE h.HAS_NAME IN(@))
-   ORDER BY CHANGE_NAME
+   ORDER BY CHANGE_NAME DESC
    </entry>
    
    <entry key="searchHashPlaceInfo">

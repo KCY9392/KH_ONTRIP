@@ -232,22 +232,22 @@ div {
 
 
 			<!-- 맛집버튼 클릭시 해당상세지역의 맛집이 뜸 -->
-			<div id="msearch" class="box box2" style="padding: 20px;">
+			<div id="msearch" class="box box2" style="padding: 20px; text-align: center;">
 				<% if (!foodPath.isEmpty()) { %>
 				<% for (int i = 0; i < foodPath.size(); i++) { %>
 				<div class="outer7 shadow-lg" onclick="moveFood('<%= foodInfo.get(i).getPlcName() %>','<%= dareaName%>', '<%= User.getMemberNo() %>')">
-	            <div class="outer8">
-	                  <img
-	                     src="<%= request.getContextPath() %>/<%=foodPath.get(i).getFilePath()+foodPath.get(i).getChangeName() %>"
-	                     width="100%" height="198px">
-	            </div>
-	            <div class="outer10">
-	               <div class="outer11">
-	               <span style="border: 0; font-size: 20px; font-weight: bold;"><%=foodInfo.get(i).getPlcName() %></span><br><br>
-	               <span style="font-size: 15px;"><%=foodInfo.get(i).getPlcAddress() %><br><%=foodInfo.get(i).getPlcPnumber() %></span>
+	               <div class="outer8">
+	                     <img
+	                        src="<%= request.getContextPath() %>/<%=foodPath.get(i).getFilePath()+foodPath.get(i).getChangeName() %>"
+	                        width="100%" height="198px">
+	               </div>
+	               <div class="outer10">
+	                  <div class="outer11">
+	                  <span style="border: 0; font-size: 20px; font-weight: bold;"><%=foodInfo.get(i).getPlcName() %></span><br><br>
+	                  <span style="font-size: 15px;"><%=foodInfo.get(i).getPlcAddress() %><br><%=foodInfo.get(i).getPlcPnumber() %></span>
+	                  </div>
 	               </div>
 	            </div>
-	         </div>
 				<% } %>
 				<% } %>
 			</div>
@@ -256,7 +256,7 @@ div {
 
 
 			<!-- 숙소버튼 클릭시 해당상세지역의 숙소가 뜸 -->
-			<div id="ssearch" class="box box2" style="padding: 20px;">
+			<div id="ssearch" class="box box2" style="padding: 20px; text-align: center;">
 				<% if (!hotelPath.isEmpty()) { %>
 				<% for (int i = 0; i < hotelPath.size(); i++) { %>
 				<div class="outer7 shadow-lg" onclick="moveHotel('<%= hotelInfo.get(i).getPlcName() %>','<%= dareaName%>', '<%= User.getMemberNo() %>')">

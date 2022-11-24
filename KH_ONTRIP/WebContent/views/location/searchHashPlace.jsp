@@ -38,22 +38,30 @@
         color: black;
         width: 950px;
         height: 200px;
-        border: 1px solid black;
+        border: 1px solid rgb(167, 166, 166);
         margin: auto;
         margin-top: 10px;
         margin-left: 100x;
         display:flex;
     }
-    .outer8{
-        width: 35%;
-        height: 100%;
-        border: 1px solid blue;
-    }
-    .outer9{
-        width: 70%;
-        height: 100%;
-        /* border: 1px solid red; */
-    }
+	.outer8 {
+	   width: 40%;
+	   height: 100%;
+	   border-right: 1px solid rgb(167, 166, 166);
+	}
+	
+	.outer10{
+	   width: 65%;
+	   height: 100%;
+	}
+	.outer11{
+	   margin-top: 50px;
+	}
+	
+	.outer7.shadow-lg :hover{
+	   background-color: rgb(207, 206, 206);
+	   cursor : pointer;
+	}
     #mForm{
         border: none
     }
@@ -67,45 +75,40 @@
 
       <br><br>
 
-	<div class="bottom" style="width: 100%">
+	<div class="bottom" style="width: 100%; text-align: center;">
 		<fieldset id="mForm">
 
 			
 			<% if(!placeHashPath.isEmpty()) { %>
 			<% for(int i=0; i<placeHashPath.size(); i++){ %>
-			<div class="outer7"onclick="moveHotel('<%= placeHashInfo.get(i).getPlcName() %>','<%= placeHashInfo.get(i).getDareaName()%>', '<%= loginUser.getMemberNo() %>')">
-				<div class="outer8">
-					<div class="outer9" style="width: 270px; height: 270px;">
-						<img
-							src="<%= request.getContextPath() %>/<%=placeHashPath.get(i).getFilePath()+placeHashPath.get(i).getChangeName() %>"
-							width="122%" height="198px">
-					</div>
-				</div>
-
-					<div style="font-size:20px; font-weight:bold; margin-left: 25%; margin-top: 20px;"><input type="button" value="<%=placeHashInfo.get(i).getPlcName() %>" style="border: 0; background-color: white; font-weight: bold;"></div>
-	                            <div style="text-align:center; margin: 70px; margin-left: -130px">
-		                            <span><%=placeHashInfo.get(i).getPlcAddress() %></span><br>
-		                            <span><%=placeHashInfo.get(i).getPlcPnumber() %></span>
-	                            </div>
-                        </div> 
+                    <div class="outer7 shadow-lg" onclick="movePlace('<%= placeHashInfo.get(i).getPlcName() %>','<%= placeHashInfo.get(i).getDareaName()%>', '<%= loginUser.getMemberNo() %>', '<%= placeHashInfo.get(i).getCategoryCode()%>')">
+	               <div class="outer8">
+	                     <img
+	                        src="<%= request.getContextPath() %>/<%=placeHashPath.get(i).getFilePath()+placeHashPath.get(i).getChangeName() %>"
+	                        width="100%" height="198px">
+	               </div>
+	               <div class="outer10">
+	                  <div class="outer11">
+	                  <span style="border: 0; font-size: 20px; font-weight: bold;"><%=placeHashInfo.get(i).getPlcName() %></span><br><br>
+	                  <span style="font-size: 15px;"><%=placeHashInfo.get(i).getPlcAddress() %><br><%=placeHashInfo.get(i).getPlcPnumber() %></span>
+	                  </div>
+	               </div>
+	            </div> 
 				<%} %>
 			<%} %>
 	
 		</fieldset>
 	</div>
 	<script>
-		function movePlay(placeName, dareaName, memberNo){
-			location.href= "<%=request.getContextPath()%>"+"/selectPlay.pe?placeName="+ placeName+ "&dareaName=" +dareaName+  "&memberNo=" +memberNo;
+		function movePlace(placeName, dareaName, memberNo, categoryCode){
+			if(categoryCode == "PP"){
+				location.href= "<%=request.getContextPath()%>"+"/selectPlay.pe?placeName="+ placeName+ "&dareaName=" +dareaName+  "&memberNo=" +memberNo;				
+			} else if(categoryCode == "FF"){
+				location.href= "<%=request.getContextPath()%>"+"/selectFood.pe?placeName="+ placeName+ "&dareaName=" +dareaName+  "&memberNo=" +memberNo;
+			} else{
+				location.href= "<%=request.getContextPath()%>"+"/selectHotel.pe?placeName="+ placeName+ "&dareaName=" +dareaName+  "&memberNo=" +memberNo;
+			}
 		}
-		
-		function moveFood(placeName, dareaName, memberNo){
-			location.href= "<%=request.getContextPath()%>"+"/selectFood.pe?placeName="+ placeName+ "&dareaName=" +dareaName+  "&memberNo=" +memberNo;
-		}
-		
-		function moveHotel(placeName, dareaName, memberNo){
-			location.href= "<%=request.getContextPath()%>"+"/selectHotel.pe?placeName="+ placeName+ "&dareaName=" +dareaName+  "&memberNo=" +memberNo;
-		}
-
 	</script>
 </body>
 </html>

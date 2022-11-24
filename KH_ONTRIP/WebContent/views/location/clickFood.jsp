@@ -190,7 +190,7 @@
 
 
 
-            <div id="msearch" class="box box2" style="padding: 20px;">
+            <div id="msearch" class="box box2" style="padding: 20px; text-align: center;"">
                <% if (!foodPath.isEmpty()) { %> 
                <%  for (int i = 0; i < foodPath.size(); i++) { %> 
               <div class="outer7 shadow-lg" onclick="moveFood('<%= foodInfo.get(i).getPlcName() %>','<%= dareaName%>', '<%= loginUser.getMemberNo() %>')">
@@ -210,7 +210,7 @@
 
 
 
-            <div id = "ssearch" class = "box box2" style=" padding:20px;">
+            <div id = "ssearch" class = "box box2" style=" padding:20px; text-align: center;"">
                <%  if (!hotelPath.isEmpty()) { %>
                <%  for (int i = 0; i < hotelPath.size(); i++) { %>
                <div class="outer7 shadow-lg" onclick="moveHotel('<%= hotelInfo.get(i).getPlcName() %>','<%= dareaName%>', '<%= loginUser.getMemberNo() %>')">
