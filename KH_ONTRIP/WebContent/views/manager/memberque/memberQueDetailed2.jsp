@@ -108,7 +108,7 @@
     <form action="/KH_ONTRIP/question/questions" method="get">
       <div><button type="submit">목록으로</button></div>
     </form>
-    <form action="/KH_ONTRIP/question/queDelete?qCode=${memberQuestionDetailed.qCode}" method="get">
+    <form action="/KH_ONTRIP/question/queDelete?qCode=${memberQuestionDetailed.qCode}" method="post">
       <button type="submit">삭제하기</button>
     </form>
   </div>

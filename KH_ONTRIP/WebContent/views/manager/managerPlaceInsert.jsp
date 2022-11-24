@@ -27,7 +27,13 @@
         integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="
         crossorigin="anonymous">
     </script>
-     <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=3c46a61fbdf9ee1c5956f08d7c2deaf8&libraries=services"></script>
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=3c46a61fbdf9ee1c5956f08d7c2deaf8&libraries=services"></script>
+     <!-- 소스 다운 -->
+	 <script src="https://unpkg.com/@yaireo/tagify"></script>
+	 <!-- 폴리필 (구버젼 브라우저 지원) -->
+	 <script src="https://unpkg.com/@yaireo/tagify/dist/tagify.polyfills.min.js"></script>
+	 <link href="https://unpkg.com/@yaireo/tagify/dist/tagify.css" rel="stylesheet" type="text/css" />
+     
     <style>
        
        select{
@@ -140,8 +146,10 @@
                <span>시설설명</span> <br>
                <textarea name="content" cols="50" rows="5" required></textarea>
             </div>
-            <br>
-            <input name='basic'>
+            <!-- 해시 태그 정보를 저장할 input 태그. (textarea도 지원) -->
+	         <span>해시태그 : &nbsp;</span>
+	         <input name='hash'>
+	         <input type="hidden" name='hidden_hash'>
             <br><br>
             
       <button type="submit" style="border:none; width:150px; height:50px; background-color:bisque; font-weight:900; font-size:15px; border-radius:5px;">등록</button>
@@ -277,15 +285,24 @@
             });
             </script>
             
-           <script>
-			    const input = document.querySelector('input[name=basic]');
-			    let tagify = new Tagify(input); // initialize Tagify
-			    
-			    // 태그가 추가되면 이벤트 발생
-			    tagify.on('add', function() {
-			      console.log(tagify.value); // 입력된 태그 정보 객체
-			    })
-		  </script>
+          <script>
+             const input = document.querySelector('input[name=hash]');
+             let tagify = new Tagify(input); // initialize Tagify
+             let hidden_hash = document.querySelector('input[name=hidden_hash]');
+             // 태그가 추가되면 이벤트 발생
+             tagify.on('add', function() {
+               console.log(tagify.value); // 입력된 태그 정보 객체
+               let tag = "";
+               let arr = tagify.value;
+               for(let i =0; i<arr.length; i++){ //{value: 태그명, tagid : ? , asda:?}
+                  tag += arr[i]["value"]+  ( i != arr.length-1 ?  "," : "")
+                  
+                    hidden_hash.value = tag;
+               }
+             })
+             //바다,산,부산  
+         </script>
+
 
             
 </body>

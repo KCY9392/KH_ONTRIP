@@ -10,6 +10,13 @@ public class Hash {
 		this.hashNo = hashNo;
 		this.hashName = hashName;
 	}
+    
+
+	public Hash(String hashName) {
+		super();
+		this.hashName = hashName;
+	}
+
 
 	public int getHashNo() {
 		return hashNo;

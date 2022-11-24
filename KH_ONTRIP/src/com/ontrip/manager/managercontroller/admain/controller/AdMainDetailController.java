@@ -2,6 +2,7 @@ package com.ontrip.manager.managercontroller.admain.controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,6 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.ontrip.hash.service.HashService;
+import com.ontrip.hash.vo.Hash;
 import com.ontrip.image.vo.Image;
 import com.ontrip.manager.service.ManagerService;
 import com.ontrip.place.model.vo.Place;
@@ -41,6 +44,42 @@ public class AdMainDetailController extends HttpServlet {
 		ArrayList<Image> placeImg = new ManagerService().detailPlaceImage(placeName);
 		
 		request.setAttribute("placeImg", placeImg);
+		
+		ArrayList<Hash> hash = new ManagerService().detailHash(placeName);
+		request.setAttribute("hash", hash);
+		System.out.println(hash);
+		String value = "";
+		if(hash != null) {
+			for(int i = 0; i<hash.size(); i++) {
+				System.out.println(hash.get(i).getHashName());
+				value += hash.get(i).getHashName()+  ( i != hash.size()-1 ?  "," : "");
+				
+			}
+		}
+		System.out.println(value);
+		request.setAttribute("value", value);
+		
+		String num = "";
+		if(hash != null) {
+			for(int i = 0; i<hash.size(); i++) {
+				System.out.println(hash.get(i).getHashName());
+				num += hash.get(i).getHashNo()+  ( i != hash.size()-1 ?  "," : "");
+				
+			}
+		}
+		
+		System.out.println(num);
+		request.setAttribute("num", num);
+		
+//		int[] a = new int[hash.size()];
+//		if(hash != null) {
+//			for(int i = 0; i<hash.size(); i++) {
+//				a = hash.get(i).getHashNo();
+//				
+//			}
+//		}
+		
+		
 		
 		request.getRequestDispatcher("views/manager/managerPlaceDetail.jsp").forward(request, response);
 	}

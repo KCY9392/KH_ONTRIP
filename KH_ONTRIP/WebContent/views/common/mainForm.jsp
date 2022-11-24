@@ -11,9 +11,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>온트립(OnTrip) - 숙소, 즐길거리, 맛집 추천사이트</title>
     <link href="<%= contextPath %>/resources/css/mainForm.css" rel="stylesheet" >
-    
+    <!-- 소스 다운 -->
+    <script src="https://unpkg.com/@yaireo/tagify"></script>
+    <!-- 폴리필 (구버젼 브라우저 지원) -->
+    <script src="https://unpkg.com/@yaireo/tagify/dist/tagify.polyfills.min.js"></script>
+    <link href="https://unpkg.com/@yaireo/tagify/dist/tagify.css" rel="stylesheet" type="text/css" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
-
+	<style>
+	   .tagify{    
+	        width: 90%;
+	        max-width: 700px;
+	      }
+   </style>
+	
 </head>
 <body>
    <%@ include file="../common/navbar.jsp" %>
@@ -36,8 +46,16 @@
        <input style="border:2px solid rgb(206, 204, 204);" type="text" class="form-control" aria-label="Recipient's username" aria-describedby="button-addon2" name="word">
        <button style="border:2px solid rgb(206, 204, 204); color:burlywood; font-weight: bold;" class="btn btn-outline-secondary" type="submit" id="button-addon2">검색</button>
      </div>
-  </form>
-
+  	</form>
+  	
+	<form action="<%=request.getContextPath() %>/searchHashPlace.se" id="enroll-form" method="post">
+	   <div class="input-group mb-3" style="width:700px; height:50px; margin:auto;">
+	   <input style="border:2px solid rgb(206, 204, 204);" type="text" class="form-control" aria-label="Recipient's username" aria-describedby="button-addon2" name='hash'>
+	  <input type="hidden" name='hidden_hash'>
+	   <button style="border:2px solid rgb(206, 204, 204); color:burlywood; font-weight: bold;" class="btn btn-outline-secondary" type="submit" id="button-addon2">검색</button>
+	   </div>
+	</form>
+	
   <br><br><br>
   
 <div style="width: 90%; margin:auto; text-align: center;">
@@ -169,6 +187,25 @@
         </div>
       </a>
     </div>
+
+
+	<script>
+       const input = document.querySelector('input[name=hash]');
+       let tagify = new Tagify(input); // initialize Tagify
+       let hidden_hash = document.querySelector('input[name=hidden_hash]');
+       // 태그가 추가되면 이벤트 발생
+       tagify.on('add', function() {
+         console.log(tagify.value); // 입력된 태그 정보 객체
+         let tag = "";
+         let arr = tagify.value;
+         for(let i =0; i<arr.length; i++){ //{value: 태그명, tagid : ? , asda:?}
+            tag += arr[i]["value"]+  ( i != arr.length-1 ?  "," : "")
+            
+              hidden_hash.value = tag;
+         }
+       })
+       //바다,산,부산
+   </script>
 
 </body>
 </html>

@@ -109,6 +109,27 @@ public class PlaceService {
       
       return placeInfo;
    }
+   
+ //메인창에서 해시태그키워드로 시설사진, 정보 찾기 
+   public ArrayList<Image> searchHashPlacePath(String[] split_hash){
+      Connection conn = getConnection();
+      ArrayList<Image> placeHashPath = new PlaceDao().searchHashPlacePath(split_hash, conn);
+      
+      close();
+      
+      return placeHashPath;
+   }
+   
+   public ArrayList<Place> searchHashPlaceInfo(String[] split_hash){
+      Connection conn = getConnection();
+      ArrayList<Place> placeHashInfo = new PlaceDao().searchHashPlaceInfo(split_hash, conn);
+      
+      close();
+      
+      return placeHashInfo;
+   }
+   
+
 
    
    //관리자페이지에서 메인관리 - 시설등록시, 상세지역이름으로 상세지역코드 가져오기

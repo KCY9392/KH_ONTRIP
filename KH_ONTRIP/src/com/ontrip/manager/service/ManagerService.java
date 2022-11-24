@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.util.ArrayList;
 
 import com.ontrip.common.model.vo.PageInfo;
+import com.ontrip.hash.vo.Hash;
 import com.ontrip.image.vo.Image;
 import com.ontrip.manager.dao.ManagerDao;
 import com.ontrip.place.model.vo.Place;
@@ -80,5 +81,29 @@ public class ManagerService {
 		return placeImg;
 	}
 	
+	public ArrayList<Hash> detailHash(String placeName) {
+		Connection conn = getConnection();
+		ArrayList<Hash> hash = new ManagerDao().detailHash(placeName, conn);
+		
+		close();
+		
+		return hash;
+	}
+	
+	//해시태그 삭제
+	public int deleteHash(String placeName, int[] hashArr) {
+		Connection conn = getConnection();
+		int result3 = new ManagerDao().deleteHashStorage(placeName, conn);
+		int result4 = new ManagerDao().deleteHash(hashArr, conn);
+		
+		if (result4 > 0) {
+			commit(conn);
+		} else {
+			rollback(conn);
+		}
+		close();
+		
+		return result4;
+	}
 
 }

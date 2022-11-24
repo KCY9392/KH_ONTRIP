@@ -2,7 +2,7 @@
     pageEncoding="UTF-8" import="java.util.ArrayList, com.ontrip.place.model.vo.Place"%>
 <%
     String contextPath = request.getContextPath();
-
+	
 %>
 
 <!DOCTYPE html>
@@ -13,7 +13,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>관리자 - 시설 삭제 화면</title>
     <link href="<%= contextPath %>/resources/css/manager_placeInsert.css" rel="stylesheet" >
- 
+ 	!-- 소스 다운 -->
+	<script src="https://unpkg.com/@yaireo/tagify"></script>
+	<!-- 폴리필 (구버젼 브라우저 지원) -->
+	<script src="https://unpkg.com/@yaireo/tagify/dist/tagify.polyfills.min.js"></script>
+	<link href="https://unpkg.com/@yaireo/tagify/dist/tagify.css" rel="stylesheet" type="text/css" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script
@@ -118,6 +122,10 @@
                <textarea name="content" cols="50" rows="5" style="resize:none;" readonly>
                 ${place.plcText}
                </textarea>
+               <br><br>
+               <span>해시태그 : &nbsp;</span>
+               <input name='tags' readonly value="${value}">
+               <input type='hidden' name='hashNo' readonly value="${num}">
             </div>
             <br><br>
             
@@ -188,7 +196,11 @@
                // 마커가 지도 위에 표시되도록 설정합니다
                marker.setMap(map);
              </script>
-
+             <!-- 해시태그 조회 -->
+			<script>
+			    var input = document.querySelector('input[name=tags]')
+			    new Tagify(input)
+			</script>
         
         
    

@@ -72,7 +72,30 @@
    ORDER BY PLC_NAME
    </entry>
 	
-	
+
+<!-- 해시태그를 사용한 검색 -->
+   <entry key="searchHashPlacePath">
+   SELECT FILE_NO, FILE_PATH, CHANGE_NAME
+   FROM "Image"
+   WHERE STATUS = 'Y' AND ORIGIN_NAME LIKE '%1%' AND PLC_CODE IN(SELECT s.PLC_CODE
+                                                                FROM "HashStorage" s
+                                                                JOIN "Hash" h USING(HAS_NO)
+                                                                WHERE h.HAS_NAME IN(@))
+   ORDER BY CHANGE_NAME
+   </entry>
+   
+   <entry key="searchHashPlaceInfo">
+   SELECT CATEGORY_CODE, PLC_NAME, PLC_ADDRESS, PLC_PNUMBER, d.DAREA_NAME
+   FROM "Place" 
+   JOIN "Detailed Area" d USING(DAREA_CODE)
+   WHERE STATUS = 'Y' AND PLC_CODE IN(SELECT s.PLC_CODE
+                                        FROM "HashStorage" s
+                                        JOIN "Hash" h USING(HAS_NO)
+                                        WHERE h.HAS_NAME IN(@))
+   ORDER BY PLC_NAME
+   </entry>
+
+
 <!-- 관리자페이지에서 메인관리 시설등록 시, 상세지역이름으로 상세지역코드가져오기 -->
 	<entry key="selectDAreaCode">
 	SELECT DAREA_CODE

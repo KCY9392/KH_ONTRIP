@@ -341,6 +341,99 @@ public class PlaceDao {
       return placeInfo;
    }
    
+   
+ //메인창에서 해시태그키워드로 시설사진 찾기
+   public ArrayList<Image> searchHashPlacePath(String[] split_hash, Connection conn){
+      ArrayList<Image> placeHashPath = new ArrayList<>();
+      String hash = "";
+		for(int i=0; i<split_hash.length; i++) {
+			hash += "?";
+			if(i<split_hash.length-1) {
+				hash += ",";
+			}
+			System.out.println(hash);	
+				
+		}
+		
+      PreparedStatement psmt = null;
+      ResultSet rset = null;
+      
+      String sql = prop.getProperty("searchHashPlacePath");
+      sql = sql.replace("@",  hash);
+      try {
+         psmt = conn.prepareStatement(sql);
+         for(int i=0; i<split_hash.length; i++) {
+				psmt.setString(i+1, split_hash[i]);
+			}
+         
+         rset = psmt.executeQuery();
+         
+         while(rset.next()) {
+        	 placeHashPath.add(new Image(
+                   rset.getString("FILE_PATH"),
+                   rset.getString("CHANGE_NAME"),
+                   rset.getInt("FILE_NO")
+                   ));
+         }
+         System.out.println(placeHashPath);
+      } catch (SQLException e) {
+         e.printStackTrace();
+      } finally {
+         close(rset);
+         close(psmt);
+      }
+      
+      return placeHashPath;
+   }
+   
+   //메인창에서 해시태그키워드키워드로 시설 정보 찾기
+   public ArrayList<Place> searchHashPlaceInfo(String[] split_hash, Connection conn){
+      ArrayList<Place> placeHashInfo = new ArrayList<>();
+      String hash = "";
+		for(int i=0; i<split_hash.length; i++) {
+			hash += "?";
+			if(i<split_hash.length-1) {
+				hash += ",";
+			}
+			System.out.println(hash);	
+				
+		}
+      PreparedStatement psmt = null;
+      ResultSet rset = null;
+      
+      String sql = prop.getProperty("searchHashPlaceInfo");
+      sql = sql.replace("@",  hash);
+      try {
+         psmt = conn.prepareStatement(sql);
+         for(int i=0; i<split_hash.length; i++) {
+				psmt.setString(i+1, split_hash[i]);
+			}
+         
+         rset = psmt.executeQuery();
+         
+         while(rset.next()) {
+        	 placeHashInfo.add(new Place(
+                     rset.getString("CATEGORY_CODE"),
+                       rset.getString("PLC_NAME"),
+                       rset.getString("PLC_ADDRESS"),
+                       rset.getString("PLC_PNUMBER"),
+                       rset.getString("DAREA_NAME")));
+
+         }
+         System.out.println(placeHashInfo);
+      } catch (SQLException e) {
+         e.printStackTrace();
+      } finally {
+         close(rset);
+         close(psmt);
+      }
+      
+      return placeHashInfo;
+   }
+   
+   
+   
+   
    //관리자 시설등록시, 상세지역이름으로 상세지역코드 가져오기
 	public String selectDAreaCode(String dAreaName, Connection conn) {
 		
@@ -542,6 +635,7 @@ public class PlaceDao {
 		return placeCode;
 	}
 
+	
 
 
 } 

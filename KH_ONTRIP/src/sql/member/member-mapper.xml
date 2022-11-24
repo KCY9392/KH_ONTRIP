@@ -95,7 +95,15 @@
                      WHERE PLC_NAME = ?)
    ORDER BY CHANGE_NAME
    </entry>
-
+	
+	<entry key="detailHash">
+	SELECT h.HAS_NAME, HAS_NO
+	FROM "Hash" h
+	JOIN "HashStorage" s USING(HAS_NO)
+	WHERE s.PLC_CODE =(SELECT PLC_CODE
+	                  FROM "Place"
+	                 WHERE PLC_NAME = ?)
+	</entry>
 
    
    
@@ -144,6 +152,18 @@
         SET MEM_PWD = ? ,
         MEM_MODIFYDATE = SYSDATE
         WHERE MEM_ID = ? AND MEM_PWD = ?
+    </entry>
+    
+    <entry key="deleteHashStorage">
+    DELETE FROM "HashStorage"
+	WHERE PLC_CODE = (SELECT PLC_CODE
+	                  FROM "Place"
+	                  WHERE PLC_NAME = ?)
+    </entry>
+    
+    <entry key="deleteHash">
+    DELETE FROM "Hash"
+	WHERE HAS_NO IN (@)
     </entry>
    
 	

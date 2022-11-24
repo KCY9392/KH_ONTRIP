@@ -3,6 +3,9 @@
 <%
 	ArrayList<Image> placePath = (ArrayList<Image>)request.getAttribute("placePath");
 	ArrayList<Place> placeInfo = (ArrayList<Place>)request.getAttribute("placeInfo");
+	
+	ArrayList<Image> placeHashPath = (ArrayList<Image>)request.getAttribute("placeHashPath");
+	ArrayList<Place> placeHashInfo = (ArrayList<Place>)request.getAttribute("placeHashInfo");
 %>
 <!DOCTYPE html>
 <html>
@@ -86,6 +89,7 @@
                         </div> 
 				<%} %>
 			<%} %>
+			
 	
 		</fieldset>
 	</div>

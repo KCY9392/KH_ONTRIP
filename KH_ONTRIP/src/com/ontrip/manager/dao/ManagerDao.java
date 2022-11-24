@@ -1,6 +1,7 @@
 package com.ontrip.manager.dao;
 
 import com.ontrip.common.model.vo.PageInfo;
+import com.ontrip.hash.vo.Hash;
 import com.ontrip.image.vo.Image;
 import com.ontrip.member.model.dao.MemberDao;
 import com.ontrip.member.model.vo.Member;
@@ -303,7 +304,96 @@ public class ManagerDao {
 	   return placeImg;
 	   
    }
+   
+   public ArrayList<Hash> detailHash(String placeName, Connection conn) {
+	   ArrayList<Hash> hash = new ArrayList<Hash>();
 	   
+	   PreparedStatement psmt = null;
+	   
+	   ResultSet rset = null;
+	   
+	   String sql = prop.getProperty("detailHash");
+	   
+	   try {
+		psmt = conn.prepareStatement(sql);
+		
+		psmt.setString(1, placeName);
+		
+		rset = psmt.executeQuery();
+		
+		while(rset.next()) {
+			hash.add( new Hash( 
+					rset.getInt("HAS_NO"),
+					 rset.getString("HAS_NAME")));
+		}
+		
+		
+	} catch (SQLException e) {
+		e.printStackTrace();
+	} finally {
+		close(rset);
+		close(psmt);
+	}
+	   return hash;
+
+   }
+   
+   public int deleteHashStorage(String placeName, Connection conn) {
+	   int result2 = 0;
+	   
+	   PreparedStatement psmt = null;
+	   
+	   String sql = prop.getProperty("deleteHashStorage");
+	   
+	   try {
+		psmt = conn.prepareStatement(sql);
+		
+		psmt.setString(1, placeName);
+		
+		result2 = psmt.executeUpdate();
+		
+	} catch (SQLException e) {
+		e.printStackTrace();
+	} finally {
+		close(psmt);
+	}
+	  return result2;
+   }
+   
+   
+   public int deleteHash(int[] hashArr, Connection conn) {
+	   int result4 = 0;
+	   
+	   String hash = "";
+		for(int i=0; i<hashArr.length; i++) {
+			hash += "?";
+			if(i<hashArr.length-1) {
+				hash += ",";
+			}
+			System.out.println(hash);	
+				
+		}
+		//? , ? , ? 
+		PreparedStatement psmt = null;
+		String sql = prop.getProperty("deleteHash");
+		sql = sql.replace("@",  hash);
+		try {
+			psmt = conn.prepareStatement(sql);
+			
+			for(int i=0; i<hashArr.length; i++) {
+				psmt.setInt(i+1, hashArr[i]);
+			}
+			
+			result4 = psmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(psmt);
+		}
+		
+		return result4;
+   }
 }
 
 

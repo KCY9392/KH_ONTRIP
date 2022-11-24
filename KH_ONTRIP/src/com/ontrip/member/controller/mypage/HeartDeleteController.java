@@ -1,6 +1,8 @@
 package com.ontrip.member.controller.mypage;
 
 import java.io.IOException;
+import java.util.Arrays;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -32,7 +34,7 @@ public class HeartDeleteController extends HttpServlet {
 //		System.out.println(placeCode);
 		
 		String[] placeName = request.getParameterValues("placeName");
-		
+		System.out.println(Arrays.toString(placeName));
 		for(int i=0;i<placeName.length;i++) {
 			System.out.println(placeName[i]);
 		}

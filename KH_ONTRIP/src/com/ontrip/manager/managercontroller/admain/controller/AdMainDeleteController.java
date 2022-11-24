@@ -1,13 +1,19 @@
 package com.ontrip.manager.managercontroller.admain.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.ontrip.hash.vo.Hash;
+import com.ontrip.image.vo.Image;
 import com.ontrip.manager.service.ManagerService;
+import com.ontrip.place.model.service.PlaceService;
 
 /**
  * Servlet implementation class AdMainDeleteController
@@ -34,6 +40,33 @@ public class AdMainDeleteController extends HttpServlet {
 	    int result1 = new ManagerService().deletePlace(placeName);
 	    // 시설 이미지 삭제 메소드
 	    int result2 = new ManagerService().deletePlaceImg(placeName);
+	    
+	    String value = request.getParameter("value");
+	    System.out.println(value);
+//	    String[] hashArr = value.split(",");
+//	    System.out.println(Arrays.toString(hashArr));
+	    
+	    String hashNo = request.getParameter("hashNo");
+	    System.out.println(hashNo);
+	    String[] arr = hashNo.split(",");
+	    int[] hashArr = new int[arr.length];
+	    for(int i=0; i< arr.length; i++) {
+	    	hashArr[i] = Integer.parseInt(arr[i]);
+	    	
+	    	int result4 = new ManagerService().deleteHash(placeName,hashArr);
+	    }
+	    
+//	    int result3 = new ManagerService().deleteHash(hashArr);
+		
+//		if(hash != null) {
+//		split_hash = hash.split(",");
+//		System.out.println(Arrays.toString(split_hash));
+//		for(int i = 0; i<split_hash.length; i++) {
+//			System.out.println(split_hash[i]);
+//			String value = split_hash[i];
+//			int result1 = new HashService().insertHash(value, placeCode);
+//		}
+//	}
 	    
 	    if(result1 > 0 && result2>0) {
 	    	

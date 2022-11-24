@@ -107,7 +107,7 @@ div {
 	color: black;
 	width: 950px;
 	height: 200px;
-	border: 1px solid black;
+	border: 1px solid rgb(167, 166, 166);
 	margin: auto;
 	margin-top: 10px;
 	margin-left: -30px;
@@ -115,16 +115,25 @@ div {
 }
 
 .outer8 {
-	width: 35%;
-	height: 100%;
-	border: 1px solid blue;
+   width: 40%;
+   height: 100%;
+   border-right: 1px solid rgb(167, 166, 166);
 }
 
-.outer9 {
-	width: 70%;
-	height: 100%;
-	/* border: 1px solid red; */
+.outer10{
+   width: 65%;
+   height: 100%;
 }
+.outer11{
+   margin-top: 50px;
+}
+
+.outer7.shadow-lg :hover{
+   background-color: rgb(207, 206, 206);
+   cursor : pointer;
+}
+
+
 .sl-in2 {
 	  animation: change1 1s ease forwards;
 	}
@@ -203,25 +212,19 @@ div {
 				<!-- border:1px solid black; -->
 				<% if(!playPath.isEmpty()) { %>
 				<% for(int i=0; i<playPath.size(); i++){ %>
-				<div class="outer7" onclick="movePlay('<%= playInfo.get(i).getPlcName() %>','<%= dareaName%>', '<%= User.getMemberNo() %>')">
-					<div class="outer8">
-						<div class="outer9" style="width: 270px; height: 270px;">
-							<img
-								src="<%= request.getContextPath() %>/<%=playPath.get(i).getFilePath()+playPath.get(i).getChangeName() %>"
-								width="122%" height="198px">
-						</div>
-					</div>
-
-					<div
-						style="font-size: 20px; font-weight: bold; margin-left: 25%; margin-top: 20px;">
-						<input type="button"
-							value="<%=playInfo.get(i).getPlcName() %>"
-							style="border: 0; background-color: white; font-weight: bold;">
-					</div>
-					<div style="text-align: center; margin: 70px; margin-left: -130px">
-						<span><%=playInfo.get(i).getPlcAddress() %></span><br> <span><%=playInfo.get(i).getPlcPnumber() %></span>
-					</div>
-				</div>
+				 <div class="outer7 shadow-lg" onclick="movePlay('<%= playInfo.get(i).getPlcName() %>','<%= dareaName%>', '<%= User.getMemberNo() %>')">
+	               <div class="outer8">
+	                     <img
+	                        src="<%= request.getContextPath() %>/<%=playPath.get(i).getFilePath()+playPath.get(i).getChangeName() %>"
+	                        width="100%" height="198px">
+	               </div>
+	               <div class="outer10">
+	                  <div class="outer11">
+	                  <span style="border: 0; font-size: 20px; font-weight: bold;"><%=playInfo.get(i).getPlcName() %></span><br><br>
+	                  <span style="font-size: 15px;"><%=playInfo.get(i).getPlcAddress() %><br><%=playInfo.get(i).getPlcPnumber() %></span>
+	                  </div>
+	               </div>
+	            </div>
 				<%} %>
 				<%} %>
 			</div>
@@ -230,37 +233,23 @@ div {
 
 			<!-- 맛집버튼 클릭시 해당상세지역의 맛집이 뜸 -->
 			<div id="msearch" class="box box2" style="padding: 20px;">
-				<%
-                   if (!foodPath.isEmpty()) {
-               %>
-				<%
-                   for (int i = 0; i < foodPath.size(); i++) {
-               %>
-				<div class="outer7" onclick="moveFood('<%= foodInfo.get(i).getPlcName() %>','<%= dareaName%>', '<%= User.getMemberNo() %>')">
-					<div class="outer8">
-						<div class="outer9" style="width: 270px; height: 270px;">
-							<img
-								src="<%= request.getContextPath() %>/<%=foodPath.get(i).getFilePath()+foodPath.get(i).getChangeName() %>"
-								width="122%" height="198px">
-						</div>
-					</div>
-
-					<div
-						style="font-size: 20px; font-weight: bold; margin-left: 25%; margin-top: 20px;">
-						<input type="button"
-							value="<%=foodInfo.get(i).getPlcName()%>"
-							style="border: 0; background-color: white; font-weight: bold;">
-					</div>
-					<div style="text-align: center; margin: 70px; margin-left: -130px">
-						<span><%=foodInfo.get(i).getPlcAddress()%></span><br> <span><%=foodInfo.get(i).getPlcPnumber()%></span>
-					</div>
-				</div>
-				<%
-                  }
-               %>
-				<%
-                  }
-               %>
+				<% if (!foodPath.isEmpty()) { %>
+				<% for (int i = 0; i < foodPath.size(); i++) { %>
+				<div class="outer7 shadow-lg" onclick="moveFood('<%= foodInfo.get(i).getPlcName() %>','<%= dareaName%>', '<%= User.getMemberNo() %>')">
+	            <div class="outer8">
+	                  <img
+	                     src="<%= request.getContextPath() %>/<%=foodPath.get(i).getFilePath()+foodPath.get(i).getChangeName() %>"
+	                     width="100%" height="198px">
+	            </div>
+	            <div class="outer10">
+	               <div class="outer11">
+	               <span style="border: 0; font-size: 20px; font-weight: bold;"><%=foodInfo.get(i).getPlcName() %></span><br><br>
+	               <span style="font-size: 15px;"><%=foodInfo.get(i).getPlcAddress() %><br><%=foodInfo.get(i).getPlcPnumber() %></span>
+	               </div>
+	            </div>
+	         </div>
+				<% } %>
+				<% } %>
 			</div>
 
 
@@ -268,37 +257,23 @@ div {
 
 			<!-- 숙소버튼 클릭시 해당상세지역의 숙소가 뜸 -->
 			<div id="ssearch" class="box box2" style="padding: 20px;">
-				<%
-                  if (!hotelPath.isEmpty()) {
-             %>
-				<%
-                   for (int i = 0; i < hotelPath.size(); i++) {
-                %>
-				<div class="outer7" onclick="moveHotel('<%= hotelInfo.get(i).getPlcName() %>','<%= dareaName%>', '<%= User.getMemberNo() %>')">
-					<div class="outer8">
-						<div class="outer9" style="width: 270px; height: 270px;">
-							<img
-								src="<%= request.getContextPath() %>/<%=hotelPath.get(i).getFilePath()+hotelPath.get(i).getChangeName() %>"
-								width="122%" height="198px">
-						</div>
-					</div>
-
-					<div
-						style="font-size: 20px; font-weight: bold; margin-left: 25%; margin-top: 20px;">
-						<input type="button"
-							value="<%=hotelInfo.get(i).getPlcName() %>"
-							style="border: 0; background-color: white; font-weight: bold;">
-					</div>
-					<div style="text-align: center; margin: 70px; margin-left: -130px">
-						<span><%=hotelInfo.get(i).getPlcAddress() %></span><br> <span><%=hotelInfo.get(i).getPlcPnumber() %></span>
-					</div>
-				</div>
-				<%
-                   }
-                %>
-				<%
-                  }
-               %>
+				<% if (!hotelPath.isEmpty()) { %>
+				<% for (int i = 0; i < hotelPath.size(); i++) { %>
+				<div class="outer7 shadow-lg" onclick="moveHotel('<%= hotelInfo.get(i).getPlcName() %>','<%= dareaName%>', '<%= User.getMemberNo() %>')">
+	               <div class="outer8">
+	                     <img
+	                        src="<%= request.getContextPath() %>/<%=hotelPath.get(i).getFilePath()+hotelPath.get(i).getChangeName() %>"
+	                        width="100%" height="198px">
+	               </div>
+	               <div class="outer10">
+	                  <div class="outer11">
+	                  <span style="border: 0; font-size: 20px; font-weight: bold;"><%=hotelInfo.get(i).getPlcName() %></span><br><br>
+	                  <span style="font-size: 15px;"><%=hotelInfo.get(i).getPlcAddress() %><br><%=hotelInfo.get(i).getPlcPnumber() %></span>
+	                  </div>
+	               </div>
+	            </div>
+				<% } %>
+				<% } %>
 			</div>
 		</fieldset>
 	</div>

@@ -3,20 +3,16 @@ package com.ontrip.manager.managercontroller.admain.controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-
-import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
-
-import com.ontrip.image.vo.Image;
+import com.ontrip.hash.service.HashService;
 import com.ontrip.place.model.service.PlaceService;
 import com.ontrip.place.model.vo.Place;
-import com.oreilly.servlet.MultipartRequest;
 
 
 //시설 등록폼 작성후, 등록하기 버튼을 눌렀을 경우 호출되는 서블릿 -> 시설리스트게시판
@@ -85,6 +81,19 @@ public class AdMainSaveController extends HttpServlet {
 		//위에서 insert된(등록)된 시설의 시설코드 가져오기
 		int placeCode = new PlaceService().selectplaceCode(place.getPlcName());
 		place.setPlcCode(placeCode);
+		
+		 // 해시태그 생성
+	      String hash = (String) request.getParameter("hidden_hash");
+	      String[] split_hash;
+	      if(hash != null) {
+	         split_hash = hash.split(",");
+	         System.out.println(Arrays.toString(split_hash));
+	         for(int i = 0; i<split_hash.length; i++) {
+	            System.out.println(split_hash[i]);
+	            String value = split_hash[i];
+	            int result1 = new HashService().insertHash(value, placeCode);
+	         }
+	      }
 		
 		if(result>0) {
 			//시설정보등록 성공 alert창 띄울까용 말까용
