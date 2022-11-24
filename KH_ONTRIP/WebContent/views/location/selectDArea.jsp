@@ -70,20 +70,20 @@
 	    font-weight : bolder;
 	    font-size:35px;
 	} 
-    .slide-in {
-		  animation: change 0.5s ease forwards;
-		}
-		
-		@keyframes change {
-		  from {
-		    transform: translateY(50%);
-		    visibility: visible;
-		  }
-		
-		  to {
-		    transform: translateY(0%);
-		  }
-		}
+    .sl-in2 {
+	  animation: change1 1s ease forwards;
+	}
+	
+	@keyframes change1 {
+	  from {
+	    transform: translateY(50%);
+	  }
+	
+	  to {
+	    transform: translateY(0%);
+	  }
+	}
+    
 </style>
 
 
@@ -96,12 +96,12 @@
 </head>
 <body>
 
-   <%@ include file="../common/navbar.jsp" %>
+	 <%@ include file="../common/navbar.jsp" %>
                   
 	<br>
     <br><br><br><br>
     
-    <div class="header slide-in">
+    <div class="header">
     
         <h1 class = "locationtitle"><%=localName %></h1>
         <h4>&nbsp;</h4>
@@ -110,7 +110,7 @@
 
     <br><br>
 
-    <div class="slide-in" style="width: 80%; margin:auto; text-align: center;">
+    <div class="sl-in2" style="width: 80%; margin:auto; text-align: center;">
         <div class="row" id="cityList" style=" margin:auto;">
             <table border="1" width="30" height="20">
                 <tr>

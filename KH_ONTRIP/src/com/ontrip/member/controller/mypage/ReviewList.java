@@ -26,7 +26,7 @@ public class ReviewList extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		int memberNo = Integer.parseInt(request.getParameter("memberNo"));
+		int memberNo = Integer.parseInt((String)request.getParameter("memberNo"));
 		String memberName = request.getParameter("memberName");
 		
 		request.setAttribute("memberNo", memberNo);

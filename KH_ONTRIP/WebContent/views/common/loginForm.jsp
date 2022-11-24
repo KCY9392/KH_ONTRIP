@@ -29,9 +29,16 @@
 	</script>
 	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
+
 	<style>
+		html, body{
+			font-family: 'Noto Sans KR', sans-serif; 
+		}
 		body{
-			margin:0px;
+			margin:0px;	
 		}
 		div {
 			box-sizing: border-box;
@@ -49,12 +56,13 @@
 		}
 		input{
 			background-color: rgb(189, 233, 189);
-			border: 2px solid black;
+			border: none;
 			border-radius: 5px;
 			width:200px;
-			height:35px;
+			height:40px;
 			margin: 10px;
 			margin-top: -5px;
+			font-family: 'Noto Sans KR', sans-serif;
 		}
 		input[type=text]:focus, input[type=password]:focus{
 			background-color: rgb(215, 255, 206);
@@ -64,9 +72,10 @@
 			background-color: rgb(249, 219, 173);
 			width:100px;
 			height:40px;
-			border: 2px solid black;
+			border: none;
 			border-radius: 5px;
 			font-weight:bold;
+			font-family: 'Noto Sans KR', sans-serif;
 		}
 		.btn:hover, .btn:hover{
 			cursor: pointer;
@@ -148,6 +157,7 @@
 				transform: translateY(0%);
 			}
 		}
+
 	</style>
 </head>
 <body>
@@ -216,7 +226,8 @@
 	<form id="login-form" action="<%= contextPath %>/login.me" method="post">
 		<div class="input">
 			<input type="text" name="memberId" placeholder="아이디를 입력하세요." required>
-			<br> <input type="password" name="memberPwd"
+			<br> 
+			<input type="password" name="memberPwd"
 						placeholder="비밀번호를 입력하세요." required>
 		</div>
 

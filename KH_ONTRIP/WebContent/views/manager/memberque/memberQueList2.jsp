@@ -96,7 +96,8 @@
     <br><br>
     <div>
         <form action="/KH_ONTRIP/question/form" method="post">
-            <button type="submit">작성하기</button>
+            <button type="submit" style="border:none; background-color:yellowgreen; padding:5px;
+            		width:130px; height:50px; color:white; font-size:18px; border-radius:10px; ">작성하기</button>
         </form>
     </div>
     <br><br><br>

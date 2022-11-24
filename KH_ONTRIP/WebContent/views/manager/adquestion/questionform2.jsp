@@ -29,12 +29,6 @@
       flex-direction: column;
       align-items: center;
     }
-    <style>
-     .container{
-       display: flex;
-       flex-direction: column;
-       align-items: center;
-     }
     .panel-title{
       font-size:35px;
     }
@@ -65,6 +59,14 @@
     .btn-5:active{
       background-color: rgb(180, 177, 177) ;
     }
+    .tableTd>button{
+	    background-color:lightgrey;
+	    color:white;
+    }
+    .tableTd>button:hover{
+    	background-color:rgb(193, 191, 191);
+    	color:black;
+    }
     div>button:nth-child(1){
       background-color: white;
       border:none;
@@ -76,7 +78,7 @@
       cursor: pointer;
       color:rgb(115, 183, 187);
     }
-  </style>
+    
   </style>
 </head>
 <body>
@@ -93,8 +95,20 @@
     <textarea cols="50" rows="7" readonly >${byCode.qContent}</textarea>  <br><br>
     <form action="/KH_ONTRIP/manager/questions/answerform/answer?qCode=${byCode.qCode}" method="post">
     <span> 답변 </span> <br>
-    <textarea cols="60" rows="10" name="aContent"></textarea>
-      <div><button type="submit">답변등록</button></div>
+    <table style="margin-left:10%;">
+    	<tr>
+	    	<td>
+	    		<textarea cols="60" rows="10" name="aContent" style="margin-left:6%;"></textarea>
+	    	</td>
+	    	<td class="tableTd" style="width:200px; height:100%;" >
+	      		<button class="btnAns" type="submit" style="width:90%; height:220px; font-size:20px; border-radius:10px;
+	      			margin-left:20%; margin-top:-4%; border:none;">답변등록</button>
+	    	</td>
+          	
+    	</tr>
+    	
+      
+    </table>
     </form>
 
 

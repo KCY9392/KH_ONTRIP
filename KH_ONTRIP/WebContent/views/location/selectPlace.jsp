@@ -3,7 +3,6 @@
 	import="com.ontrip.detailArea.vo.DetailArea ,com.ontrip.image.vo.Image,
     com.ontrip.place.model.vo.Place , java.util.ArrayList"%>
 <%
-
    Member User = (Member)session.getAttribute("loginUser");
    String dareaName = (String)request.getAttribute("dareaName");
    ArrayList<Image> filePath = (ArrayList<Image>)request.getAttribute("filePath");
@@ -53,16 +52,19 @@ div {
 	height: 100%;
 	display: inline-block;
 }
-
 .right {
 	height: 75%;
 	width: 100%;
 }
-
-table img {
-	width: 100%;
-	height: 30%;
+.img-box1 img{
+   width:497px;
+   height:289.91px;
 }
+.img-box2 img{
+   width:996px;
+   height:290.5px;
+}
+
 
 .bottom {
 	width: 1000px;
@@ -88,9 +90,11 @@ table img {
 	width: 930px;
 	height: 550px;
 	margin: auto;
-	display: none;
 	margin: 10px;
 	padding: 10px;
+}
+.box2{
+	display:none;
 }
 
 .outer2 {
@@ -121,6 +125,19 @@ table img {
 	height: 100%;
 	/* border: 1px solid red; */
 }
+.sl-in2 {
+	  animation: change1 1s ease forwards;
+	}
+	
+	@keyframes change1 {
+	  from {
+	    transform: translateY(50%);
+	  }
+	
+	  to {
+	    transform: translateY(0%);
+	  }
+	}
 </style>
 <link href="<%= request.getContextPath()%>/resources/css/clickHotel.css"
 	rel="stylesheet">
@@ -147,17 +164,17 @@ table img {
 	<br>
 	<br>
 
-	<div class="outer" style="margin: auto;">
+	<div class="outer sl-in2" style="margin: auto;">
 		<div class="right">
 			<table>
 				<tr>
-					<td><img
+					<td class="img-box1"><img
 						src="<%=filePath.get(0).getFilePath()%><%=filePath.get(0).getOriginName() %>"></td>
-					<td><img
+					<td class="img-box1"><img
 						src="<%=filePath.get(1).getFilePath()%><%=filePath.get(1).getOriginName() %>"></td>
 				</tr>
 				<tr>
-					<td colspan="2"><img
+					<td class="img-box2" colspan="2"><img
 						src="<%=filePath.get(2).getFilePath()%><%=filePath.get(2).getOriginName() %>"></td>
 				</tr>
 			</table>

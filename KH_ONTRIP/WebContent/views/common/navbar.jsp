@@ -20,9 +20,7 @@
 <style>
 	.btn-outline-success:hover{
 		background-color:white;
-		font-size:16px;
 		font-weight:700;
-		transition: all 200ms;
 	}
 </style>
 
@@ -31,22 +29,35 @@
 
 	
 	
-<nav class="navbar bg-light" style="position:fixed; z-index:9999; width:100vw; ">
-    <div class="container-fluid" style="background-color: white; padding-bottom: 7px; border-bottom:1px solid rgb(218, 213, 213);">
+<nav class="navbar bg-light" style="position:fixed; z-index:9999; width:100vw; box-shadow:0 0 4px; ">
+    <div class="container-fluid" style="background-color: white; padding-bottom: 7px; ">
       <a class="navbar-brand" href="<%=request.getContextPath()%>/start.me">
         <b class="nav_b">Ontrip</b>&nbsp;
         <h7 style="font-size:13px; color:rgb(151,154,151);">MAKE YOUR ROUTE OPTIMIZED</h7>
       </a>
       <form class="d-flex" role="click">
         
-        <button style="border:none; color:black;" class="btn btn-outline-success" type="button" onclick="myPage();">마이페이지</button>
+        <button style="font-size:17px; border:none; color:black; margin-top:5%;" class="btn btn-outline-success" type="button" onclick="myPage();">마이페이지</button>
        
-        <button style="margin-right: 40px; margin-left:20px; color:black; border:none;" class="btn btn-outline-success" type="button"
+        <button style="margin-right: 40px; font-size:17px; margin-left:20px; margin-top:5%; color:black; border:none;" class="btn btn-outline-success" type="button"
         	onclick="logout();">로그아웃</button>
       </form>
     </div>
   </nav>
  
+ <!-- side box (Q&A / 고객센터 박스) -->
+  <div class="side-box" style="border:2px solid rgb(113, 89, 80); border-radius: 10px; 
+      display:inline-block; height:100px; position: fixed; margin-top:25%; margin-left:96.35%;">
+    <div style="height:50%;">
+      <button type="button" 
+        style="background-color: rgb(188, 236, 192); width:100%; height:100%; 
+        border:none; border-bottom:1px solid black; border-radius: 10px;">Q&A</button>
+    </div>
+    <div style="height:50%;">
+      <button type="button" style=" background-color: rgb(188, 236, 192); height:100%; border:none;
+        border-radius: 10px;">고객센터</button>
+    </div>
+  </div>
  <script>
  	function logout(){
  		location.href = "<%=request.getContextPath()%>/logout.me";

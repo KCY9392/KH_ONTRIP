@@ -13,6 +13,7 @@
     <link href="<%= contextPath %>/resources/css/mainForm.css" rel="stylesheet" >
     
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+
 </head>
 <body>
    <%@ include file="../common/navbar.jsp" %>
@@ -26,7 +27,7 @@
 
   <hr style="border-bottom:5px solid black; width:600px; margin:auto;"> <br>
   
-  <div class="center-hash">* 검색하고싶은 내용을 검색창에 추가해주세요</div>
+  <div class="center-hash">* 검색하고싶은 내용을 검색창에 입력해주세요</div>
 
   <br>
 
@@ -45,8 +46,8 @@
     <div class="col s12 m6 l3" name="asia">
       <input type="hidden" value="서울">
       <a href="<%=request.getContextPath() %>/mainForm.no?localName=서울&localCode=L1" onclick="" style="color:inherit; text-decoration: none!important;"  aria-expanded="false">
-        <div class="card city-card-style" style="margin:0; border: none !important; ">
-          <div class="card-image imgbox" >
+        <div class="card city-card-style " style="margin:0; border: none !important; ">
+          <div class="card-image imgbox slide-in" >
             <img src="resources/image/seoul.jpg" alt="city" style="box-shadow:0 0 8px black;">
           </div>
           <div class="city-card-contents-div">
@@ -63,7 +64,7 @@
       <input type="hidden" value="제주도">
       <a href="<%=request.getContextPath() %>/mainForm.no?localName=제주도&localCode=L3" onclick="" style="color:inherit; text-decoration: none!important;" aria-expanded="false">
         <div class="card city-card-style" style="margin:0; border: none !important; ">
-          <div class="card-image imgbox">
+          <div class="card-image imgbox slide-in">
             <img src="resources/image/jeju.jpg" alt="city" style="box-shadow:0 0 8px black;">
           </div>
           <div class="city-card-contents-div">
@@ -80,7 +81,7 @@
       <input type="hidden" value="경기도">
       <a href="<%=request.getContextPath() %>/mainForm.no?localName=경기도&localCode=L2" onclick="" style="color:inherit; text-decoration: none!important;" aria-expanded="false">
         <div class="card city-card-style" style="margin:0; border: none !important; ">
-          <div class="card-image imgbox">
+          <div class="card-image imgbox slide-in">
             <img src="resources/image/paju.jpg" alt="city" style="box-shadow:0 0 8px black;">
           </div>
           <div class="city-card-contents-div">
@@ -101,7 +102,7 @@
       <input type="hidden" value="강원도">
       <a href="<%=request.getContextPath() %>/mainForm.no?localName=강원도&localCode=L4" onclick="" style="color:inherit; text-decoration: none!important;" aria-expanded="false">
         <div class="card city-card-style" style="margin:0; border: none !important; ">
-          <div class="card-image imgbox">
+          <div class="card-image imgbox slide-in">
             <img src="resources/image/pyeongchang.jpg" alt="city" style="box-shadow:0 0 8px black;">
           </div>
           <div class="city-card-contents-div">
@@ -123,7 +124,7 @@
       <input type="hidden" value="충청도">
       <a href="<%=request.getContextPath() %>/mainForm.no?localName=충청도&localCode=L5" onclick="" style="color:inherit; text-decoration: none!important;" aria-expanded="false">
         <div class="card city-card-style" style="margin:0; border: none !important; ">
-          <div class="card-image imgbox">
+          <div class="card-image imgbox slide-in">
             <img src="resources/image/yesan.jpg" alt="city" style="box-shadow:0 0 8px black;">
           </div>
           <div class="city-card-contents-div">
@@ -140,7 +141,7 @@
       <input type="hidden" value="전라도">
       <a href="<%=request.getContextPath() %>/mainForm.no?localName=전라도&localCode=L6" onclick="" style="color:inherit; text-decoration: none!important;" aria-expanded="false">
         <div class="card city-card-style" style="margin:0; border: none !important; ">
-          <div class="card-image imgbox">
+          <div class="card-image imgbox slide-in">
             <img src="resources/image/jeonju.jpg" alt="city" style="box-shadow:0 0 8px black;">
           </div>
           <div class="city-card-contents-div">
@@ -157,7 +158,7 @@
       <input type="hidden" value="경상도">
       <a href="<%=request.getContextPath() %>/mainForm.no?localName=경상도&localCode=L7" onclick="" style="color:inherit; text-decoration: none!important;" aria-expanded="false">
         <div class="card city-card-style" style="margin:0; border: none !important; ">
-          <div class="card-image imgbox">
+          <div class="card-image imgbox slide-in">
             <img src="resources/image/busan.jpg" alt="city" style="box-shadow:0 0 8px black;">
           </div>
           <div class="city-card-contents-div">

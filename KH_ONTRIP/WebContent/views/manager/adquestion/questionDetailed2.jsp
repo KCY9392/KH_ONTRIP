@@ -22,7 +22,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
 
-    <title>문의사항 상세조회</title>
+    <title>문의사항 상세조회1</title>
     <style>
         .container{
             display: flex;
@@ -90,9 +90,9 @@
     <div class="form-group" style="text-align:center;">
         <span> 제목 : ${questionByCode.qTitle}</span> <br><br>
         <span> 내용</span> <br>
-        <textarea cols="50" rows="7" readonly>${questionByCode.qContent}</textarea>  <br><br>
+        <textarea cols="60" rows="10" readonly>${questionByCode.qContent}</textarea>  <br><br>
         <span> 답변 </span> <br>
-        <textarea cols="60" rows="10"readonly>${questionByCode.aContent}</textarea>
+        <textarea cols="50" rows="7"readonly>${questionByCode.aContent}</textarea>
 
         <br><br>
         <c:if test="${isUpdated}">
