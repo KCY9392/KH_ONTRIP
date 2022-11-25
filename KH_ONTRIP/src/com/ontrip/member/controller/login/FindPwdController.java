@@ -8,25 +8,21 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.ontrip.member.model.service.MemberService;
+import com.ontrip.member.model.vo.Member;
 
 /**
- * Servlet implementation class FindPwdController
+ * 비밀번호찾기창에서 정보를 입력하고 비밀번호찾기버튼을 누를경우, 호출되는 컨트롤러
  */
 @WebServlet("/findPwd.me")
 public class FindPwdController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
+   
     public FindPwdController() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
+	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		request.setCharacterEncoding("UTF-8");
@@ -36,8 +32,11 @@ public class FindPwdController extends HttpServlet {
 		String phone = request.getParameter("phone");
 		
 		String memberPwd = new MemberService().findPwd(memberName, memberId, phone);
+		System.out.println(memberPwd);
 		
-		request.setAttribute("memberPwd", memberPwd); 
+		Member m = new Member(memberId, memberPwd);
+		request.setAttribute("m", m);
+		
 		
 		if(memberId == null) {
 			request.setAttribute("errorMsg", "존재하지않는 회원입니다.");
@@ -47,7 +46,7 @@ public class FindPwdController extends HttpServlet {
 		}else {
 			HttpSession session = request.getSession();
 			
-//			session.setAttribute("alertMsg", memberPwd+"입니다.");
+			//session.setAttribute("alertMsg", memberPwd+"입니다.");
 			
 			request.getRequestDispatcher("views/common/pwdReveal.jsp").forward(request, response); // 현재 비밀번호 알려는 사이트 => "비밀번호 변경" / "메인으로" 
 			

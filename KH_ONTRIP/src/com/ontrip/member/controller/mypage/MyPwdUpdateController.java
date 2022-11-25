@@ -12,7 +12,10 @@ import com.ontrip.member.model.service.MemberService;
 import com.ontrip.member.model.vo.Member;
 
 /**
- * Servlet implementation class MyPwdUpdate
+ * 마이페이지 회원정보 - 비밀번호 변경창에서 원래 비번, 새로운 비번을 입력후, 변경하기를 누를 경우,
+ * DB에 새로운 비밀번호로 update하는 컨트롤러
+ * update 성공시, mypage.jsp로 이동
+ * update 실패시, 다시 비밀번호 변경창으로 이동
  */
 @WebServlet("/myPwdUpdate.me")
 public class MyPwdUpdateController extends HttpServlet {

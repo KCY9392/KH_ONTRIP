@@ -21,7 +21,7 @@ public class MemberQueUpdateFormController implements QuFrontController {
         request.setAttribute("qContent", qContent);
 
 
-        String viewPath = "/views/manager/memberque/memberQueUpdateForm2.jsp";
+        String viewPath = "/views/question/memberQueUpdateForm2.jsp";
         RequestDispatcher requestDispatcher = request.getRequestDispatcher(viewPath);
         requestDispatcher.forward(request, response);
     }

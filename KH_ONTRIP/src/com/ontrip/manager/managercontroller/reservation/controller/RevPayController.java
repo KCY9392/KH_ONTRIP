@@ -28,7 +28,7 @@ public class RevPayController implements RevFrontController {
         request.setAttribute("rnPhone", rnPhone);
         request.setAttribute("totalPrice", totalPrice);
 
-        String viewPath = "/views/manager/adreservation/payment.jsp";
+        String viewPath = "/views/reservation/payment.jsp";
         RequestDispatcher requestDispatcher = request.getRequestDispatcher(viewPath);
         requestDispatcher.forward(request, response);
 

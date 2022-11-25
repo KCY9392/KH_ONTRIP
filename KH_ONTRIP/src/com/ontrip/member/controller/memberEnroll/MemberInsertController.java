@@ -13,6 +13,9 @@ import javax.servlet.http.HttpSession;
 import com.ontrip.member.model.service.MemberService;
 import com.ontrip.member.model.vo.Member;
 
+/**
+ * 회원가입 작성창에서 등록할 회원정보 작성후, 회원가입버튼을 누를경우, 호출되는 컨트롤러 ( DB에 회원정보 등록 )
+ */
 @WebServlet("/insert.me")
 public class MemberInsertController extends HttpServlet {
 	private static final long serialVersionUID = 1L;

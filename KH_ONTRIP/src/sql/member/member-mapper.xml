@@ -166,6 +166,10 @@
 	WHERE HAS_NO IN (@)
     </entry>
    
-	
+	<entry key="findPwdupdate">
+   		UPDATE "Member"
+   		SET MEM_PWD = ?
+   		WHERE MEM_ID = ?
+   </entry>
 	
 </properties>

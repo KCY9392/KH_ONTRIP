@@ -33,7 +33,7 @@ public class RevFormController implements RevFrontController {
         request.setAttribute("plcCode", plcCode);
         request.setAttribute("memNo", memNo);
 
-        String viewPath = "/views/manager/adreservation/reservationForm2.jsp";
+        String viewPath = "/views/reservation/reservationForm2.jsp";
         RequestDispatcher requestDispatcher = request.getRequestDispatcher(viewPath);
         requestDispatcher.forward(request, response);
 

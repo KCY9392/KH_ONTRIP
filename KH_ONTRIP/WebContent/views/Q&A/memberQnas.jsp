@@ -5,7 +5,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Insert title here</title>
+    <title>사용자 Q&A</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
@@ -146,7 +146,7 @@
     </style>
 </head>
 <body>
-<%@ include file="../../../common/adnavbar.jsp" %>
+<%@ include file="../common/navbar.jsp" %>
 
 <br><br><br><br>
 <div class="outer1">
@@ -169,7 +169,7 @@
 
 
 
-    <pre id="htitle" style="color:gray;"><img src="../views/Q&A/숙소.png" width="50px">&nbsp;&nbsp;숙소</pre>
+    <pre id="htitle" style="color:gray;"><img src="<%= request.getContextPath() %>/resources/image/숙소.png" width="50px">&nbsp;&nbsp;숙소</pre>
     <hr width="70%" style="margin-top: -10px;">
     <br>
 
@@ -186,7 +186,7 @@
     <br>
     <br>
 
-    <pre id="htitle" style="color:gray;"><img src="../views/Q&A/기능.png" width="50px">&nbsp;&nbsp;기능</pre>
+    <pre id="htitle" style="color:gray;"><img src="<%= request.getContextPath() %>/resources/image/기능.png" width="50px">&nbsp;&nbsp;기능</pre>
     <hr width="70%" style="margin-top: -10px;">
     <br>
 
@@ -204,7 +204,7 @@
 
 
 
-    <pre id="htitle" style="color:gray;"><img src="../views/Q&A/계정.png" width="50px">&nbsp;&nbsp;계정</pre>
+    <pre id="htitle" style="color:gray;"><img src="<%= request.getContextPath() %>/resources/image/계정.png" width="50px" >&nbsp;&nbsp;계정</pre>
     <hr width="70%" style="margin-top: -10px;">
     <br>
 

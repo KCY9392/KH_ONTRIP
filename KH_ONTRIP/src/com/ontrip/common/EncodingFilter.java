@@ -9,7 +9,9 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebFilter;
 
-
+/**
+ * 공통 encoding Filter
+ */
 @WebFilter("/*")
 public class EncodingFilter implements Filter {
 

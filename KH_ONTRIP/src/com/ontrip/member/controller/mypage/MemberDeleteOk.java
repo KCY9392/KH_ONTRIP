@@ -12,23 +12,17 @@ import com.ontrip.member.model.service.MemberService;
 import com.ontrip.member.model.vo.Member;
 
 /**
- * Servlet implementation class MemberDeleteOk
+ * 마이페이지 회원탈퇴에서 회원탈퇴 사유를 적고, 회원탈퇴버튼을 누를 경우, 회원탈퇴시키는 컨트롤러
  */
 @WebServlet("/memberDeleteOk.me")
 public class MemberDeleteOk extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
     public MemberDeleteOk() {
         super();
  
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		HttpSession session = request.getSession();
@@ -48,9 +42,6 @@ public class MemberDeleteOk extends HttpServlet {
 		
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		doGet(request, response);

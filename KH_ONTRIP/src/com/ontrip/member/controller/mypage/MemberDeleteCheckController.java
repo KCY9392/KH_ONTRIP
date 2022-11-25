@@ -12,7 +12,7 @@ import com.ontrip.member.model.service.MemberService;
 import com.ontrip.member.model.vo.Member;
 
 /**
- * Servlet implementation class MemberDeleteTrueController
+ * 
  */
 @WebServlet("/MemberDeleteCheckController.me")
 public class MemberDeleteCheckController extends HttpServlet {

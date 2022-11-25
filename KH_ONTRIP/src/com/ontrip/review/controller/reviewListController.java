@@ -56,6 +56,7 @@ public class reviewListController extends HttpServlet {
 		request.setAttribute("avgScore", avgScore);
 		
 		ArrayList<Image> selectMainImagelist = new ReviewService().selectMainImagelist(placeCode);
+		System.out.println(selectMainImagelist.get(0));
 		request.setAttribute("selectMainImagelist", selectMainImagelist);
 		
 		int selectHeartCount = new ReviewService().selectHeartCount(placeCode);

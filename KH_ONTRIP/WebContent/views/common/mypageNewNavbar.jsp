@@ -106,7 +106,7 @@
             }
             
             function myReservation(){
-               location.href = "<%=request.getContextPath()%>/mypageReservationList.me";
+               location.href = "<%=request.getContextPath()%>/myPage/reservationList";
             }
             
             function myHeart(){
@@ -114,7 +114,7 @@
             }
             
             function myReview(){
-               location.href = "<%=request.getContextPath()%>/mypageReviewList.me";
+               location.href = "<%=request.getContextPath()%>/mypageReviewList.me?memberNo=<%= loginUser2.getMemberNo()%>";
             }
             
             function deleteMember(){

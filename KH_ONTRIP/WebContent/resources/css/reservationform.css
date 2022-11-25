@@ -66,18 +66,17 @@ h1{
 .nav_brand{
     margin-left: 50px;
 }
-hr{
-    width: 550px;
-}
+
 .rn_navbar{
     margin: auto;
     width: 100%;
     float: left;
     box-sizing: border-box;
     border: 1px solid rgb(160, 160, 160);
-    background-color: rgb(240, 206, 84);
+    background-color: rgb(197, 230, 147) !important;
     padding: 40px;
     position: fixed;
+    opacity:1 !important;
 }
 .hotel{
     padding-left: 15%;

@@ -1,4 +1,4 @@
-<%@ page import="java.util.Map" %><%--
+<%--
   Created by IntelliJ IDEA.
   User: jay
   Date: 2022/11/12
@@ -7,8 +7,6 @@
 --%>
 <%@ page contentType="text/html; charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
-
 
 <!DOCTYPE html>
 <html>
@@ -24,7 +22,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
 
-  <title>문의사항 등록</title>
+  <title>문의사항 상세조회</title>
   <style>
     .container{
       display: flex;
@@ -83,27 +81,35 @@
 </head>
 <body>
 
-<%@ include file="../../common/navbar.jsp" %>
+<%@ include file="../common/navbar.jsp" %>
 
 <br><br><br><br><br>
 
 <div class="container">
-  <h2 class="panel-title" style="color:rgb(5, 198, 37);">문의사항 등록</h2> <br>
+  <h2 class="panel-title" style="color:rgb(5, 198, 37);">문의사항 상세조회</h2> <br>
   <div class="form-group" style="text-align:center;">
-    <form method="post" action="/KH_ONTRIP/question/write">
-    <span> 제목 : <input type="text" name="qTitle" required> </span> <br><br>
+    <form method="post" action="/KH_ONTRIP/question/queUpdateForm">
+    <span> 제목 : ${memberQuestionDetailed.qTitle}</span> <br><br>
     <span> 내용</span> <br>
+    <textarea cols="50" rows="7" readonly>${memberQuestionDetailed.qContent}</textarea>  <br><br>
+    <span> 답변 </span> <br>
+    <textarea cols="60" rows="10"readonly>${memberQuestionDetailed.aContent}</textarea>
 
-    <textarea cols="50" rows="7" name="qContent" required></textarea>  <br><br>
-      <input type="hidden" name="memName" value="${memName}">
-      <input type="hidden" name="memNo" value="${memNo}">
-      <button type="submit">등록하기</button>
+    <br><br>
+      <input type="hidden" name="qCode" value="${memberQuestionDetailed.qCode}">
+      <input type="hidden" name="qTitle" value="${memberQuestionDetailed.qTitle}">
+      <input type="hidden" name="qContent" value="${memberQuestionDetailed.qContent}">
+      <c:if test="${isUpdated}">
+        <button type="submit">수정하기</button>
+      </c:if>
     </form>
-
 
     <br><br><br><br>
     <form action="/KH_ONTRIP/question/questions" method="get">
       <div><button type="submit">목록으로</button></div>
+    </form>
+    <form action="/KH_ONTRIP/question/queDelete?qCode=${memberQuestionDetailed.qCode}" method="get">
+      <button type="submit">삭제하기</button>
     </form>
   </div>
 </div>

@@ -13,6 +13,11 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.ArrayList;
 
+
+/**
+ * 상세지역선택창(강남,종로,용산 클릭하는 창)에서 한 상세지역(DetailArea)를 클릭시, 
+ * 놀거리,숙소,맛집 클릭하는 창으로 넘어가기위한 컨트롤러
+ */
 @WebServlet("/selectPlace.no")
 public class selectPlaceController extends HttpServlet {
 	private static final long serialVersionUID = 1L;

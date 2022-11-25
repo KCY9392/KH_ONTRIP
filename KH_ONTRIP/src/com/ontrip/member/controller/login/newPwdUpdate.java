@@ -7,38 +7,34 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.ontrip.member.model.vo.Member;
+
 /**
- * Servlet implementation class newPwdUpdate
+ * 비밀번호찾기에서 비밀번호 변경하기 버튼을 누를경우, 호출되는 컨트롤러(비밀번호 변경작성창)
  */
 @WebServlet("/newPwd.le")
 public class newPwdUpdate extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
+     
     public newPwdUpdate() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		//회원의 원래비밀번호 가져오기
 		String memberPwd = request.getParameter("memberPwd");
 		
-		request.setAttribute("memberPwd", memberPwd);
+		//회원의 아이디 가져오기
+		String memberId = request.getParameter("memberId");
+		
+		Member m = new Member(memberId, memberPwd);
+		request.setAttribute("m", m);
 		
 		request.getRequestDispatcher("views/common/newPwdUpdate.jsp").forward(request, response); // 변경할 비밀번호 확인 위한 jsp
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 

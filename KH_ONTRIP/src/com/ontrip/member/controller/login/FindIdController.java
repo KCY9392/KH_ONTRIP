@@ -13,23 +13,18 @@ import javax.servlet.http.HttpSession;
 import com.ontrip.member.model.service.MemberService;
 
 /**
- * Servlet implementation class FindIdController
+ * 아이디 찾기창에서 해당 정보 작성하고 아이디 찾기버튼을 누를경우, 호출되는 컨트롤러
  */
 @WebServlet("/findId.me")
 public class FindIdController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        MemberService ms = new MemberService();
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
+    
     public FindIdController() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
+	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		request.setCharacterEncoding("UTF-8");
@@ -58,11 +53,8 @@ public class FindIdController extends HttpServlet {
 		
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
+	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 

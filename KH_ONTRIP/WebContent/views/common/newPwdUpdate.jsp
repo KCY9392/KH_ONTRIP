@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" import="com.ontrip.member.model.vo.Member"%>
+<%
+	Member m = (Member)request.getAttribute("m");
+	String memberId = m.getMemberId();
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,7 +29,7 @@
 <body class="text-center">
 	
 				<!-- 비밀번호 변경 클릭 시 처음 로그인 폼으로 이동하기 -->
-			<form id = "outer1" action="<%=request.getContextPath()%>/newPwdUpdateCheck.le" method="post">
+			<form id = "outer1" action="<%=request.getContextPath()%>/newPwdUpdateCheck.le?memberId=<%= memberId %>" method="post">
 				
 				<h1 class="h3 mb-3 fw-normal">새로운 비밀번호</h1>
 			<div class="form-floating">
@@ -44,8 +48,17 @@
 
 	
 	<script>
+	
+		$(function(){
+			if($("input:password[name=userPwd]").val() == $("input:password[name=newPwd]").val()){
+	  		  alert("이전비밀번호와 동일합니다. 다시 작성해주세요.");
+	  		  $("input:password[name=newPwd]").focus();
+	            $("input:password[name=newPwd]").val("");
+	  	  }
+		});
+	
 		function newPwdUpdate(){
-	    	
+			
 	  	  if($("input:password[name=newPwd]").val() != $("input:password[name=checkPwd]").val()){
 	            alert("비밀번호가 일치하지 않습니다.");
 	            $("input:password[name=newPwd]").focus();
@@ -54,7 +67,7 @@
 	            return false;
 	        }
 	        if($("input:password[name=newPwd]").val() == $("input:password[name=checkPwd]").val() && $("input:password[name=newPwd]").val() != ""){
-	            alert("비밀번호 변경이 완료되었습니다.");
+	            alert("비밀번호가 일치합니다.");
 	        }
 	  }
 	</script>

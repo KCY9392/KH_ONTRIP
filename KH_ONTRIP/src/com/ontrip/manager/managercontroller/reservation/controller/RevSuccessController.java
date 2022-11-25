@@ -35,7 +35,7 @@ public class RevSuccessController implements RevFrontController {
 
         session.removeAttribute("reservation");
 
-        String viewPath = "/views/manager/adreservation/success.jsp";
+        String viewPath = "/views/reservation/success.jsp";
 
         RequestDispatcher requestDispatcher = request.getRequestDispatcher(viewPath);
 

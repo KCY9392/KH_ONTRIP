@@ -26,6 +26,13 @@ private Properties prop = new Properties();
 		}
 	}
 	
+	
+	/**
+	 * 상세지역이름 가져오는 메소드
+	 * @param dareaCode
+	 * @param conn
+	 * @return
+	 */
 	public String dAreaName(String dareaCode, Connection conn) {
 		String dareaName = null;
 		
@@ -57,6 +64,13 @@ private Properties prop = new Properties();
 		return dareaName;
 	}
 	
+	
+	/**
+	 * 상세지역 이미지 경로, 파일명 가져오는 메소드
+	 * @param dareaCode
+	 * @param conn
+	 * @return
+	 */
 	public ArrayList<Image> selectFilePath(String dareaCode, Connection conn){
 		ArrayList<Image> filePath = new ArrayList<>();
 		
@@ -88,6 +102,13 @@ private Properties prop = new Properties();
 		return filePath;
 	}
 	
+	
+	/**
+	 * 맛집 버튼 클릭 시, 맛집 시설 대표이미지 경로명, 파일명 가져오는 메소드
+	 * @param dareaCode
+	 * @param conn
+	 * @return
+	 */
 	public ArrayList<Image> selectFoodPath(String dareaCode, Connection conn){
 		ArrayList<Image> foodPath = new ArrayList<>();
 		
@@ -120,6 +141,13 @@ private Properties prop = new Properties();
 		return foodPath;
 	}
 	
+	
+	/**
+	 * 놀거리 버튼 클릭시, 놀거리 시설 대표 이미지 경로명, 파일명 가져오는 메소드
+	 * @param dareaCode
+	 * @param conn
+	 * @return
+	 */
 	public ArrayList<Image> selectPlayPath(String dareaCode, Connection conn){
 		ArrayList<Image> playPath = new ArrayList<>();
 		
@@ -152,6 +180,13 @@ private Properties prop = new Properties();
 		return playPath;
 	}
 	
+	
+	/**
+	 * 숙소 버튼 클릭 시, 숙소 시설 대표이미지 경로명, 파일명 가져오는 메소드
+	 * @param dareaCode
+	 * @param conn
+	 * @return
+	 */
 	public ArrayList<Image> selectHotelPath(String dareaCode, Connection conn){
 		ArrayList<Image> hotelPath = new ArrayList<>();
 		

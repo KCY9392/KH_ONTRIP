@@ -20,7 +20,7 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>온트립(OnTrip) - 숙소, 즐길거리, 맛집 추천사이트</title>
+	<title>온트립(OnTrip) - 숙소, 즐길거리, 맛집 추천사이트 (로그인)</title>
 
 	<script
 			src="https://code.jquery.com/jquery-3.6.1.min.js"

@@ -13,7 +13,9 @@ import com.ontrip.review.dao.ReviewDao;
 import com.ontrip.review.service.ReviewService;
 import com.ontrip.review.vo.Review;
 
-//후기게시판에서 후기하나를 클릭 시, 후기상세창으로 가는 서블릿
+/**
+ * 후기게시판에서 후기하나를 클릭 시, 후기상세창으로 가는 서블릿
+ */
 @WebServlet("/detail.bo")
 public class reviewDetailController extends HttpServlet {
 	private static final long serialVersionUID = 1L;

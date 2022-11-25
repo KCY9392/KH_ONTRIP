@@ -13,23 +13,16 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 /**
- * Servlet implementation class mainFormController
+ * 메인페이지에서 한 location을 클릭시, 상세지역 선택창으로 넘어가기위해 호출되는 컨트롤러
  */
 @WebServlet("/mainForm.no")
 public class mainFormController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
+   
     public mainFormController() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		request.setCharacterEncoding("UTF-8");

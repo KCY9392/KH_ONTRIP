@@ -14,7 +14,7 @@ public class RevFailController implements RevFrontController {
     public void process(HttpServletRequest request, HttpServletResponse response)
         throws IOException, ServletException, ParseException, SQLException {
 
-        String viewPath = "/views/manager/adreservation/failed.jsp";
+        String viewPath = "/views/reservation/failed.jsp";
 
         RequestDispatcher requestDispatcher = request.getRequestDispatcher(viewPath);
 

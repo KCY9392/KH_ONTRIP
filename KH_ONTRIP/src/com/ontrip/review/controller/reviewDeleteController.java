@@ -11,7 +11,7 @@ import com.ontrip.review.service.ReviewService;
 import com.ontrip.review.vo.Review;
 
 /**
- * Servlet implementation class reviewDeleteController
+ * 후기게시판에서 사용자가 후기 삭제할 시, 호출되는 컨트롤러
  */
 @WebServlet("/deleteReivew.re")
 public class reviewDeleteController extends HttpServlet {

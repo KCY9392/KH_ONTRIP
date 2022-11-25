@@ -11,6 +11,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
+/**
+ * 로그인Form에서 로그인버튼을 누를 경우, 호출되는 컨트롤러
+ */
 @WebServlet("/login.me")
 
 public class LoginController extends HttpServlet {

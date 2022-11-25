@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class HeartListPageController
+ * 찜 목록페이지
  */
 @WebServlet("/heartListPage.me")
 public class HeartListPageController extends HttpServlet {

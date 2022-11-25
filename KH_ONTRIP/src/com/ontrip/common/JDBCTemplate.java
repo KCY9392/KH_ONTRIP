@@ -10,6 +10,10 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Properties;
 
+
+/**
+ * JDBC 공통 컨트롤러
+ */
 public class JDBCTemplate {
 	
 	private JDBCTemplate() {

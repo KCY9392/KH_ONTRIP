@@ -126,11 +126,11 @@
 
         <div class = "selectTitle">
             <div id="btn_group">
-                <button type="button" class = "Id" id = "memberId" name="find" onclick="show(this); ">아이디 찾기</button>
-                <button type="button" class = "Pwd" id = "memberPwd" name="find" onclick="show(this);">비밀번호 찾기</button>
+                <button type="button" class = "Id" id = "Id" name="find" onclick="show(this); ">아이디 찾기</button>
+                <button type="button" class = "Pwd" id = "Pwd" name="find" onclick="show(this);">비밀번호 찾기</button>
             </div>
             <form action="<%=request.getContextPath() %>/findId.me" id="find-id" method="post">
-	              <div id = "memberId" class = "box">
+	              <div id = "Idmember" class = "box">
 	                  <br><br>
 	                  <span class="memberName">이름 :</span>
 	                  <input type="text" id="name" name="memberName" placeholder="이름" required><br><br>
@@ -141,7 +141,7 @@
 	              </div>
               </form>
               <form action="<%=request.getContextPath() %>/findPwd.me" id="find-pwd" method="post">
-	              <div id = "memberPwd" class = "box"> 
+	              <div id = "Pwdmember" class = "box box2"> 
 	                  <br><br>
 	                  <span class="memberName">이름 :</span>
 	                  <input type="text" name="memberName"><br><br>
@@ -163,7 +163,7 @@
         let tag = document.getElementsByClassName("box");
 
         for(let i=0; i<tag.length; i++){
-            if(element.id == tag[i].id){
+            if(element.id+"member" == tag[i].id){
                 tag[i].style.display = "block";
             }else{
                 tag[i].style.display = "none";

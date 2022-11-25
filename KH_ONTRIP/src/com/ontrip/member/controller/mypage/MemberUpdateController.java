@@ -12,22 +12,20 @@ import com.ontrip.member.model.service.MemberService;
 import com.ontrip.member.model.vo.Member;
 
 /**
- * Servlet implementation class MemberUpdateController
+ * 마이페이지-회원정보 변경창에서 변경할 회원정보들을 작성 후, 변경하기를 누를 경우, DB에 회원정보 update하는 컨트롤러
+ * update 성공시, 마이페이지(회원정보)창으로 이동
+ * update 실패시, 다시 회원정보 변경창으로 이동
  */
 @WebServlet("/update.me")
 public class MemberUpdateController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
+    
     public MemberUpdateController() {
         super();
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
+	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		// 1) 인코딩 설정
@@ -69,9 +67,6 @@ public class MemberUpdateController extends HttpServlet {
 		
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doGet(request, response);
 	}

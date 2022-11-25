@@ -50,7 +50,7 @@ public class MemberQueDetailedController implements QuFrontController {
 
         request.setAttribute("memberQuestionDetailed", memberQuestionDetailed);
 
-        String viewPath = "/views/manager/memberque/memberQueDetailed2.jsp";
+        String viewPath = "/views/question/memberQueDetailed2.jsp";
         RequestDispatcher requestDispatcher = request.getRequestDispatcher(viewPath);
         requestDispatcher.forward(request, response);
 

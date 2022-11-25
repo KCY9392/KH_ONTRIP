@@ -11,23 +11,16 @@ import javax.servlet.http.HttpSession;
 import com.ontrip.heart.service.HeartService;
 
 /**
- * Servlet implementation class HeartController
+ * 찜할경우(빈 하트를 누를경우), 호출되는 컨트롤러
  */
 @WebServlet("/insertHeart.ht")
 public class InsertHeartController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
     public InsertHeartController() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int memNo = Integer.parseInt(request.getParameter("memNo"));
 		int plcCode = Integer.parseInt(request.getParameter("plcCode"));
@@ -47,15 +40,9 @@ public class InsertHeartController extends HttpServlet {
 			
 			request.getRequestDispatcher("views/common/errorPage.jsp").forward(request, response);
 		}
-		
-		
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 

@@ -9,30 +9,21 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 /**
- * Servlet implementation class MemberDelete
+ * 사용자 마이페이지 카테고리에서 회원탈퇴를 누를 경우, 회원탈퇴창으로 이동시키는 컨트롤러
  */
 @WebServlet("/MemberDelete.me")
 public class MemberDeleteController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
+    
     public MemberDeleteController() {
         super();
 
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.getRequestDispatcher("views/member/memberDelete.jsp").forward(request, response);
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		doGet(request, response);

@@ -126,4 +126,20 @@ public class MemberService {
 	   close();
 	   return result;
    }
+
+   
+   // 비밀번호찾기에서 해당회원의 비밀번호 재설정해주는 메소드
+	public int findPwdupdate(String newPwd, String memberId) {
+
+		Connection conn = getConnection();
+		int result = new MemberDao().findPwdupdate(newPwd, memberId, conn);
+		if(result>0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		close();
+		
+		return result;
+	}
 }

@@ -29,7 +29,7 @@ public class MemberQnasListController implements QnasFrontController {
         request.setAttribute("qnaForUsing", qnaForUsing);
         request.setAttribute("qnaForAccount", qnaForAccount);
 
-        String viewPath = "/views/manager/adqna/memberqnas/memberQnas.jsp";
+        String viewPath = "/views/Q&A/memberQnas.jsp";
 
         RequestDispatcher requestDispatcher = request.getRequestDispatcher(viewPath);
         requestDispatcher.forward(request, response);

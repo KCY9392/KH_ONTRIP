@@ -22,11 +22,19 @@
 
   <!-- css경로 -->
   <link rel="stylesheet" href="<%= contextPath %>/resources/css/reservationform.css">
+<style>
+hr{
+    width:978px !important;
+}
 
+</style>
 </head>
 <body>
+<%@ include file="../common/navbar.jsp" %>
 
-<div class="rn_navbar" >
+<br><br><br>
+
+<div class="rn_navbar" style="background-color:rgb(197, 230, 147);">
   <span class="hotel">서울 롯데호텔</span>
 
 </div>
@@ -35,7 +43,7 @@
 
   <div class="centerText">
     <div class="selectRn">
-      <br><br><br><br>
+      <br><br><br>
       <span class="hotel_name">숙소명 : </span>&nbsp;&nbsp;&nbsp;
       <input type="text" value="${placeName}" style="width:200px;" readonly>
       <br><br>

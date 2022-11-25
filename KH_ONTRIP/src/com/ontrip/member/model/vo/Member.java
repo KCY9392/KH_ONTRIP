@@ -60,6 +60,12 @@ public class Member {
 		this.memberId = memberId;
 	}
 	
+	public Member(String memberId, String memberPwd) {
+		super();
+		this.memberId = memberId;
+		this.memberPwd = memberPwd;
+	}
+
 	public Member(String memberName) {
 		super();
 		this.memberName = memberName;

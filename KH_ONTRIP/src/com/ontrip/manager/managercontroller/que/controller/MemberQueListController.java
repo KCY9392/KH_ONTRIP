@@ -46,7 +46,7 @@ public class MemberQueListController implements QuFrontController {
 
 
 
-        String viewPath = "/views/manager/memberque/memberQueList2.jsp";
+        String viewPath = "/views/question/memberQueList2.jsp";
 
         RequestDispatcher dispatcher = request.getRequestDispatcher(viewPath);
 

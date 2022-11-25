@@ -9,23 +9,18 @@ import javax.servlet.http.HttpServletResponse;
 import com.ontrip.member.model.service.MemberService;
 
 /**
- * Servlet implementation class IdCheckController
+ * 회원가입시, 아이디 중복확인버튼 누를경우, 존재하는 아이디 여부 찾기 컨트롤러
  */
 @WebServlet("/idCheck.me")
 public class IdCheckController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
+    
     public IdCheckController() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
+	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String checkId = request.getParameter("checkId");
 		
@@ -38,11 +33,8 @@ public class IdCheckController extends HttpServlet {
 		}
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
+	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 

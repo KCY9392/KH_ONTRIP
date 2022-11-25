@@ -27,7 +27,7 @@ public class MemberQueFormController implements QuFrontController {
         request.setAttribute("memName", memName);
 
 
-        String viewPath = "/views/manager/memberque/memberQueForm2.jsp";
+        String viewPath = "/views/question/memberQueForm2.jsp";
         RequestDispatcher requestDispatcher = request.getRequestDispatcher(viewPath);
         requestDispatcher.forward(request, response);
     }

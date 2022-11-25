@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>회원탈퇴안내</title>
 <style>
     .outer1{
         background-color: white; /* 해당사이트의 고유한 색상으로 작성 */

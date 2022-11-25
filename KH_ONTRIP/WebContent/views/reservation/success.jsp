@@ -35,7 +35,7 @@
         <button type="submit">홈화면</button>
     </form>
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    <form action="/KH_ONTRIP/mypageReservationList.me" style="display:inline-block;">
+    <form action="<%= request.getContextPath() %>/myPage/reservationList" style="display:inline-block;">
         <!-- 클릭시 마이페이지 예약숙소 목록으로 이동 -->
         <button type="submit">마이페이지</button>
     </form>

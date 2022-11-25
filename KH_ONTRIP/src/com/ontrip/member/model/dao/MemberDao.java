@@ -309,5 +309,33 @@ public class MemberDao {
 	}
 	  return result;
    }
+
+	// 비밀번호찾기에서 해당회원의 비밀번호 재설정해주는 메소드
+	public int findPwdupdate(String newPwd, String memberId, Connection conn) {
+
+		int result = 0;
+		
+		PreparedStatement psmt = null;
+		
+		String sql = prop.getProperty("findPwdupdate");
+		
+		try {
+			psmt = conn.prepareStatement(sql);
+			
+			psmt.setString(1, newPwd);
+			psmt.setString(2, memberId);
+			
+			result = psmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(psmt);
+		}
+		  return result;
+	}
+	
+	
+	
 }
    

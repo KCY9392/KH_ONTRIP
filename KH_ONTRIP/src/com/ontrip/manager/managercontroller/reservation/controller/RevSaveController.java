@@ -88,7 +88,7 @@ public class RevSaveController implements RevFrontController {
 
 
 
-        String viewPath = "/views/manager/adreservation/reservationResult2.jsp";
+        String viewPath = "/views/reservation/reservationResult2.jsp";
         RequestDispatcher requestDispatcher = request.getRequestDispatcher(viewPath);
         requestDispatcher.forward(request, response);
 

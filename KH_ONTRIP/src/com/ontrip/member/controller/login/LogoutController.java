@@ -9,7 +9,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-
+/**
+ * navbar에서 로그아웃버튼을 누를 경우, 호출되는 컨트롤러
+ */
 @WebServlet("/logout.me")
 public class LogoutController extends HttpServlet {
 	private static final long serialVersionUID = 1L;

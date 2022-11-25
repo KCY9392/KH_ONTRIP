@@ -9,7 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
+/**
+ * 회원가입버튼을 누를경우, 회원가입창으로 이동시키는 컨트롤러
+ */
 @WebServlet("/enrollForm.me")
 public class MemberEnrollFormController extends HttpServlet {
 	private static final long serialVersionUID = 1L;

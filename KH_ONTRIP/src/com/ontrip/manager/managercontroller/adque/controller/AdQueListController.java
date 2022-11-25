@@ -49,7 +49,7 @@ public class AdQueListController implements QueFrontController {
         System.out.println("list = " + list);
 
 
-        String viewPath = "/views/manager/admember/questions.jsp";
+        String viewPath = "/views/manager/adquestion/questions.jsp";
 
         RequestDispatcher dispatcher = request.getRequestDispatcher(viewPath);
 

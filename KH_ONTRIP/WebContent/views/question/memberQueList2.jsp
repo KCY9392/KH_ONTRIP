@@ -83,7 +83,7 @@
     </style>
 </head>
 <body>
-<%@ include file="../../common/navbar.jsp" %>
+<%@ include file="../common/navbar.jsp" %>
 
 
 

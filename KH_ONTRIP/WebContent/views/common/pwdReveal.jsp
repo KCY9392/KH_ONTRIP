@@ -2,7 +2,9 @@
     pageEncoding="UTF-8" import="com.ontrip.member.model.vo.Member"%>
  
  <%
- 	String memberPwd = (String)request.getAttribute("memberPwd");
+ 	Member m = (Member)request.getAttribute("m");
+ 	String memberPwd = m.getMemberPwd();
+ 	String memberId = m.getMemberId();
  %>  
 
 <!DOCTYPE html>
@@ -28,7 +30,7 @@
 </style>
 </head>
 <body>
-	<form action="<%=request.getContextPath()%>/newPwd.le?memberPwd=<%=memberPwd%>" method="post" id="marjinForm">
+	<form action="<%=request.getContextPath()%>/newPwd.le?memberPwd=<%=memberPwd%>&memberId=<%= memberId %>" method="post" id="marjinForm">
 	  	<div class="modal-dialog" role="document">
 			<div class="title">
 				<p>On Trip</p>

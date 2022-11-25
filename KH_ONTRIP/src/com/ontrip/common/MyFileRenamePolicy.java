@@ -6,7 +6,10 @@ import java.util.Date;
 
 import com.oreilly.servlet.multipart.FileRenamePolicy;
 
-// 인터페이스를 구현해야한다 => implements
+
+/**
+ * 첨부파일 업로드 시, 파일명을 변경해서 서버로 업로드하기위한 클래스
+ */
 public class MyFileRenamePolicy implements FileRenamePolicy{
 
     // 반드시 미완성된 rename메소드를 오버라이딩해서 구현해야함

@@ -1,4 +1,4 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html; charset=UTF-8" language="java" %>
 <%
   String contextPath = request.getContextPath();
 %>
@@ -21,10 +21,26 @@
 
   <!-- css경로 -->
   <link rel="stylesheet" href="<%= contextPath %>/resources/css/reservationform.css">
+<style>
+hr{
+    width:978px !important;
+}
+body{
+	cursor: pointer !important;
+    letter-spacing: -1px;
+    font-size: 1.2rem !important;
+}
+
+</style>
 </head>
 <body>
+
+<%@ include file="../common/navbar.jsp" %>
+
+<br><br><br>
+
 <form action="/KH_ONTRIP/reservation/save" id="enroll-form" method="post">
-<div class="rn_navbar" >
+<div class="rn_navbar" style="background-color:rgb(197, 230, 147);">
   <span class="hotel">${placeName}</span>
   <div class="outer">
     <span id="checkIn">체크인 : </span>
@@ -32,18 +48,18 @@
 
     <span id="checkOut">체크아웃 : </span>
     <input type="date" name="edate" value=""  required>
-    <span id="day">몇박</span>
   </div>
 </div>
 <br><br><br><br><br>
 <div class="container">
     <div class="centerText">
       <div class="selectRn">
-        <br><br><br><br>
+        <br><br>
         <span class="span_name">예약자 이름 : </span>&nbsp;&nbsp;&nbsp;
         <input type="text" placeholder="여행자 이름" size="14" name="rnName" required>  &nbsp; &nbsp; &nbsp; &nbsp;
         <br><br>
-        <hr><br>
+        <hr>
+        <br>
         <span class="adult">성인 : </span>&nbsp;&nbsp;&nbsp;
         <select class="select_gender" name="rnAdult">
           <option>인원</option>
@@ -58,9 +74,10 @@
           <option value="9">9</option>
         </select>
 
-        <span class="child">어린이 : </span> &nbsp;&nbsp;&nbsp;
+        <span class="child" style="font-size:20px; font-weight:900; margin-left: 150px !important;">어린이 : </span> &nbsp;&nbsp;&nbsp;
         <select class="select_gender" name="rnChild">
           <option>인원</option>
+          <option value="0">0</option>
           <option value="1">1</option>
           <option value="2">2</option>
           <option value="3">3</option>
@@ -135,19 +152,12 @@
         <br><br><br>
 
         <div style="text-align:center;">
-          <button type="submit" class="btn-pay">결제하러가기</button>
+          <button type="submit" class="btn-pay btn-lg">결제하러가기</button>
         </div>
-
+</div>
         <br><br><br><br><br>
       </div>
     </div>
   </form>
-</div>
-
-
-
-
-
-</form>
 </body>
 </html>
