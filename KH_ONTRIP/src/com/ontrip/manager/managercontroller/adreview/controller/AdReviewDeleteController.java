@@ -29,7 +29,8 @@ public class AdReviewDeleteController implements ReviewFrontController {
 
         adReviewService.deleteReview(revCode);
 
-        response.sendRedirect("/KH_ONTRIP/manager/reviews/play?category="+categoryCode);
+        response.setContentType("text/html;charset=UTF-8");
+        response.getWriter().print("<script>alert('삭제완료'); location.href = '/KH_ONTRIP/manager/reviews/play?category="+categoryCode+"'</script>");
 
     }
 }

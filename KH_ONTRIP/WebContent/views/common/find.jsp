@@ -9,108 +9,90 @@
 	// 서비스 요청전 : null
 	// 서비스 요청성공후 : alert로 띄워줄 메시지 문구.
 %>
+
 <!DOCTYPE html>
 <html lang="ko">
-<head>
-    <meta charset="UTF-8">
+  <head>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>온트립 : 아이디/비밀번호 찾기</title>
-    <script
-        src="https://code.jquery.com/jquery-3.6.1.min.js"
-        integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="
-        crossorigin="anonymous">
-    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    
+    <title>아이디 찾기</title>
     <style>
-        .container{
-            margin:auto;
-            text-align: center;
-            width: 700px;
-            height: 700px;
-            
-        }
-        h1{
-            color:rgb(155, 205, 138);
-            font-size:40px;
-        }
-        input{
-            margin: 10px;
-        }
-        .box{
-            width: 100%;
-            height: 100%;
-            margin: auto;
-            display: none;
-        }
-        .selectTitlet>input{
-            height:30px;
-            border:1px solid #999;
-            border-radius: 5px;
-        }
-        .btn{
-            margin-top: 40px;
-            background-color:rgb(196, 199, 195) ;
-            border:1px solid black;
-            width:150px;
-            height:40px;
-            margin-left: 10px;
-            margin-right: 10px;
-            font-weight: 900;
-            border-radius: 5px;
-        }
-        .btn:hover{
-            cursor: pointer;
-            background-color:rgb(187, 190, 186) ;
-        }
-        .btn:active{
-            background-color:rgb(156, 158, 155);
-        }
-        span{
-            font-weight: 600;
-        }
-        .Id{
-            margin-top: 40px;
-            background-color:rgb(196, 199, 195) ;
-            border:1px solid black;
-            width:150px;
-            height:40px;
-            margin-right: -4px;
-            font-weight: 900;
-            border-radius: 2px;
-        }
-        .Id:hover{
-            cursor: pointer;
-            background-color:rgb(228, 231, 227) ;
-        }
-        .Id:active{
-            background-color:rgb(156, 158, 155);
-        }
-        .Pwd{
-            margin-top: 40px;
-            background-color:rgb(196, 199, 195) ;
-            border:1px solid black;
-            width:150px;
-            height:40px;
-            margin-left: -3px;
-            font-weight: 900;
-            border-radius: 2px;
-        }
-        .Pwd:hover{
-            cursor: pointer;
-            background-color:rgb(228, 231, 227) ;
-        }
-        .Pwd:active{
-            background-color:rgb(156, 158, 155);
-        }
-        .input{
-            width:250px;
-        }
-        
+        @import url("http://fonts.googleapis.com/earlyaccess/nanumgothic.css");
+	
+	html {
+		height: 100%;
+	}
+	
+	body {
+		margin-top:0px;
+	    width:100%;
+	    height:100%;
+	    margin: 0;
+  		padding-top: 30px;
+  		padding-bottom: 40px;
+  		font-family: "Nanum Gothic", arial, helvetica, sans-serif;
+  		background-repeat: no-repeat;
+	}
+    #Id, #Pwd{
+        background-color: #b9bdb7;
+        font-weight: 900;
+        font-size: large;
+        border: 1px solid lightgray;
+    }
+
+    .card {
+        margin: 0 auto; /* Added */
+        float: none; /* Added */
+        margin-bottom: 10px; /* Added */
+	}
+
+    .card-body{
+        margin-left: 150px;
+    }
+    #btn-Yes{
+        background-color: rgb(130, 202, 164);
+        border: none;
+    }
+
+	#btn_group{
+        display:flex;
+    }
+
+	.form-signin .form-control {
+  		position: relative;
+  		height: auto;
+  		-webkit-box-sizing: border-box;
+     	-moz-box-sizing: border-box;
+        	 box-sizing: border-box;
+  		padding: 10px;
+  		font-size: 16px;
+	}
+
+    .text2{
+    	color : rgb(0, 0, 0);
+    }
+
+    .box2{
+        display: none;
+    }
+
+    p{
+        font-size: large;
+    }
     </style>
-</head>
-<body>
-	<script>
-		let msg = "<%= alertMsg%>"; // let msg = 성공적으로 로그인이 되었습니다.
+  </head>
+
+  <body cellpadding="0" cellspacing="0" marginleft="0" margintop="0" width="100%" height="100%" align="center">
+    <script>
+		let msg = "<%= alertMsg %>"; // let msg = 성공적으로 로그인이 되었습니다.
 		
 		if(msg != "null"){
 			alert(msg);
@@ -120,47 +102,127 @@
 			<% session.removeAttribute("alertMsg");%>
 		}
 	</script>
-    <div class="container">
-    <h1>On Trip</h1> 
-    <br>
 
+	<div class="card align-middle" style="width:50rem; height: 45rem; margin-top:0;">
+		
+		<div style="margin-top:30px; text-align: center;">
+			<p  
+			style="font-size: 60px;
+					font-weight: 1000;
+					color: rgb(130, 202, 164);">On Trip</p>
+		</div>
+        
+        <br>
+        
         <div class = "selectTitle">
-            <div id="btn_group">
-                <button type="button" class = "Id" id = "Id" name="find" onclick="show(this); ">아이디 찾기</button>
-                <button type="button" class = "Pwd" id = "Pwd" name="find" onclick="show(this);">비밀번호 찾기</button>
+            <div id="btn_group" style="text-align:center;">
+                <button type="button" class="btn btn-sm btn-primary btn-block" style="height:50px" id = "Id" name="find" onclick="show(this); ">아이디 찾기</button>
+                <button type="button" class="btn btn-sm btn-primary btn-block" style="height:50px; margin-top:-0.1px;" id = "Pwd" name="find" onclick="show(this);">비밀번호 찾기</button>
             </div>
-            <form action="<%=request.getContextPath() %>/findId.me" id="find-id" method="post">
-	              <div id = "Idmember" class = "box">
-	                  <br><br>
-	                  <span class="memberName">이름 :</span>
-	                  <input type="text" id="name" name="memberName" placeholder="이름" required><br><br>
-	                  <span class="phone">휴대전화 :</span>
-	                  <input type="text" id="phone" name="phone" placeholder="휴대전화" required><br><br>
-	
-	                  <button type="submit" class="btn">조회</button>
-	              </div>
-              </form>
-              <form action="<%=request.getContextPath() %>/findPwd.me" id="find-pwd" method="post">
-	              <div id = "Pwdmember" class = "box box2"> 
-	                  <br><br>
-	                  <span class="memberName">이름 :</span>
-	                  <input type="text" name="memberName"><br><br>
-	                  <span class="memberId">아이디 :</span>
-	                  <input type="text" name="memberId"><br><br>
-	                  <span class="phone" >휴대전화번호 :</span>
-	                  <input type="text" name="phone"><br><br>
-	
-	                  <button type="submit" class="btn">조회</button>
-	              </div>
-	          </form>
+            <br>
         </div>
-    </div>
+        
+        <br>
+        
+		<div class="card-body" style="width:30rem; text-align:center">
+		      
+		      <form action="<%=request.getContextPath() %>/findId.me" id="find-id" method="post" class="form-signin">
+		  		 
+		        <div id="Idmember" class="box">
+		            <b><p class="text2">아이디 찾기</p></b>
+		            <input type="text" name="memberName" id="name" class="form-control" placeholder="이름" required autofocus><BR>
+		            <input type="text2" id="phone" name="phone" class="form-control" placeholder="휴대전화" required><br>
+		                <p class="check" id="check1">${check}</p><br/>
+		            <button id="btn-Yes" class="btn btn-lg btn-primary btn-block" type="submit">아이디 찾기</button>
+		        </div>
+		
+		      </form>
 
-<br><br><br>
+		       <form action="<%=request.getContextPath() %>/findPwd.me" id="find-pwd" method="post" class="form-signin">
+		            <div id = "Pwdmember" class = "box box2"> 
+		                <b><p class="text2">비밀번호 찾기</p></b>
+		                <input type="text" name="memberName" id="pname"class="form-control" placeholder="이름"><br>
+		                <input type="text2" name="memberId" id="pId" class="form-control" placeholder="아이디"><br>
+		                <input type="text2" name="phone" id="pphone" class="form-control" placeholder="휴대전화"><br>
+		                    <p class="check" id="check2">${check}</p><br/>
+		                <button id="btn-Yes" class="btn btn-lg btn-primary btn-block" type="submit">비밀번호 찾기</button>
+		            </div>
+		       </form>
+		       
+    	</div>
+	</div>
+   
+  </body>
 
-<script>
-    function show(element){
+  <script type="text/javascript">
+
+         $(function(){
+            $("#Id").click();
+
+         });
+
+         function show(element){
         let tag = document.getElementsByClassName("box");
+
+        if(element.id+"member" == "Idmember"){
+            $('#check1').text('이름을 입력해주세요');
+            $('#check1').css('color', 'red');
+
+            $("#name").focusout(function(){
+  			
+              if($('#name').val() == ""){
+                    $('#check1').text('이름을 입력해주세요.');
+                      $('#check1').css('color', 'red');
+            
+              }else{
+                  $('#check1').hide();
+              }
+              });
+              
+               $("#phone").focusout(function(){
+              if($('#phone').val() == ""){
+                    $('#check1').text('전화번호를 입력해주세요');
+                      $('#check1').css('color', 'red');
+              }else{
+                  $('#check1').hide();
+              }
+              });
+        }
+        
+        if(element.id+"member" == "Pwdmember"){
+            $('#check2').text('이름을 입력해주세요');
+            $('#check2').css('color', 'red');
+
+            $("#pname").focusout(function(){
+  			
+              if($('#pname').val() == ""){
+                    $('#check2').text('이름을 입력해주세요.');
+                      $('#check2').css('color', 'red');
+            
+              }else{
+                  $('#check2').hide();
+              }
+              });
+            
+
+              $("#pId").focusout(function(){
+              if($('#pId').val() == ""){
+                    $('#check2').text('아이디를 입력해주세요');
+                      $('#check2').css('color', 'red');
+              }else{
+                  $('#check2').hide();
+              }
+              });
+
+               $("#pphone").focusout(function(){
+              if($('#pphone').val() == ""){
+                    $('#check2').text('전화번호를 입력해주세요');
+                      $('#check2').css('color', 'red');
+              }else{
+                  $('#check2').hide();
+              }
+              });
+        }
 
         for(let i=0; i<tag.length; i++){
             if(element.id+"member" == tag[i].id){
@@ -169,10 +231,7 @@
                 tag[i].style.display = "none";
             }
         }
+
     }
-    
-</script>
-
-
-</body>
+  </script>
 </html>

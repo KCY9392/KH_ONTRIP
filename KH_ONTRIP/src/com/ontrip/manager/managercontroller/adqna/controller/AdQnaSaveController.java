@@ -28,6 +28,7 @@ public class AdQnaSaveController implements QnaFrontController {
 
         adQnaService.saveQna(question, answer, category);
 
-        response.sendRedirect(" /KH_ONTRIP/manager/qnas");
+        response.setContentType("text/html;charset=UTF-8");
+        response.getWriter().print("<script>alert('등록완료'); location.href = '/KH_ONTRIP/manager/qnas'</script>");
     }
 }

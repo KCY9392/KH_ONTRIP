@@ -81,11 +81,11 @@
     <div style="height:50%;">
       <button type="button" 
         style="background-color: rgb(188, 236, 192); width:100%; height:100%; 
-        border:none; border-bottom:1px solid black; border-radius: 10px;">Q&A</button>
+        border:none; border-bottom:1px solid black; border-radius: 10px;" onclick="goQnA();">Q&A</button>
     </div>
     <div style="height:50%;">
       <button type="button" style=" background-color: rgb(188, 236, 192); height:100%; border:none;
-        border-radius: 10px;">고객센터</button>
+        border-radius: 10px;" onclick="goQuestion();">고객센터</button>
     </div>
   </div>
  <script>
@@ -120,6 +120,17 @@
             function deleteMember(){
                 location.href = "<%=request.getContextPath()%>/MemberDelete.me";
             }
+            
+            
+            // Q&A , 고객센터(문의사항) 바 
+            
+            function goQnA(){
+        		location.href = "<%= request.getContextPath() %>/qnas";
+        	}
+         	
+         	function goQuestion(){
+        		location.href = "<%= request.getContextPath() %>/question/questions";
+        	}
          </script>
 </body>
 </html>

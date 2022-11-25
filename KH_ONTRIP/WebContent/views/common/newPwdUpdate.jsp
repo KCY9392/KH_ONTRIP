@@ -14,37 +14,65 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 <style>
-	#outer1{
-        background-color: white; /* 해당사이트의 고유한 색상으로 작성 */
-        color: black;
-        width: 300px;
-        height: 800px;
-        margin: auto;
-        box-sizing: border-box;
-        text-align: center;
-		margin-top: 200px;
-    }
+
+    #marjinForm{
+		margin-top: 100px;
+	}
+	.title{
+			font-size: 60px;
+			margin-top: -20px;
+			font-weight: 900;
+			color: rgb(130, 202, 164);
+			text-align: center;
+		}
+		
 </style>
 </head>
 <body class="text-center">
 	
-				<!-- 비밀번호 변경 클릭 시 처음 로그인 폼으로 이동하기 -->
-			<form id = "outer1" action="<%=request.getContextPath()%>/newPwdUpdateCheck.le?memberId=<%= memberId %>" method="post">
-				
-				<h1 class="h3 mb-3 fw-normal">새로운 비밀번호</h1>
-			<div class="form-floating">
-			<input type="password" class="form-control" id="floatingInput" name="newPwd" placeholder="newPassword"><br>
-			<h1 class="h3 mb-3 fw-normal">비밀번호 확인</h1>
-			</div>
-			<div class="form-floating">
-			<input type="password" class="form-control" id="floatingPassword" name="checkPwd" placeholder="newPassword Check">
-			</div>
-			</div>
-			<br>
-			<button class="w-100 btn btn-lg btn-primary" type="submit" onclick="newPwdUpdate();" style=" background-color: rgb(130, 202, 164); border: 0; ">비밀번호 변경</button>
-			<p class="mt-5 mb-3 text-muted">© Ontrip</p>
-		</form>
-	</div>
+		<!-- 비밀번호 변경 클릭 시 처음 로그인 폼으로 이동하기 -->
+        <form  action="<%=request.getContextPath()%>/newPwdUpdateCheck.le?memberId=<%= memberId %>" method="post" id="marjinForm">
+	  	
+            <div class="modal-dialog" role="document">
+                            
+                            <div class="title">
+                                <p>On Trip</p>
+                            </div>
+                            <br><br>
+
+                <div class="modal-content rounded-4 shadow" 
+                    style="margin-left: -100px; width: 700px; height: 450px; text-align:center;">
+                        
+                    <br><br>
+                    
+                    <div id="content" style="margin-left:220px; margin-right:220px;">
+                        
+                        <p class="h3 fw-bold" style="font-weight: 1000;">새로운 비밀번호</p><br>
+                        <input type="password" class="form-control" id="floatingInput" name="newPwd" placeholder="새로운 비밀번호"
+                        style="width:230px; margin-left:20px;" ><br>
+                        
+                        <br>
+                    
+                        <p class="h3 fw-normal" style="font-weight: 1000;">비밀번호 확인</p><br>
+                        <input type="password" class="form-control" id="floatingPassword" name="checkPwd" placeholder="비밀번호 확인"
+                        style="width:230px; margin-left:20px;">
+                    
+                        <br><br>
+
+                        <button class="w-100 btn btn-lg btn-primary" type="submit" onclick="newPwdUpdate();" 
+                        style=" background-color: rgb(130, 202, 164); border: 0;">비밀번호 변경</button>
+                    
+                        <br>
+
+                
+                    </div>
+                    
+                </div>
+            </div>
+            <p class="mt-5 mb-3 text-muted">© Ontrip</p>
+
+        </form>
+	
 
 	
 	<script>
@@ -67,7 +95,7 @@
 	            return false;
 	        }
 	        if($("input:password[name=newPwd]").val() == $("input:password[name=checkPwd]").val() && $("input:password[name=newPwd]").val() != ""){
-	            alert("비밀번호가 일치합니다.");
+	            alert("성공적으로 비밀번호 재설정되었습니다.");
 	        }
 	  }
 	</script>

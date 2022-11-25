@@ -169,7 +169,7 @@
 
 
 
-    <pre id="htitle" style="color:gray;"><img src="../views/Q&A/숙소.png" width="50px">&nbsp;&nbsp;숙소</pre>
+    <pre id="htitle" style="color:gray;"><img src="<%= request.getContextPath() %>/resources/image/숙소.png" width="50px">&nbsp;&nbsp;숙소</pre>
     <hr width="70%" style="margin-top: -10px;">
     <br>
 
@@ -187,7 +187,7 @@
     <br>
     <br>
 
-    <pre id="htitle" style="color:gray;"><img src="../views/Q&A/기능.png" width="50px">&nbsp;&nbsp;기능</pre>
+    <pre id="htitle" style="color:gray;"><img src="<%= request.getContextPath() %>/resources/image/기능.png" width="50px">&nbsp;&nbsp;기능</pre>
     <hr width="70%" style="margin-top: -10px;">
     <br>
 
@@ -206,7 +206,7 @@
 
 
 
-    <pre id="htitle" style="color:gray;"><img src="../views/Q&A/계정.png" width="50px">&nbsp;&nbsp;계정</pre>
+    <pre id="htitle" style="color:gray;"><img src="<%= request.getContextPath() %>/resources/image/계정.png" width="50px" >&nbsp;&nbsp;계정</pre>
     <hr width="70%" style="margin-top: -10px;">
     <br>
 

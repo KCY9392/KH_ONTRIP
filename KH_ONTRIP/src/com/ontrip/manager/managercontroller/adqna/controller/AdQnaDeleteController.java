@@ -22,9 +22,11 @@ public class AdQnaDeleteController implements QnaFrontController {
         String qaCode1 = request.getParameter("qaCode");
         int qaCode = Integer.parseInt(qaCode1);
         adQnaService.deleteQna(qaCode);
+        
+        
+        response.setContentType("text/html;charset=UTF-8");
+        response.getWriter().print("<script>alert('삭제완료'); location.href = '/KH_ONTRIP/manager/qnas'</script>");
 
-
-        response.sendRedirect("/KH_ONTRIP/manager/qnas");
 
     }
 }
