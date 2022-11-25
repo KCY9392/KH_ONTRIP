@@ -45,9 +45,19 @@
         integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="
         crossorigin="anonymous">
     </script>
-    
+
+<!-- animate.style -->
+<link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+  />
+
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gugi&family=Noto+Sans+KR&display=swap" rel="stylesheet">    
     
 <style>
+
 .outer7{
         background-color: white; /* 해당사이트의 고유한 색상으로 작성 */
         color: black;
@@ -79,12 +89,12 @@
 	}
 	
     .title-container>button:nth-child(3){
-    border:none;
-    background-color: rgb(92, 92, 237);
-    color:white;
-    border-radius: 10px;
-    height:35px;
-    margin-right:100px;
+	    border:none;
+	    background-color: rgb(92, 92, 237);
+	    color:white;
+	    border-radius: 10px;
+	    height:35px;
+	    margin-right:100px;
 }
    .heart {
             color: transparent;
@@ -107,24 +117,46 @@
         pre{
        	  overflow: auto;
        	  white-space: pre-wrap;
-       	  font-family: Verdana, Arial, Helvetica, sans-serif;
+       	  font-family: 'Noto Sans KR', sans-serif !important;
        	  font-size: small;
+       	  font-weight:600;
+       	  background-color:rgb(250, 250, 250);
+       	  padding:20px;
+       	  border-radius:10px;
        }
+       .btn-div{
+      background-color: lightgrey;
+      font-size:15px;
+      box-shadow : 0 0 3px;
+      border-radius: 10px;
+      border:none;
+       font-weight: 500;
+       background-color:rgb(249, 249, 249);
+       font-family: 'Gugi', cursive;
+   }
+   .btn-div:hover{
+      background-color:white;
+
+   }
+   #n, #m, #s {
+   width: 315px;
+   height: 53px;
+}
        
 </style>
 </head>
 <body>
     <%@ include file="../common/navbar.jsp" %>
     
-     <br><br><br><br>
+     <br><br><br>
 
     <div class="body-container">
 
-        <div class="title-container">
-            <b><%= dareaName %>숙소</b> &nbsp;&nbsp;
+        <div class="title-container" style="text-align:center;">
+            <b style="margin-left:20%;"><%= dareaName %>숙소</b> &nbsp;&nbsp;
             <b><%= placeName %></b> &nbsp;&nbsp;
             
-            <button onclick="Goreservation();">예약하러가기</button>
+            <button onclick="Goreservation();" style="margin-top:-1%;">예약하러가기</button>
             <button  type="submit" class="heart <% if(ht != null){ %> done<% } %>" style="border: 0; width: 30px; height: 35px; text-align:right;">❤️</button> &nbsp;&nbsp;
 
         </div>
@@ -140,18 +172,20 @@
         <div class="img-hotel">
            <% if (!placeImages.isEmpty()) { %>
                <% for (int i = 0; i < placeImages.size(); i++) { %>
-               <img src="<%= request.getContextPath() %>/<%=placeImages.get(i).getFilePath()+placeImages.get(i).getChangeName() %>" >
+               <img style="border-radius:10px;" src="<%= request.getContextPath() %>/<%=placeImages.get(i).getFilePath()+placeImages.get(i).getChangeName() %>" >
             <% } %>
             <% } %>
         </div>
 
-        <br>
+        <br><br>
 
         <i class="fa-solid fa-location-dot" style="color:green;"></i>
-        <span style="font-size:13px; font-weight: bold;"><%= place.getPlcAddress() %></span>
+        <span style="font-size:15px; font-weight: bold;"><%= place.getPlcAddress() %></span>
+
+		<br><br>
 
             <!-- 지도를 표시할 div -->
-        <div id="map" style="width:50%;height:350px; margin-left:380px;"></div>
+        <div id="map" style="width:50%;height:350px; margin:auto;"></div>
         <br><br>
 
         <div class="explain-text">
@@ -240,6 +274,8 @@
             for(let i=0; i<tag.length; i++){
                 if(element.id+"search" == tag[i].id){
                     tag[i].style.display = "block";
+                    tag[i].style.animation = "fadeIn";
+                    tag[i].style.animationDuration = "1s";
                 }else{
                     tag[i].style.display = "none";
                 }

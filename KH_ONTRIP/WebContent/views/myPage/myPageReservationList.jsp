@@ -150,7 +150,7 @@
 	          <tr>
 	            <th scope="row">${vo.rnCode}</th>
 	              <td><a href="/KH_ONTRIP/myPage/reservationList/Detailed?rnCode=${vo.rnCode}">${vo.plcName}</a></td>
-	            <td><fmt:formatDate value="${vo.rnCheckIn }" pattern="yyyy-mm-dd" /> ~ <fmt:formatDate value="${vo.rnCheckOut }" pattern="yyyy-mm-dd" /></td>
+	            <td><fmt:formatDate value="${vo.rnCheckIn }" pattern="yyyy-MM-dd" /> ~ <fmt:formatDate value="${vo.rnCheckOut }" pattern="yyyy-MM-dd" /></td>
 	          </tr>
 	        </c:forEach>
 

@@ -45,6 +45,15 @@
         crossorigin="anonymous">
     </script>
     
+    <!-- animate.style -->
+<link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+  />
+  
+  	<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gugi&family=Noto+Sans+KR&display=swap" rel="stylesheet">  
     
 <style>
 .outer7{
@@ -99,33 +108,55 @@
          pre{
        	  overflow: auto;
        	  white-space: pre-wrap;
-       	  font-family: Verdana, Arial, Helvetica, sans-serif;
+       	  font-family: 'Noto Sans KR', sans-serif !important;
        	  font-size: small;
+       	  font-weight:600;
+       	  background-color:rgb(250, 250, 250);
+       	  padding:20px;
+       	  border-radius:10px;
        }
+        .btn-div{
+      background-color: lightgrey;
+      font-size:15px;
+      box-shadow : 0 0 3px;
+      border-radius: 10px;
+      border:none;
+       font-weight: 500;
+       background-color:rgb(249, 249, 249);
+       font-family: 'Gugi', cursive;
+   }
+   .btn-div:hover{
+      background-color:white;
+
+   }
+   #n, #m, #s {
+   width: 315px;
+   height: 53px;
+}
 </style>
 </head>
 <body>
     <%@ include file="../common/navbar.jsp" %>
     
-     <br><br><br><br>
+     <br><br><br>
 
     <div class="body-container">
 
-        <div class="title-container">
+        <div class="title-container" style="text-align:center;">
             <b><%= dareaName %>놀거리</b> &nbsp;&nbsp;
-            <b><%= placeName %></b> &nbsp;&nbsp;
+            <b style="margin-right: 150px;"><%= placeName %></b> &nbsp;&nbsp;
             
             <button  type="submit" class="heart <% if(ht != null){ %> done<% } %>" style="border: 0; width: 30px; height: 30px;">❤️</button> &nbsp;&nbsp;
             
         </div>
-        <br>
+        <br><br>
         <div style="float:right; margin-right:15px;">
             <a href="<%=request.getContextPath()%>/review.re?placeName=<%=placeName %>&memberNo=<%=loginUser.getMemberNo()%>&placeCode=<%=placeCode%>" class="review">
             <button class="btn-review2" style="font-weight: bold; color:blueviolet; background-color: cornsilk; border-radius:10px; border:3px solid rgb(44, 144, 72); ">이용후기 보러가기</button>
             </a>
         </div>
 
-        <br><br>
+        <br>
 
         <div class="img-hotel">
             <% if (!placeImages.isEmpty()) { %>
@@ -136,10 +167,10 @@
         </div>
         
 
-        <br>
+        <br><br>
 
         <i class="fa-solid fa-location-dot" style="color:green;"></i>
-        <span style="font-size:13px; font-weight: bold;"><%= place.getPlcAddress() %></span><br><br>
+        <span style="font-size:15px; font-weight: bold;"><%= place.getPlcAddress() %></span><br><br>
 
             <!-- 지도를 표시할 div -->
         <div id="map" style="width:50%;height:350px; margin-left:320px;"></div>
@@ -229,6 +260,8 @@
             for(let i=0; i<tag.length; i++){
                 if(element.id+"search" == tag[i].id){
                     tag[i].style.display = "block";
+                    tag[i].style.animation = "fadeIn";
+                    tag[i].style.animationDuration = "1s";
                 }else{
                     tag[i].style.display = "none";
                 }

@@ -19,6 +19,8 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+<!-- Alert 창  -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 <style>
     .outer1{
         background-color: white; /* 해당사이트의 고유한 색상으로 작성 */
@@ -96,9 +98,7 @@
     font-weight: bold;
     color: orangered;
 }
-form{
-    margin: auto;
-}
+
 </style>
 </head>
 <body>
@@ -136,11 +136,54 @@ form{
                <input type="text" name="reviewText" id="treview" style="width: 440px;"><br><br>
             
                 <div align = "center">
-                    <button type = "submit" name = "deleteMember" class = "btn btn-secondary btn-sm">등록</button>
+                    <button type = "button" name = "deleteMember" class = "btn btn-secondary btn-sm"
+                    onclick="return reviewUpdate();">등록</button>
                 </div>
             </form>
         </div>
     </div>
+    
+    <script>
+    
+    	function reviewUpdate(){
+    	
+	              
+	            	  
+	              
+	            	Swal.fire({
+	                    title: '회원정보를 변경하시겠습니까?',
+	                    icon: 'warning',
+	                    showCancelButton: true,
+	                    confirmButtonColor: '#3085d6',
+	                    cancelButtonColor: '#d33',
+	                    confirmButtonText: '변경',
+	                    cancelButtonText: '취소'
+	                }).then((result) => {
+	                    if (result.isConfirmed) {
+	                        Swal.fire({
+	                        		title: '변경이 완료되었습니다.',
+	                        		icon:'success',
+	                        		customClass: {
+	                        		    confirmButton: 'swal2-confirm swal2-styled swal2-jong',
+	                        		    cancelButton: 'btn btn-danger'
+                  		  			},		
+	                        }).then((result) => {
+	                        	if(result.isConfirmed){
+	    		            		$("#checkReview").submit();
+	                        		
+	                        	}  		                        	
+	                        });
+	                    }
+	                });
+	            	
+	             
+	            	
+	          
+	       		
+        } 
+  
+    			
+    </script>
     
 </body>
 </html>

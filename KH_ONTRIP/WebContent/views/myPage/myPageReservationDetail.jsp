@@ -157,7 +157,7 @@
                         </tr>
                         <tr>
                             <td>체크인/체크아웃 : &nbsp;</td>
-                            <td><input type="text" value="<fmt:formatDate value="${rev.rnCheckIn }" pattern="yyyy-mm-dd" /> ~ <fmt:formatDate value="${rev.rnCheckOut }" pattern="yyyy-mm-dd" />"></td>
+                            <td><input type="text" value="<fmt:formatDate value="${rev.rnCheckIn }" pattern="yyyy-MM-dd" /> ~ <fmt:formatDate value="${rev.rnCheckOut }" pattern="yyyy-MM-dd" />"></td>
                             
                             <td></td>
                         </tr>

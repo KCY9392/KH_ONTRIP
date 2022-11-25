@@ -82,9 +82,9 @@ public class reviewInsertController extends HttpServlet {
 		
 				
 		if (result1 > 0){
-			request.setAttribute("alertMsg", "등록이 완료되었습니다.");
-			request.getRequestDispatcher("views/common/mainForm.jsp").forward(request, response);
-//			response.sendRedirect(request.getContextPath()+"/mypageReviewList.me");
+			response.setContentType("text/html;charset=UTF-8");
+			response.getWriter().print("<script> location.href = '/KH_ONTRIP/review.re?placeName="+placeName+"&memberNo="+memberNo+"&placeCode="+placeCode+"'</script>");
+
 		}else {
 			request.setAttribute("errorMsg", "등록에 실패하였습니다.");
 			request.getRequestDispatcher("views/common/errorPage.jsp").forward(request, response);

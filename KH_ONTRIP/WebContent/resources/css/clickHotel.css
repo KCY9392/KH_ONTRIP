@@ -32,7 +32,7 @@ div{
     border: none;
 }
 .title-container>b:nth-child(2){
-    border:1px solid rgb(175, 175, 175);
+    border:none;
     padding:10px;
     font-size: 30px;
 
@@ -53,9 +53,11 @@ div{
     text-align: center;
     margin:auto;
     width:70%;
-    height:1500px;
-    border-left: 1px solid black;
-    border-right: 1px solid black;
+    height:2300px;
+    /* border-left: 1px solid black;
+    border-right: 1px solid black; */
+    box-shadow:0 0 7px grey;
+    padding-top:40px;
 }
 
 .img-hotel{
@@ -90,13 +92,10 @@ div{
 #mForm{
     border: none;
 }
-#n , #m , #s{
-    width:315px;
-    height: 53px;
-}
+
 .box{
     width: 930px;
-    height: 650px;
+    height: 580px;
     margin: auto;
     margin-top:20px;
 }
@@ -109,11 +108,7 @@ div{
 .box2{
     display:none;
 }
-button[type=button]{
-    border-radius: 10px;
-    border:1px solid hotpink;
-    font-weight: bold;
-}
+
 .img-box{
     float:left;
     padding:20px;
