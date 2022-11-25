@@ -119,18 +119,17 @@ input {
 }
 
 .sl-in2 {
-	animation: change1 1s ease forwards;
-}
-
-@
-keyframes change1 {from { transform:translateY(80%);
+	  animation: change1 1s ease forwards;
+	}
 	
-}
+@keyframes change1 {
+  from {
+    transform: translateY(30%);
+  }
 
-to {
-	transform: translateY(0%);
-}
-
+  to {
+    transform: translateY(0%);
+  }
 }
 tr>td:nth-child(1) {
 	font-weight: 900;
@@ -176,7 +175,7 @@ tr>td:nth-child(1) {
 	</div>
 
 
-	<div class="outer1">
+	<div class="outer1 sl-in2">
 		<h1 style="text-align: center; padding-top: 150px;">비밀번호 변경</h1>
 		<br> <br> <br>
 		<form id="myPwdUpdate"

@@ -40,7 +40,6 @@
         background-color: white; /* 해당사이트의 고유한 색상으로 작성 */
         color: black;
         width: 1000px;
-        height: 800px;
         /* border: 1px solid black; */
         margin: auto;
 		margin-top:120px;

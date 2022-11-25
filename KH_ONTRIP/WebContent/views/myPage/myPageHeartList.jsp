@@ -2,7 +2,18 @@
     pageEncoding="UTF-8" import="java.util.ArrayList, com.ontrip.heart.vo.Heart"%>
 <%
 	ArrayList<Heart> htList = (ArrayList<Heart>)request.getAttribute("htList");
-
+%>
+<%
+    String contextPath = request.getContextPath();
+%>
+<% 
+	Member loginUser = (Member) session.getAttribute("loginUser");
+	// 로그인전 or 로그인 실패 : null
+	// 로그인 성공후 : 로그인한 회원의 정보가 담긴 member객체.
+	
+	String alertMsg = (String) session.getAttribute("alertMsg");
+	// 서비스 요청전 : null
+	// 서비스 요청성공후 : alert로 띄워줄 메시지 문구.
 %>
 <!DOCTYPE html>
 <html lang="ko">
@@ -13,43 +24,107 @@
     <title>온트립(OnTrip) - 찜목록</title>
 
     <link href="<%= request.getContextPath() %>/resources/css/myPageHeartList.css" rel="stylesheet" >
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
-    <script
-        src="https://code.jquery.com/jquery-3.6.1.min.js"
-        integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="
-        crossorigin="anonymous">
-    </script>
-    <style>
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            text-align: center;
-            height:500px;
-        }
-        table th, table td {
-            border: 1px solid #444444;
-            border-top: 1px solid #444444;
-            border-bottom: 1px solid #444444;
-            padding: 10px;
-        }
-      
-      </style>
+
+	<!-- 폰트적용  -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
+<link href="<%= request.getContextPath() %>/resources/css/mainForm.css" rel="stylesheet" >
+
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+
+<!-- BootStrap 연결 -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+	
+<style>
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        text-align: center;
+        height:500px;
+    }
+    table th, table td {
+        border: 1px solid #444444;
+        border-top: 1px solid #444444;
+        border-bottom: 1px solid #444444;
+        padding: 10px;
+    }
+  	.uk-flex-middle {
+    align-items: center;
+    }
+    .uk-flex-center {
+        justify-content: center;
+    }
+    .uk-flex {
+        display: flex;
+    }
+    .uk-background-cover {
+        background-size: cover;
+    }
+    .uk-background-contain{
+        background-position: 50% 50%;
+        background-repeat: no-repeat;
+    }
+    .uk-section-default {
+        background: rgb(250, 250, 250);
+    }
+
+    .uk-section {
+        padding-top: 70px;
+        padding-bottom: 70px;
+    }
+    .uk-section {
+        display: flow-root;
+        box-sizing: border-box;
+    }
+    .sl-in2 {
+	  animation: change1 1s ease forwards;
+	}
+	
+	@keyframes change1 {
+	  from {
+	    transform: translateY(80%);
+	  }
+	
+	  to {
+	    transform: translateY(0%);
+	  }
+	}
+</style>
 </head>
 <body>
-    <%@ include file="../common/navbar.jsp" %>
 
-    <%@ include file="../common/myPageNavbar.jsp" %> 
+<%@ include file="../common/mypageNewNavbar.jsp" %>
+<br><br><br> 
+      
+	<div class="uk-flex uk-flex-center uk-flex-middle uk-background-cover " style="margin:auto; width: 90vw; height: 60vh; background-image: url(&quot;https://www.myro.co.kr/myro_image/mainN7.jpg&quot;);">
+        <h3 style="color:white; font-size:50px;">ONTRIP :</h3> &nbsp;&nbsp;&nbsp;&nbsp; 
+        <h1 style="font-size:55px; color:rgb(85, 84, 84);">찜 목록</h1>
+    </div>
+
+    <br><br><br>
+
+    <div class="uk-section uk-section-default sl-in2" style="min-width: 90vw; height:20vh;">
+        <div class="uk-container">
+            <div style="text-align: center; margin-top : -1.5%;">
+                <div style="font-size:40px; font-weight:600;">OnTrip</div><br>
+                <div style="color:darkgray">MAKE YOUR ROUTE OPTIMIZED</div>
+            </div>
+        </div>
+    </div>
+
+    <br><br><br>
+
       
 
-
-      <br><br><br><br>
-
-      <div class="container">
-        <div class="center" style="width:1200px; height:750px; margin-left:10%; margin-top: -50px;">
+      <div class="container2" style="margin:auto; box-shadow:0 0 10px 1px rgb(124, 179, 218);
+      			 width:1200px; padding-bottom:30px; padding-top:30px;">
+        <div class="center" style="width:1200px; height:750px; margin:auto;">
                 <div class="centerTitle" style="text-align: center; margin-top:20px;">
-                    <h2 style="margin-left:-5%; font-size:40px; font-weight:bold;]">찜목록</h2>
+                    <h2 style="font-size:40px; font-weight:bold;]">찜목록</h2>
                 </div>
                 <br><br>
 
@@ -123,6 +198,8 @@
             
             </div>
         </div>
+
+	<br><br><br><br>
 
         <script>
 

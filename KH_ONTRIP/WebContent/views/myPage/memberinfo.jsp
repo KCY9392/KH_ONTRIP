@@ -33,6 +33,9 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
 
+<!-- Alert 창  -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
 <style>
     .outer1{
         background-color: white; /* 해당사이트의 고유한 색상으로 작성 */
@@ -97,7 +100,7 @@
 	
 	@keyframes change1 {
 	  from {
-	    transform: translateY(80%);
+	    transform: translateY(30%);
 	  }
 	
 	  to {
@@ -141,13 +144,13 @@
 	
 	<br><br><br>
 	
-    <div class="outer1">
+    <div class="outer1 sl-in2">
         <br><br><br><br><br><br>
         
         <h1 style = "text-align : center; font-size:40px; margin-top:-30px;">여행자 정보</h1>
         <br><br><br>
         
-        <form action="<%=request.getContextPath()%>/update.me" method="post">
+        <form id="myMemberUpdate" action="<%=request.getContextPath()%>/update.me" method="post">
             <div align="center">
             	<table align = center>
                 <tr>
@@ -184,7 +187,7 @@
             </div>
             <br><br>
             <div align = "center">
-                <button type = "submit" id="btn1" class = "btn btn-secondary btn-sm" onclick="#"
+                <button type = "button" id="btn1" class = "btn btn-secondary btn-sm btn-10" onclick="return newMemberUpdate();"
                 	style="font-size:17px; width:150px; height:40px;">정보 변경</button> &nbsp;&nbsp;&nbsp;<br><br>
                 <button type = "button" id="btn2" class = "btn btn-secondary btn-sm btn-pwd" onclick="myPwdUpdate();"
                 	style="font-size:15px; width:150px; height:40px; border:none;
@@ -195,9 +198,39 @@
             <br><br><br>
 
     <script>
-//         function myPageUpdate(){
-//<%--         	location.href = "<%=request.getContextPath()%>/update.me"; --%>
-//         }
+
+	    function newMemberUpdate(){
+	    	
+	        	
+	        	Swal.fire({
+	                title: '회원정보를 변경하시겠습니까?',
+	                icon: 'warning',
+	                showCancelButton: true,
+	                confirmButtonColor: '#3085d6',
+	                cancelButtonColor: '#d33',
+	                confirmButtonText: '변경',
+	                cancelButtonText: '취소'
+	            }).then((result) => {
+	                if (result.isConfirmed) {
+	                    Swal.fire({
+	                    		title: '변경이 완료되었습니다.',
+	                    		icon:'success',
+	                    		customClass: {
+	                    		    confirmButton: 'swal2-confirm swal2-styled swal2-jong',
+	                    		    cancelButton: 'btn btn-danger'
+	          		  },		
+	                    }).then((result) => {
+	                    	if(result.isConfirmed){
+			            		$("#myMemberUpdate").submit();
+	                    		
+	                    	}  		                        	
+	                    });
+	                }
+	            });
+	           	
+		
+	    } 
+
         function myPwdUpdate(){
         	location.href = "<%=request.getContextPath()%>/newpwd.me";
         }
