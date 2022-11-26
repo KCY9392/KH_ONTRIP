@@ -14,7 +14,7 @@
 <link href="<%= request.getContextPath() %>/resources/css/mainForm.css" rel="stylesheet" >
 <style>
 	.btn-outline-success:hover{
-		background-color:white;
+		background-color:white;z
 		font-weight:700;
 	}
 	.btn-mypage1, .btn-logout1{

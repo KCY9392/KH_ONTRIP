@@ -18,12 +18,12 @@
 	
 	ArrayList<Review> mylist = (ArrayList<Review>) request.getAttribute("mylist");
 	
-	PageInfo pi2 = (PageInfo) request.getAttribute("pi2");
+	PageInfo pi = (PageInfo) request.getAttribute("pi");
 	
-	int currentPage = pi2.getCurrentPage();
-	int startPage = pi2.getStartPage();
-	int endPage = pi2.getEndPage();
-	int maxPage = pi2.getMaxPage();
+	int currentPage = pi.getCurrentPage();
+	int startPage = pi.getStartPage();
+	int endPage = pi.getEndPage();
+	int maxPage = pi.getMaxPage();
 %>
 <!DOCTYPE html>
 <html lang="en">
@@ -195,8 +195,9 @@
     	$("#ulTable>tbody>tr").click(function(){
     		
     		let revCode = $(this).children().eq(0).text()
+    		let placeName = $(this).children().eq(1).text()
     		
-    		location.href = '<%=request.getContextPath()%>/detail.bo?memberNo=<%=memberNo%>&revCode='+revCode;
+    		location.href = "<%=request.getContextPath()%>"+"/mydetail.bo?placeName="+placeName+"&memberNo="+<%=memberNo%>+"&revCode="+revCode;
     		
     		
     	});

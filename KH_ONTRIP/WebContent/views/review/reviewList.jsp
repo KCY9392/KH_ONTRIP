@@ -66,7 +66,7 @@
         width: 50%;
         height: 100%;
         border: 1px solid white; /* red */
-        border-left: 1px solid black;
+        /* border-left: 1px solid black; */
         float: left;
     }
     #avgNumberTitle{
@@ -216,19 +216,26 @@
             <form>
                 <table>
                     <tr>
-                        <div class="outer_top">
-                            <p id ="avgNumberTitle"><strong style="font-size: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;시설이름 :<input type="text" id="avgNumber" value="<%=placeName %>" name="<%=placeName %>" style="margin-left: 30px; width: 250px;" readonly></strong></p>
+                        <div class="outer_top shadow p-3 mb-5 bg-body rounded">
+                            <p id ="avgNumberTitle"><strong style="font-size: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;시설이름 :<input type="text" id="avgNumber" value="<%=placeName %>" name="<%=placeName %>" style="margin-left: 30px; width: 350px;" readonly></strong></p>
                             <hr width="95%" style="float: left; margin-left: 10px;">
                             <p id ="avgNumberTitle"><strong style="font-size: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;평균점수 :&nbsp;&nbsp;&nbsp;<input value="<%=avgScore %>" type="text" id="avgNumber" style="width: 62.8px; height: 35px; color: blue;" readonly>&nbsp;&nbsp;/&nbsp;&nbsp;10</strong></p>
                             <hr width="95%" style="float: left; margin-left: 10px;">
                         </div>
                    
-                        <div class="outer_bottom">
-                            <img src="<%=request.getContextPath()%>/<%=selectMainImagelist.get(0).getFilePath()%><%=selectMainImagelist.get(0).getChangeName() %>" style="width: 318px; height:237px;">
+                        <div class="outer_bottom shadow p-3 mb-5 bg-body rounded">
+                            &nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;
+                            <img src="<%=request.getContextPath()%>/<%=selectMainImagelist.get(0).getFilePath()%><%=selectMainImagelist.get(0).getChangeName() %>" style="width: 400px; height:237px; margin-top: -40px; margin-left: 10px;" class="shadow p-3 mb-5 bg-body rounded">
                         </div>
 
-                        <td></td><br><br><br><br><br><br><br><br>
+                        <td></td><br><br><br><br><br><br><br><br><br>
                         <!-- <p id="avgNumber"><input value="<%=avgScore %>" type="text" id="avgNumber" style="width: 47px; height: 35px; margin-left: -500px; color: blue;">&nbsp;&nbsp;/&nbsp;&nbsp;10</p>--><br><br>
+                        <div class="shadow p-3 mb-5 bg-body rounded" style="margin-top: -10px;">
+                        <p id="text3">별점</p>
+                        <progress value="<%=slist.get(0).getReviewStar() %>" name="8" style="margin-left: 110px;" max="5" id="avgGage"></progress> &nbsp;<strong><%=slist.get(0).getReviewStar() %></strong>
+                        </div>
                         <div class="shadow p-3 mb-5 bg-body rounded" style="margin-top: -10px;">
                         <p id="text3">청결도</p>
                         <progress value="<%=slist.get(0).getReview_c() %>" name="8" style="margin-left: 110px;" max="10" id="avgGage"></progress> &nbsp;<strong><%=slist.get(0).getReview_c() %></strong>
@@ -248,7 +255,7 @@
                 </table>
             </form>
         </div>
-        <div class="outer2">
+        <div class="outer2 shadow p-3 mb-5 bg-body rounded" >
             <div class="outer7">
                 <ul>
                     <p id="title"><strong>❤️&nbsp;:&nbsp;<%=selectHeartCount %></strong></p> 

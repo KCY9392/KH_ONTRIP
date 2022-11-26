@@ -22,6 +22,7 @@ public class reviewUpdateController extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		// 리뷰 수정을 하기 위한 별점 , 청결상태 , 직원 & 서비스 , 편의 시설 서비스 점수들
 		double updateStar = Double.parseDouble(request.getParameter("updateStar"));
 		System.out.println(updateStar);
 		double cScore = Double.parseDouble(request.getParameter("cScore"));
@@ -35,10 +36,14 @@ public class reviewUpdateController extends HttpServlet {
 		String rtext = request.getParameter("rText");
 		System.out.println(rtext);
 		
+		// REV_CODE에 해당하는 개선사항을 변경하기 위해 생성한 객체
 		Review rUpdate = new Review(rtext , revCode);
 		System.out.println(revCode);
+		
+		// REV_CODE에 해당하는 별점 , 청결상태 , 직원 & 서비스 , 편의 시설 서비스 변경하기 위해 생성한 객체
 		Score sUpdate = new Score(updateStar , cScore , sScore , pScore , revCode);
 		System.out.println(revCode);
+		
 		int result = new ReviewService().updateReview(rUpdate , sUpdate);
 		System.out.println(result+"오냐");
 		
@@ -47,10 +52,8 @@ public class reviewUpdateController extends HttpServlet {
 			request.getSession().setAttribute("alertMsg", "수정이 완료되었습니다.");	
 			System.out.println(result+"오냐2");
 			response.getWriter().print("success");
-			//request.getRequestDispatcher("views/common/mainForm.jsp").forward(request, response);
 		}else {
 			response.getWriter().print("fail");
-			//response.sendRedirect("views/review/reviewDetail.jsp");
 		}
 	}
 

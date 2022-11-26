@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="java.util.ArrayList, com.ontrip.place.model.vo.Place , com.ontrip.member.model.vo.Member"%>
+    pageEncoding="UTF-8" import="java.util.ArrayList, com.ontrip.place.model.vo.Place , com.ontrip.member.model.vo.Member ,
+    com.ontrip.image.vo.Image"%>
     
 <%
 	String placeName = ((String)request.getAttribute("placeName"));
@@ -12,6 +13,8 @@
 	
 	// memberNo에 해당하는 memberName 가져오기 위한 코드
 	Member memberName = (Member) request.getAttribute("memberName");
+	
+	ArrayList<Image> selectMainImagelist = (ArrayList<Image>) request.getAttribute("selectMainImagelist");
 %>
 <!DOCTYPE html>
 <html>
@@ -19,14 +22,12 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
-<!-- Alert 창  -->
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 <style>
     .outer1{
         background-color: white; /* 해당사이트의 고유한 색상으로 작성 */
         color: black;
-        width: 1000px;
-        height: 800px;
+        width: 800px;
+        height: 1250px;
         /* border: 1px solid black; */
         margin: auto;
         /* margin-top: 150px; */
@@ -98,23 +99,27 @@
     font-weight: bold;
     color: orangered;
 }
-
+form{
+    margin: auto;
+}
+button:hover{transform: scale(.9);}
 </style>
 </head>
 <body>
 
     <%@ include file="../common/navbar.jsp" %>
 
-    <div class="outer1">
+    <div class="outer1 shadow p-3 mb-5 bg-body rounded">
         <br><br><br>
         <div align="center">
             <form id="checkReview" action="<%=request.getContextPath()%>/updateScore.se?memberNo=<%=memberNo %>&placeCode=<%=placeCode %>&revCode=<%= revCode %>" method="post">
-                <strong style="float: left; margin-left: 150px;">이용시설 : </strong> <input type="text" value="<%=placeName%>" name="placeName" id = "review" style="height: 30px; border: 0px; font-size: 20; font-weight: bold; margin-left: -230px;" readonly><br> 
-                <hr width="60%">
-    
-                <strong style="float: left; margin-left: 150px;">작성일시 :</strong> <input type="date" name="reviewSysdate" id = "review" style="height: 30px; border: 0px; font-size: 17; margin-left: -350px;"><br>
-                <strong style="float: left; margin-left: 150px;">작성자 :</strong> <input type="text" name = "memberId" value="<%=memberName.getMemberName() %>" id = "review" style="height: 30px; border: 0px; font-size: 20; font-weight: bold; margin-left: -250px;" readonly><br><br><br> 
-                만족도 <br>
+                <strong style="float: left; font-size: 25px;">이용시설 : <%=placeName%> &nbsp;&nbsp;&nbsp;</strong> <input type="text" name="placeName" id = "review" style="height: 30px; width: 150px; border: 0px; font-size: 20; font-weight: bold;" readonly><br> 
+                <!-- <hr width="60%"><br> --><br>
+                <img src="<%=request.getContextPath()%>/<%=selectMainImagelist.get(0).getFilePath()%><%=selectMainImagelist.get(0).getChangeName() %>" style="width: 110%; height:330px; margin-left: -23px;" class="shadow p-3 mb-5 bg-body rounded"><br>
+                <strong style="float: left;">작성일시 :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong><input type="date" name="reviewSysdate" id = "review" style="height: 30px; border: 0px; font-size: 17; margin-left: -350px;"><br>
+                <strong style="float: left;">작성자 :</strong> <input type="text" name = "memberId" value="<%=memberName.getMemberName() %>" id = "review" style="height: 30px; border: 0px; font-size: 20; font-weight: bold; margin-left: -250px;" readonly><br><br><br> 
+                <div class="shadow-lg" style="width: 151.5%; margin-left: -135px;">
+                    만족도 <br>
                 <div class="star-rating space-x-4 mx-auto">
                     <input type="radio" id="5-stars" name="rating" value="5" v-model="ratings"/>
                     <label for="5-stars" class="star pr-4">★</label>
@@ -128,16 +133,28 @@
                     <label for="1-star" class="star">★</label>
                 </div>
                 <br>
-    
-               - 청결상태&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="number" id = "numreview" name="cScore" min="1" max="10" step="1">/&nbsp;&nbsp;&nbsp;10<br>
+                <table>
+                    <tr>
+                        <td>- 청결상태&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="number" id = "numreview" name="cScore" min="1" max="10" step="1">/&nbsp;&nbsp;&nbsp;&nbsp;<td>10</td></td>
+                    </tr>
+                    <tr>
+                        <td>- 직원 & 서비스&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="number" id = "numreview" name="gScore" min="1" max="10" step="1">/&nbsp;&nbsp;&nbsp;&nbsp;<td>10</td></td>
+                    </tr>
+                    <tr>
+                        <td>- 편의 시설 서비스&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="number" id = "numreview" name="pScore" min="1" max="10" step="1">/&nbsp;&nbsp;&nbsp;&nbsp;<td>10</td></td>
+                    </tr>
+                </table>
+               <!-- - 청결상태&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="number" id = "numreview" name="cScore" min="1" max="10" step="1">/&nbsp;&nbsp;&nbsp;10<br>
                - 직원 & 서비스&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="number" id = "numreview" name="gScore" min="1" max="10" step="1">/&nbsp;&nbsp;&nbsp;10<br>
-               - 편의 시설 서비스&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="number" id = "numreview" name="pScore" min="1" max="10" step="1">/&nbsp;&nbsp;&nbsp;10<br><br>
-               개선사항<br>
-               <input type="text" name="reviewText" id="treview" style="width: 440px;"><br><br>
+               - 편의 시설 서비스&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="number" id = "numreview" name="pScore" min="1" max="10" step="1">/&nbsp;&nbsp;&nbsp;10<br><br> -->
+                </div><br>
+               <strong style="font-size: 25px;">개선사항</strong><br>
+               <div class="shadow p-3 mb-5 bg-body rounded" style="width:800px; margin-left: -135px;">
+               		<input type="text" name="reviewText" id="treview" style="width: 440px; height: 150px; margin-bottom: -30px; border: 0;" placeholder="후기를 입력해주세요 ✎"><br><br>
+               </div>
             
                 <div align = "center">
-                    <button type = "button" name = "deleteMember" class = "btn btn-secondary btn-sm"
-                    onclick="return reviewUpdate();">등록</button>
+                    <button type = "submit" name = "deleteMember" class = "btn btn-secondary btn-lg btn-outline-dark" style="margin-top: -25px; width: 100px; background-color: black; color: white;">등록</button>
                 </div>
             </form>
         </div>
@@ -146,9 +163,6 @@
     <script>
     
     	function reviewUpdate(){
-    	
-	              
-	            	  
 	              
 	            	Swal.fire({
 	                    title: '회원정보를 변경하시겠습니까?',
@@ -176,9 +190,6 @@
 	                    }
 	                });
 	            	
-	             
-	            	
-	          
 	       		
         } 
   

@@ -3,14 +3,12 @@
     com.ontrip.review.vo.Review , com.ontrip.image.vo.Image"%>
     
 <%
-	Place place = (Place)request.getAttribute("place");
-	String placeName = (String)request.getParameter("placeName");
-		
+
 	int memberNo = Integer.parseInt(request.getParameter("memberNo"));
 	
 	int revCode = Integer.parseInt((String)request.getParameter("revCode"));
 	
-	ArrayList<Image> selectMainImagelist = (ArrayList<Image>)request.getAttribute("selectMainImagelist");
+	ArrayList<Image> myImageList = (ArrayList<Image>)request.getAttribute("myImageList");
 	
 	Review r = (Review) request.getAttribute("re");
 %>
@@ -118,7 +116,7 @@ button:hover{transform: scale(.9);}
             <form id="checkReview" action="<%=request.getContextPath()%>/deleteReivew.re?memberNo=<%=memberNo %>&revCode=<%=revCode %>&placeName=<%=r.getPlaceName() %>" method="post">
                 <strong style="float: left; font-size: 25px;">이용시설 : <%=r.getPlaceName()%> &nbsp;&nbsp;&nbsp;</strong> <input type="text" name="placeName" id = "review" style="height: 30px; width: 150px; border: 0px; font-size: 20; font-weight: bold;" readonly><br> 
                 <!-- <hr width="60%"><br> --><br>
-                <img src="<%=request.getContextPath()%>/<%=selectMainImagelist.get(0).getFilePath()%><%=selectMainImagelist.get(0).getChangeName() %>" style="width: 110%; height:330px; margin-left: -23px;" class="shadow p-3 mb-5 bg-body rounded"><br>
+                <img src="<%=request.getContextPath()%>/<%=myImageList.get(0).getFilePath()%><%=myImageList.get(0).getChangeName() %>" style="width: 110%; height:330px; margin-left: -23px;" class="shadow p-3 mb-5 bg-body rounded"><br>
                 <strong style="float: left;">작성일시 :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbs&nbsp;&nbsp;;</strong><input type="text" name="reviewSysdate" value="<%=r.getRevDate()%>" id = "review" style="height: 30px; border: 0px; font-size: 17; margin-left: -350px;"><br>
                 <strong style="float: left;">작성자 :</strong> <input type="text" name = "memberId" value="<%=r.getMemberName()%>" id = "review" style="height: 30px; border: 0px; font-size: 20; font-weight: bold; margin-left: -250px;" readonly><br><br><br> 
                 <div class="shadow-lg" style="width: 151.5%; margin-left: -135px;">

@@ -147,4 +147,30 @@
 		SET REV_TEXT = ?
 		WHERE REV_CODE = ?
 	</entry>
+	
+<!-- 	<entry key="selectPlaceCode"> -->
+<!-- 		SELECT -->
+<!--     		PLC_CODE -->
+<!-- 		FROM "Review" -->
+<!-- 		WHERE MEM_NO = ? -->
+<!-- 		AND REV_CODE = ? -->
+<!-- 	</entry> -->
+	
+	<entry key="selectPlaceCode">
+		SELECT
+    		PLC_CODE
+		FROM "Review"
+		JOIN "Place" USING(PLC_CODE)
+		WHERE MEM_NO = ? 
+		AND PLC_NAME = ?
+	</entry>
+	
+	<entry key="selectMyMainImage">
+		SELECT FILE_NO , FILE_PATH , CHANGE_NAME
+		FROM "Image" 
+		WHERE PLC_CODE = (SELECT PLC_CODE FROM "Place" WHERE PLC_NAME = ?) AND ORIGIN_NAME LIKE '%1%'
+	</entry>
+	
+	
+	
 </properties>

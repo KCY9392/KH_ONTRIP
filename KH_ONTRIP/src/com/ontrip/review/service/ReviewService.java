@@ -185,5 +185,33 @@ public class ReviewService {
 		
 		return result3;
 	}
-	
+
+//	public int selectPlaceCode(int memberNo) {
+//		
+//		Connection conn = getConnection();
+//		
+//		int placeCode = new ReviewDao().selectPlaceCode(memberNo , conn);
+//		
+//		return placeCode;
+//	}
+
+	public int selectPlaceCode(int memberNo , String placeName) {
+		
+		Connection conn = getConnection();
+		
+		int placeCode = new ReviewDao().selectPlaceCode(memberNo , placeName, conn);
+		
+		return placeCode;
+	}
+
+	public ArrayList<Image> selectMyImageList(String placeName) {
+		
+		Connection conn = getConnection();
+		
+		ArrayList<Image> selectMyImageList = new ReviewDao().selectMyImageList(placeName , conn);
+		
+		return selectMyImageList;
+	}
+
+
 }

@@ -68,6 +68,12 @@ public class Review {
 		this.revCode = revCode;
 	}
 	
+	public Review(int plcCode , int revCode) {
+		super();
+		this.plcCode = plcCode;
+		this.revCode = revCode;
+	}
+	
 	public int getRevCode() {
 		return revCode;
 	}

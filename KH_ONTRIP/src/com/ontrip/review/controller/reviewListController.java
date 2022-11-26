@@ -30,42 +30,46 @@ public class reviewListController extends HttpServlet {
 
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		
+
+		// PLACE_CODE에 해당하는 PLACE_NAME을 뽑아낸후 해당하는 MEM_NO가 작성한 리뷰들을 LIST에 담아서 FOR문 돌리기 위한 코드
 		String placeName = request.getParameter("placeName");
 		int placeCode = Integer.parseInt(request.getParameter("placeCode"));
 		int memberNo = Integer.parseInt(request.getParameter("memberNo"));
 		System.out.println(memberNo+"통과됨");
-		
-//		ArrayList<Review> reuList = new ReviewService().selectReviewListUpdate(placeName);
-//		request.setAttribute("reuList", reuList);
-		
+
+		// 뽑아낸 정보들을 LIST에 담기
 		ArrayList<Review> reList = new ReviewService().selectReviewList(placeName);
+		
+		// JSP에서 사용하기 위해 Attribute에 담기
 		request.setAttribute("reList", reList); // 이거가 찐이에요 대박.
 		System.out.println(reList);
+		
+		// PLACE_CODE로 해당하는 LIST 가져오기 
 		request.setAttribute("placeCode", placeCode);
 		System.out.println(placeCode+"통과됨");
-		//plc_code로 리스트띄우기
 		
+		// 별점 , 쳥결도 , 	직원 & 서비스 , 편의시설 서비스 평점 가져오기 위한 LIST
 		ArrayList<Score> slist = new ScoreService().selectSocreList(placeCode);
-			
+		
+		// LIST에 담긴 평점들을 Attribute에 담기
 		request.setAttribute("slist", slist);
 		
+		// 해당하는 시설의 점수들을 합산한 전체 평균점수를 계산하기 위한 코드
 		double avgScore = (((slist.get(0).getReviewStar()*2) + slist.get(0).getReview_c() + slist.get(0).getReview_s() +slist.get(0).getReview_p()) / 4);
 		
+		// 계산된 점수를 Attribute에 담기
 		request.setAttribute("avgScore", avgScore);
 		
+		// PLACE_CODE에 해당하는 대표이미지를 가져오기 위한 LIST
 		ArrayList<Image> selectMainImagelist = new ReviewService().selectMainImagelist(placeCode);
 		System.out.println(selectMainImagelist.get(0));
+		
+		// 가져온 대표 이미지가 담긴 LIST를 Attribute에 담기
 		request.setAttribute("selectMainImagelist", selectMainImagelist);
 		
 		int selectHeartCount = new ReviewService().selectHeartCount(placeCode);
 		request.setAttribute("selectHeartCount", selectHeartCount);
 	
-//		request.setAttribute("cScore", cScore); // 소수점 그대로 가져와야함.(고칠방법 찾아보기) // 게시판 페이징 처리 하기.
-		
-		
-		
 		
 		// ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ 페이징 처리 시작 ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
 		

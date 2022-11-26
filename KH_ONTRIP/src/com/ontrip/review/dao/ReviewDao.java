@@ -507,5 +507,99 @@ public class ReviewDao {
 		return result3;
 	}
 
+//	public int selectPlaceCode(int memberNo, Connection conn) {
+//		
+//		int placeCode = 0;
+//		
+//		PreparedStatement psmt = null;
+//		
+//		ResultSet rset = null;
+//		
+//		String sql = prop.getProperty("selectPlaceCode");
+//		
+//		try {
+//			psmt = conn.prepareStatement(sql);
+//			
+//			psmt.setInt(1, memberNo);
+//			
+//			rset = psmt.executeQuery();
+//			
+//			if(rset.next()) {
+//				placeCode = rset.getInt("PLC_CODE");
+//			}
+//			
+//		} catch (SQLException e) {
+//			e.printStackTrace();
+//		} finally {
+//			close(rset);
+//			close(psmt);
+//		}
+//		
+//		return placeCode;
+//	}
+
+	public int selectPlaceCode(int memberNo , String placeName, Connection conn) {
+		
+		int placeCode = 0;
+		
+		PreparedStatement psmt = null;
+		
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("selectPlaceCode");
+		
+		try {
+			psmt = conn.prepareStatement(sql);
+			
+			psmt.setInt(1, memberNo);
+			psmt.setString(2, placeName);
+			
+			rset = psmt.executeQuery();
+			
+			if(rset.next()) {
+				placeCode = rset.getInt("PLC_CODE");
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return placeCode;
+	}
+
+	public ArrayList<Image> selectMyImageList(String placeName, Connection conn) {
+		
+		ArrayList<Image> selectMyImageList = new ArrayList<>();
+		
+		PreparedStatement psmt = null;
+		
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("selectMyMainImage");
+		
+		try {
+			psmt = conn.prepareStatement(sql);
+			
+			psmt.setString(1, placeName);
+			
+			rset = psmt.executeQuery();
+			
+			while(rset.next()) {
+				selectMyImageList.add(new Image(
+            				rset.getInt("FILE_NO") ,
+            				rset.getString("FILE_PATH") ,
+            				rset.getString("CHANGE_NAME")
+            			));
+            }
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(psmt);
+		}
+		
+		return selectMyImageList;
+	}
+
 
 }

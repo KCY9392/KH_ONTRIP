@@ -27,8 +27,11 @@ public class ReviewList extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		int memberNo = Integer.parseInt((String)request.getParameter("memberNo"));
-		String memberName = request.getParameter("memberName");
+		String memberName = request.getParameter("memberName");		
 		
+//		int placeCode = new ReviewService().selectPlaceCode(memberNo);
+//		request.setAttribute("placeCode", placeCode);
+				
 		request.setAttribute("memberNo", memberNo);
 		request.setAttribute("memberName", memberName);
 		
@@ -150,9 +153,11 @@ public class ReviewList extends HttpServlet {
 	    
 	    // 현재 일반게시판의 게시글들 가져오기	    
 	    ArrayList<Review> mylist = new ReviewService().selectmyPagePagingList(pi , memberNo);
-
+	    
+	    
+	    
 	    request.setAttribute("mylist", mylist);
-	    request.setAttribute("pi2", pi);
+	    request.setAttribute("pi", pi);
 			
 		request.getRequestDispatcher("views/myPage/myPageReviewList.jsp").forward(request, response);
 	}

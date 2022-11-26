@@ -1,12 +1,15 @@
 package com.ontrip.review.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.ontrip.image.vo.Image;
 import com.ontrip.member.model.vo.Member;
 import com.ontrip.review.service.ReviewService;
 
@@ -42,6 +45,10 @@ public class reviewEnrollController extends HttpServlet {
 		Member memberName = new ReviewService().selectMemberName(memberNo);
 		
 		request.setAttribute("memberName", memberName);
+		
+		// PLACE_CODE에 해당하는 대표이미지를 가져오기 위한 LIST
+		ArrayList<Image> selectMainImagelist = new ReviewService().selectMainImagelist(placeCode);
+		request.setAttribute("selectMainImagelist", selectMainImagelist);
 		
 		request.getRequestDispatcher("views/review/reviewEnroll.jsp").forward(request, response);
 		
