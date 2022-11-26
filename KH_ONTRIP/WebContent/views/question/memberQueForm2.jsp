@@ -1,14 +1,7 @@
-<%@ page import="java.util.Map" %><%--
-  Created by IntelliJ IDEA.
-  User: jay
-  Date: 2022/11/12
-  Time: 6:08 PM
-  To change this template use File | Settings | File Templates.
---%>
+<%@ page import="java.util.Map" %>
 <%@ page contentType="text/html; charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
-
 
 <!DOCTYPE html>
 <html>
@@ -31,12 +24,6 @@
       flex-direction: column;
       align-items: center;
     }
-    <style>
-     .container{
-       display: flex;
-       flex-direction: column;
-       align-items: center;
-     }
     .panel-title{
       font-size:35px;
     }
@@ -44,11 +31,13 @@
       font-size: 20px;
       font-weight: bold;
     }
-    textarea{
+    #qTitle, textarea{
       padding:5px;
       border:1px solid rgb(171, 168, 168);
       border-radius: 5px;
       resize: none;
+	  width: 500px;
+	  margin-bottom: 0px;
     }
     .btn-5{
       padding:5px;
@@ -67,43 +56,88 @@
     .btn-5:active{
       background-color: rgb(180, 177, 177) ;
     }
-    div>button:nth-child(1){
-      background-color: white;
-      border:none;
-      color:rgb(62, 131, 135);
-      font-size: 15px;
+    #before, #btnSave{
+      color:rgb(250, 255, 255);
+      font-size: 18px;
       font-weight: 900;
+      width:200px;
     }
     div>button:nth-child(1):hover{
       cursor: pointer;
       color:rgb(115, 183, 187);
     }
-  </style>
+    
+        
+        .uk-section-default {
+		        background: rgb(250, 250, 250);
+		    }
+		
+		    .uk-section {
+		        padding-top: 70px;
+		        padding-bottom: 70px;
+		    }
+		    .uk-section {
+		        display: flow-root;
+		        box-sizing: border-box;
+		    }
+		    .sl-in2 {
+		     animation: change1 1s ease forwards;
+		   }
+		   
+		   @keyframes change1 {
+		     from {
+		       transform: translateY(80%);
+		     }
+		   
+		     to {
+		       transform: translateY(0%);
+		     }
+		   }
   </style>
 </head>
 <body>
 
 <%@ include file="../common/navbar.jsp" %>
 
-<br><br><br><br><br>
+<br><br><br>
 
+     <div class="uk-section uk-section-default sl-in2"
+      style="min-width: 90vw; height: 28vh;">
+      <div class="uk-container">
+         <div style="text-align: center; margin-top: -1.5%;">
+            <div style="font-size: 40px; font-weight: 600;">OnTrip</div>
+            <br>
+            <div style="color: darkgray">MAKE YOUR ROUTE OPTIMIZED</div>
+            <br> <br>
+            <div>
+               <span style="color: coral; font-size: 20px; font-weight: 600;">문의사항 &nbsp;작성</span>
+            </div>
+         </div>
+      </div>
+   </div>
+    
 <div class="container">
-  <h2 class="panel-title" style="color:rgb(5, 198, 37);">문의사항 등록</h2> <br>
-  <div class="form-group" style="text-align:center;">
+  <div class="form-group" style="text-align:center; font-size:20px;">
     <form method="post" action="/KH_ONTRIP/question/write">
-    <span> 제목 : <input type="text" name="qTitle" required> </span> <br><br>
-    <span> 내용</span> <br>
+		<br>
+		<table align="center" style="width:800px; height:300px;">
+			<tr>
+				<td><span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;제목</span></td>
+				<td><input type="text" name="qTitle" id="qTitle" required placeholder="문의사항 제목을 적어주세요"> </span></td>
+			</tr>
+			<tr>
+				<td><span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;내용</span></td>
 
-    <textarea cols="50" rows="7" name="qContent" required></textarea>  <br><br>
-      <input type="hidden" name="memName" value="${memName}">
-      <input type="hidden" name="memNo" value="${memNo}">
-      <button type="submit">등록하기</button>
+				<td><textarea cols="50" rows="7" name="qContent" required placeholder="문의사항 질문내용을 적어주세요"></textarea></td>
+			</tr>	
+			<input type="hidden" name="memName" value="${memName}">
+			<input type="hidden" name="memNo" value="${memNo}">
+		</table>
+		<br>
+      <button type="submit" class="btn btn-lg btn-success mx-0 mb-2" id="btnSave" style="background-color: rgb(130, 202, 164); border: 0; height:50px">등록하기</button>
     </form>
-
-
-    <br><br><br><br>
     <form action="/KH_ONTRIP/question/questions" method="get">
-      <div><button type="submit">목록으로</button></div>
+      <div><button type="submit" id="before" class="btn btn-lg btn-success mx-0 mb-2" style="background-color: rgb(189, 192, 191); border: 0; height:50px; margin-top:-0.1px;">목록으로</button></div>
     </form>
   </div>
 </div>

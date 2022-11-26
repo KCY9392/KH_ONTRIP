@@ -62,7 +62,7 @@
 	      
 	      <br>
     	</div>
-    	
+    	<p class="mt-5 mb-3 text-muted" style="text-align:center;">© Ontrip</p>
   		</div>
 
 	</form>

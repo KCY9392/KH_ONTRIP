@@ -26,8 +26,8 @@
             height: 120vh;
             /* border: 1px solid black; */
             margin: auto;
-            margin-top: 50px;
             box-sizing: border-box;
+            width:65%;
             /* text-align: center; */
         }
         .title{
@@ -35,14 +35,14 @@
             margin-top:-30px;
             height: 100px;
             border: 2px solid white;
-            background-color: rgba(143, 212, 143, 0.911);;
-
+            background-color: rgba(161, 210, 161, 0.911);
+			border-radius: 20px;
             /* rgba(143, 212, 143, 0.911); => 연두색 */
         }
         #qnaTitle{
             font-size: 40px;
             color: white;
-            font-weight: bold;
+            font-weight: bolder;
             padding:10px;
             font-family: 'Noto Sans KR', sans-serif;
         }
@@ -65,35 +65,43 @@
 
             font-family: 'Noto Sans KR', sans-serif;
         }
+        
+        #qna-box{
+        
+        width:1000px; margin: auto; box-sizing:border-box;
+        
+        }
+        
         #q{
-            margin-left: 150px;
-            width: 700px;
-            height: 30px;
+            width: 800px;
+            height: 50px;
+            background-color: rgba(232, 236, 232, 0.911);
+            border: 5px solid rgba(232, 236, 232, 0.911);
         }
         #p{
             margin-left: 150px;
             font-family: 'Noto Sans KR', sans-serif;
+            font-weight:25px;
         }
         .divForm1{
             /* background-color: rgb(206, 206, 204); */
-            width: 300px;
-            height: 30px;
+            height: 40px;
             text-align: center;
-            line-height: 30px;
+            line-height: 35px;
             border: 2px dashed rgb(206, 206, 204);
             border-top: 0;
             border-left: 0;
             border-right: 0;
-            border-radius: 3px;
+            border-radius: 10px;
             cursor: pointer;
             font-size: 20px;
         }
         p{
             border: 1px solid rgb(206, 206, 204);
-            width: 703px;
+            width: 800px;
             height: 100px;
             margin-top: 5px;
-            border-radius: 3px;
+            border-radius: 10px;
             padding: 10px;
             box-sizing: border-box;
             display: none;
@@ -111,23 +119,9 @@
         }
         .divForm2{
             position:relative;
+             margin-left:170px;
         }
-        .delete_answer{
-            position:absolute;
-            text-decoration: none;
-            font-weight:900;
-            border:none;
-            background-color:lightgrey;
-            color:white;
-            padding:5px;
-            border-radius: 10px;
-            text-align:right;
-            top:63px;
-            right:0;
-        }
-        .delete_answer:hover{
-            color:black;
-        }
+        
         .btn-enroll{
             border:none;
             padding:5px;
@@ -143,78 +137,106 @@
         .btn-enroll:active{
             background-color:rgba(163, 167, 163, 0.911);
         }
+        
+        .uk-section-default {
+        background: rgb(250, 250, 250);
+    }
+
+    .uk-section {
+        padding-top: 70px;
+        padding-bottom: 70px;
+    }
+    .uk-section {
+        display: flow-root;
+        box-sizing: border-box;
+    }
+    .sl-in2 {
+     animation: change1 1s ease forwards;
+   }
+   
+   @keyframes change1 {
+     from {
+       transform: translateY(80%);
+     }
+   
+     to {
+       transform: translateY(0%);
+     }
+   }
     </style>
 </head>
 <body>
 <%@ include file="../common/navbar.jsp" %>
 
-<br><br><br><br>
+<br><br><br>
+     <div class="uk-section uk-section-default sl-in2"
+      style="min-width: 90vw; height: 28vh;">
+      <div class="uk-container">
+         <div style="text-align: center; margin-top: -1.5%;">
+            <div style="font-size: 40px; font-weight: 600;">OnTrip</div>
+            <br>
+            <div style="color: darkgray">MAKE YOUR ROUTE OPTIMIZED</div>
+            <br> <br>
+            <div>
+               <span style="color: coral; font-size: 20px; font-weight: 600;">Q & A</span>
+            </div>
+         </div>
+      </div>
+   </div>
+   
+   
 <div class="outer1">
-
-    <div class="title">
-        <pre id="qnaTitle" style="text-align:center;">무엇을 도와드릴까요?</pre>
-    </div>
-
-    <br><br>
-
     <div class="qna">
-        <br><br><br><br>
-        <pre id="qnap"><i class="fa-regular fa-lightbulb fa-lg"></i>&nbsp;자주 찾는 도움말</pre>
+        <br><br>
+        <pre id="qnap"><i class="fa-regular fa-lightbulb fa-lg"></i>&nbsp;자주 묻는 질문&nbsp;<i class="fa-regular fa-lightbulb fa-lg"></i></pre>
     </div>
 
-    <br><br><br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br>
 
 
+<div id="qna-box">
 
-
-
-
-    <pre id="htitle" style="color:gray;"><img src="<%= request.getContextPath() %>/resources/image/숙소.png" width="50px">&nbsp;&nbsp;숙소</pre>
-    <hr width="70%" style="margin-top: -10px;">
+    <pre id="htitle" style="color:gray;  margin-left:170px;"><img src="<%= request.getContextPath() %>/resources/image/숙소.png" width="30px">&nbsp;&nbsp;숙소</pre>
+    <hr width="80%" style="margin-top: -10px;  margin-left:150px;">
     <br>
 
     <c:forEach items="${qnaForAccommodation}" var="acco">
-        <div id="q" class="divForm1" name="divForm1"><b id="bfont">${acco.qaQuestion}</b></div>
-        <p id="p" class="divForm2">
+        <div id="q" class="divForm1" name="divForm1" style="margin-left:150px;"><b id="bfont">${acco.qaQuestion}</b></div>
+        <p id="p" class="divForm2" style="margin-left:150px;">
                 ${acco.qaAnswer}
         </p>
+        <br>
     </c:forEach>
 
-    <br>
+    <br><br><br><br>
 
-    <br>
-    <br>
-    <br>
-
-    <pre id="htitle" style="color:gray;"><img src="<%= request.getContextPath() %>/resources/image/기능.png" width="50px">&nbsp;&nbsp;기능</pre>
-    <hr width="70%" style="margin-top: -10px;">
+    <pre id="htitle" style="color:gray; margin-left:170px;"><img src="<%= request.getContextPath() %>/resources/image/기능.png" width="30px">&nbsp;&nbsp;기능</pre>
+    <hr width="80%" style="margin-top: -10px; margin-left:150px;">
     <br>
 
     <c:forEach items="${qnaForUsing}" var="using">
-        <div id="q" class="divForm1" name="divForm1"><b id="bfont">${using.qaQuestion}</b></div>
-        <p id="p" class="divForm2">
+        <div id="q" class="divForm1" name="divForm1" style="margin-left:150px;"><b id="bfont">${using.qaQuestion}</b></div>
+        <p id="p" class="divForm2" style="margin-left:150px;">
                 ${using.qaAnswer}
         </p>
+        <br>
     </c:forEach>
-    <br>
+    
+    <br><br><br><br>
 
-    <br>
-    <br>
-    <br>
-
-
-
-    <pre id="htitle" style="color:gray;"><img src="<%= request.getContextPath() %>/resources/image/계정.png" width="50px" >&nbsp;&nbsp;계정</pre>
-    <hr width="70%" style="margin-top: -10px;">
+    <pre id="htitle" style="color:gray; margin-left:170px;"><img src="<%= request.getContextPath() %>/resources/image/계정.png" width="30px" >&nbsp;&nbsp;계정</pre>
+    <hr width="80%" style="margin-top: -10px; margin-left:150px;">
     <br>
 
     <c:forEach items="${qnaForAccount}" var="account">
-        <div id="q" class="divForm1" name="divForm1"><b id="bfont">${account.qaQuestion}</b></div>
-        <p id="p" class="divForm2">
+        <div id="q" class="divForm1" name="divForm1" style="margin-left:150px;"><b id="bfont">${account.qaQuestion}</b></div>
+        <p id="p" class="divForm2" style="margin-left:150px;">
                 ${account.qaAnswer}
         </p>
+        <br>
     </c:forEach>
-
+ </div>
+ 	<br><br><br><br><br><br>
 </div>
 
 <script>

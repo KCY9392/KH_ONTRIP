@@ -15,6 +15,9 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 <style>
 
+	.body{
+		font-family: "Nanum Gothic", arial, helvetica, sans-serif;
+	}
     #marjinForm{
 		margin-top: 100px;
 	}

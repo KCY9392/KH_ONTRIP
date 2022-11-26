@@ -35,8 +35,8 @@
             margin-top:-30px;
             height: 100px;
             border: 2px solid white;
-            background-color: rgba(143, 212, 143, 0.911);;
-
+            background-color: rgba(161, 210, 161, 0.911);
+			border-radius: 20px;
             /* rgba(143, 212, 143, 0.911); => 연두색 */
         }
         #qnaTitle{
@@ -68,23 +68,27 @@
         #q{
             margin-left: 150px;
             width: 700px;
-            height: 30px;
+            height: 50px;
+            background-color: rgba(221, 224, 221, 0.911);
+            border: 5px solid rgba(221, 224, 221, 0.911);
+            
         }
         #p{
             margin-left: 150px;
             font-family: 'Noto Sans KR', sans-serif;
+            font-weight:25px;
         }
         .divForm1{
             /* background-color: rgb(206, 206, 204); */
-            width: 300px;
+            width: 400px;
             height: 30px;
             text-align: center;
-            line-height: 30px;
+            line-height: 35px;
             border: 2px dashed rgb(206, 206, 204);
             border-top: 0;
             border-left: 0;
             border-right: 0;
-            border-radius: 3px;
+            border-radius: 10px;
             cursor: pointer;
             font-size: 20px;
         }
@@ -93,7 +97,7 @@
             width: 703px;
             height: 100px;
             margin-top: 5px;
-            border-radius: 3px;
+            border-radius: 10px;
             padding: 10px;
             box-sizing: border-box;
             display: none;
@@ -111,6 +115,7 @@
         }
         .divForm2{
             position:relative;
+            margin-left:170px;
         }
         .delete_answer{
             position:absolute;
@@ -147,82 +152,78 @@
 </head>
 <body>
 <%@ include file="../../common/adnavbar.jsp" %>
+<%@ include file="../../../views/common/managerNavbar.jsp" %>
 
-<br><br><br><br>
-<div class="outer1">
+<div class="outer1" style="margin-left:450px;">
 
     <div class="title">
-        <pre id="qnaTitle" style="text-align:center;">무엇을 도와드릴까요?</pre>
+         <pre id="qnaTitle" style="text-align:center; margin-top:7px ;">Q & A 관리</pre>
     </div>
 
-    <br><br>
 
     <div class="qna">
         <br><br><br><br>
-        <pre id="qnap"><i class="fa-regular fa-lightbulb fa-lg"></i>&nbsp;자주 찾는 도움말</pre>
+        <pre id="qnap"><i class="fa-regular fa-lightbulb fa-lg"></i>&nbsp;자주 묻는 질문&nbsp;<i class="fa-regular fa-lightbulb fa-lg"></i></pre>
     </div>
 
-    <br><br><br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br>
 
 
+	<form method="post" action="/KH_ONTRIP/manager/qnas/saveform" style="text-align:center;">
+    <button class="btn-enroll" style="margin-bottom:50px;">등록</button>
+	</form>
 
 
-
-
-    <pre id="htitle" style="color:gray;"><img src="<%= request.getContextPath() %>/resources/image/숙소.png" width="50px">&nbsp;&nbsp;숙소</pre>
-    <hr width="70%" style="margin-top: -10px;">
+    <pre id="htitle" style="color:gray; margin-left:-530px;"><img src="<%= request.getContextPath() %>/resources/image/숙소.png" width="30px">&nbsp;&nbsp;숙소</pre>
+    <hr width="70%" style="margin-top: -10px; margin-left:170px;">
     <br>
 
     <c:forEach items="${qnaForAccommodation}" var="acco">
-        <div id="q" class="divForm1" name="divForm1"><b id="bfont">${acco.qaQuestion}</b></div>
-        <p id="p" class="divForm2">
+        <div id="q" class="divForm1" name="divForm1" style="margin-left:170px;"><b id="bfont">${acco.qaQuestion}</b></div>
+        <p id="p" class="divForm2" style="margin-left:170px;">
                 ${acco.qaAnswer}
+                <br>
             <a href="/KH_ONTRIP/manager/qnas/delete?qaCode=${acco.qaCode}" class="delete_answer">삭제하기</a>
         </p>
+        <br>
     </c:forEach>
 
-    <br>
+    <br><br><br><br>
 
-    <br>
-    <br>
-    <br>
-
-    <pre id="htitle" style="color:gray;"><img src="<%= request.getContextPath() %>/resources/image/기능.png" width="50px">&nbsp;&nbsp;기능</pre>
-    <hr width="70%" style="margin-top: -10px;">
+    <pre id="htitle" style="color:gray; margin-left:-530px;"><img src="<%= request.getContextPath() %>/resources/image/기능.png" width="30px">&nbsp;&nbsp;기능</pre>
+    <hr width="70%" style="margin-top: -10px; margin-left:170px;">
     <br>
 
     <c:forEach items="${qnaForUsing}" var="using">
-        <div id="q" class="divForm1" name="divForm1"><b id="bfont">${using.qaQuestion}</b></div>
-        <p id="p" class="divForm2">
+        <div id="q" class="divForm1" name="divForm1" style="margin-left:170px;"><b id="bfont">${using.qaQuestion}</b></div>
+        <p id="p" class="divForm2" style="margin-left:170px;">
                 ${using.qaAnswer}
+            <br>
             <a href="/KH_ONTRIP/manager/qnas/delete?qaCode=${using.qaCode}" class="delete_answer">삭제하기</a>
         </p>
+        <br>
     </c:forEach>
-    <br>
+    
+    <br><br><br><br>
 
-    <br>
-    <br>
-    <br>
-
-
-
-    <pre id="htitle" style="color:gray;"><img src="<%= request.getContextPath() %>/resources/image/계정.png" width="50px" >&nbsp;&nbsp;계정</pre>
-    <hr width="70%" style="margin-top: -10px;">
+    <pre id="htitle" style="color:gray; margin-left:-530px;"><img src="<%= request.getContextPath() %>/resources/image/계정.png" width="30px" >&nbsp;&nbsp;계정</pre>
+    <hr width="70%" style="margin-top: -10px; margin-left:170px;">
     <br>
 
     <c:forEach items="${qnaForAccount}" var="account">
-        <div id="q" class="divForm1" name="divForm1"><b id="bfont">${account.qaQuestion}</b></div>
-        <p id="p" class="divForm2">
+        <div id="q" class="divForm1" name="divForm1" style="margin-left:170px;"><b id="bfont">${account.qaQuestion}</b></div>
+        
+        <p id="p" class="divForm2" style="margin-left:170px;">
                 ${account.qaAnswer}
+                <br>
             <a href="/KH_ONTRIP/manager/qnas/delete?qaCode=${account.qaCode}" class="delete_answer">삭제하기</a>
         </p>
+        <br>
     </c:forEach>
 
+	<br><br><br><br><br><br>
 </div>
-<form method="post" action="/KH_ONTRIP/manager/qnas/saveform" style="text-align:center;">
-    <button class="btn-enroll" style="margin-bottom:50px;">등록</button>
-</form>
-
+	
 <script>
     $(function(){
         $(document).on("click","div[name=divForm1]",function(){

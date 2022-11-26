@@ -41,6 +41,14 @@
   		font-family: "Nanum Gothic", arial, helvetica, sans-serif;
   		background-repeat: no-repeat;
 	}
+	
+	.title{
+			font-size: 60px;
+			margin-top: -20px;
+			font-weight: 900;
+			color: rgb(130, 202, 164);
+			text-align: center;
+		}
     #Id, #Pwd{
         background-color: #b9bdb7;
         font-weight: 900;
@@ -59,6 +67,11 @@
     }
     #btn-Yes{
         background-color: rgb(130, 202, 164);
+        border: none;
+    }
+    
+    #btn-log{
+    	background-color: rgb(214, 214, 214);
         border: none;
     }
 
@@ -92,7 +105,7 @@
 
   <body cellpadding="0" cellspacing="0" marginleft="0" margintop="0" width="100%" height="100%" align="center">
     <script>
-		let msg = "<%= alertMsg %>"; // let msg = 성공적으로 로그인이 되었습니다.
+		let msg = "<%= alertMsg %>";
 		
 		if(msg != "null"){
 			alert(msg);
@@ -103,10 +116,11 @@
 		}
 	</script>
 
-	<div class="card align-middle" style="width:50rem; height: 45rem; margin-top:0;">
+<br><br>
+	<div class="card align-middle" style="width:50rem; height: 46rem; margin-top:0;">
 		
-		<div style="margin-top:30px; text-align: center;">
-			<p  
+		<div style="margin-top:60px; text-align: center;">
+			<p  class="title"
 			style="font-size: 60px;
 					font-weight: 1000;
 					color: rgb(130, 202, 164);">On Trip</p>
@@ -134,6 +148,7 @@
 		            <input type="text2" id="phone" name="phone" class="form-control" placeholder="휴대전화" required><br>
 		                <p class="check" id="check1">${check}</p><br/>
 		            <button id="btn-Yes" class="btn btn-lg btn-primary btn-block" type="submit">아이디 찾기</button>
+		            <button id="btn-log" class="btn btn-lg btn-primary btn-block" type="button" onclick="goLogin();">로그인 하러가기</button>
 		        </div>
 		
 		      </form>
@@ -146,10 +161,14 @@
 		                <input type="text2" name="phone" id="pphone" class="form-control" placeholder="휴대전화"><br>
 		                    <p class="check" id="check2">${check}</p><br/>
 		                <button id="btn-Yes" class="btn btn-lg btn-primary btn-block" type="submit">비밀번호 찾기</button>
+		                <button id="btn-log" class="btn btn-lg btn-primary btn-block" type="button" onclick="goLogin();">로그인 하러가기</button>
 		            </div>
 		       </form>
 		       
     	</div>
+    	</div>
+    	<p class="mt-5 mb-3 text-muted" style="text-align:center; margin-top:0">© Ontrip</p>
+  		</div>
 	</div>
    
   </body>
@@ -233,5 +252,10 @@
         }
 
     }
+         
+         function goLogin(){
+        	 
+        	 location.href = "<%=request.getContextPath()%>";
+         }
   </script>
 </html>

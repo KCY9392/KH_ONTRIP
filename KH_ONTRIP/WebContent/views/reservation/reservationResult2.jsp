@@ -106,7 +106,7 @@ hr{
       <br>
       <hr><br>
       <span class="span_name">가격 : </span>&nbsp;&nbsp;&nbsp;
-      <input type="text" value=" ${totalPrice} KRW" readonly>
+      <input type="text" value="<fmt:formatNumber value="${totalPrice}" pattern="#,###"/> KRW" readonly>
       <br><br>
       <hr><br><br>
 
