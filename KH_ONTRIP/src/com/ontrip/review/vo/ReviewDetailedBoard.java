@@ -29,6 +29,17 @@ public class ReviewDetailedBoard {
         this.revP = revP;
         this.categoryCode = categoryCode;
     }
+    
+    public ReviewDetailedBoard(String plcName, String memName, Date revDate, String revText, int revStar, int revC, int revS, int revP) {
+        this.plcName = plcName;
+        this.memName = memName;
+        this.revDate = revDate;
+        this.revText = revText;
+        this.revStar = revStar;
+        this.revC = revC;
+        this.revS = revS;
+        this.revP = revP;
+    }
 
     public String getPlcName() {
         return plcName;

@@ -28,24 +28,24 @@ public class AdReviewFrontController extends HttpServlet {
 
     }
 
-    public void service(HttpServletRequest request, HttpServletResponse response)throws IOException, ServletException {
-
-        String requestURI = request.getRequestURI();
-
-        if (requestURI == null) {
-            response.setStatus(HttpServletResponse.SC_NOT_FOUND);
-            return;
-        }
-
-        ReviewFrontController reviewFrontController = controllerMap.get(requestURI);
-
-        try {
-            reviewFrontController.process(request, response);
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-
-    }
+//    public void service(HttpServletRequest request, HttpServletResponse response)throws IOException, ServletException {
+//
+//        String requestURI = request.getRequestURI();
+//
+//        if (requestURI == null) {
+//            response.setStatus(HttpServletResponse.SC_NOT_FOUND);
+//            return;
+//        }
+//
+//        ReviewFrontController reviewFrontController = controllerMap.get(requestURI);
+//
+//        try {
+//            reviewFrontController.process(request, response);
+//        } catch (SQLException e) {
+//            throw new RuntimeException(e);
+//        }
+//
+//    }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {

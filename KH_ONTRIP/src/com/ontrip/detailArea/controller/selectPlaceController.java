@@ -1,6 +1,8 @@
 package com.ontrip.detailArea.controller;
 
 import com.ontrip.detailArea.service.DetailAreaService;
+import com.ontrip.hash.service.HashService;
+import com.ontrip.hash.vo.Hash;
 import com.ontrip.image.vo.Image;
 import com.ontrip.place.model.service.PlaceService;
 import com.ontrip.place.model.vo.Place;
@@ -51,6 +53,7 @@ public class selectPlaceController extends HttpServlet {
 		ArrayList<Place> playInfo = new PlaceService().selectPlayInfo(dareaCode);
 		request.setAttribute("playInfo", playInfo);
 		
+		
 		// 맛집 사진 불러오기
 		ArrayList<Image> foodPath = new DetailAreaService().selectFoodPath(dareaCode);
 		request.setAttribute("foodPath", foodPath);
@@ -58,7 +61,11 @@ public class selectPlaceController extends HttpServlet {
 		// 숙소 정보(이름, 주소, 전화번호) 가져오기
 		ArrayList<Place> foodInfo = new PlaceService().selectFoodInfo(dareaCode);
 		request.setAttribute("foodInfo", foodInfo);
-				
+		
+//		for(int i=0; i<playInfo.size(); i++) {
+//			System.out.println(foodInfo.get(i).getPlcName());
+//		}
+		
 		// 숙소 사진 불러오기
 		ArrayList<Image> hotelPath = new DetailAreaService().selectHotelPath(dareaCode);
 		request.setAttribute("hotelPath", hotelPath);
@@ -66,6 +73,10 @@ public class selectPlaceController extends HttpServlet {
 		// 숙소 정보(이름, 주소, 전화번호) 가져오기
 		ArrayList<Place> hotelInfo = new PlaceService().selectHotelInfo(dareaCode);
 		request.setAttribute("hotelInfo", hotelInfo);
+		
+//		for(int i=0; i<playInfo.size(); i++) {
+//			System.out.println(foodInfo.get(i).getPlcName());
+//		}
 		
 		request.getRequestDispatcher("views/location/selectPlace.jsp").forward(request, response);
 	}

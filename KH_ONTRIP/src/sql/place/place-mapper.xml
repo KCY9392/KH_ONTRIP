@@ -92,7 +92,7 @@
                                         FROM "HashStorage" s
                                         JOIN "Hash" h USING(HAS_NO)
                                         WHERE h.HAS_NAME IN(@))
-   ORDER BY PLC_NAME
+   ORDER BY PLC_NAME DESC
    </entry>
 
 

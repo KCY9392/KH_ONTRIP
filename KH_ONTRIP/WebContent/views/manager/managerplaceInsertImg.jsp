@@ -28,6 +28,16 @@
         integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="
         crossorigin="anonymous">
     </script>
+    <style>
+        #outer{
+            width: 1300px;
+            margin: auto;
+        }
+        .outer1{
+            margin-left: 200px;
+        }
+        button:hover{transform: scale(.9);}
+    </style>
 </head>
 <body>
 
@@ -37,11 +47,98 @@
         <br><br><br><br>
      
    <form method="post" action="<%= request.getContextPath()%>/PlaceInsert2.mn?placeCode=<%= placeCode %>&categoryCode=<%= categoryCode %>&dareaCode=<%= dareaCode %>&localCode=<%= localCode %>" enctype="multipart/form-data">
-         
+    <div style="border: 1px solid white; height: 650px;" class="shadow-lg" id="outer">
+        <table>
+             <tr>
+                 <td style="font-size: 25px;">
+                    <br>
+                    <div style="width: 121.5%;">
+                        <h1><strong>
+                            시설 이미지를 등록해주세요&nbsp;&nbsp;&nbsp;</strong>
+                            <button type="submit" class="btn btn-dark btn-outline-dark" style="border:none; width:150px; height:60px; font-weight:920; font-size:20px; border-radius:5px; margin: auto; color: white;">등록</button></h1>
+                    </div>
+                        <br><br>
+                   <div class="outer1">
+                     <div class="shadow-lg">
+                            <!-- 이미지 첨부파일 1 -->
+                    <div class="img-container">
+                        <div class="image-upload" id="image-upload">
+                                <div class="button">
+                                    <label for="chooseFile1" style="margin-bottom:-30px;">
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+                                        <strong>👉 CLICK HERE 👈</strong>
+                                    </label>
+                                </div>
+                                <input type="file" id="chooseFile1" name="file1" accept="image/*" onchange="loadFile1(this)" required>
+                          
+                
+                            <div class="fileContainer">
+                                <div class="fileInput">
+                                    <p id="fileName" name="file1"></p>
+                                </div>
+                        </div>
+                    </div>
+                        
+                        
+                        <div class="image-show" id="image-show1"></div>
+                    </div>
+
+                    <!-- 이미지 첨부파일 2 -->
+                    <div class="img-container">
+                        <div class="image-upload" id="image-upload">
+                
+                                <div class="button">
+                                    <label for="chooseFile2" style="margin-bottom:-30px;">
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+                                        <strong>👉 CLICK HERE 👈</strong>
+                                    </label>
+                                </div>
+                                <input type="file" id="chooseFile2" name="file2" accept="image/*" onchange="loadFile2(this)" required>
+                            
+                
+                            <div class="fileContainer">
+                                <div class="fileInput">
+                                    <p id="fileName2"></p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        
+                        <div class="image-show" id="image-show2"></div>
+                    </div>
+
+                    <!-- 이미지 첨부파일 3 -->
+                    <div class="img-container">
+                        <div class="image-upload" id="image-upload">
+                
+                                <div class="button">
+                                    <label for="chooseFile3" style="margin-bottom:-30px;">
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+                                        <strong>👉 CLICK HERE 👈</strong>
+                                    </label>
+                                </div>
+                                <input type="file" id="chooseFile3" name="file3" accept="image/*" onchange="loadFile3(this)" required>
+                            
+                
+                            <div class="fileContainer">
+                                <div class="fileInput">
+                                    <p id="fileName3"></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="image-show" id="image-show3"></div>
+                   </div>
+                     </div>
+                </td>
+             </tr>
+        </table> 
+     </div>
+     
+</form>
 
 
-<!-- 이미지 첨부파일 -->
-            <div class="img-container">
+            <!-- 이미지 첨부파일 -->
+            <!-- <div class="img-container">
                 <div class="image-upload" id="image-upload">
         
                         <div class="button">
@@ -56,15 +153,15 @@
                         <div class="fileInput">
                             <p id="fileName" name="file1"></p>
                         </div>
-                    </div>
                 </div>
+            </div>
                 
                 
                 <div class="image-show" id="image-show1"></div>
-            </div>
+            </div> -->
 
             <!-- 이미지 첨부파일 -->
-            <div class="img-container">
+            <!-- <div class="img-container">
                 <div class="image-upload" id="image-upload">
         
                         <div class="button">
@@ -84,10 +181,10 @@
                 
                 
                 <div class="image-show" id="image-show2"></div>
-            </div>
+            </div> -->
 
             <!-- 이미지 첨부파일 -->
-            <div class="img-container">
+            <!-- <div class="img-container">
                 <div class="image-upload" id="image-upload">
         
                         <div class="button">
@@ -107,9 +204,9 @@
                 
                 
                 <div class="image-show" id="image-show3"></div>
-            </div>
-            <button type="submit" style="border:none; width:150px; height:50px; background-color:bisque; font-weight:900; font-size:15px; border-radius:5px;">등록</button>
-        </form>
+            </div> -->
+            <!-- <button type="submit" style="border:none; width:150px; height:50px; background-color:bisque; font-weight:900; font-size:15px; border-radius:5px;">등록</button>
+        </form> -->
        
        <script>
        

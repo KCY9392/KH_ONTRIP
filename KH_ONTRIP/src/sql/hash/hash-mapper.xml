@@ -8,7 +8,16 @@
 	<entry key="insertHashStorage">
 	INSERT INTO "HashStorage" (PLC_CODE, HAS_NO) VALUES(?, SEQ_HAS.CURRVAL)
 	</entry>
+	<entry key="selectHashTag">
+	SELECT * FROM (SELECT DISTINCT HAS_NAME FROM "Hash") <![CDATA[WHERE ROWNUM <= 9]]>
+	</entry>
 
-
-   
+   	<entry key="selectHashTagPlace">
+   	SELECT HAS_NAME
+	FROM "Hash"
+	JOIN "HashStorage" h USING(HAS_NO)
+	WHERE h.PLC_CODE = (SELECT PLC_CODE
+	                    FROM "Place"
+	                    WHERE PLC_NAME = ?)
+   	</entry>
 </properties>

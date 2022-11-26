@@ -25,5 +25,25 @@ public class HashService {
 	    return result1;
 	}
 	
+	public ArrayList<Hash> selectHash(){
+		Connection conn = getConnection();
+		
+		ArrayList<Hash> hashPlayTag = new HashDao().selectHash(conn);
+		
+		close();
+		
+		return hashPlayTag;
+		
+	}
+	
+	public ArrayList<Hash> selectHashPlace(String placeName){
+		Connection conn = getConnection();
+		
+		ArrayList<Hash> hashTag = new HashDao().selectHashPlace(placeName, conn);
+		
+		close();
+		
+		return hashTag;
+	}
 	
 }

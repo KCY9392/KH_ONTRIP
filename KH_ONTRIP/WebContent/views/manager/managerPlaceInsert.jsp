@@ -14,10 +14,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>관리자 - 시설 등록 화면</title>
     <!-- 소스 다운 -->
-<script src="https://unpkg.com/@yaireo/tagify"></script>
-<!-- 폴리필 (구버젼 브라우저 지원) -->
-<script src="https://unpkg.com/@yaireo/tagify/dist/tagify.polyfills.min.js"></script>
-<link href="https://unpkg.com/@yaireo/tagify/dist/tagify.css" rel="stylesheet" type="text/css" />
+   <script src="https://unpkg.com/@yaireo/tagify"></script>
+   <!-- 폴리필 (구버젼 브라우저 지원) -->
+   <script src="https://unpkg.com/@yaireo/tagify/dist/tagify.polyfills.min.js"></script>
+   <link href="https://unpkg.com/@yaireo/tagify/dist/tagify.css" rel="stylesheet" type="text/css" />
     <link href="<%= contextPath %>/resources/css/manager_placeInsert.css" rel="stylesheet" >
  
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
@@ -29,37 +29,34 @@
     </script>
     <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=3c46a61fbdf9ee1c5956f08d7c2deaf8&libraries=services"></script>
      <!-- 소스 다운 -->
-	 <script src="https://unpkg.com/@yaireo/tagify"></script>
-	 <!-- 폴리필 (구버젼 브라우저 지원) -->
-	 <script src="https://unpkg.com/@yaireo/tagify/dist/tagify.polyfills.min.js"></script>
-	 <link href="https://unpkg.com/@yaireo/tagify/dist/tagify.css" rel="stylesheet" type="text/css" />
-     
+    <script src="https://unpkg.com/@yaireo/tagify"></script>
+    <!-- 폴리필 (구버젼 브라우저 지원) -->
+    <script src="https://unpkg.com/@yaireo/tagify/dist/tagify.polyfills.min.js"></script>
+    <link href="https://unpkg.com/@yaireo/tagify/dist/tagify.css" rel="stylesheet" type="text/css" />
+
     <style>
-       
        select{
-          border:2px solid rgb(239, 243, 138);
-          border-radius: 10px;
-          padding:5px;
+          border:0;
        }
        select:focus{
           border:1px solid green;
           box-sizing: border-box;
-          border-radius: 10px;
-          outline: 3px solid yellowgreen;
-          border-radius: 10px;
+          /* border-radius: 10px; */
+          outline: 1px solid yellowgreen;
+/*           border-radius: 10px; */
        }
        input{
           border:none;
-          border-bottom:1px solid gray;
+          /* border-bottom:1px solid gray; */
        }
        span{
           font-weight:bold;
-          font-size:18px;
-          color:rgb(2, 148, 12);
+          font-size:20px;
+          color:black; /* rgb(2, 148, 12) */
        }
        .input-box input{
           border:none;
-          border-bottom:1px solid gray;
+          /* border-bottom:1px solid gray; */
        }
        input[name=placeName]{
           height:40px;
@@ -73,8 +70,27 @@
        .container-div{
           border:none;
           box-shadow:0 0 5px grey;
+          height:1400px;
        }
-      
+       .place-image{
+        width: 100%;
+       }
+       .btn2:hover{
+        color:#6098FF;  
+       }
+       .btn2:hover::before{
+        opacity: 1;
+        background-color: #fff;
+        -webkit-transform: scaleY(1);
+        transform: scaleY(1);
+        transition: -webkit-transform .6s cubic-bezier(.08, .35, .13, 1.02), opacity .4s;
+        transition: transform .6s cubic-bezier(.08, .35, .13, 1.02), opacity
+      }
+      input::placeholder {color:rgba(176, 173, 173, 0.71);}
+      #searchBtn:hover{transform: scale(.9);}
+      .tagify{    
+		  border:none;
+		}
     </style>
 </head>
 <body>
@@ -82,82 +98,140 @@
     <%@ include file="../common/managerNavbar.jsp" %> 
 
         <br><br><br><br>
-     
-   <form method="post" action="<%= request.getContextPath()%>/PlaceInsert.mn?placeCode=<%= placeCode %>">
-         
-      
-         <div class="container-div">
-            <span style="font-size:20px;">시설이름 : &nbsp;</span>
-            <input type="text" name="placeName" placeholder="시설이름을 입력하세요."> <br><br>
-
-      <select name="category" id="category" style="width:150px; height:40px; float:left; margin-top:-60px;" required>  
-                <option value="PP">놀거리</option>
-                <option value="FF">맛집</option>
-                <option value="HH">숙소</option>
-        </select>
-            
-            <span style="color:black; font-size:17px;">작성자 : admin</span> <br><br>
-
-            <div style="font-size:20px; padding:10px;">
-            <span style="color:grey;">대표지역</span>
-            <span style="margin-left:70px; color:grey;">세부지역</span><br>
+        <div class="container-div">
+            <form method="post" action="<%= request.getContextPath()%>/PlaceInsert.mn?placeCode=<%= placeCode %>">
+                
+            <br>
+            <div style="border: 1px solid white; height: 50px;" class="shadow-lg">
+               <table>
+                    <tr>
+                        <td style="font-size: 25px; float: left;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;시설이름 :&nbsp;&nbsp; &nbsp;<strong><input type="text" name="placeName" style="font-weight:bold; background: transparent; width: 400px;" placeholder="등록하실 시설 이름을 입력해주세요 ✎"></strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                        <td style="font-size: 25px; float: left;">
+                            <strong>
+                                <select name="category" id="category" style="width:150px; height:40px; float:left; font-weight:bold;" required>  
+                                    <option value="PP">&nbsp;&nbsp;&nbsp;놀거리</option>
+                                    <option value="FF">&nbsp;&nbsp;&nbsp;맛집</option>
+                                    <option value="HH">&nbsp;&nbsp;&nbsp;숙소</option>
+                                </select>
+                            </strong>
+                        </td>
+                    </tr>
+               </table> 
+            </div>
+            <br>
+            <div class="place-image shadow-lg" style="border: 1px solid white; height: 27%;">
+                <table>
+                    <tr>
+                        <td>
+                            <span style="color:black; font-size:25px;">&nbsp;&nbsp;&nbsp;작성자 : admin</span> <br>
+                        </td>
+                    </tr>
+                </table>
             </div>
 
-            <select onchange="addressKindChange(this);" name="addressKind" id="addressKind" style="width:150px; height:50px;" required>  
-                <option value="L1">서울</option>
-                <option value="L3">제주도</option>
-                <option value="L2">경기도</option>
-                <option value="L4">강원도</option>
-                <option value="L5">충청도</option>
-                <option value="L6">전라도</option>
-                <option value="L7">경상도</option>
-            </select>
-            <select name="addressDetailKind" id="addressDetailKind" style="width:150px; height:50px;" required> 
-                <option>선택해주세요.</option>
-                <option>종로</option>
-                <option>용산</option>
-                <option>강남</option>
-            </select>
-            
-            <br><br>
-
-         <div class="input-box">
-         
-               <span>대표자 : &nbsp;</span>
-               <input type="text" name="placeBName" required> <br><br>
-               
-               <span>전화번호 : &nbsp;</span>
-               <input type="text" name="telephone" required> <br><br>
-               
-               <br>
-               
-               <span>주소 : &nbsp;</span>
-               <input type="text" name="areaAddress" id="address">
-               <button type="button" id="searchBtn">검색</button>
-               <div id="map" style="width:100%;height:350px;"></div>
-               
-               <span>위도 : &nbsp;</span>
-               <input type="text" name="latitude" required> <br><br>
-               
-               <span>경도 : &nbsp;</span>
-               <input type="text" name="longitude" required> <br><br>
-               
-               <br>
-               <span>시설설명</span> <br>
-               <textarea name="content" cols="50" rows="5" required></textarea>
+            <!-- <span style="color:black; font-size:17px;">작성자 : admin</span> <br><br> -->
+            <br>
+            <div style="font-size:20px; border: 1px solid white; background-color: rgb(190, 244, 215);" class="shadow-lg">
+                <span style="color:grey; text-align: center; font-size: 25px;">대표지역 : 
+                    <select onchange="addressKindChange(this);" name="addressKind" id="addressKind" style="width:250px; height:50px; font-weight:bold; background: transparent;" required>  
+                        <option value="L1">서울</option>
+                        <option value="L3">제주도</option>
+                        <option value="L2">경기도</option>
+                        <option value="L4">강원도</option>
+                        <option value="L5">충청도</option>
+                        <option value="L6">전라도</option>
+                        <option value="L7">경상도</option>
+                    </select>
+                </span>
+                <span style="margin-left:70px; color:grey; font-size: 25px;">세부지역 : 
+                    <select name="addressDetailKind" id="addressDetailKind" style="width:250px; height:50px; font-weight:bold; background: transparent;" required> 
+                        <option>선택해주세요.</option>
+                        <option>종로</option>
+                        <option>용산</option>
+                        <option>강남</option>
+                    </select>
+                </span><br>
             </div>
-            <!-- 해시 태그 정보를 저장할 input 태그. (textarea도 지원) -->
-	         <span>해시태그 : &nbsp;</span>
-	         <input name='hash'>
-	         <input type="hidden" name='hidden_hash'>
-            <br><br>
             
-      <button type="submit" style="border:none; width:150px; height:50px; background-color:bisque; font-weight:900; font-size:15px; border-radius:5px;">등록</button>
-        </form>
-       </div> 
+            <!-- <div style="font-size:20px; padding:10px; border: 1px solid white;" class="shadow-lg">
+            <span style="font-size:20px; margin-left: -10px;">${place.localName}</span>&nbsp;
+            <span style="margin-left:97px; font-size:20px;">${place.dareaName}</span>
+            </div> -->
+            <br>
 
+         <div class="input-box shadow-lg" style="border: 1px solid white;">
+               <table>
+                    <tr>
+                        <td style="font-size: 25px; float: left;">&nbsp;&nbsp;&nbsp;대표자 : <strong><input type="text" name="placeBName" style="background: transparent; font-weight:bold;" placeholder="대표자 성함을 입력해주세요 ✎" required></strong></td>
+                    </tr>
+                    <tr>
+                        <td style="font-size: 25px; float: left;">&nbsp;&nbsp;&nbsp;전화번호 : <strong><input type="text" name="telephone" style="background: transparent; width: 450px; font-weight:bold;" placeholder="등록하실 시설 전화번호를 입력해주세요 ✎" required></strong></td>
+                    </tr>
+                    <tr>
+                        <td style="font-size: 25px; float: left;">&nbsp;&nbsp;&nbsp;주소 : <strong><input type="text" name="areaAddress" style="background: transparent; width: 430px; font-weight:bold;" placeholder="등록하실 시설 주소를 입력해주세요 ✎" id="address">
+                            <button type="button" id="searchBtn" style="border-radius: 10px; background-color: black;"><img src="views/manager/button.png" width="30px" height="30px"></button></strong></td>
+                    </tr>
+               </table>
+         </div>
+               <br>
+               <div id="map" style="width:100%;height:350px; border: 1px solid white" class="shadow p-3 mb-5 bg-body shadow-lg"></div>
+               
+               <div class="input-box shadow-lg" style="border: 1px solid white;">
+                <table>
+                     <tr>
+                         <td style="font-size: 25px; float: left;">&nbsp;&nbsp;&nbsp;위도 : <strong><input type="text" name="latitude" style="background: transparent; font-weight:bold; color: rgba(92, 92, 201, 0.711);" required></strong></td>
+                     </tr>
+                     <tr>
+                         <td style="font-size: 25px; float: left;">&nbsp;&nbsp;&nbsp;경도 : <strong><input type="text" name="longitude" style="background: transparent; font-weight:bold; color: rgba(219, 56, 56, 0.641);" required></strong></td>
+                     </tr>
+                </table>
+                </div>
 
-            <script>
+                <br>
+                <div style="font-size:20px; border: 1px solid white; background-color: rgb(190, 244, 215);" class="shadow-lg">
+                    <table>
+                         <tr>
+                             <td><span style="color:black; font-size: 25px;">
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                시설설명</span></td>
+                         </tr>
+                    </table>
+                </div>
+
+                <br>
+                <div class="input-box shadow-lg" style="border: 1px solid white; height: 250px;">
+                    <table>
+                         <tr>
+                             <td style="font-size: 25px; float: left;">&nbsp;&nbsp;&nbsp;<strong>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <textarea name="content" cols="50" rows="5" style="border: 0; background: transparent; font-size: 17px; width: 800px; height: 170px;" placeholder="등록하실 시설 설명을 입력해주세요 ✎" required></textarea></strong></td>
+                         </tr>
+                    </table>
+                </div>
+                <div>
+                   <br>
+                   <!-- 해시 태그 정보를 저장할 input 태그. (textarea도 지원) -->
+                  <span>해시태그 : &nbsp;</span>
+                  <input name='hash' placeholder="#해시태그를 입력해주세요 ✎">
+                  <input type="hidden" name='hidden_hash'>        
+                </div>
+                    
+             <div style="border: 1px solid white;">
+                <br>
+                <br>
+                 <button type="submit" style="border:none; width:150px; height:50px; font-weight:900; font-size:15px; border-radius:5px; font-size: 20px;" class="btn2 btn-success">✔&nbsp;등록</button>
+             </div>
+             
+        </form>  
+    </div> 
+
+    <script>
                 var submit = document.getElementById('submitButton');
                 // submit.onclick = showImage;    
 
@@ -303,7 +377,6 @@
              //바다,산,부산  
          </script>
 
-
-            
+        
 </body>
 </html>

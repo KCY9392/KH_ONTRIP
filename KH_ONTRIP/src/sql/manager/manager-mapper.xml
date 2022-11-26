@@ -88,7 +88,7 @@
 
     <entry key="reviewDetailed">
 
-        select p.plc_name, m.mem_name, r.rev_date , r.rev_text , s.rev_star , s.rev_c , s.rev_s , s.rev_p from "Review" r
+        select p.plc_name, m.mem_name, r.rev_date , r.rev_text , s.rev_star , s.rev_c , s.rev_s , s.rev_p, p.category_code from "Review" r
         inner join "Place" p on r.plc_code = p.plc_code
         inner join "Member" m on r.mem_no = m.mem_no
         inner join "Score" s on r.REV_CODE = s.REV_CODE

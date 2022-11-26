@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.ontrip.detailArea.service.DetailAreaService;
+import com.ontrip.hash.service.HashService;
+import com.ontrip.hash.vo.Hash;
 import com.ontrip.heart.vo.Heart;
 import com.ontrip.image.vo.Image;
 import com.ontrip.place.model.service.PlaceService;
@@ -37,6 +39,19 @@ public class SelectHotelController extends HttpServlet {
              request.setAttribute("place", place);
              request.setAttribute("placeName", placeName);
              request.setAttribute("dareaName", dareaName);
+             
+             ArrayList<Hash> hashTag = new HashService().selectHashPlace(placeName);
+     		
+     		String value = "";
+     		if(hashTag != null) {
+     			for(int i = 0; i<hashTag.size(); i++) {
+     				System.out.println(hashTag.get(i).getHashName());
+     				value += "#"+hashTag.get(i).getHashName()+  ( i != hashTag.size()-1 ?  "," : "");
+     				
+     			}
+     		}
+     		System.out.println(value);
+     		request.setAttribute("value", value);
              
              String dareaCode = new PlaceService().findDareaCode(dareaName);
              

@@ -66,9 +66,7 @@
     font-weight: bold;
     color: orangered;
 }
-form{
-    margin: auto;
-}
+
 .star-rating { width:304px; }
 .star-rating,.star-rating span { display:inline-block; height:55px; overflow:hidden; background:url(views/review/star.png)no-repeat; }
 .star-rating span{ background-position:left bottom; line-height:0; vertical-align:top; }
@@ -81,7 +79,7 @@ form{
     <div class="outer1">
         <br><br><br>
         <div align="center">
-            <form id="checkReview" action="<%=request.getContextPath()%>/deleteReivew.re?memberNo=<%=memberNo %>&revCode=<%=revCode %>&placeName=<%=r.getPlaceName() %>" method="post">
+            <form id="checkReview" style="margin: auto;" action="<%=request.getContextPath()%>/deleteReivew.re?memberNo=<%=memberNo %>&revCode=<%=revCode %>&placeName=<%=r.getPlaceName() %>" method="post">
             	
                 <strong style="float: left; margin-left: 150px;">이용시설 : </strong> <input type="text" value="<%=r.getPlaceName()%>" name="placeName" id = "review" style="height: 30px; border: 0px; font-size: 20; font-weight: bold; margin-left: -295px;" readonly><br> 
                 <hr width="60%">

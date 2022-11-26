@@ -14,6 +14,54 @@
     <title>온트립(OnTrip) - 후기관리</title>
     <link rel="stylesheet" href="resources/css/review_manager.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+<style>
+	.buttons{
+         display: flex;
+         justify-content: center;
+         align-items: center;
+
+     }
+   .btn-click{
+     width: 350px;
+   	}	
+    .outer1{
+        background-color: white;
+        color: black;
+        width: 1000px;
+        height: 650px;
+        margin: auto;
+        margin-top: 100px;
+        margin-left: 680px;
+        box-sizing: border-box;
+    }
+   td > a{
+      color: black;
+      text-decoration: none;
+   }
+   
+   tr a{
+      color: black;
+      text-decoration: none;
+   }
+    .table{
+        width: 500px;
+        height:200px;
+        text-align: center;
+        font-weight: bold;
+        margin-left:0 !important;
+    }
+   #btn{
+     width: 335px;
+     height: 50px;
+     border: 1px solid lightgray;
+     border-radius: 0;
+     font-weight:bold;
+     font-size: 20px;
+   }  
+    .table thead{
+        background: rgba(211, 211, 211, 0.326);
+    }
+</style>
 </head>
 <body>
 
@@ -22,23 +70,25 @@
 <%@ include file="../../../views/common/managerNavbar.jsp" %>
 
 <br><br><br><br>
+<div class="outer1">
+<br>
+<h1 style = "text-align : center;font-weight: 900; font-size: 35px;">후기관리</h1>
+<br>&nbsp;
+<div class="buttons">
+	<form action="/KH_ONTRIP/manager/reviews/play?category=PP" method="post">
+	    <button class="btn-click btn btn-success" id="btn" name="tb" onclick="show(this);">놀거리</button>
+	</form>
+	<form action="/KH_ONTRIP/manager/reviews/play?category=HH" method="post">
+	    <button class="btn-click btn btn-success" id="btn" name="tb" onclick="show(this);">숙소</button>
+	</form>
+	<form action="/KH_ONTRIP/manager/reviews/play?category=FF" method="post">
+	    <button class="btn-click btn btn-success" id="btn" name="tb" onclick="show(this);">맛집</button>
+	</form>
+</div>
+<div class="table1" style="margin-top: -50px;">
+    <table class="table table-bordered">
 
-<h1 style="font-weight:900; margin-left:50%; margin-top:-20px;">후기 관리</h1><br>
-
-<form action="/KH_ONTRIP/manager/reviews/play?category=PP" method="post">
-    <button class="btn-click" id="q" name="tb" onclick="show(this);" style="margin-left:26%;">놀거리</button>
-</form>
-<form action="/KH_ONTRIP/manager/reviews/play?category=HH" method="post">
-    <button class="btn-click" id="w" name="tb" onclick="show(this);">숙소</button>
-</form>
-<form action="/KH_ONTRIP/manager/reviews/play?category=FF" method="post">
-    <button class="btn-click" id="e" name="tb" onclick="show(this);">맛집</button>
-</form>
-
-<div class="table1" id="qtb">
-    <table class="table" id="qtb" style="width:1000px;">
-
-        <thead>
+        <thead style="text-align:center;">
         <tr class="table-secondary">
             <th scope="col">번호</th>
             <th scope="col">이용시설</th>
@@ -54,7 +104,7 @@
 
             <tr>
                 <th scope="row">${vo.revCode}</th>
-                <td><a href="/KH_ONTRIP/manager/reviews/review?revCode=${vo.revCode}&categoryCode=${vo.category}">${vo.plcName}</a></td>
+                <td style="height: 30px;"><a href="/KH_ONTRIP/manager/reviews/review?revCode=${vo.revCode}&categoryCode=${vo.category}">${vo.plcName}</a></td>
                 <td>${vo.memName}</td>
                 <td><fmt:formatDate value="${vo.rnDate }" pattern="yyyy-mm-dd" /></td>
             </tr>
@@ -65,22 +115,21 @@
 
         </tbody>
     </table>
+</div>
 
-    <br><br><br><br><br><br>
-
-    <div class="paging">
+    <div class="paging" style="text-align:center;">
         <c:if test="${page.prev }">
-            <button class="btn btn-num1"><a href="/KH_ONTRIP/manager/reviews/play?pageNum=${page.startPage - 1 }&amount=${page.amount}&category=${category}"><</a></button>
+            <button class="btn"><a style="color:black; text-decoration: none; font-weight: bold;" href="/KH_ONTRIP/manager/reviews/play?pageNum=${page.startPage - 1 }&amount=${page.amount}&category=${category}">이전</a></button>
         </c:if>
 
         <c:forEach var="num" begin="${page.startPage }" end="${page.endPage }">
-            <button class="btn btn-num2 ${page.pageNum eq num ? 'active' : '' }">
-                <a href="/KH_ONTRIP/manager/reviews/play?pageNum=${num }&amount=${page.amount}&category=${category}">${num }</a>
+            <button class="btn  ${page.pageNum eq num ? 'active' : '' }">
+                <a style="color:black; text-decoration: none; font-weight: bold;" href="/KH_ONTRIP/manager/reviews/play?pageNum=${num }&amount=${page.amount}&category=${category}">${num }</a>
             </button>
         </c:forEach>
 
         <c:if test="${page.next }">
-            <button class="btn btn-num6"><a href="/KH_ONTRIP/manager/reviews/play?pageNum=${page.endPage + 1 }&amount=${page.amount}&category=${category}">></a></button>
+            <button class="btn "><a style="color:black; text-decoration: none; font-weight: bold;" href="/KH_ONTRIP/manager/reviews/play?pageNum=${page.endPage + 1 }&amount=${page.amount}&category=${category}">다음</a></button>
         </c:if>
     </div>
 

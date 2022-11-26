@@ -2,6 +2,7 @@
     pageEncoding="UTF-8" import="com.ontrip.member.model.vo.Member"%>
 <%
     String contextPath = request.getContextPath();
+	String hashTag = (String)request.getAttribute("hashTag");
 %>
 <!DOCTYPE html>
 <html lang="ko">
@@ -19,9 +20,11 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
 	<style>
 	   .tagify{    
-	        width: 90%;
-	        max-width: 700px;
+	        width: 50%;
+	        max-width: 400px;
+          
 	      }
+
    </style>
 	
 </head>
@@ -43,15 +46,18 @@
 
     <form action="<%=request.getContextPath() %>/searchPlace.se" id="enroll-form" method="post">
      <div class="input-group mb-3" style="width:700px; height:50px; margin:auto;">
-       <input style="border:2px solid rgb(206, 204, 204);" type="text" class="form-control" aria-label="Recipient's username" aria-describedby="button-addon2" name="word">
+       <input style="border:2px solid rgb(206, 204, 204);" type="text" class="form-control" aria-label="Recipient's username" aria-describedby="button-addon2" name="word" placeholder="시설의 이름을 입력해주세요">
        <button style="border:2px solid rgb(206, 204, 204); color:burlywood; font-weight: bold;" class="btn btn-outline-secondary" type="submit" id="button-addon2">검색</button>
      </div>
   	</form>
   	
 	<form action="<%=request.getContextPath() %>/searchHashPlace.se" id="enroll-form" method="post">
-	   <div class="input-group mb-3" style="width:700px; height:50px; margin:auto;">
-	   <input style="border:2px solid rgb(206, 204, 204);" type="text" class="form-control" aria-label="Recipient's username" aria-describedby="button-addon2" name='hash'>
-	  <input type="hidden" name='hidden_hash'>
+    <div>
+      <span style="margin-left:1550px;"><%= hashTag %></span>
+    </div>
+	   <div class="input-group mb-3" style="width:700px; height:50px; margin-left:1550px; ">
+	   <input style="border:2px solid rgb(206, 204, 204);" type="text" id="search12" class="form-control" aria-label="Recipient's username" aria-describedby="button-addon2" name='hash' placeholder="해시태그를 입력해주세요">
+	   <input type="hidden" name='hidden_hash'>
 	   <button style="border:2px solid rgb(206, 204, 204); color:burlywood; font-weight: bold;" class="btn btn-outline-secondary" type="submit" id="button-addon2">검색</button>
 	   </div>
 	</form>

@@ -126,15 +126,15 @@ public class AdReviewDao {
             rs = psmt.executeQuery();
 
             while (rs.next()) {
-                reviewBoard = new ReviewDetailedBoard();
-                reviewBoard.setPlcName(rs.getString("PLC_NAME"));
-                reviewBoard.setMemName(rs.getString("MEM_NAME"));
-                reviewBoard.setRevDate(rs.getDate("REV_DATE"));
-                reviewBoard.setRevText(rs.getString("REV_TEXT"));
-                reviewBoard.setRevStar(rs.getInt("REV_STAR"));
-                reviewBoard.setRevC(rs.getInt("REV_C"));
-                reviewBoard.setRevS(rs.getInt("REV_S"));
-                reviewBoard.setRevP(rs.getInt("REV_P"));
+                reviewBoard = new ReviewDetailedBoard(rs.getString("PLC_NAME"),
+                		rs.getString("MEM_NAME"),
+                		rs.getDate("REV_DATE"),
+                		rs.getString("REV_TEXT"),
+                		rs.getInt("REV_STAR"),
+                		rs.getInt("REV_C"),
+                		rs.getInt("REV_S"),
+                		rs.getInt("REV_P"),
+                		rs.getString("CATEGORY_CODE"));
             }
 
         } catch (SQLException e) {

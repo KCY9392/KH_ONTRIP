@@ -6,8 +6,12 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Properties;
+
+import com.ontrip.hash.vo.Hash;
 
 
 public class HashDao {
@@ -63,6 +67,61 @@ private Properties prop = new Properties();
 			close(psmt);
 		}
 		   return result2;
+	}
+	
+	public ArrayList<Hash> selectHash(Connection conn){
+		ArrayList<Hash> hash = new ArrayList<Hash>();
+		
+		PreparedStatement psmt = null;
+		
+		ResultSet rset = null;
+		String sql = prop.getProperty("selectHashTag");
+		
+		try {
+			psmt = conn.prepareStatement(sql);
+			
+			rset = psmt.executeQuery();
+			
+			while(rset.next()) {
+				hash.add(new Hash(
+							rset.getString("HAS_NAME")));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(psmt);
+		}
+		
+		return hash;
+		
+	}
+	
+	public ArrayList<Hash> selectHashPlace(String placeName, Connection conn){
+		ArrayList<Hash> hashTag = new ArrayList<Hash>();
+		
+		PreparedStatement psmt = null;
+		
+		ResultSet rset = null;
+		String sql = prop.getProperty("selectHashTagPlace");
+		
+		try {
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, placeName);
+			rset = psmt.executeQuery();
+			
+			while(rset.next()) {
+				hashTag.add(new Hash(
+							rset.getString("HAS_NAME")));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(psmt);
+		}
+		
+		return hashTag;
 	}
 	
 }

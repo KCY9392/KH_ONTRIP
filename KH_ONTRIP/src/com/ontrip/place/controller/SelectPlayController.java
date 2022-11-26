@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.ontrip.detailArea.service.DetailAreaService;
+import com.ontrip.hash.service.HashService;
+import com.ontrip.hash.vo.Hash;
 import com.ontrip.heart.vo.Heart;
 import com.ontrip.image.vo.Image;
 import com.ontrip.member.model.vo.Member;
@@ -44,6 +46,19 @@ public class SelectPlayController extends HttpServlet {
 		
 		String placeCode = new PlaceService().findPlaceCode(placeName);
 		request.setAttribute("placeCode", placeCode);
+		ArrayList<Hash> hashTag = new HashService().selectHashPlace(placeName);
+		
+		String value = "";
+		if(hashTag != null) {
+			for(int i = 0; i<hashTag.size(); i++) {
+				System.out.println(hashTag.get(i).getHashName());
+				value += "#"+hashTag.get(i).getHashName()+  ( i != hashTag.size()-1 ?  "," : "");
+				
+			}
+		}
+		System.out.println(value);
+		request.setAttribute("value", value);
+		
 		
 		// 시설사진
 		ArrayList<Image> placeImages = new PlaceService().selectPlaceImages(placeName);

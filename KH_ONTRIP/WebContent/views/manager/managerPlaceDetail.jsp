@@ -2,7 +2,7 @@
     pageEncoding="UTF-8" import="java.util.ArrayList, com.ontrip.place.model.vo.Place"%>
 <%
     String contextPath = request.getContextPath();
-	
+
 %>
 
 <!DOCTYPE html>
@@ -13,11 +13,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>관리자 - 시설 삭제 화면</title>
     <link href="<%= contextPath %>/resources/css/manager_placeInsert.css" rel="stylesheet" >
- 	!-- 소스 다운 -->
-	<script src="https://unpkg.com/@yaireo/tagify"></script>
-	<!-- 폴리필 (구버젼 브라우저 지원) -->
-	<script src="https://unpkg.com/@yaireo/tagify/dist/tagify.polyfills.min.js"></script>
-	<link href="https://unpkg.com/@yaireo/tagify/dist/tagify.css" rel="stylesheet" type="text/css" />
+ 
+    <!-- 소스 다운 -->
+   <script src="https://unpkg.com/@yaireo/tagify"></script>
+   <!-- 폴리필 (구버젼 브라우저 지원) -->
+   <script src="https://unpkg.com/@yaireo/tagify/dist/tagify.polyfills.min.js"></script>
+   <link href="https://unpkg.com/@yaireo/tagify/dist/tagify.css" rel="stylesheet" type="text/css" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script
@@ -27,6 +28,7 @@
     </script>
     <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=3c46a61fbdf9ee1c5956f08d7c2deaf8&libraries=services"></script>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
     <style>
        
        select{
@@ -47,8 +49,8 @@
        }
        span{
           font-weight:bold;
-          font-size:18px;
-          color:rgb(2, 148, 12);
+          font-size:20px;
+          color:black; /* rgb(2, 148, 12) */
        }
        .input-box input{
           border:none;
@@ -66,7 +68,26 @@
        .container-div{
           border:none;
           box-shadow:0 0 5px grey;
+          height:1350px;
        }
+       .place-image{
+        width: 100%;
+       }
+       .btn2:hover{
+        color:#6098FF;  
+       }
+       .btn2:hover::before{
+        opacity: 1;
+        background-color: #fff;
+        -webkit-transform: scaleY(1);
+        transform: scaleY(1);
+        transition: -webkit-transform .6s cubic-bezier(.08, .35, .13, 1.02), opacity .4s;
+        transition: transform .6s cubic-bezier(.08, .35, .13, 1.02), opacity
+      }
+      .tagify{    
+		  border:none;
+		  font-size: 20px;
+		}
     </style>
 </head>
 <body>
@@ -74,64 +95,75 @@
     <%@ include file="../common/managerNavbar.jsp" %> 
 
         <br><br><br><br>
-      
-   <form method="post" action="<%= request.getContextPath()%>/placeDelete.mn?placeName=${place.plcName}">
-         
-      
-         <div class="container-div">
-            <span style="font-size:20px;">시설이름 :&nbsp;&nbsp;&nbsp;</span>
-            <span style="font-size:20px;">${place.plcName}</span> <br><br>
-
-      <span style="width:150px; height:40px; float:left; margin-left:50px; margin-top:-50px;"> ${place.categoryName}</span>
-      
-
-            <div class="place-image">
-                <img class="img1" src="<%= request.getContextPath() %>/${placeImg[0].filePath}${placeImg[0].changeName}">
-
-                <img class="img2" src="<%= request.getContextPath() %>/${placeImg[1].filePath}${placeImg[1].changeName}">
-
-                <img class="img3" src="<%= request.getContextPath() %>/${placeImg[2].filePath}${placeImg[2].changeName}">
-            </div>
-
-            
-            <br><br>
-            
-            <span style="color:black; font-size:17px;">작성자 : admin</span> <br><br>
-
-            <div style="font-size:20px; padding:10px;">
-            <span style="color:grey;">대표지역</span>
-            <span style="margin-left:70px; color:grey;">세부지역</span><br>
-            </div>
-
-			<div style="font-size:20px; padding:10px;">
-            <span style="font-size:20px;">${place.localName}</span>
-            <span style="margin-left:92px; font-size:20px;">${place.dareaName}</span>
+        <div class="container-div">
+            <form method="post" action="<%= request.getContextPath()%>/placeDelete.mn?placeName=${place.plcName}">
+                
+            <br>
+            <div style="border: 1px solid white; height: 8%;" class="shadow-lg">
+               <table>
+                    <tr>
+                        <td style="font-size: 25px; float: left;">&nbsp;&nbsp;&nbsp;시설이름 : <strong>${place.plcName}</strong></td>
+                    </tr>
+                    <tr>
+                        <td style="font-size: 25px; float: left;">&nbsp;&nbsp;&nbsp;카테고리 : <strong>${place.categoryName}</strong></td>
+                    </tr>
+               </table> 
             </div>
             <br>
-
-         <div class="input-box">
-               <span>대표자 : &nbsp;</span>
-               <span style="font-size:20px;">${place.plcBname}</span> <br><br>
-               <span>주소 : &nbsp;</span>
-                <span style="font-size:20px;">${place.plcAddress}</span> <br><br>
-               <span>전화번호 : &nbsp;</span>
-                <span style="font-size:20px;">${place.plcPnumber}</span> <br><br>
-               <br>
-   			   <div id="map" style="width:100%;height:350px;"></div>
-               <span>내용</span> <br>
-               <textarea name="content" cols="50" rows="5" style="resize:none;" readonly>
-                ${place.plcText}
-               </textarea>
-               <br><br>
-               <span>해시태그 : &nbsp;</span>
-               <input name='tags' readonly value="${value}">
-               <input type='hidden' name='hashNo' readonly value="${num}">
+            <div class="place-image shadow-lg" style="border: 1px solid white; height: 27%;">
+                &nbsp;&nbsp;&nbsp;
+                <img  src="<%= request.getContextPath() %>/${placeImg[0].filePath}${placeImg[0].changeName}" style="width: 32%; height:237px; margin-left: -2px;">&nbsp;&nbsp;
+                <img  src="<%= request.getContextPath() %>/${placeImg[1].filePath}${placeImg[1].changeName}" style="width: 32%; height:237px; margin-left: 0px;">&nbsp;&nbsp;
+                <img  src="<%= request.getContextPath() %>/${placeImg[2].filePath}${placeImg[2].changeName}" style="width: 32%; height:237px; margin-left: 0px;">
             </div>
-            <br><br>
+        
+            <!-- <span style="color:black; font-size:17px;">작성자 : admin</span> <br><br> -->
+            <br>
+            <div style="font-size:20px; border: 1px solid white; background-color: rgb(190, 244, 215);" class="shadow-lg">
+                <span style="color:grey; text-align: center; font-size: 25px;">대표지역 : <span style="font-size: 25px">[${place.localName}]</span></span>
+                <span style="margin-left:70px; color:grey; font-size: 25px;">세부지역 : <span style="font-size: 25px">[${place.dareaName}]</span></span><br>
+            </div>
             
-      <button type="submit" style="border:none; width:150px; height:50px; background-color:bisque; font-weight:900; font-size:15px; border-radius:5px;">삭제</button>
-        </form>
-       </div> 
+            <!-- <div style="font-size:20px; padding:10px; border: 1px solid white;" class="shadow-lg">
+            <span style="font-size:20px; margin-left: -10px;">${place.localName}</span>&nbsp;
+            <span style="margin-left:97px; font-size:20px;">${place.dareaName}</span>
+            </div> -->
+            <br>
+
+         <div class="input-box shadow-lg" style="border: 1px solid white;">
+               <table>
+                    <tr>
+                        <td style="font-size: 25px; float: left;">&nbsp;&nbsp;&nbsp;대표자 : <strong>${place.plcBname}</strong></td>
+                    </tr>
+                    <tr>
+                        <td style="font-size: 25px; float: left;">&nbsp;&nbsp;&nbsp;주소 : <strong>${place.plcAddress}</strong></td>
+                    </tr>
+                    <tr>
+                        <td style="font-size: 25px; float: left;">&nbsp;&nbsp;&nbsp;전화번호 : <strong>${place.plcPnumber}</strong></td>
+                    </tr>
+               </table>
+         </div>
+               <br>
+               <div id="map" style="width:100%;height:350px; border: 1px solid white" class="shadow p-3 mb-5 bg-body shadow-lg"></div>
+               <div style="border: 1px solid white; margin-top: -20px; background-color: rgb(190, 244, 215);" class="shadow-lg">
+                 <span style="font-size: 25px;">내용</span>
+               </div>
+               <div>
+                    <br>
+                    <p style="font-size: 17px;" class="shadow-lg">${place.plcText}</p>
+               </div>
+               <div class="input-box shadow-lg" style="height: 45px;">
+                     <span>#해시태그 : &nbsp;</span>
+                     <input name='tags' readonly value="${value}" style="background: transparent;">
+                     <input type='hidden' name='hashNo' readonly value="${num}" style="background: transparent;">
+               </div>
+            <br>
+             <div>
+                <br>
+                 <button type="submit" style="border:none; width:150px; height:50px; font-weight:900; font-size:15px; border-radius:5px; font-size: 20px;" class="btn2 btn-success">✔&nbsp;삭제</button>
+             </div>
+        </form>  
+    </div> 
 
 
             <script>
@@ -175,7 +207,7 @@
                 
                 
             </script>
-			 <script>
+          <script>
             var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
                 mapOption = { 
                     center: new kakao.maps.LatLng(${place.plcLa}, ${place.plcLo}), // 지도의 중심좌표
@@ -196,11 +228,11 @@
                // 마커가 지도 위에 표시되도록 설정합니다
                marker.setMap(map);
              </script>
-             <!-- 해시태그 조회 -->
-			<script>
-			    var input = document.querySelector('input[name=tags]')
-			    new Tagify(input)
-			</script>
+			<!-- 해시태그 조회 -->
+         <script>
+             var input = document.querySelector('input[name=tags]')
+             new Tagify(input)
+         </script>
         
         
    

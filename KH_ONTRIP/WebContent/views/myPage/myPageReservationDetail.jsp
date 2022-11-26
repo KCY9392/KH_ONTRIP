@@ -163,7 +163,7 @@
                         </tr>
                         <tr>
                             <td>가격 : &nbsp;</td>
-                            <td><input type="text" value="${rev.rnPrice} KRW"></td>
+                            <td><input type="text" value="<fmt:formatNumber value="${totalPrice}" pattern="#,###"/> KRW" readonly></td>
                             
                             <td></td>
                         </tr>

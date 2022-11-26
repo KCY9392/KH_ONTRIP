@@ -26,7 +26,11 @@
    	ArrayList<Image> hotelPath = (ArrayList<Image>)request.getAttribute("hotelPath");
    	ArrayList<Place> hotelInfo = (ArrayList<Place>)request.getAttribute("hotelInfo");
    	
-   	Heart ht = (Heart)request.getAttribute("ht");
+  	//해시 태그 가져오기 
+  	String value = (String) request.getAttribute("value");
+
+  	// 로그아웃시 사용자의 찜하기 기록을 유지하기위한 객체
+  	Heart ht = (Heart) request.getAttribute("ht");
 %>
 <!DOCTYPE html>
 <html lang="ko">
@@ -44,7 +48,11 @@
         integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="
         crossorigin="anonymous">
     </script>
-    
+    <!-- 소스 다운 -->
+   <script src="https://unpkg.com/@yaireo/tagify"></script>
+   <!-- 폴리필 (구버젼 브라우저 지원) -->
+   <script src="https://unpkg.com/@yaireo/tagify/dist/tagify.polyfills.min.js"></script>
+   <link href="https://unpkg.com/@yaireo/tagify/dist/tagify.css" rel="stylesheet" type="text/css" />
     <!-- animate.style -->
 <link
     rel="stylesheet"
@@ -133,6 +141,14 @@
    width: 315px;
    height: 53px;
 }
+.tagify{    
+  border:none;
+  max-width: 190px;
+  height:50px;
+  font-size: 15px;
+  font-weight: bold;
+  background: #1ce0fa;
+}
 </style>
 </head>
 <body>
@@ -155,8 +171,10 @@
             <button class="btn-review2" style="font-weight: bold; color:blueviolet; background-color: cornsilk; border-radius:10px; border:3px solid rgb(44, 144, 72); ">이용후기 보러가기</button>
             </a>
         </div>
-
-        <br><br>
+		<br>
+		<div style="text-align:center; margin-left:200px">
+        <input name='tags' readonly value="<%=value%>">
+        </div>
 
         <div class="img-hotel">
             <% if (!placeImages.isEmpty()) { %>
@@ -360,5 +378,10 @@
                // 마커가 지도 위에 표시되도록 설정합니다
                marker.setMap(map);
              </script>
+             <script>
+             var input = document.querySelector('input[name=tags]')
+             new Tagify(input)
+         	</script>
+             
 </body>
 </html>
