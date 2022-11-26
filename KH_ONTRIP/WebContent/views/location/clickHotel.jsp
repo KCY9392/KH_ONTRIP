@@ -155,7 +155,6 @@
   height:50px;
   font-size: 15px;
   font-weight: bold;
-  background: #1ce0fa;
 }
 </style>
 </head>

@@ -3,14 +3,15 @@
 <properties>
 			
 	<entry key="selectScore">
-		SELECT 
+      SELECT 
             ROUND(AVG(NVL(REV_STAR , 0)) , 2),
             ROUND(AVG(NVL(REV_C , 0)) ,2),
             ROUND(AVG(NVL(REV_S , 0)) ,2),
             ROUND(AVG(NVL(REV_P , 0)) ,2)
-		FROM "Score"
+      FROM "Score"
         JOIN "Review" R USING(REV_CODE)
         WHERE R.PLC_CODE = ?
-	</entry>
+        AND STATUS = 'Y'
+   </entry>
 	
 </properties>
