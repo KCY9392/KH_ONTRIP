@@ -4,12 +4,11 @@
     
 <%
 	Place place = (Place)request.getAttribute("place");
-	String placeName = (String)request.getParameter("placeName");
+	String placeName = (String)request.getAttribute("placeName");
 		
 	int memberNo = Integer.parseInt(request.getParameter("memberNo"));
-	
+	String placeCode = String.valueOf(request.getAttribute("placeCode"));
 	int revCode = Integer.parseInt((String)request.getParameter("revCode"));
-	
 	ArrayList<Image> selectMainImagelist = (ArrayList<Image>)request.getAttribute("selectMainImagelist");
 	
 	Review r = (Review) request.getAttribute("re");
@@ -113,8 +112,8 @@ button:hover{transform: scale(.9);}
     <div class="outer1 shadow p-3 mb-5 bg-body rounded">
         <br><br><br>
         <div align="center">
-            <form id="checkReview" action="<%=request.getContextPath()%>/deleteReivew.re?memberNo=<%=memberNo %>&revCode=<%=revCode %>&placeName=<%=r.getPlaceName() %>" method="post">
-                <strong style="float: left; font-size: 25px;">이용시설 : <%=r.getPlaceName()%> &nbsp;&nbsp;&nbsp;</strong> <input type="text" name="placeName" id = "review" style="height: 30px; width: 150px; border: 0px; font-size: 20; font-weight: bold;" readonly><br> 
+            <form id="checkReview" action="<%=request.getContextPath()%>/deleteReivew.re?memberNo=<%=memberNo %>&revCode=<%=revCode %>&placeName=<%=placeName %>&placeCode=<%=placeCode %>" method="post">
+                <strong style="float: left; font-size: 25px;">이용시설 : <%=placeName%> &nbsp;&nbsp;&nbsp;</strong> <input type="text" name="placeName" id = "review" style="height: 30px; width: 150px; border: 0px; font-size: 20; font-weight: bold;" readonly><br> 
                 <!-- <hr width="60%"><br> --><br>
                 <img src="<%=request.getContextPath()%>/<%=selectMainImagelist.get(0).getFilePath()%><%=selectMainImagelist.get(0).getChangeName() %>" style="width: 110%; height:330px; margin-left: -23px;" class="shadow p-3 mb-5 bg-body rounded"><br>
                 <strong style="float: left;">작성일시 :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbs&nbsp;&nbsp;;</strong><input type="text" name="reviewSysdate" value="<%=r.getRevDate()%>" id = "review" style="height: 30px; border: 0px; font-size: 17; margin-left: -350px;"><br>
@@ -153,7 +152,7 @@ button:hover{transform: scale(.9);}
     </div>
     
     <script>
-        function updateReview(){
+        function updateReview(memberNo, placeCode, placeName){
         	
         	let $updateStar = $("input[name=updateStar]");
         	let $cScroe = $("input[name=cScore]");
@@ -167,7 +166,7 @@ button:hover{transform: scale(.9);}
             	success : function(result){
             		if(result == "success"){
             			alert("수정이 완료되었습니다.");
-            			location.href = "<%=request.getContextPath() %>"+"/mypageReviewList.me?memberNo="+<%=loginUser.getMemberNo()%>;
+            			location.href = '<%=request.getContextPath() %>/mypageReviewList.me?memberNo=<%=loginUser.getMemberNo()%>';
             		}else{
             			alert("수정에 실패하였습니다.");
             			location.href = '<%=request.getContextPath() %>/detail.bo';

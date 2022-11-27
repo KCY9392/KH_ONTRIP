@@ -28,16 +28,19 @@ public class reviewDeleteController extends HttpServlet {
 
 		int memberNo = Integer.parseInt(request.getParameter("memberNo"));
 		int revCode = Integer.parseInt(request.getParameter("revCode"));
+		int placeCode = Integer.parseInt(request.getParameter("placeCode"));
+		System.out.println(placeCode);
 		String placeName = request.getParameter("placeName");
-		
+		request.setAttribute("placeName", placeName);
+		System.out.println(placeName+"11111111111");
 		request.setAttribute("memberNo", memberNo);
 		request.setAttribute("revCode", revCode);
 		
 		int result = new ReviewService().deleteReview(memberNo , revCode);
 		
 		
-		
-		request.getRequestDispatcher("views/common/mainForm.jsp").forward(request, response);
+//		request.getRequestDispatcher(request.getContextPath()+"/review.re?memberNo="+memberNo+"&placeName="+placeName+"&placeCode="+placeCode).forward(request, response);
+		response.sendRedirect(request.getContextPath()+"/review.re?memberNo="+memberNo+"&placeName="+placeName+"&placeCode="+placeCode);
 		
 	}
 

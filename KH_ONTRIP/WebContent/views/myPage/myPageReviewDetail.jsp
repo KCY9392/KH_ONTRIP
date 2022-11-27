@@ -167,7 +167,7 @@ button:hover{transform: scale(.9);}
             	success : function(result){
             		if(result == "success"){
             			alert("수정이 완료되었습니다.");
-            			location.href = '<%=request.getContextPath() %>/start.me';
+            			location.href = '<%=request.getContextPath() %>/mypageReviewList.me?memberNo=<%=loginUser.getMemberNo()%>';
             		}else{
             			alert("수정에 실패하였습니다.");
             			location.href = '<%=request.getContextPath() %>/detail.bo';

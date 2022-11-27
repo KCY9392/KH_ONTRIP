@@ -2,8 +2,7 @@
     pageEncoding="UTF-8" import="com.ontrip.detailArea.vo.DetailArea ,com.ontrip.image.vo.Image,
     com.ontrip.place.model.vo.Place , com.ontrip.review.vo.Review ,com.ontrip.score.vo.Score , java.util.ArrayList , com.ontrip.common.model.vo.PageInfo"%>
 <%
-	Place place = (Place)request.getAttribute("place");
-	String placeName = (String)request.getParameter("placeName");
+	String placeName = (String)request.getAttribute("placeName");
 	
 	int memberNo = Integer.parseInt(request.getParameter("memberNo"));
 	
@@ -317,7 +316,7 @@
             		
             		let revCode = $(this).children().eq(0).text()
             		
-            		location.href = '<%=request.getContextPath()%>/detail.bo?memberNo=<%=memberNo%>&placeCode=<%=placeCode%>&revCode='+revCode;
+            		location.href = '<%=request.getContextPath()%>/detail.bo?placeName=<%=placeName%>&memberNo=<%=memberNo%>&placeCode=<%=placeCode%>&revCode='+revCode;
             		
             		
             	});

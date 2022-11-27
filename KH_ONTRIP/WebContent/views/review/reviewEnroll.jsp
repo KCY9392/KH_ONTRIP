@@ -112,7 +112,7 @@ button:hover{transform: scale(.9);}
     <div class="outer1 shadow p-3 mb-5 bg-body rounded">
         <br><br><br>
         <div align="center">
-            <form id="checkReview" action="<%=request.getContextPath()%>/updateScore.se?memberNo=<%=memberNo %>&placeCode=<%=placeCode %>&revCode=<%= revCode %>" method="post">
+            <form id="checkReview" action="<%=request.getContextPath()%>/updateScore.se?memberNo=<%=memberNo %>&placeCode=<%=placeCode %>&revCode=<%= revCode %>&placeName=<%=placeName %>" method="post">
                 <strong style="float: left; font-size: 25px;">이용시설 : <%=placeName%> &nbsp;&nbsp;&nbsp;</strong> <input type="text" name="placeName" id = "review" style="height: 30px; width: 150px; border: 0px; font-size: 20; font-weight: bold;" readonly><br> 
                 <!-- <hr width="60%"><br> --><br>
                 <img src="<%=request.getContextPath()%>/<%=selectMainImagelist.get(0).getFilePath()%><%=selectMainImagelist.get(0).getChangeName() %>" style="width: 110%; height:330px; margin-left: -23px;" class="shadow p-3 mb-5 bg-body rounded"><br>
