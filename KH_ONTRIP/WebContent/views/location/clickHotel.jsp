@@ -186,7 +186,7 @@
         <div class="img-hotel">
            <% if (!placeImages.isEmpty()) { %>
                <% for (int i = 0; i < placeImages.size(); i++) { %>
-               <img style="border-radius:10px;" src="<%= request.getContextPath() %>/<%=placeImages.get(i).getFilePath()+placeImages.get(i).getChangeName() %>" >
+               <img style="width: 450px; height: 300px;" src="<%= request.getContextPath() %>/<%=placeImages.get(i).getFilePath()+placeImages.get(i).getChangeName() %>" alt="">
             <% } %>
             <% } %>
         </div>

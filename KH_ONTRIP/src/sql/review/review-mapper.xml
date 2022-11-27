@@ -140,6 +140,7 @@
     		REV_S = ? ,
     		REV_P = ?
 		WHERE REV_CODE = ?
+		
 	</entry>
 	
 	<entry key="updateReview">

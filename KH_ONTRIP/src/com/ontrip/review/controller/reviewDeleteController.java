@@ -38,18 +38,9 @@ public class reviewDeleteController extends HttpServlet {
 		
 		int result = new ReviewService().deleteReview(memberNo , revCode);
 		
-		
-		//request.getRequestDispatcher(request.getContextPath()+"/review.re?memberNo="+memberNo+"&placeName="+placeName+"&placeCode="+placeCode).forward(request, response);
-		//response.sendRedirect(request.getContextPath()+"/review.re?memberNo="+memberNo+"&placeName="+placeName+"&placeCode="+placeCode);
-		if (result > 0){
-			response.setContentType("text/html;charset=UTF-8");
-			response.getWriter().print("<script> location.href = '/KH_ONTRIP/review.re?placeName="+placeName+"&memberNo="+memberNo+"&placeCode="+placeCode+"'</script>");
-
-		}else {
-			request.setAttribute("errorMsg", "등록에 실패하였습니다.");
-			request.getRequestDispatcher("views/common/errorPage.jsp").forward(request, response);
-		}
-		
+//		request.getRequestDispatcher(request.getContextPath()+"/review.re?memberNo="+memberNo+"&placeName="+placeName+"&placeCode="+placeCode).forward(request, response);
+		response.sendRedirect(request.getContextPath()+"/review.re?memberNo="+memberNo+"&placeName="+placeName+"&placeCode="+placeCode);
+//		request.getRequestDispatcher("views/review/reviewList.jsp?memberNo="+memberNo+"&placeName="+placeName+"&placeCode="+placeCode);
 	}
 
 
