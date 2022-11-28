@@ -24,11 +24,11 @@ public class ReviewDetailedController implements ReviewFrontController {
 
         int revCode = Integer.parseInt(revCode1);
 
-        System.out.println("revCode = " + revCode);
+//        System.out.println("revCode = " + revCode);
 
         String categoryCode = request.getParameter("categoryCode");
 
-        System.out.println("categoryCode = " + categoryCode);
+//        System.out.println("categoryCode = " + categoryCode);
 
         ReviewDetailedBoard review = adReviewService.getReview(revCode);
 
@@ -38,7 +38,7 @@ public class ReviewDetailedController implements ReviewFrontController {
 
         request.setAttribute("categoryCode" , categoryCode);
 
-        System.out.println("review = " + review);
+//        System.out.println("review = " + review);
 
 
 

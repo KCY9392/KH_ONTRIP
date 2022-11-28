@@ -31,7 +31,7 @@ public class newPwdUpdateCheck extends HttpServlet {
 		String newPwd = request.getParameter("newPwd");//새로운 비밀번호
 		String checkPwd = request.getParameter("checkPwd"); //비밀번호 확인
 		String memberId = request.getParameter("memberId");  //회원의 아이디
-		System.out.println(memberId);
+//		System.out.println(memberId);
 		
 		if(newPwd.equals(checkPwd)) { // 새로운 비밀번호와 비밀번호 확인이 일치하면, 
 			int result = new MemberService().findPwdupdate(newPwd, memberId);

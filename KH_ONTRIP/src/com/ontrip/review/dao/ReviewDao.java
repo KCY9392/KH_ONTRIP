@@ -110,7 +110,7 @@ public class ReviewDao {
 						rset.getString("MEM_NAME")
 						));
 			}
-			System.out.println(relist);
+//			System.out.println(relist);
 		} catch (SQLException e) {
 
 			e.printStackTrace();
@@ -459,8 +459,8 @@ public class ReviewDao {
 			psmt.setString(1, rUpdate.getRevText());
 			psmt.setInt(2, rUpdate.getRevCode());
 			
-			System.out.println(rUpdate.getRevText() + "통과");
-			System.out.println(rUpdate.getRevCode() + "통과");
+//			System.out.println(rUpdate.getRevText() + "통과");
+//			System.out.println(rUpdate.getRevCode() + "통과");
 			
 			result1 = psmt.executeUpdate();
 			

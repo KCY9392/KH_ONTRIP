@@ -152,7 +152,7 @@ button:hover{transform: scale(.9);}
     </div>
     
     <script>
-        function updateReview(memberNo, placeCode, placeName){
+        function updateReview(){
         	
         	let $updateStar = $("input[name=updateStar]");
         	let $cScroe = $("input[name=cScore]");

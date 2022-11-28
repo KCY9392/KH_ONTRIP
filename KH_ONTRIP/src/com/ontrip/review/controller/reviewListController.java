@@ -34,26 +34,26 @@ public class reviewListController extends HttpServlet {
 		// PLACE_CODE에 해당하는 PLACE_NAME을 뽑아낸후 해당하는 MEM_NO가 작성한 리뷰들을 LIST에 담아서 FOR문 돌리기 위한 코드
 		String placeName = request.getParameter("placeName");//안넘어옴
 		String placeName2 = (String)request.getAttribute("placeName");
-		System.out.println("placeName2 : "+placeName2);
+//		System.out.println("placeName2 : "+placeName2);
 		request.setAttribute("placeName", placeName);
 		
 		request.setAttribute("placeName2", placeName2);
 		
-		System.out.println(placeName);
+//		System.out.println(placeName);
 		int placeCode = Integer.parseInt(request.getParameter("placeCode"));
 		int memberNo = Integer.parseInt(request.getParameter("memberNo"));
-		System.out.println(memberNo+"통과됨");
+//		System.out.println(memberNo+"통과됨");
 
 		// 뽑아낸 정보들을 LIST에 담기
 		ArrayList<Review> reList = new ReviewService().selectReviewList(placeName);
 		
 		// JSP에서 사용하기 위해 Attribute에 담기
 		request.setAttribute("reList", reList); // 이거가 찐이에요 대박.
-		System.out.println(reList);
+//		System.out.println(reList);
 		
 		// PLACE_CODE로 해당하는 LIST 가져오기 
 		request.setAttribute("placeCode", placeCode);
-		System.out.println(placeCode+"통과됨");
+//		System.out.println(placeCode+"통과됨");
 		
 		// 별점 , 쳥결도 , 	직원 & 서비스 , 편의시설 서비스 평점 가져오기 위한 LIST
 		ArrayList<Score> slist = new ScoreService().selectSocreList(placeCode);

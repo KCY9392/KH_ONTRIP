@@ -39,7 +39,7 @@ public class reviewDetailController extends HttpServlet {
 		int placeCode = Integer.parseInt(request.getParameter("placeCode"));
 		
 		String placeName = request.getParameter("placeName");
-		System.out.println(placeName+"ㅇㅇㅇ");
+//		System.out.println(placeName+"ㅇㅇㅇ");
 		request.setAttribute("placeName", placeName);
 		// PLACE_CODE에 해당하는 대표이미지를 가져오기 위한 LIST
 		ArrayList<Image> selectMainImagelist = new ReviewService().selectMainImagelist(placeCode);
@@ -49,7 +49,7 @@ public class reviewDetailController extends HttpServlet {
 		
 		Review re = new ReviewService().selectReviewDetail(revCode);
 		request.setAttribute("placeCode", placeCode);
-		System.out.println(placeCode);
+//		System.out.println(placeCode);
 		request.setAttribute("re", re);
 		request.setAttribute("revCode", revCode);
 		request.getRequestDispatcher("views/review/reviewDetail.jsp").forward(request, response);

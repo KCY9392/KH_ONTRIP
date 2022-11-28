@@ -29,13 +29,13 @@ public class FindPwdController extends HttpServlet {
 		
 		String memberName = request.getParameter("memberName");
 		String memberId = request.getParameter("memberId");
-		System.out.println(memberId);
+//		System.out.println(memberId);
 		String phone = request.getParameter("phone");
 		
 		int isMem = new MemberService().findMem(memberId);
 		
 		String memberPwd = new MemberService().findPwd(memberName, memberId, phone);
-		System.out.println(memberPwd);
+//		System.out.println(memberPwd);
 		
 		Member m = new Member(memberId, memberPwd);
 		request.setAttribute("m", m);
