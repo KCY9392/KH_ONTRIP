@@ -349,6 +349,7 @@
                  if (result.isConfirmed) {
                      Swal.fire({
                            title: '가입이 완료되었습니다.',
+                           text: '로그인 화면으로 이동합니다.',
                            icon:'success',
                            customClass: {
                                confirmButton: 'swal2-confirm swal2-styled swal2-jong',

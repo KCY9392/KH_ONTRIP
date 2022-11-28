@@ -24,6 +24,7 @@
     <style>
         .outer{
             margin-left:-20%;
+
         }
         .container{
             background-color: rgb(255, 255, 255); /* 해당사이트의 고유한 색상으로 작성 */
@@ -92,56 +93,6 @@
 
 
 
-<%--    <% if(loginUser != null) { %>--%>
-<%--    <div class="row" style = "width:850px;">--%>
-<%--        <button href = "<%=contextPath%>/enrollForm.bo" >작성하기</button>--%>
-<%--    </div>--%>
-<%--    <% } %>--%>
-
-<%-- <table  class = "list-area">
-    <thead>
-    <tr>
-        <th style="background-color: #eeeeee; text-align: center;" width="70">글번호</th>
-        <th style="background-color: #eeeeee; text-align: center;" width="300">제목</th>
-        <th style="background-color: #eeeeee; text-align: center;" width="100">작성일</th>
-        <th style="background-color: #eeeeee; text-align: center;" width="50">작성자</th>
-    </tr>
-    </thead>
-    <tbody>
-    <c:forEach var="vo" items="${list}">
-        <tr>
-            <td><a href="/KH_ONTRIP/manager/questions/question?qCode=${vo.qCode}">${vo.qCode }</a></td>
-            <td>${vo.qTitle}</td>
-            <td><fmt:formatDate value="${vo.qDate }" pattern="yyyy-mm-dd" /></td>
-            <td>${vo.qCount}</td>
-        </tr>
-    </c:forEach>
-
-
-    </tbody>
-    <tbody>
-    <tr>
-        <td colspan="5">
-            <ul class="pagination">
-
-                <c:if test="${page.prev }">
-                    <li><a href="/KH_ONTRIP/manager/questions?pageNum=${page.startPage - 1 }&amount=${page.amount}">이전</a></li>
-                </c:if>
-
-                <c:forEach var="num" begin="${page.startPage }" end="${page.endPage }">
-                    <li  class="${page.pageNum eq num ? 'active' : '' }">
-                        <a href="/KH_ONTRIP/manager/questions?pageNum=${num }&amount=${page.amount}">${num }</a></li>
-                </c:forEach>
-
-                <c:if test="${page.next }">
-                    <li><a href="/KH_ONTRIP/manager/questions?pageNum=${page.endPage + 1 }&amount=${page.amount}">다음</a></li>
-                </c:if>
-            </ul>
-        </td>
-    </tr>
-    </tbody>
-</table> --%>
-
 <div class="main-container">
     <h2>문의사항 페이지</h2>
     <br><br>
@@ -165,7 +116,7 @@
             <c:forEach var="vo" items="${list}">
                 <tr>
                     <td>${vo.qCode }</td>
-                    <td><a href="/KH_ONTRIP/manager/questions/question?qCode=${vo.qCode}">${vo.qTitle}</a></td>
+                    <td><a style="text-decoration:none; color: green;" href="/KH_ONTRIP/manager/questions/question?qCode=${vo.qCode}">${vo.qTitle}</a></td>
                     <td><fmt:formatDate value="${vo.qDate }" pattern="yyyy-mm-dd" /></td>
                     <td>${vo.memName}</td>
                     <td>

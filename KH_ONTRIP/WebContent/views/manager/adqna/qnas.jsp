@@ -154,7 +154,7 @@
 <%@ include file="../../common/adnavbar.jsp" %>
 <%@ include file="../../../views/common/managerNavbar.jsp" %>
 
-<div class="outer1" style="margin-left:450px;">
+<div class="outer1" style="margin-left:550px;">
 
     <div class="title">
          <pre id="qnaTitle" style="text-align:center; margin-top:7px ;">Q & A 관리</pre>

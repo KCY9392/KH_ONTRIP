@@ -31,7 +31,7 @@
         height: 650px;
         margin: auto;
         margin-top: 100px;
-        margin-left: 680px;
+        margin-left: 550px;
         box-sizing: border-box;
     }
    td > a{

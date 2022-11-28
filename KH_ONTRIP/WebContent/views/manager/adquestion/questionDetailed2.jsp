@@ -76,23 +76,79 @@
             cursor: pointer;
             color:rgb(115, 183, 187);
         }
+        .uk-flex-middle {
+        align-items: center;
+    }
+    .uk-flex-center {
+        justify-content: center;
+    }
+    .uk-flex {
+        display: flex;
+    }
+    .uk-background-cover {
+        background-size: cover;
+    }
+    .uk-background-contain{
+        background-position: 50% 50%;
+        background-repeat: no-repeat;
+    }
+    .uk-section-default {
+        background: rgb(250, 250, 250);
+    }
+
+    .uk-section {
+        padding-top: 70px;
+        padding-bottom: 70px;
+    }
+    .uk-section {
+        display: flow-root;
+        box-sizing: border-box;
+    }
+    .sl-in2 {
+	  animation: change1 1s ease forwards;
+	}
+	
+	@keyframes change1 {
+	  from {
+	    transform: translateY(30%);
+	  }
+	
+	  to {
+	    transform: translateY(0%);
+	  }
+	}
+	textarea{
+		border:none;
+		box-shadow:0 0 5px grey;
+	}
     </style>
-    </style>
+    
 </head>
 <body>
 
 <%@ include file="../../common/adnavbar.jsp" %>
 
-<br><br><br><br><br>
-
+<br><br><br>
+<div class="uk-section uk-section-default sl-in2" style="min-width: 90vw; height:28vh;">
+        <div class="uk-container">
+            <div style="text-align: center; margin-top : -1.5%;">
+                <div style="font-size:40px; font-weight:600;">OnTrip</div><br>
+                <div style="color:darkgray">MAKE YOUR ROUTE OPTIMIZED</div> <br><br>
+                <div>
+                	<span style="color: coral; font-size:16px; font-weight:600;">문의사항 상세조회</span>
+                </div>
+            </div>
+        </div>
+    </div>
+<br><br>
 <div class="container">
-    <h2 class="panel-title" style="color:rgb(5, 198, 37);">문의사항 상세조회</h2> <br>
+    
     <div class="form-group" style="text-align:center;">
-        <span> 제목 : ${questionByCode.qTitle}</span> <br><br>
-        <span> 내용</span> <br>
+        <span style="font-size:30px;"> 제목 : ${questionByCode.qTitle}</span> <br><br><br>
+        <span> 내용</span> <br><br>
         <textarea cols="60" rows="10" readonly>${questionByCode.qContent}</textarea>  <br><br>
-        <span> 답변 </span> <br>
-        <textarea cols="50" rows="7"readonly>${questionByCode.aContent}</textarea>
+        <span> 답변 </span> <br><br>
+        <textarea cols="60" rows="10"readonly>${questionByCode.aContent}</textarea>
 
         <br><br>
         <c:if test="${isUpdated}">
@@ -101,12 +157,12 @@
         </form>
         </c:if>
 
-        <br><br><br><br>
+        <br><br><br>
         <form action="/KH_ONTRIP/manager/questions" method="get">
             <div><button type="submit">목록으로</button></div>
         </form>
     </div>
 </div>
-
+<br><br><br>
 </body>
 </html>

@@ -32,7 +32,7 @@
 
 <br><br><br><br>
 
-<div class="main-container">
+<div class="main-container" >
     <h2>회원관리 페이지</h2>
     <br><br>
     <button class="btn-memberList" type="button">회원리스트</button> <br><br>

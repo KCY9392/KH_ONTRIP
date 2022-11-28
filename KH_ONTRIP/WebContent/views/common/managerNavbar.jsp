@@ -34,6 +34,9 @@
             margin-top: -3px;
             background-color:white;
             float:left;
+            position:fixed;
+            top:-header.height;
+            transition:top 0.5s;
         }
         #n{
             width: 100%;
@@ -58,13 +61,17 @@
         .btn-num1{
             margin-left:33.3%;
         }
+        #n:hover{
+        	font-size:40px;
+        	background-color: rgb(155, 203, 155);
+        }
 
     </style>
 </head>
 <body>
       <br><br><br><br>
 
-      <div class="left-categoryBox">
+      <div class="left-categoryBox" id="nbar">
           <div class="userResult">
               <button type="button" id = "n" name="search" onclick="location.href='/KH_ONTRIP/placeList.mn?categoryCode=PP'">메인 관리</button>
           </div>

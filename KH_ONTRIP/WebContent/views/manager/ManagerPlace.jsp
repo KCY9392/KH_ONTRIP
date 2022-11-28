@@ -22,7 +22,7 @@
         height: 650px;
         margin: auto;
         margin-top: 100px;
-        margin-left: 680px;
+        margin-left: 550px;
         box-sizing: border-box;
     }
 
@@ -126,7 +126,7 @@
         <h1 style = "text-align : center;font-weight: 900; font-size: 35px;"><strong>메인관리</strong></h1>
         <br>&nbsp;
         <button type="button" class="btn btn-dark" id="insertPlace" onclick="insertPlace();"
-           style="margin-top:40px;font-weight:bold; font-size: 15px;">등록하기</button>
+           style="margin-top:40px; margin-left:-110px; font-weight:bold; font-size: 15px;">등록하기</button>
         <br><br>
 
   
