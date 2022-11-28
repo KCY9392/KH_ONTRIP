@@ -32,8 +32,13 @@ public class reviewListController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		// PLACE_CODE에 해당하는 PLACE_NAME을 뽑아낸후 해당하는 MEM_NO가 작성한 리뷰들을 LIST에 담아서 FOR문 돌리기 위한 코드
-		String placeName = request.getParameter("placeName");
+		String placeName = request.getParameter("placeName");//안넘어옴
+		String placeName2 = (String)request.getAttribute("placeName");
+		System.out.println("placeName2 : "+placeName2);
 		request.setAttribute("placeName", placeName);
+		
+		request.setAttribute("placeName2", placeName2);
+		
 		System.out.println(placeName);
 		int placeCode = Integer.parseInt(request.getParameter("placeCode"));
 		int memberNo = Integer.parseInt(request.getParameter("memberNo"));

@@ -62,7 +62,7 @@
                     
                         <br><br>
 
-                        <button class="w-100 btn btn-lg btn-primary" type="submit" onclick="newPwdUpdate();" 
+                        <button class="w-100 btn btn-lg btn-primary" type="submit" 
                         style=" background-color: rgb(130, 202, 164); border: 0;">비밀번호 변경</button>
                     
                         <br>
@@ -77,30 +77,5 @@
         </form>
 	
 
-	
-	<script>
-	
-		$(function(){
-			if($("input:password[name=userPwd]").val() == $("input:password[name=newPwd]").val()){
-	  		  alert("이전비밀번호와 동일합니다. 다시 작성해주세요.");
-	  		  $("input:password[name=newPwd]").focus();
-	            $("input:password[name=newPwd]").val("");
-	  	  }
-		});
-	
-		function newPwdUpdate(){
-			
-	  	  if($("input:password[name=newPwd]").val() != $("input:password[name=checkPwd]").val()){
-	            alert("비밀번호가 일치하지 않습니다.");
-	            $("input:password[name=newPwd]").focus();
-	            $("input:password[name=newPwd]").val("");
-	            $("input:password[name=checkPwd]").val("");
-	            return false;
-	        }
-	        if($("input:password[name=newPwd]").val() == $("input:password[name=checkPwd]").val() && $("input:password[name=newPwd]").val() != ""){
-	            alert("성공적으로 비밀번호 재설정되었습니다.");
-	        }
-	  }
-	</script>
 </body>
 </html>

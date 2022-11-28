@@ -151,7 +151,7 @@
 	                <tr onclick="location.href='/KH_ONTRIP/question/queDetailed?qCode=${vo.qCode}&memNo=${vo.memNum}'" >
 	                    <td>${vo.qCode }</td>
 	                    <td>${vo.qTitle}</td>
-	                    <td><fmt:formatDate value="${vo.qDate }" pattern="yyyy-mm-dd" /></td>
+	                    <td><fmt:formatDate value="${vo.qDate }" pattern="yyyy-MM-dd" /></td>
 	                    <td>${vo.memName}</td>
 	                    <td>
 	                        <c:choose>

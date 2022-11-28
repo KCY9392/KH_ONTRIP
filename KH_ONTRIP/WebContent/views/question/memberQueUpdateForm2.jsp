@@ -13,7 +13,9 @@
 <head>
 
   <meta charset="UTF-8">
-
+    <script src="../../KH_ONTRIP/resources/updateQuestion.js?ver=123" defer></script>
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10" ></script>
+	
   <!-- jQuery -->
   <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
 
@@ -127,7 +129,7 @@
 
 <div class="container">
   <div class="form-group" style="text-align:center; font-size:20px;">
-    <form method="post" action="/KH_ONTRIP/question/queUpdate">
+    <form name="updateForm" method="post" action="/KH_ONTRIP/question/queUpdate">
       <br>
 		<table align="center" style="width:800px; height:300px;">
 			<tr>
@@ -142,7 +144,7 @@
 			<input type="hidden" name="qCode" value="${qCode}">
 		</table>
 			<br>
-      		<button type="submit" class="btn btn-lg btn-success mx-0 mb-2" id="btnSave" style="background-color: rgb(130, 202, 164); border: 0; height:50px">수정하기</button>
+      		<button type="button" class="update" id="btnSave" style="background-color: rgb(130, 202, 164); border: 0; height:50px">수정하기</button>
 		<br>
     </form>
     <form action="/KH_ONTRIP/question/questions" method="get">

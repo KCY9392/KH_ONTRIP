@@ -601,5 +601,28 @@ public class ReviewDao {
 		return selectMyImageList;
 	}
 
+	// Mypage 후기 삭제 
+	public void deleteMyReview(int revCode, Connection conn) {
+		
+		PreparedStatement psmt = null;
+		
+		String sql = prop.getProperty("deleteMyReview");
+		
+		try {
+			psmt = conn.prepareStatement(sql);
+			
+			psmt.setInt(1, revCode);
+			
+			psmt.executeUpdate();
+			
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(psmt);
+		}
+		
+	}
+
 
 }

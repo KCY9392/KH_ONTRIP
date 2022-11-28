@@ -6,6 +6,8 @@
 <head>
 
   <meta charset="UTF-8">
+  <script defer src="../../KH_ONTRIP/resources/deletequestion.js?ver=123"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10" defer></script>
 
   <!-- jQuery -->
   <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
@@ -126,9 +128,9 @@
 	    
 	    <br>
 		<table align="center" style="width:800px; height:300px;">
-			<tr>
+			<tr style="height:100px;">
 				<td><span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;제목</span></td>
-				<td><span>${memberQuestionDetailed.qTitle}</span></td>
+				<td style="text-align:left;"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${memberQuestionDetailed.qTitle}</span></td>
 			</tr>
 			<tr>
 				<td><span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;내용</span></td>
@@ -151,8 +153,8 @@
     <form action="/KH_ONTRIP/question/questions" method="get">
       <div><button type="submit" id="before" class="btn btn-lg btn-success mx-0 mb-2" style="background-color: rgb(189, 192, 191); border: 0; height:50px;">목록으로</button></div>
     </form>
-    <form action="/KH_ONTRIP/question/queDelete?qCode=${memberQuestionDetailed.qCode}" method="get">
-      <button type="submit" id="delete" class="btn btn-lg btn-success mx-0 mb-2" style="background-color: rgb(189, 192, 191); border: 0; height:50px;">삭제하기</button>
+    <form name="deleteQue" action="/KH_ONTRIP/question/queDelete?qCode=${memberQuestionDetailed.qCode}" method="post">
+      <button type="button" id="delete" class="sub" style="background-color: rgb(189, 192, 191); border: 0; height:50px;">삭제하기</button>
     </form>
   </div>
 </div>

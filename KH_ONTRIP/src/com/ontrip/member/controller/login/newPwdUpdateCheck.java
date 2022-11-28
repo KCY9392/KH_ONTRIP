@@ -29,25 +29,28 @@ public class newPwdUpdateCheck extends HttpServlet {
 		
 		
 		String newPwd = request.getParameter("newPwd");//새로운 비밀번호
+		String checkPwd = request.getParameter("checkPwd"); //비밀번호 확인
 		String memberId = request.getParameter("memberId");  //회원의 아이디
 		System.out.println(memberId);
 		
-		int result = new MemberService().findPwdupdate(newPwd, memberId);
-		
-		if(result > 0) { // 업데이트 성공
+		if(newPwd.equals(checkPwd)) { // 새로운 비밀번호와 비밀번호 확인이 일치하면, 
+			int result = new MemberService().findPwdupdate(newPwd, memberId);
 			
-			// 업데이트 성공 alert창 띄우기
-			HttpSession session = request.getSession();
-			session.setAttribute("alertMsg", "성공적으로 비밀번호를 재설정하였습니다.");
-			request.getRequestDispatcher("views/common/loginForm.jsp").forward(request, response);
-			// 로그인 폼으로 포워드
+			if(result > 0) { // 업데이트 성공
 			
-		}else { // 업데이트 실패
+				response.setContentType("text/html;charset=UTF-8");
+		        response.getWriter().print("<script>alert('비밀번호 재설정에 성공하였습니다.'); location.href = 'KH_ONTRIP/'</script>");
 			
-			//업데이트 실패 alert창 띄우기
-			HttpSession session = request.getSession();
-			session.setAttribute("alertMsg", "비밀번호 재설정에 실패하였습니다.");
-			response.sendRedirect("views/common/newPwdUpdate.jsp");
+			}else { // 업데이트 실패
+				
+				response.setContentType("text/html;charset=UTF-8");
+		        response.getWriter().print("<script>alert('비밀번호 재설정에 실패하였습니다.'); location.href = 'newPwd.le?memberPwd="+newPwd+"&memberId="+memberId+"'</script>");
+			}
+		}else { // 새로운 비밀번호와 비밀번호 확인이 일치하지않다면,
+			
+			response.setContentType("text/html;charset=UTF-8");
+	        response.getWriter().print("<script>alert('비밀번호와 비밀번호확인이 일치하지않습니다.'); location.href = 'newPwd.le?memberPwd="+newPwd+"&memberId="+memberId+"'</script>");
+			
 		}
 	}
 

@@ -334,6 +334,36 @@ public class MemberDao {
 		}
 		  return result;
 	}
+
+	public int findMem(String memberId, Connection conn) {
+		
+		int result = 0;
+		
+		PreparedStatement psmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("findMem");
+		
+		try {
+			psmt = conn.prepareStatement(sql);
+			
+			psmt.setString(1, memberId);
+			
+			rset = psmt.executeQuery();
+			
+			if(rset.next()) {
+				result = 1;
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(psmt);
+		}
+		
+		return result;
+	}
 	
 	
 	

@@ -49,6 +49,7 @@ public class reviewDetailController extends HttpServlet {
 		
 		Review re = new ReviewService().selectReviewDetail(revCode);
 		request.setAttribute("placeCode", placeCode);
+		System.out.println(placeCode);
 		request.setAttribute("re", re);
 		request.setAttribute("revCode", revCode);
 		request.getRequestDispatcher("views/review/reviewDetail.jsp").forward(request, response);

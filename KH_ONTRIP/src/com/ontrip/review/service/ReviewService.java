@@ -186,14 +186,7 @@ public class ReviewService {
 		return result3;
 	}
 
-//	public int selectPlaceCode(int memberNo) {
-//		
-//		Connection conn = getConnection();
-//		
-//		int placeCode = new ReviewDao().selectPlaceCode(memberNo , conn);
-//		
-//		return placeCode;
-//	}
+
 
 	public int selectPlaceCode(int memberNo , String placeName) {
 		
@@ -212,6 +205,18 @@ public class ReviewService {
 		
 		return selectMyImageList;
 	}
+
+	
+	//mypage 후기 삭제
+	public void deleteMyReview(int revCode) {
+		
+		Connection conn = getConnection();
+		
+		new ReviewDao().deleteMyReview(revCode, conn);
+		
+	}
+
+	
 
 
 }

@@ -29,7 +29,10 @@ public class FindPwdController extends HttpServlet {
 		
 		String memberName = request.getParameter("memberName");
 		String memberId = request.getParameter("memberId");
+		System.out.println(memberId);
 		String phone = request.getParameter("phone");
+		
+		int isMem = new MemberService().findMem(memberId);
 		
 		String memberPwd = new MemberService().findPwd(memberName, memberId, phone);
 		System.out.println(memberPwd);
@@ -38,28 +41,18 @@ public class FindPwdController extends HttpServlet {
 		request.setAttribute("m", m);
 		
 		
-		if(memberId == null) {
-			request.setAttribute("errorMsg", "존재하지않는 회원입니다.");
-			
-			request.getRequestDispatcher("views/common/errorPage.jsp").forward(request, response);
-			
-		}else {
-			HttpSession session = request.getSession();
-			
-			//session.setAttribute("alertMsg", memberPwd+"입니다.");
-			
+		if(isMem > 0) {
 			request.getRequestDispatcher("views/common/pwdReveal.jsp").forward(request, response); // 현재 비밀번호 알려는 사이트 => "비밀번호 변경" / "메인으로" 
 			
+		}else {
+			
+			response.setContentType("text/html;charset=UTF-8");
+			response.getWriter().print("<script>alert('존재하지 않는 회원입니다'); location.href = '/KH_ONTRIP/find.me'</script>");
+			
 		}
-		
-		
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 
