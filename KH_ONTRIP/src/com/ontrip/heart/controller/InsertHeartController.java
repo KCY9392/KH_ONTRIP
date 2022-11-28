@@ -24,9 +24,9 @@ public class InsertHeartController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int memNo = Integer.parseInt(request.getParameter("memNo"));
 		int plcCode = Integer.parseInt(request.getParameter("plcCode"));
-		System.out.println(memNo);
-		System.out.println(plcCode);
-		System.out.println("찜");
+//		System.out.println(memNo);
+//		System.out.println(plcCode);
+//		System.out.println("찜");
 		
 		int result = new HeartService().insertHeart(memNo, plcCode);
 		

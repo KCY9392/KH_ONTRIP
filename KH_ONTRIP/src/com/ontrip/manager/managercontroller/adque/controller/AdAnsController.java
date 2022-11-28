@@ -18,8 +18,8 @@ public class AdAnsController implements QueFrontController {
         String qCode = request.getParameter("qCode");
         int i = Integer.parseInt(qCode);
 
-        System.out.println("i = " + i);
-        System.out.println("aContent = " + aContent);
+//        System.out.println("i = " + i);
+//        System.out.println("aContent = " + aContent);
 
         adQuestionService.insertAnswer(aContent, i);
 //

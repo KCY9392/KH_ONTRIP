@@ -35,10 +35,10 @@ public class AdMainSaveImgController extends HttpServlet {
 		String dareaCode = request.getParameter("dareaCode");
 		String localCode = request.getParameter("localCode");
 		
-		System.out.println(categoryCode);
-		System.out.println(plcCode);
-		System.out.println(dareaCode);
-		System.out.println(localCode);
+//		System.out.println(categoryCode);
+//		System.out.println(plcCode);
+//		System.out.println(dareaCode);
+//		System.out.println(localCode);
 		
 		
 		if(ServletFileUpload.isMultipartContent(request)) {
@@ -102,7 +102,7 @@ public class AdMainSaveImgController extends HttpServlet {
 	                img.setChangeName(multiRequest.getFilesystemName(key));
 	                
 	                list.add(img);
-	                System.out.println(list);
+//	                System.out.println(list);
 	            }
 	        }
 	        

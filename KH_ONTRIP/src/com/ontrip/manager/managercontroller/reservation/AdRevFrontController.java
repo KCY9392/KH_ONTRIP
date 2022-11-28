@@ -53,11 +53,11 @@ public class AdRevFrontController extends HttpServlet {
     protected void doProcess(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, ParseException, SQLException {
         //get이든 post든 어떤 방식으로 요청으로 들어오든 로직은 여기에 작성.
 
-        System.out.println("Main´FrontController.service");
+//        System.out.println("Main´FrontController.service");
 
         String requestURI = request.getRequestURI();
 
-        System.out.println("requestURI = " + requestURI);
+//        System.out.println("requestURI = " + requestURI);
 
         RevFrontController revFrontController = controllerMap.get(requestURI);
 

@@ -26,8 +26,8 @@ public class RevSaveController implements RevFrontController {
         String sdate = request.getParameter("sdate");
         String edate = request.getParameter("edate");
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        System.out.println("sdate = " + sdate);
-        System.out.println("edate = " + edate);
+//        System.out.println("sdate = " + sdate);
+//        System.out.println("edate = " + edate);
 
         Date startDate = sdf.parse(sdate);
         Date endDate = sdf.parse(edate);
@@ -68,7 +68,7 @@ public class RevSaveController implements RevFrontController {
 
         HttpSession session = request.getSession();
         session.setAttribute("reservation", reservation);
-        System.out.println("reservation = " + reservation);
+//        System.out.println("reservation = " + reservation);
 
 
 

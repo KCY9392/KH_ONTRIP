@@ -53,7 +53,7 @@ div{
     text-align: center;
     margin:auto;
     width:70%;
-    height:2400px;
+    height:100%;
     /* border-left: 1px solid black;
     border-right: 1px solid black; */
     box-shadow:0 0 7px grey;
@@ -95,7 +95,7 @@ div{
 
 .box{
     width: 930px;
-    height: 580px;
+    height: 100%;
     margin: auto;
     margin-top:20px;
 }

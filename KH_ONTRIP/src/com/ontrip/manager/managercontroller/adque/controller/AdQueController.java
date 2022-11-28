@@ -22,7 +22,7 @@ public class AdQueController implements QueFrontController {
         String qCode = request.getParameter("qCode");
         int i = Integer.parseInt(qCode);
 
-        System.out.println("i = " + i);
+//        System.out.println("i = " + i);
 
         MemberQuestionDetailed questionByCode = adQuestionService.getByCode(i);
 

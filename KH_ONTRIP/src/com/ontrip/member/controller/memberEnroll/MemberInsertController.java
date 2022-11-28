@@ -27,7 +27,7 @@ public class MemberInsertController extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		System.out.println("되니");
+//		System.out.println("되니");
 		
 		String memberId = request.getParameter("memberId");
 		String memberPwd = request.getParameter("memberPwd");

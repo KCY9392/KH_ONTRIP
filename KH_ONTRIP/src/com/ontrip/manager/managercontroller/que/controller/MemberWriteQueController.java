@@ -28,7 +28,7 @@ public class MemberWriteQueController implements QuFrontController {
 
         Question question = new Question(null, memNo, qTitle, qContent, null, null, null, null);
         
-        System.out.println(question);
+//        System.out.println(question);
 
 
 

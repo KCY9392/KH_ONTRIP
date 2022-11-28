@@ -93,7 +93,7 @@ public class MemberQueDao {
             if (rs.next()) {
                 total = rs.getInt("total");
             }
-            System.out.println("result = " + total);
+//            System.out.println("result = " + total);
         } catch (SQLException e) { e.printStackTrace(); } finally {
             close(pstmt);
         }
@@ -108,7 +108,7 @@ public class MemberQueDao {
 
         String sql = prop.getProperty("insertQuestion");
 
-        System.out.println("question = " + question);
+//        System.out.println("question = " + question);
 
         try {
             psmt = con.prepareStatement(sql);

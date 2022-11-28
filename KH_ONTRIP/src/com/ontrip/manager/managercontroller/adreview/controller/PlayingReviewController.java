@@ -26,9 +26,9 @@ public class PlayingReviewController  implements ReviewFrontController {
 
         String category = request.getParameter("category");
 
-        System.out.println("category = " + category);
-        System.out.println("amount = " + amount);
-        System.out.println("pageNum = " + pageNum);
+//        System.out.println("category = " + category);
+//        System.out.println("amount = " + amount);
+//        System.out.println("pageNum = " + pageNum);
 
         if (request.getParameter("pageNum") != null && request.getParameter("amount") != null) {
             pageNum = Integer.parseInt(request.getParameter("pageNum"));
@@ -41,7 +41,7 @@ public class PlayingReviewController  implements ReviewFrontController {
 
         ArrayList<ReviewBoard> list = adReviewService.getList(category, pageNum, amount);
 
-        System.out.println("list = " + list);
+//        System.out.println("list = " + list);
 
         request.setAttribute("page", page);
         request.setAttribute("list", list);

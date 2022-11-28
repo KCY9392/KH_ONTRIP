@@ -33,7 +33,7 @@ public class selectPlaceController extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		
 		String dareaCode = request.getParameter("dareaCode");
-		System.out.println(dareaCode);
+//		System.out.println(dareaCode);
 		
 		// 상세지역 이름 가져오기
 		String dareaName = new DetailAreaService().dAreaName(dareaCode);

@@ -23,13 +23,13 @@ public class RevSuccessController implements RevFrontController {
         String rnName = request.getParameter("rnName");
         String msg = request.getParameter("msg");
 
-        System.out.println("msg = " + msg);
-        System.out.println("rnName = " + rnName);
+//        System.out.println("msg = " + msg);
+//        System.out.println("rnName = " + rnName);
 
         HttpSession session = request.getSession();
         Reservation reservation = (Reservation) session.getAttribute("reservation");
 
-        System.out.println("reservation = " + reservation);
+//        System.out.println("reservation = " + reservation);
 
         revService.saveRev(reservation);
 

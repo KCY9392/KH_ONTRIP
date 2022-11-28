@@ -54,7 +54,7 @@ public class PlaceDao {
                       rset.getString("PLC_ADDRESS"),
                       rset.getString("PLC_PNUMBER")));
          }
-         System.out.println(playInfo);
+//         System.out.println(playInfo);
       } catch (SQLException e) {
          e.printStackTrace();
       } finally {
@@ -85,7 +85,7 @@ public class PlaceDao {
                   rset.getString("PLC_ADDRESS"),
                   rset.getString("PLC_PNUMBER")));
          }
-         System.out.println(foodInfo);
+//         System.out.println(foodInfo);
       } catch (SQLException e) {
          e.printStackTrace();
       } finally {
@@ -117,7 +117,7 @@ public class PlaceDao {
                       rset.getString("PLC_ADDRESS"),
                       rset.getString("PLC_PNUMBER")));
          }
-         System.out.println(hotelInfo);
+//         System.out.println(hotelInfo);
       } catch (SQLException e) {
          e.printStackTrace();
       } finally {
@@ -161,8 +161,8 @@ public class PlaceDao {
  									rset.getFloat("PLC_LA"),
  									rset.getFloat("PLC_LO"));
  			}
- 			System.out.println(place);
- 			System.out.println(place.getPlcLa());
+// 			System.out.println(place);
+// 			System.out.println(place.getPlcLa());
  			
  			
  		} catch (SQLException e) {
@@ -224,7 +224,7 @@ public class PlaceDao {
 			if(rset.next()) {
 				placeCode = rset.getString("PLC_CODE");
 			}
-			System.out.println(placeCode);
+//			System.out.println(placeCode);
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -258,7 +258,7 @@ public class PlaceDao {
 							 rset.getString("CHANGE_NAME"),
 							 rset.getInt("FILE_NO")));
 			}
-			System.out.println(placeImages);
+//			System.out.println(placeImages);
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -295,7 +295,7 @@ public class PlaceDao {
                    rset.getInt("FILE_NO")
                    ));
          }
-         System.out.println(placePath);
+//         System.out.println(placePath);
       } catch (SQLException e) {
          e.printStackTrace();
       } finally {
@@ -330,7 +330,7 @@ public class PlaceDao {
                        rset.getString("DAREA_NAME")));
 
          }
-         System.out.println(placeInfo);
+//         System.out.println(placeInfo);
       } catch (SQLException e) {
          e.printStackTrace();
       } finally {
@@ -351,7 +351,7 @@ public class PlaceDao {
 			if(i<split_hash.length-1) {
 				hash += ",";
 			}
-			System.out.println(hash);	
+//			System.out.println(hash);	
 				
 		}
 		
@@ -375,7 +375,7 @@ public class PlaceDao {
                    rset.getInt("FILE_NO")
                    ));
          }
-         System.out.println(placeHashPath);
+//         System.out.println(placeHashPath);
       } catch (SQLException e) {
          e.printStackTrace();
       } finally {
@@ -395,7 +395,7 @@ public class PlaceDao {
 			if(i<split_hash.length-1) {
 				hash += ",";
 			}
-			System.out.println(hash);	
+//			System.out.println(hash);	
 				
 		}
       PreparedStatement psmt = null;
@@ -420,7 +420,7 @@ public class PlaceDao {
                        rset.getString("DAREA_NAME")));
 
          }
-         System.out.println(placeHashInfo);
+//         System.out.println(placeHashInfo);
       } catch (SQLException e) {
          e.printStackTrace();
       } finally {
@@ -625,7 +625,7 @@ public class PlaceDao {
 				placeCode = rset.getInt("PLC_CODE");
 			}
 			
-			System.out.println(placeCode);
+//			System.out.println(placeCode);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}finally {

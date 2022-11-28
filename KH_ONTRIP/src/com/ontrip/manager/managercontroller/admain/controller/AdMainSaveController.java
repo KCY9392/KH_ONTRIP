@@ -2,9 +2,6 @@ package com.ontrip.manager.managercontroller.admain.controller;
 
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -87,9 +84,9 @@ public class AdMainSaveController extends HttpServlet {
 	      String[] split_hash;
 	      if(hash != null) {
 	         split_hash = hash.split(",");
-	         System.out.println(Arrays.toString(split_hash));
+//	         System.out.println(Arrays.toString(split_hash));
 	         for(int i = 0; i<split_hash.length; i++) {
-	            System.out.println(split_hash[i]);
+//	            System.out.println(split_hash[i]);
 	            String value = split_hash[i];
 	            int result1 = new HashService().insertHash(value, placeCode);
 	         }

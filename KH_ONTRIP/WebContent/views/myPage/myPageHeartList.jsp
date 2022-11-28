@@ -40,17 +40,32 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
 	
 <style>
+body {
+    font-family: 'Noto Sans KR', sans-serif !important;
+    -webkit-overflow-scrolling: touch !important;
+    touch-action: manipulation;
+    margin:0;
+}
     table {
         width: 100%;
         border-collapse: collapse;
         text-align: center;
-        height:500px;
+        height:50px;
+    margin-top:80px;
     }
-    table th, table td {
-        border: 1px solid #444444;
-        border-top: 1px solid #444444;
-        border-bottom: 1px solid #444444;
+    table th {
+        border: 1px solid #e2e3e5;
+        border-top: 1px solid #e2e3e5;
+        border-bottom: 1px solid #cccdce;
         padding: 10px;
+        background-color : #e2e3e5;
+    }
+	table td {
+        border: 1px solid #e2e3e5;
+        border-top: 1px solid #e2e3e5;
+        border-bottom: 1px solid #e2e3e5;
+        padding: 10px;
+        background-color : white;
     }
   	.uk-flex-middle {
     align-items: center;
@@ -93,6 +108,8 @@
 	    transform: translateY(0%);
 	  }
 	}
+	
+	
 </style>
 </head>
 <body>
@@ -122,7 +139,7 @@
 
       <div class="container2" style="margin:auto; box-shadow:0 0 10px 1px rgb(124, 179, 218);
       			 width:1200px; padding-bottom:30px; padding-top:30px;">
-        <div class="center" style="width:1200px; height:750px; margin:auto;">
+        <div class="center" style="width:1200px; height:100%; margin:auto;">
                 <div class="centerTitle" style="text-align: center; margin-top:20px;">
                     <h2 style="font-size:40px; font-weight:bold;]">찜목록</h2>
                 </div>
@@ -131,7 +148,7 @@
                 <div class="centerDiv">
                   <div class="table-div">
                    <form action="<%=request.getContextPath() %>/deleteHeart.me?memberNo=<%=loginUser.getMemberNo() %>" method="post">
-                    <table style="border:1px solid black;">
+                    <table>
                         <tr class="t0">
                             <th>
                                 카테고리명
@@ -162,7 +179,7 @@
 		                        <% } %>
 		                  <% } %>
 		                  <% if(!htList.isEmpty()){ %>
-                    	 	<button type="submit" class="btn btn-danger" style="margin-left:90%; background-color: gray;">선택삭제</button> 
+                    	 	<button type="submit" class="btn btn-danger" id="btn" style="margin-left:90%; background-color: gray;">선택삭제</button> 
 							<%} %>
 
 
@@ -231,6 +248,35 @@
 				});
 			});
 
+			
+			$("#btn").attr("disabled", true);
+		    $("input[name=placeName]").on('click',function(){
+		        var chk = $('input[name=placeName]').is(":checked");
+		        var chkAll = $('#cbx_chkAll').is(":checked");
+		        if(chk==true){
+		            $("#btn").removeAttr('disabled');
+		            $("#btn").removeClass("on");
+		        }else{
+		            $("#btn").attr("disabled", true);
+		            $("#btn").addClass("on");
+		        }
+		    });
+		    
+		    
+		    $("#btn").attr("disabled", true);
+		    $("#cbx_chkAll").on('click',function(){
+		        var chk = $('input[name=placeName]').is(":checked");
+		        var chkAll = $('#cbx_chkAll').is(":checked");
+		        if(chk==true){
+		            $("#btn").attr("disabled", true);
+		            $("#btn").addClass("on");
+		        }else{
+		            $("#btn").removeAttr('disabled');
+		            $("#btn").removeClass("on");
+		        }
+		    });
 		</script>
+		
+		
 </body>
 </html>

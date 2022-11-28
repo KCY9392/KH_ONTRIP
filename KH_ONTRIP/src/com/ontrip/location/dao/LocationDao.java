@@ -51,7 +51,7 @@ public class LocationDao {
 					localText = rset.getString("LOCAL_TEXT");					
 				}while(rset.next());
 			}
-			System.out.println(localText);
+//			System.out.println(localText);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
@@ -90,7 +90,7 @@ public class LocationDao {
 							  rset.getString("LOCAL_CODE")));
 				}
 				
-				System.out.println(darea);
+//				System.out.println(darea);
 				
 			} catch (SQLException e) {
 				e.printStackTrace();
@@ -121,7 +121,7 @@ public class LocationDao {
 							 rset.getString("FILE_PATH"),
 							 rset.getString("ORIGIN_NAME")));
 			}
-			System.out.println(filePath);
+//			System.out.println(filePath);
 			
 		} catch (SQLException e) {
 			e.printStackTrace();

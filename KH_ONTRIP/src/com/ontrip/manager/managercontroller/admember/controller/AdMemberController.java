@@ -24,7 +24,7 @@ public class AdMemberController implements MemberFrontController {
 
         int i = Integer.parseInt(memberId);
 
-        System.out.println("memberId = " + memberId);
+//        System.out.println("memberId = " + memberId);
 
         Member member = adMemberService.adminMemberDetails(i);
 

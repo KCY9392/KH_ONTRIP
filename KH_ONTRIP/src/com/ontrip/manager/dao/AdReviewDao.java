@@ -91,7 +91,7 @@ public class AdReviewDao {
 
         String sql  = prop.getProperty("getReviewTotal");
 
-        System.out.println("sql = " + sql);
+//        System.out.println("sql = " + sql);
 
 
         try {
@@ -102,7 +102,7 @@ public class AdReviewDao {
             if (rs.next()) {
                 result = rs.getInt("total");
             }
-            System.out.println("result = " + result);
+//            System.out.println("result = " + result);
         } catch (SQLException e) {
             e.printStackTrace();
         }finally {
@@ -150,7 +150,7 @@ public class AdReviewDao {
     public void deleteReview(int revCode, Connection con) throws SQLException {
         String sql = prop.getProperty("deleteReview");
         PreparedStatement psmt =  null;
-        System.out.println("daorevcode = " + revCode);
+//        System.out.println("daorevcode = " + revCode);
         try {
             psmt = con.prepareStatement(sql);
             psmt.setInt(1, revCode);

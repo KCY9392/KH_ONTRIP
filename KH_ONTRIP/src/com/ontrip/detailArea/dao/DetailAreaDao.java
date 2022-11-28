@@ -91,7 +91,7 @@ private Properties prop = new Properties();
 							 rset.getString("FILE_PATH"),
 							 rset.getString("ORIGIN_NAME")));
 			}
-			System.out.println(filePath);
+//			System.out.println(filePath);
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -130,7 +130,7 @@ private Properties prop = new Properties();
 							 rset.getString("CHANGE_NAME"),
 							 rset.getInt("FILE_NO")));
 			}
-			System.out.println(foodPath);
+//			System.out.println(foodPath);
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -169,7 +169,7 @@ private Properties prop = new Properties();
 							 rset.getString("CHANGE_NAME"),
 							 rset.getInt("FILE_NO")));
 			}
-			System.out.println(playPath);
+//			System.out.println(playPath);
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -208,7 +208,7 @@ private Properties prop = new Properties();
 							 rset.getString("CHANGE_NAME"),
 							 rset.getInt("FILE_NO")));
 			}
-			System.out.println(hotelPath);
+//			System.out.println(hotelPath);
 			
 		} catch (SQLException e) {
 			e.printStackTrace();

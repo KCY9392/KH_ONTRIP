@@ -28,7 +28,7 @@ public class MyreviewDetailController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		String placeName = request.getParameter("placeName");
-		System.out.println(placeName+"통과됨");
+//		System.out.println(placeName+"통과됨");
 		
 		int memberNo = Integer.parseInt(request.getParameter("memberNo"));
 		int placeCode = new ReviewService().selectPlaceCode(memberNo , placeName);

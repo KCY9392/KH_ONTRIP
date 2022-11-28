@@ -20,16 +20,17 @@
 
 
   <!-- css경로 -->
-  <link rel="stylesheet" href="<%= contextPath %>/resources/css/reservationform.css">
+  <link rel="stylesheet" href="<%= contextPath %>/resources/css/reservationform.css?1">
 <style>
 hr{
     width:978px !important;
 }
 body{
-	cursor: pointer !important;
+/* 	cursor: pointer !important; */
     letter-spacing: -1px;
     font-size: 1.2rem !important;
 }
+
 
 </style>
 </head>
@@ -51,9 +52,9 @@ body{
   </div>
 </div>
 <br><br><br><br><br>
-<div class="container">
-    <div class="centerText">
-      <div class="selectRn">
+<div class="container"  >
+    <div class="centerText" style="border-right: solid 1px black; border-left: solid 1px black; text-align: left;" >
+      <div class="selectRn" >
         <br><br>
         <span class="span_name">예약자 이름 : </span>&nbsp;&nbsp;&nbsp;
         <input type="text" placeholder="여행자 이름" size="14" name="rnName" required>  &nbsp; &nbsp; &nbsp; &nbsp;

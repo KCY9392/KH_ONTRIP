@@ -34,13 +34,13 @@ public class reviewEnrollController extends HttpServlet {
 		
 		int revCode = new ReviewService().selectReviewNo();
 		request.setAttribute("revCode", revCode);
-		System.out.println(revCode);
+//		System.out.println(revCode);
 		
-		System.out.println(placeName);
+//		System.out.println(placeName);
 		
 		int memberNo = Integer.parseInt(request.getParameter("memberNo"));
 		request.setAttribute("memberNo", memberNo);
-		System.out.println(memberNo);
+//		System.out.println(memberNo);
 		
 		Member memberName = new ReviewService().selectMemberName(memberNo);
 		

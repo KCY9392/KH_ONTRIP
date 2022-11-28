@@ -34,10 +34,10 @@ public class HeartDeleteController extends HttpServlet {
 //		System.out.println(placeCode);
 		
 		String[] placeName = request.getParameterValues("placeName");
-		System.out.println(Arrays.toString(placeName));
-		for(int i=0;i<placeName.length;i++) {
-			System.out.println(placeName[i]);
-		}
+//		System.out.println(Arrays.toString(placeName));
+//		for(int i=0;i<placeName.length;i++) {
+////			System.out.println(placeName[i]);
+//		}
 		
 		String memberNo = request.getParameter("memberNo");
 		

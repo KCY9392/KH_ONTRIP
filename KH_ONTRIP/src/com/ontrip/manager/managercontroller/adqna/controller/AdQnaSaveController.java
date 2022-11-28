@@ -21,9 +21,9 @@ public class AdQnaSaveController implements QnaFrontController {
         String answer = request.getParameter("answer");
 
 
-        System.out.println("answer = " + answer);
-        System.out.println("question = " + question);
-        System.out.println("category = " + category);
+//        System.out.println("answer = " + answer);
+//        System.out.println("question = " + question);
+//        System.out.println("category = " + category);
 
 
         adQnaService.saveQna(question, answer, category);

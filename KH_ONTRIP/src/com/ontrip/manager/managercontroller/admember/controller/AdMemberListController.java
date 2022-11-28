@@ -20,7 +20,7 @@ public class AdMemberListController implements MemberFrontController {
     public MyView process(HttpServletRequest request, HttpServletResponse response)
         throws IOException, ServletException, SQLException {
 
-        System.out.println("MemberMainPage");
+//        System.out.println("MemberMainPage");
 
         ArrayList<Member> members = adMemberService.adminMemberList();
 

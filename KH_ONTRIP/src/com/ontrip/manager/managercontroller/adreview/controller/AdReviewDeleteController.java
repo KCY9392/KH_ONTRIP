@@ -18,12 +18,12 @@ public class AdReviewDeleteController implements ReviewFrontController {
     @Override
     public void process(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException, SQLException {
         String categoryCode = request.getParameter("categoryCode");
-        System.out.println("categoryCode = " + categoryCode);
+//        System.out.println("categoryCode = " + categoryCode);
         String revCode1 = request.getParameter("revCode");
         int revCode = Integer.parseInt(revCode1);
 
-        System.out.println("revCode = " + revCode);
-        System.out.println("categoryCode = " + categoryCode);
+//        System.out.println("revCode = " + revCode);
+//        System.out.println("categoryCode = " + categoryCode);
 
 
 

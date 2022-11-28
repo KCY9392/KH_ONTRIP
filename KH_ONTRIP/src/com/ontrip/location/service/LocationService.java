@@ -17,7 +17,7 @@ public class LocationService {
 		Connection conn = getConnection();
 		
 		String localText =new LocationDao().selectLocal(localName, conn);
-		System.out.println(localText);
+//		System.out.println(localText);
 		close();
 		
 		return localText;

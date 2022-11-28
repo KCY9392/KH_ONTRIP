@@ -93,7 +93,7 @@ private Properties prop = new Properties();
 							 rset.getString("FILE_PATH"),
 							 rset.getString("CHANGE_NAME")));
 			}
-			System.out.println(htList);
+//			System.out.println(htList);
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -112,7 +112,7 @@ private Properties prop = new Properties();
 			if(i<placeName.length-1) {
 				place += ",";
 			}
-			System.out.println(place);	
+//			System.out.println(place);	
 				
 		}
 		//? , ? , ? 

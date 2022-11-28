@@ -35,19 +35,19 @@ public class AdMainDeleteController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	    String placeName = request.getParameter("placeName");
-	    System.out.println(placeName);
+//	    System.out.println(placeName);
 		// 시설 삭제 메소드
 	    int result1 = new ManagerService().deletePlace(placeName);
 	    // 시설 이미지 삭제 메소드
 	    int result2 = new ManagerService().deletePlaceImg(placeName);
 	    
 	    String value = request.getParameter("value");
-	    System.out.println(value);
+//	    System.out.println(value);
 //	    String[] hashArr = value.split(",");
 //	    System.out.println(Arrays.toString(hashArr));
 	    
 	    String hashNo = request.getParameter("hashNo");
-	    System.out.println(hashNo);
+//	    System.out.println(hashNo);
 	    String[] arr = hashNo.split(",");
 	    int[] hashArr = new int[arr.length];
 	    for(int i=0; i< arr.length; i++) {
@@ -56,17 +56,6 @@ public class AdMainDeleteController extends HttpServlet {
 	    	int result4 = new ManagerService().deleteHash(placeName,hashArr);
 	    }
 	    
-//	    int result3 = new ManagerService().deleteHash(hashArr);
-		
-//		if(hash != null) {
-//		split_hash = hash.split(",");
-//		System.out.println(Arrays.toString(split_hash));
-//		for(int i = 0; i<split_hash.length; i++) {
-//			System.out.println(split_hash[i]);
-//			String value = split_hash[i];
-//			int result1 = new HashService().insertHash(value, placeCode);
-//		}
-//	}
 	    
 	    if(result1 > 0 && result2>0) {
 	    	

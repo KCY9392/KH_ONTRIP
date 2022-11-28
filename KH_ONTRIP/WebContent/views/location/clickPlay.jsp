@@ -40,7 +40,7 @@
     <meta name="viewport" content="width=\, initial-scale=1.0">
     <title>온트립(OnTrip) - 놀거리</title>
 
-    <link rel="stylesheet" href="<%= request.getContextPath() %>/resources/css/clickHotel.css">
+    <link rel="stylesheet" href="<%= request.getContextPath() %>/resources/css/clickHotel.css?1">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script
@@ -210,7 +210,7 @@
                     <button type="button" class="btn-div" id = "s" name="search" onclick="show(this);">숙소</button>
                  </div>
     
-                     <div id = "nsearch" class = "box" style="padding:20px; text-align: center; text-align: center;"">  <!-- border:1px solid black; -->
+                     <div id = "nsearch" class = "box" style="padding:20px; text-align: center; text-align: center;">  <!-- border:1px solid black; -->
             			<% if(!playPath.isEmpty()) { %>
                         <% for(int i=0; i<playPath.size(); i++){ %>
                         <div class="outer7 shadow-lg" onclick="movePlay('<%= playInfo.get(i).getPlcName() %>','<%= dareaName%>', '<%= loginUser.getMemberNo() %>')">

@@ -46,12 +46,12 @@ public class SelectFoodController extends HttpServlet {
 		String value = "";
 		if(hashTag != null) {
 			for(int i = 0; i<hashTag.size(); i++) {
-				System.out.println(hashTag.get(i).getHashName());
+//				System.out.println(hashTag.get(i).getHashName());
 				value += "#"+hashTag.get(i).getHashName()+  ( i != hashTag.size()-1 ?  "," : "");
 				
 			}
 		}
-		System.out.println(value);
+//		System.out.println(value);
 		request.setAttribute("value", value);
 		
 		String dareaCode = new PlaceService().findDareaCode(dareaName);

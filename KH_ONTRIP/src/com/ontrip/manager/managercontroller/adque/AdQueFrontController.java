@@ -70,11 +70,11 @@ public class AdQueFrontController extends HttpServlet {
     protected void doProcess(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
         //get이든 post든 어떤 방식으로 요청으로 들어오든 로직은 여기에 작성.
 
-        System.out.println("QuestionFrontController.service");
+//        System.out.println("QuestionFrontController.service");
 
         String requestURI = request.getRequestURI();
 
-        System.out.println("requestURI = " + requestURI);
+//        System.out.println("requestURI = " + requestURI);
 
         QueFrontController queFrontController = controllerMap.get(requestURI);
 

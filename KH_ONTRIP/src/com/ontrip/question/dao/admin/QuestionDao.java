@@ -108,7 +108,7 @@ public class QuestionDao {
 
         ResultSet rs = null;
 
-        System.out.println("sql = " + sql);
+//        System.out.println("sql = " + sql);
 
         try {
 
@@ -151,7 +151,7 @@ public class QuestionDao {
 
         String sql  = prop.getProperty("getTotal");
 
-        System.out.println("sql = " + sql);
+//        System.out.println("sql = " + sql);
 
 
         try {
@@ -161,7 +161,7 @@ public class QuestionDao {
             if (rs.next()) {
                 result = rs.getInt("total");
             }
-            System.out.println("result = " + result);
+//            System.out.println("result = " + result);
         } catch (SQLException e) {
             e.printStackTrace();
         }finally {

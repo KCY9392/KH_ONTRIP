@@ -35,7 +35,7 @@ public class AdMemberFrontController extends HttpServlet {
 
     public void process(HttpServletRequest request, HttpServletResponse response)
         throws IOException, ServletException, SQLException {
-        System.out.println("MemberFrontController.service");
+//        System.out.println("MemberFrontController.service");
 
         String requestURI = request.getRequestURI();
 
@@ -72,11 +72,11 @@ public class AdMemberFrontController extends HttpServlet {
         throws ServletException, IOException, SQLException {
         //get이든 post든 어떤 방식으로 요청으로 들어오든 로직은 여기에 작성.
 
-        System.out.println("MemberFrontController.service");
+//        System.out.println("MemberFrontController.service");
 
         String requestURI = request.getRequestURI();
 
-        System.out.println("requestURI = " + requestURI);
+//        System.out.println("requestURI = " + requestURI);
 
         MemberFrontController memberFrontController = controllerMap.get(requestURI);
 

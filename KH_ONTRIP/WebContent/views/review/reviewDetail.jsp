@@ -138,7 +138,7 @@ button:hover{transform: scale(.9);}
                 </div><br>
                <strong style="font-size: 25px;">개선사항</strong><br>
                <div class="shadow p-3 mb-5 bg-body rounded" style="width:800px; margin-left: -136px;">
-               		<input type="text" id="rtext" name="rtext" style="width: 440px; height: 150px; margin-bottom: -30px; border: 0;" value="<%=placeCode %>"><br><br>
+               		<input type="text" id="rtext" name="rtext" style="width: 440px; height: 150px; margin-bottom: -30px; border: 0;" value="<%=r.getRevText()%>"><br><br>
                </div>
             
                <% if(loginUser.getMemberName().equals(r.getMemberName())) { %>

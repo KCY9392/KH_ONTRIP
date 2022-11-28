@@ -47,37 +47,30 @@ public class AdMainDetailController extends HttpServlet {
 		
 		ArrayList<Hash> hash = new ManagerService().detailHash(placeName);
 		request.setAttribute("hash", hash);
-		System.out.println(hash);
+//		System.out.println(hash);
 		String value = "";
 		if(hash != null) {
 			for(int i = 0; i<hash.size(); i++) {
-				System.out.println(hash.get(i).getHashName());
+//				System.out.println(hash.get(i).getHashName());
 				value += hash.get(i).getHashName()+  ( i != hash.size()-1 ?  "," : "");
 				
 			}
 		}
-		System.out.println(value);
+//		System.out.println(value);
 		request.setAttribute("value", value);
 		
 		String num = "";
 		if(hash != null) {
 			for(int i = 0; i<hash.size(); i++) {
-				System.out.println(hash.get(i).getHashName());
+//				System.out.println(hash.get(i).getHashName());
 				num += hash.get(i).getHashNo()+  ( i != hash.size()-1 ?  "," : "");
 				
 			}
 		}
 		
-		System.out.println(num);
+//		System.out.println(num);
 		request.setAttribute("num", num);
 		
-//		int[] a = new int[hash.size()];
-//		if(hash != null) {
-//			for(int i = 0; i<hash.size(); i++) {
-//				a = hash.get(i).getHashNo();
-//				
-//			}
-//		}
 		
 		
 		

@@ -34,9 +34,9 @@ public class AdMainListController extends HttpServlet {
 
         String categoryCode = request.getParameter("categoryCode");
 
-        System.out.println("plc.categoryCode = " + categoryCode);
-        System.out.println("amount = " + amount);
-        System.out.println("pageNum = " + pageNum);
+//        System.out.println("plc.categoryCode = " + categoryCode);
+//        System.out.println("amount = " + amount);
+//        System.out.println("pageNum = " + pageNum);
 
         if (request.getParameter("pageNum") != null && request.getParameter("amount") != null) {
             pageNum = Integer.parseInt(request.getParameter("pageNum"));
@@ -50,7 +50,7 @@ public class AdMainListController extends HttpServlet {
         // 시설 목록을 나타내기 위한 메소드
         ArrayList<Place> placeList = new ManagerService().getList(categoryCode, pageNum, amount);
 
-        System.out.println("placeList = " + placeList);
+//        System.out.println("placeList = " + placeList);
 
         request.setAttribute("page", page);
         request.setAttribute("placeList", placeList);

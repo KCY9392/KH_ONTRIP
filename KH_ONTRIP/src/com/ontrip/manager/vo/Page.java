@@ -34,7 +34,7 @@ public class Page {
         this.next = this.endPage < realEnd;
 
 
-        System.out.println("시작페이지 : " +this.startPage +", 끝페이지:"+ this.endPage);
+//        System.out.println("시작페이지 : " +this.startPage +", 끝페이지:"+ this.endPage);
 
 
     }

@@ -38,7 +38,7 @@ public class SearchHashPlaceController extends HttpServlet {
 		String[] split_hash;
 		if(hash != null) {
 			split_hash = hash.split(",");
-			System.out.println(Arrays.toString(split_hash));
+//			System.out.println(Arrays.toString(split_hash));
 			
 			// 검색한 시설 사진 해시태그로 불러오기
 			ArrayList<Image> placeHashPath = new PlaceService().searchHashPlacePath(split_hash);

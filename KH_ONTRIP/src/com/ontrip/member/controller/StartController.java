@@ -28,14 +28,14 @@ public class StartController extends HttpServlet {
 		ArrayList<Hash> hash = new HashService().selectHash();
 		
 		request.setAttribute("hash", hash);
-		System.out.println(hash);
+//		System.out.println(hash);
 		
 		String hashTag = "";
 		for(int i=0; i< hash.size(); i++) {
 			hashTag +="#"+hash.get(i).getHashName()+( i != hash.size()-1 ?  ", " : "");
 		}
 		
-		System.out.println(hashTag);
+//		System.out.println(hashTag);
 		request.setAttribute("hashTag", hashTag);
 		
 		request.getRequestDispatcher("views/common/mainForm.jsp").forward(request, response);

@@ -27,7 +27,7 @@ public class HeartList extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int memberNo = Integer.parseInt(request.getParameter("memberNo"));
-		System.out.println(memberNo);
+//		System.out.println(memberNo);
 		
 		ArrayList<Heart> htList = new HeartService().selectHeart(memberNo);
 		

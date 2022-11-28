@@ -36,7 +36,7 @@ public class MemberUpdateController extends HttpServlet {
     	String memberPhoneNumber = request.getParameter("userPhoneNumber");
     	String memberId = request.getParameter("userId");
     	
-    	System.out.println(memberName );
+//    	System.out.println(memberName );
     	if(memberName == null) {
     		request.setAttribute("errorMsg" , "여행자 정보 수정에 실패했습니다.");
     		request.getRequestDispatcher("views/myPage/memberinfo.jsp").forward(request, response);

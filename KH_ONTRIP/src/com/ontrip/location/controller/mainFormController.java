@@ -29,7 +29,7 @@ public class mainFormController extends HttpServlet {
 
 		// LOCAL_NAME으로 LOCATION테이블에서 LOCAL_TEXT가져오기
 		String localName = request.getParameter("localName");
-		System.out.println(localName);
+//		System.out.println(localName);
 		String localText = new LocationService().selectLocal(localName);
 
 
@@ -38,11 +38,11 @@ public class mainFormController extends HttpServlet {
 
 		// LOCAL_CODE로  DETAILED AREA테이블에서 DAREA_NAME (상세지역이름들) 가져오기
 		String localCode = request.getParameter("localCode");
-		System.out.println(localCode);
+//		System.out.println(localCode);
 		ArrayList<DetailArea> darea = new LocationService().selectDAreaName(localCode);
 		ArrayList<Image> filePath = new LocationService().selectFilePath(localCode);
-		System.out.println(filePath);
-		System.out.println(darea);
+//		System.out.println(filePath);
+//		System.out.println(darea);
 		request.setAttribute("darea", darea);
 		request.setAttribute("filePath", filePath);
 

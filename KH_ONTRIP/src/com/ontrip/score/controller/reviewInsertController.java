@@ -33,7 +33,7 @@ public class reviewInsertController extends HttpServlet {
 		String reviewText = request.getParameter("reviewText");
 		int placeCode = Integer.parseInt(request.getParameter("placeCode"));
 		int memberNo = Integer.parseInt(request.getParameter("memberNo"));
-		System.out.println(memberNo);
+//		System.out.println(memberNo);
 		
 		int sScore = Integer.parseInt(request.getParameter("rating"));
 		int cScore = Integer.parseInt(request.getParameter("cScore"));
@@ -47,16 +47,16 @@ public class reviewInsertController extends HttpServlet {
 		
 		String memberId2 = request.getParameter("memberId");
 		
-		System.out.println(placeName);
-		System.out.println(reviewText);
+//		System.out.println(placeName);
+//		System.out.println(reviewText);
 		
-		System.out.println(sScore+"통과");
-		System.out.println(cScore+"통과");
-		System.out.println(gScore+"통과");
-		System.out.println(pScore+"통과");		
+//		System.out.println(sScore+"통과");
+//		System.out.println(cScore+"통과");
+//		System.out.println(gScore+"통과");
+//		System.out.println(pScore+"통과");		
 				
 	    int revCode = Integer.parseInt(request.getParameter("revCode"));
-	    System.out.println(revCode);
+//	    System.out.println(revCode);
 		
 	// 리뷰작성
 		Review r = new Review();

@@ -370,7 +370,7 @@ public class ManagerDao {
 			if(i<hashArr.length-1) {
 				hash += ",";
 			}
-			System.out.println(hash);	
+//			System.out.println(hash);	
 				
 		}
 		//? , ? , ? 

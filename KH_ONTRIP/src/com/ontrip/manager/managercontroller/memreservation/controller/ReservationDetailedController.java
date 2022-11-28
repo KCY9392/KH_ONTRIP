@@ -29,7 +29,7 @@ public class ReservationDetailedController implements ResFrontController {
         request.setAttribute("image", image);
         request.setAttribute("rev", rev);
 
-        System.out.println("image = " + image);
+//        System.out.println("image = " + image);
 
         String viewPath = "/views/myPage/myPageReservationDetail.jsp";
         RequestDispatcher requestDispatcher = request.getRequestDispatcher(viewPath);

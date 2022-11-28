@@ -26,8 +26,8 @@ public class MemberQueListController implements QuFrontController {
         int pageNum = 1;
         int amount =5;
 
-        System.out.println("amount = " + amount);
-        System.out.println("pageNum = " + pageNum);
+//        System.out.println("amount = " + amount);
+//        System.out.println("pageNum = " + pageNum);
 
         if (request.getParameter("pageNum") != null && request.getParameter("amount") != null) {
             pageNum = Integer.parseInt(request.getParameter("pageNum"));

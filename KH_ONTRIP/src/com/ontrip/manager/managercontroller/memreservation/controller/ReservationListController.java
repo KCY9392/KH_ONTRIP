@@ -31,8 +31,8 @@ public class ReservationListController implements ResFrontController {
         int pageNum = 1;
         int amount = 5;
 
-        System.out.println("amount = " + amount);
-        System.out.println("pageNum = " + pageNum);
+//        System.out.println("amount = " + amount);
+//        System.out.println("pageNum = " + pageNum);
 
         if (request.getParameter("pageNum") != null && request.getParameter("amount") != null) {
             pageNum = Integer.parseInt(request.getParameter("pageNum"));
@@ -42,15 +42,15 @@ public class ReservationListController implements ResFrontController {
         List<Reservation> list = memrevService.getRevList(pageNum, amount, memberNo);
         int total = memrevService.getTotal(memberNo);
 
-        System.out.println("total = " + total);
+//        System.out.println("total = " + total);
 
         Page page = new Page(pageNum, amount, total);
 
         request.setAttribute("page", page);
         request.setAttribute("list", list);
 
-        System.out.println("page = " + page);
-        System.out.println("list = " + list);
+//        System.out.println("page = " + page);
+//        System.out.println("list = " + list);
 
         String viewPath = "/views/myPage/myPageReservationList.jsp";
 

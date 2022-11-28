@@ -29,17 +29,17 @@ public class LoginController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		
-		System.out.println("로그인하는중");
+//		System.out.println("로그인하는중");
 		
 		request.setCharacterEncoding("UTF-8");
 		
 		String memberId = request.getParameter("memberId");
 
-		System.out.println("memberId = " + memberId);
+//		System.out.println("memberId = " + memberId);
 
 		String memberPwd = request.getParameter("memberPwd");
 
-		System.out.println("memberPwd = " + memberPwd);
+//		System.out.println("memberPwd = " + memberPwd);
 
 		
 		Member loginUser = ms.loginMember(memberId, memberPwd);
