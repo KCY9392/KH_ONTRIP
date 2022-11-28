@@ -172,6 +172,4 @@
 		WHERE PLC_CODE = (SELECT PLC_CODE FROM "Place" WHERE PLC_NAME = ?) AND ORIGIN_NAME LIKE '%1%'
 	</entry>
 	
-	
-	
 </properties>

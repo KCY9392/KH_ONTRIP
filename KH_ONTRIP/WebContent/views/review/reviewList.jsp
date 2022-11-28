@@ -84,7 +84,7 @@
     }
     #avgGage{
         width: 350px;
-        background-color: black;
+        background-color: black; 
     }
     #avgNumberTitle{
         margin-top: 50px;
@@ -96,13 +96,14 @@
         border: 0;
     }
     #text3{
-        margin-left: 113px;
+        margin-left: 230px;
         font-size: 20px;
         font-weight: bold;
+        margin-bottom: 5px;
     }
     #avgGage{
-        width: 350px;
-        background-color: black;
+        width: 430px;
+        
     }
     .outer7{
         background-color: white; /* 해당사이트의 고유한 색상으로 작성 */
@@ -216,9 +217,9 @@
                 <table>
                     <tr>
                         <div class="outer_top shadow p-3 mb-5 bg-body rounded">
-                            <p id ="avgNumberTitle"><strong style="font-size: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;시설이름 :<input type="text" id="avgNumber" value="<%=placeName %>" name="<%=placeName %>" style="margin-left: 30px; width: 350px;" readonly></strong></p>
+                            <p id ="avgNumberTitle"><strong style="font-size: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%=placeName %></strong></p>
                             <hr width="95%" style="float: left; margin-left: 10px;">
-                            <p id ="avgNumberTitle"><strong style="font-size: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;평균점수 :&nbsp;&nbsp;&nbsp;<input value="<%=avgScore %>" type="text" id="avgNumber" style="width: 62.8px; height: 35px; color: blue;" readonly>&nbsp;&nbsp;/&nbsp;&nbsp;10</strong></p>
+                            <p id ="avgNumberTitle"><strong style="font-size: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;평균점수 :&nbsp;<input value="<%=avgScore %>" type="text" id="avgNumber" style="width: 62.8px; height: 35px; color: blue;" readonly>/&nbsp;&nbsp;10</strong></p>
                             <hr width="95%" style="float: left; margin-left: 10px;">
                         </div>
                    
@@ -226,26 +227,26 @@
                             &nbsp;&nbsp;&nbsp;
                             &nbsp;&nbsp;&nbsp;
                             &nbsp;&nbsp;&nbsp;
-                            <img src="<%=request.getContextPath()%>/<%=selectMainImagelist.get(0).getFilePath()%><%=selectMainImagelist.get(0).getChangeName() %>" style="width: 400px; height:237px; margin-top: -40px; margin-left: 10px;" class="shadow p-3 mb-5 bg-body rounded">
+                            <img src="<%=request.getContextPath()%>/<%=selectMainImagelist.get(0).getFilePath()%><%=selectMainImagelist.get(0).getChangeName() %>" style="width: 400px; height:237px; margin-top: -40px; margin-left: -15px;" class="shadow p-3 mb-5 bg-body rounded">
                         </div>
 
-                        <td></td><br><br><br><br><br><br><br><br><br>
+                        <td></td><br><br><br><br><br><br><br><br><br><br>
                         <!-- <p id="avgNumber"><input value="<%=avgScore %>" type="text" id="avgNumber" style="width: 47px; height: 35px; margin-left: -500px; color: blue;">&nbsp;&nbsp;/&nbsp;&nbsp;10</p>--><br><br>
                         <div class="shadow p-3 mb-5 bg-body rounded" style="margin-top: -10px;">
                         <p id="text3">별점</p>
-                        <progress value="<%=slist.get(0).getReviewStar() %>" name="8" style="margin-left: 110px;" max="5" id="avgGage"></progress> &nbsp;<strong><%=slist.get(0).getReviewStar() %></strong>
+                        <progress value="<%=slist.get(0).getReviewStar() %>" name="8" style="margin-left: 230px;" max="5" id="avgGage"></progress> &nbsp;<strong><%=slist.get(0).getReviewStar() %></strong>
                         </div>
                         <div class="shadow p-3 mb-5 bg-body rounded" style="margin-top: -10px;">
                         <p id="text3">청결도</p>
-                        <progress value="<%=slist.get(0).getReview_c() %>" name="8" style="margin-left: 110px;" max="10" id="avgGage"></progress> &nbsp;<strong><%=slist.get(0).getReview_c() %></strong>
+                        <progress value="<%=slist.get(0).getReview_c() %>" name="8" style="margin-left: 230px;" max="10" id="avgGage"></progress> &nbsp;<strong><%=slist.get(0).getReview_c() %></strong>
                         </div>
                         <div class="shadow p-3 mb-5 bg-body rounded">
                         <p id="text3">직원 & 서비스</p>
-                        <progress value="<%=slist.get(0).getReview_s() %>" style="margin-left: 110px;" max="10" id="avgGage"></progress> &nbsp;<strong><%=slist.get(0).getReview_s() %></strong>
+                        <progress value="<%=slist.get(0).getReview_s() %>" style="margin-left: 230px;" max="10" id="avgGage"></progress> &nbsp;<strong><%=slist.get(0).getReview_s() %></strong>
                         </div>
                         <div class="shadow p-3 mb-5 bg-body rounded">
                         <p id="text3">편의시설 서비스</p>
-                        <progress value="<%=slist.get(0).getReview_p()  %>" style="margin-left: 110px;" max="10" id="avgGage"></progress> &nbsp;<strong><%=slist.get(0).getReview_p() %></strong>
+                        <progress value="<%=slist.get(0).getReview_p()  %>" style="margin-left: 230px;" max="10" id="avgGage"></progress> &nbsp;<strong><%=slist.get(0).getReview_p() %></strong>
                         </div>  
                         <div>
                             <!-- <img src="location1.png" style="width: 400px; height:200px; margin-left: 110px;"> -->
@@ -257,16 +258,17 @@
         <div class="outer2 shadow p-3 mb-5 bg-body rounded" >
             <div class="outer7">
                 <ul>
-                    <p id="title"><strong>❤️&nbsp;:&nbsp;<%=selectHeartCount %></strong></p> 
-                    <hr width="100%" style="float: left;"><br>
-                    <button class = "btn btn-secondary btn-sm" id="btn" onclick="reviewInsert();">후기작성</button><br><br>
-                    <li style="font-size: 20px;"><strong>[<%=placeName%>] 후기들</strong></li><br>
+                    <p id="title" style="margin-bottom: -40px;"><img src="views/review/하트.gif" style="width: 190px; height: 180px; margin-left: -80px;"><strong style="margin-left: -70px;">:&nbsp;<%=selectHeartCount %></strong></p> 
+                    <!-- <hr width="100%" style="float: left;"><br> -->
+                    <!-- <button class = "btn btn-secondary btn-sm" id="btn" onclick="reviewInsert();">후기작성</button><br><br> -->
+                    <li style="font-size: 20px; margin-bottom: -50px;"><strong>[<%=placeName%>] 후기들</strong></li><br>
                     <table  id = "ulTable" class="table table-bordered table-hover">
                         <thead>
                             <tr >
                                 <th width="70"  style="background-color: rgb(19, 20, 19); color: white;">번호</th>
                                 <th width="300" style="background-color: rgb(19, 20, 19); color: white;">이용시설</th>
                                 <th width="150" style="background-color: rgb(19, 20, 19); color: white;">날짜</th>
+                                <button class = "btn btn-secondary btn-sm" id="btn" onclick="reviewInsert();" style="margin-left: 596px; width: 147px; border-radius: 0; height: 40px; font-size: 13px; font-weight:bold; margin-top: -10px;">후기작성</button>
                                 <th width="130" style="background-color: rgb(19, 20, 19); color: white;">작성자</th>
                             </tr> 
                         </thead>
@@ -274,10 +276,10 @@
                                     <tr>
                                    	<% if(!plist.isEmpty()) { %>
                                     <% for(int i = 0; i < plist.size(); i++) { %>
-                                        <td><%=plist.get(i).getRevCode()%></td>
-                                        <td><%=plist.get(i).getPlaceName()%></td>
-                                        <td><%=plist.get(i).getRevDate() %></td>
-                                        <td><%=plist.get(i).getMemberName() %></td>
+                                        <td><strong><%=plist.get(i).getRevCode()%></strong></td>
+                                        <td><strong><%=plist.get(i).getPlaceName()%></strong></td>
+                                        <td><strong><%=plist.get(i).getRevDate() %></strong></td>
+                                        <td><strong><%=plist.get(i).getMemberName() %></strong></td>
                                     </tr>
                                 <% } %>
                                 <% } %>

@@ -6,9 +6,11 @@
 
 	int memberNo = Integer.parseInt(request.getParameter("memberNo"));
 	
-	int revCode = Integer.parseInt((String)request.getParameter("revCode"));
+	int revCode = Integer.parseInt((String)request.getParameter("revCode"));	
 	
 	ArrayList<Image> myImageList = (ArrayList<Image>)request.getAttribute("myImageList");
+	
+	int placeCode = (int)(request.getAttribute("placeCode"));
 	
 	Review r = (Review) request.getAttribute("re");
 %>
@@ -25,7 +27,7 @@
         background-color: white; /* 해당사이트의 고유한 색상으로 작성 */
         color: black;
         width: 800px;
-        height: 1250px;
+        height: 1280px;
         /* border: 1px solid black; */
         margin: auto;
         /* margin-top: 150px; */
@@ -113,7 +115,7 @@ button:hover{transform: scale(.9);}
     <div class="outer1 shadow p-3 mb-5 bg-body rounded">
         <br><br><br>
         <div align="center">
-            <form id="checkReview" action="<%=request.getContextPath()%>/deleteReivew.re?memberNo=<%=memberNo %>&revCode=<%=revCode %>&placeName=<%=r.getPlaceName() %>" method="post">
+            <form id="checkReview" action="<%=request.getContextPath()%>/mydeleteReivew.re?memberNo=<%=memberNo %>&revCode=<%=revCode %>&placeCode=<%=placeCode %>" method="post">
                 <strong style="float: left; font-size: 25px;">이용시설 : <%=r.getPlaceName()%> &nbsp;&nbsp;&nbsp;</strong> <input type="text" name="placeName" id = "review" style="height: 30px; width: 150px; border: 0px; font-size: 20; font-weight: bold;" readonly><br> 
                 <!-- <hr width="60%"><br> --><br>
                 <img src="<%=request.getContextPath()%>/<%=myImageList.get(0).getFilePath()%><%=myImageList.get(0).getChangeName() %>" style="width: 110%; height:330px; margin-left: -23px;" class="shadow p-3 mb-5 bg-body rounded"><br>
@@ -138,14 +140,14 @@ button:hover{transform: scale(.9);}
                 </table>
                 </div><br>
                <strong style="font-size: 25px;">개선사항</strong><br>
-               <div class="shadow p-3 mb-5 bg-body rounded" style="width:800px; margin-left: -135px;">
+               <div class="shadow p-3 mb-5 bg-body rounded" style="width:800px; margin-left: -136px;">
                		<input type="text" id="rtext" name="rtext" style="width: 440px; height: 150px; margin-bottom: -30px; border: 0;" value="<%=r.getRevText() %>"><br><br>
                </div>
             
                <% if(loginUser.getMemberName().equals(r.getMemberName())) { %>
                 <div align = "center">
-                    <button type="submit" name ="deleteReivew">삭제</button>
-                    <button type="button" name ="updateReivew" onclick="updateReview();">수정</button>
+                    <button type="submit" name ="deleteReivew" class="btn btn-outline-warning" style="width:100px; border-radius:0;">삭제</button>
+                    <button type="button" name ="updateReivew" onclick="updateReview();" class="btn btn-outline-dark" style="width:100px; border-radius:0;">수정</button>
                 </div>
               <% } %>
             </form>
@@ -167,7 +169,7 @@ button:hover{transform: scale(.9);}
             	success : function(result){
             		if(result == "success"){
             			alert("수정이 완료되었습니다.");
-            			location.href = '<%=request.getContextPath() %>/mypageReviewList.me?memberNo=<%=loginUser.getMemberNo()%>';
+            			location.href = '<%=request.getContextPath() %>/mypageReviewList.me?memberNo=<%=loginUser.getMemberNo()%>&placeCode=<%=placeCode%>';
             		}else{
             			alert("수정에 실패하였습니다.");
             			location.href = '<%=request.getContextPath() %>/detail.bo';

@@ -33,6 +33,7 @@ public class MyreviewDetailController extends HttpServlet {
 		int memberNo = Integer.parseInt(request.getParameter("memberNo"));
 		int placeCode = new ReviewService().selectPlaceCode(memberNo , placeName);
 		request.setAttribute("placeCode", placeCode);
+//		System.out.println(placeCode + "통과되는중 111");
 		
 		ArrayList<Image> myImageList = new ReviewService().selectMyImageList(placeName);
 		request.setAttribute("myImageList", myImageList);

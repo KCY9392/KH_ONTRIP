@@ -39,9 +39,9 @@
        select:focus{
           border:1px solid green;
           box-sizing: border-box;
-          border-radius: 10px;
+          /* border-radius: 10px; */
           outline: 3px solid yellowgreen;
-          border-radius: 10px;
+          /* border-radius: 10px; */
        }
        input{
           border:none;

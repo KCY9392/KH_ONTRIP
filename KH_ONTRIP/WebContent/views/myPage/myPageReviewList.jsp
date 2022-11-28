@@ -131,7 +131,7 @@
             	padding-bottom:30px; padding-top:30px;">
 	        <span style="font-weight:700; font-size:40px;">등록 후기</span>
                 <div class="outer7">
-                            <table align = "center" id = "ulTable" class="table-bordered table-hover">
+                            <table align = "center" id = "ulTable" class="table-bordered table table-hover" style="margin-left: 75px; width: 850px;">
                                 <thead>
                                     <tr>
                                         <th width="70" height="40" style="background-color: rgb(182, 210, 230);">번호</th>

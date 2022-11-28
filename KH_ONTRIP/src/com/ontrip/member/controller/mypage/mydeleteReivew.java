@@ -1,6 +1,8 @@
-package com.ontrip.review.controller;
+package com.ontrip.member.controller.mypage;
 
 import java.io.IOException;
+
+import javax.security.auth.message.callback.PrivateKeyCallback.Request;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -8,29 +10,32 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.ontrip.review.service.ReviewService;
-import com.ontrip.review.vo.Review;
 
 /**
- * 후기게시판에서 사용자가 후기 삭제할 시, 호출되는 컨트롤러
+ * Servlet implementation class mydeleteReivew
  */
-@WebServlet("/deleteReivew.re")
-public class reviewDeleteController extends HttpServlet {
+// 마이페이지 리뷰 삭제 후 다시 마이페이지 등록 리뷰로 이동.
+@WebServlet("/mydeleteReivew.re")
+public class mydeleteReivew extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-
-    public reviewDeleteController() {
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public mydeleteReivew() {
         super();
-
+        
     }
 
-
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+		
 		int memberNo = Integer.parseInt(request.getParameter("memberNo"));
-		int revCode = Integer.parseInt(request.getParameter("revCode"
-				));
-		int placeCode = Integer.parseInt(request.getParameter("placeCode"));
-		System.out.println(placeCode);
+		int revCode = Integer.parseInt(request.getParameter("revCode"));
+//		int placeCode = Integer.parseInt(request.getParameter("placeCode"));
+//		System.out.println(placeCode);
 		String placeName = request.getParameter("placeName");
 		request.setAttribute("placeName", placeName);
 		System.out.println(placeName+"11111111111");
@@ -39,21 +44,14 @@ public class reviewDeleteController extends HttpServlet {
 		
 		int result = new ReviewService().deleteReview(memberNo , revCode);
 		
-		
-		if (result > 0){
-	         response.setContentType("text/html;charset=UTF-8");
-	         response.getWriter().print("<script> location.href = '/KH_ONTRIP/review.re?placeName="+placeName+"&memberNo="+memberNo+"&placeCode="+placeCode+"'</script>");
-
-	      }else {
-	         request.setAttribute("errorMsg", "등록에 실패하였습니다.");
-	         request.getRequestDispatcher("views/common/errorPage.jsp").forward(request, response);
-	      }
-	
+		response.sendRedirect(request.getContextPath()+"/mypageReviewList.me?memberNo="+memberNo);
 	}
 
-
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 

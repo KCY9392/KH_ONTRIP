@@ -101,8 +101,8 @@
 
 button:hover{transform: scale(.9);}
 .star-rating { width:315px; }
-.star-rating,.star-rating span { display:inline-block; height:55px; overflow:hidden; background:url(views/review/star.png)no-repeat; }
-.star-rating span{ background-position:left bottom; line-height:0; vertical-align:top; }
+.star-rating,.star-rating span { display:inline-block; height:55px; overflow:hidden; background:url(views/review/star.png)no-repeat;}
+.star-rating span{ background-position:left bottom; line-height:0; vertical-align:top;}
 </style>
 </head>
 <body>
@@ -137,14 +137,14 @@ button:hover{transform: scale(.9);}
                 </table>
                 </div><br>
                <strong style="font-size: 25px;">개선사항</strong><br>
-               <div class="shadow p-3 mb-5 bg-body rounded" style="width:800px; margin-left: -135px;">
+               <div class="shadow p-3 mb-5 bg-body rounded" style="width:800px; margin-left: -136px;">
                		<input type="text" id="rtext" name="rtext" style="width: 440px; height: 150px; margin-bottom: -30px; border: 0;" value="<%=placeCode %>"><br><br>
                </div>
             
                <% if(loginUser.getMemberName().equals(r.getMemberName())) { %>
                 <div align = "center">
-                    <button type="submit" name ="deleteReivew">삭제</button>
-                    <button type="button" name ="updateReivew" onclick="updateReview();">수정</button>
+                    <button type="submit" name ="deleteReivew" class="btn btn-outline-warning" style="width:100px; border-radius:0;">삭제</button>
+                    <button type="button" name ="updateReivew" onclick="updateReview();" class="btn btn-outline-dark" style="width:100px; border-radius:0;">수정</button>
                 </div>
               <% } %>
             </form>
