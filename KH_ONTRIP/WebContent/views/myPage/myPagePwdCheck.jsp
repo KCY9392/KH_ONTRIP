@@ -123,7 +123,7 @@
             <div align="center">
                 <table align="center">
                     <tr>
-                        <td>비밀번호 : &nbsp;</td>
+                        <td style="font-size:15px; font-weight:600;">비밀번호 : &nbsp;</td>
                         <td><input type="password" name="checkPwd"></td>
                     </tr>
                 </table>

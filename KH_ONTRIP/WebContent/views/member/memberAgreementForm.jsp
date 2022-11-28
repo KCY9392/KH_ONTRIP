@@ -11,17 +11,112 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>온트립 : 회원가입</title>
-    <script
-        src="https://code.jquery.com/jquery-3.6.1.min.js"
-        integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="
-        crossorigin="anonymous">
-    </script>
+    <!-- 폰트적용  -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link
+	href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap"
+	rel="stylesheet">
+<link href="<%= request.getContextPath() %>/resources/css/mainForm.css"
+	rel="stylesheet">
+
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.1.min.js"
+	integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="
+	crossorigin="anonymous"></script>
+
+<!-- BootStrap 연결 -->
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
+	crossorigin="anonymous">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+	integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+	crossorigin="anonymous" referrerpolicy="no-referrer" />
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+	integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+	crossorigin="anonymous"></script>
+
+<!-- Alert 창  -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
     
     <link href="<%= contextPath %>/resources/css/enroll.css" rel="stylesheet" >
+    
+    <style>
+.uk-flex-middle {
+	align-items: center;
+}
+
+.uk-flex-center {
+	justify-content: center;
+}
+
+.uk-flex {
+	display: flex;
+}
+
+.uk-background-cover {
+	background-size: cover;
+}
+
+.uk-background-contain {
+	background-position: 50% 50%;
+	background-repeat: no-repeat;
+}
+
+.uk-section-default {
+	background: rgb(250, 250, 250);
+}
+
+.uk-section {
+	padding-top: 70px;
+	padding-bottom: 70px;
+}
+
+.uk-section {
+	display: flow-root;
+	box-sizing: border-box;
+}
+
+.sl-in2 {
+	  animation: change1 1s ease forwards;
+	}
+	
+@keyframes change1 {
+  from {
+    transform: translateY(30%);
+  }
+
+  to {
+    transform: translateY(0%);
+  }
+}
+    </style>
 </head>
 <body>
+
+	<div class="uk-section uk-section-default sl-in2"
+		style="min-width: 90vw; height: 25vh;">
+		<div class="uk-container">
+			<div style="text-align: center;  margin-top:-40px;">
+				<div style="font-size: 40px; font-weight: 600;">OnTrip</div>
+				<br>
+				<div style="color: darkgray">MAKE YOUR ROUTE OPTIMIZED</div>
+				<br> <br>
+				<div>
+					<span>회원가입</span> > <span
+						style="color: coral; font-size: 16px; font-weight: 600;">이용약관</span>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<br>
     <div class="container" id = "content">
-        <h1>On Trip</h1> 
+        
         <p>OnTrip 이용약관 동의 (필수)</p>
         <textarea cols="50" rows="5">
 OnTrip에 오신 여러분을 환영합니다.

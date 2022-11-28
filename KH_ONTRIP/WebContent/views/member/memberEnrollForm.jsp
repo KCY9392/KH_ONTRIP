@@ -7,11 +7,42 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>온트립 : 회원가입</title>
-    <script
-        src="https://code.jquery.com/jquery-3.6.1.min.js"
-        integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="
-        crossorigin="anonymous">
-    </script>
+    
+    <!-- 폰트적용  -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link
+   href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap"
+   rel="stylesheet">
+<link href="<%= request.getContextPath() %>/resources/css/mainForm.css"
+   rel="stylesheet">
+
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.1.min.js"
+   integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="
+   crossorigin="anonymous"></script>
+
+<!-- BootStrap 연결 -->
+<link
+   href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
+   rel="stylesheet"
+   integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
+   crossorigin="anonymous">
+<link rel="stylesheet"
+   href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+   integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+   crossorigin="anonymous" referrerpolicy="no-referrer" />
+<script
+   src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+   integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+   crossorigin="anonymous"></script>
+
+<!-- Alert 창  -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
+    
+    
+    
     <style>
         body{
             margin:0;
@@ -135,15 +166,80 @@
         .btn_3:active{
             background-color:rgb(173, 222, 155);
         }
+      .uk-flex-middle {
+   align-items: center;
+}
+
+.uk-flex-center {
+   justify-content: center;
+}
+
+.uk-flex {
+   display: flex;
+}
+
+.uk-background-cover {
+   background-size: cover;
+}
+
+.uk-background-contain {
+   background-position: 50% 50%;
+   background-repeat: no-repeat;
+}
+
+.uk-section-default {
+   background: rgb(250, 250, 250);
+}
+
+.uk-section {
+   padding-top: 70px;
+   padding-bottom: 70px;
+}
+
+.uk-section {
+   display: flow-root;
+   box-sizing: border-box;
+}
+
+.sl-in2 {
+     animation: change1 1s ease forwards;
+   }
+   
+@keyframes change1 {
+  from {
+    transform: translateY(30%);
+  }
+
+  to {
+    transform: translateY(0%);
+  }
+}
 
 
     </style>
 </head>
 <body>
+<div class="uk-section uk-section-default sl-in2"
+      style="min-width: 90vw; height: 28vh;">
+      <div class="uk-container">
+         <div style="text-align: center;  margin-top:-20px;">
+            <div style="font-size: 40px; font-weight: 600;">OnTrip</div>
+            <br>
+            <div style="color: darkgray">MAKE YOUR ROUTE OPTIMIZED</div>
+            <br> <br>
+            <div>
+               <span>회원가입</span> > <span
+                  style="color: coral; font-size: 16px; font-weight: 600;">회원정보</span>
+            </div>
+         </div>
+      </div>
+   </div>
+
+	<br>
+
     <div class="container">
-        <h1>On Trip</h1> 
         <br>
-        <form action="<%=request.getContextPath() %>/insert.me" id="enroll-form" method="post">
+        <form id="memberEnroll" action="<%=request.getContextPath() %>/insert.me" method="post">
            <div class="centerText">
                <span class="span_name">여행자 이름</span>
                <input type="text" placeholder="여행자 이름" size="14" name="memberName" required>  &nbsp; &nbsp; &nbsp; &nbsp;
@@ -167,8 +263,8 @@
                <span class="span_phone">휴대전화</span>
                <input class="input" type="text" placeholder="휴대전화번호 ( ' - ' 포함 )" name="phone" required><br>
                
-               <button type="reset" class="btn_3">초기화</button>
-               <button type="submit" class="btn_3" disabled name="checkSelct">가입</button>
+               <button type="reset" onclick="resetBtn();" class="btn_3">초기화</button>
+               <button type="button" onclick="btnEnroll();" class="btn_3" disabled name="checkSelct">가입</button>
    
                
            </div>
@@ -176,33 +272,104 @@
     </div>
     
       <script>
+      
+      function resetBtn(){
+          
+          $('input[name=memberId]').attr('readonly', false);
+          $("button[name=checkSelct]").attr("disabled", true);
+       }
+
+      
          function idCheck(){
             // 아이디 입력하는 input 요소 객체
-            let $memberId = $("#enroll-form input[name=memberId]");
+            let $memberId = $("#memberEnroll input[name=memberId]");
             
             $.ajax({
                url : "idCheck.me",
                data : {checkId : $memberId.val()},
                success : function(result){
+            	   
             	   if($memberId.val() == "") {
-                 	  alert("아이디를 입력해주세요");
+            		   
+            		   Swal.fire({
+                           icon: 'error',
+                           title: '아이디를 입력해주세요.'
+                           
+                       });
+
                        $memberId.focus();
+                       
                    }else if(result == "NNNNN"){ // 사용불가능한 아이디
-                     alert("이미 존재하거나 회원탈퇴한 아이디입니다.");
+                	   
+                	   Swal.fire({
+                           icon: 'error',
+                           title: '이미 존재하는 아이디입니다.'
+                           
+                       });
                      $memberId.focus();
+                     
                   }else{
-                     if(confirm("사용가능한 아이디입니다. 사용하시겠습니까?")){
-                        $("button:button[name=checkSelct]").attr("disabled",false);
-                     }else{ // 사용안함
-                        $memberId.focus();
-                     }
+                     
+                	  Swal.fire({
+                          title: '사용가능한 아이디입니다.',
+                          text: '사용하시겠습니까?',
+                          icon: 'warning',
+                          showCancelButton: true,
+                          confirmButtonColor: '#3085d6',
+                          cancelButtonColor: '#d33',
+                          confirmButtonText: '사용',
+                          cancelButtonText: '취소'
+                      }).then((result) => {
+                    	  if(result.isConfirmed){
+                              $("button:button[name=checkSelct]").attr("disabled",false);
+                              $("input[name=memberId]").attr("readonly", true);
+                           }  
+                    	  
+                      });
+                  
+                	  
                   }
                },
                error : function(){
                   alert("아이디 중복체크용 ajax 통신 실패");
                }
-            })
+            });
          }
+         function btnEnroll(){
+             
+             Swal.fire({
+                 title: '회원가입 하시겠습니까?',
+                 icon: 'warning',
+                 showCancelButton: true,
+                 confirmButtonColor: '#3085d6',
+                 cancelButtonColor: '#d33',
+                 confirmButtonText: '가입',
+                 cancelButtonText: '취소'
+             }).then((result) => {
+                 if (result.isConfirmed) {
+                     Swal.fire({
+                           title: '가입이 완료되었습니다.',
+                           icon:'success',
+                           customClass: {
+                               confirmButton: 'swal2-confirm swal2-styled swal2-jong',
+                               cancelButton: 'btn btn-danger'
+                             },    
+                     }).then((result) => {
+                    	 
+                        if(result.isConfirmed){
+                        	
+                         $("#memberEnroll").submit();
+                           
+                        }                                   
+                     });
+                 }
+             });
+             
+          }
+          
+
+         
+         
       </script>
 </body>
 </html>

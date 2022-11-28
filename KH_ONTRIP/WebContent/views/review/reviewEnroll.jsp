@@ -21,7 +21,39 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+
+<!-- 폰트적용  -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link
+   href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap"
+   rel="stylesheet">
+<link href="<%= request.getContextPath() %>/resources/css/mainForm.css"
+   rel="stylesheet">
+
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.1.min.js"
+   integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="
+   crossorigin="anonymous"></script>
+
+<!-- BootStrap 연결 -->
+<link
+   href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
+   rel="stylesheet"
+   integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
+   crossorigin="anonymous">
+<link rel="stylesheet"
+   href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+   integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+   crossorigin="anonymous" referrerpolicy="no-referrer" />
+<script
+   src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+   integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+   crossorigin="anonymous"></script>
+<!-- Alert 창  -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
+
 <style>
     .outer1{
         background-color: white; /* 해당사이트의 고유한 색상으로 작성 */
@@ -154,7 +186,8 @@ button:hover{transform: scale(.9);}
                </div>
             
                 <div align = "center">
-                    <button type = "submit" name = "deleteMember" class = "btn btn-secondary btn-lg btn-outline-dark" style="margin-top: -25px; width: 100px; background-color: black; color: white;">등록</button>
+                    <button type = button name = "deleteMember" class = "btn btn-secondary btn-lg btn-outline-dark" 
+                    	onclick="reviewUpdate();"  style="margin-top: -25px; width: 100px; background-color: black; color: white;">등록</button>
                 </div>
             </form>
         </div>
@@ -165,17 +198,17 @@ button:hover{transform: scale(.9);}
     	function reviewUpdate(){
 	              
 	            	Swal.fire({
-	                    title: '회원정보를 변경하시겠습니까?',
+	                    title: '후기를 등록하시겠습니까?',
 	                    icon: 'warning',
 	                    showCancelButton: true,
 	                    confirmButtonColor: '#3085d6',
 	                    cancelButtonColor: '#d33',
-	                    confirmButtonText: '변경',
+	                    confirmButtonText: '등록',
 	                    cancelButtonText: '취소'
 	                }).then((result) => {
 	                    if (result.isConfirmed) {
 	                        Swal.fire({
-	                        		title: '변경이 완료되었습니다.',
+	                        		title: '등록이 완료되었습니다.',
 	                        		icon:'success',
 	                        		customClass: {
 	                        		    confirmButton: 'swal2-confirm swal2-styled swal2-jong',

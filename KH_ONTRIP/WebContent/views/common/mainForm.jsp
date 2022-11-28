@@ -18,12 +18,28 @@
     <script src="https://unpkg.com/@yaireo/tagify/dist/tagify.polyfills.min.js"></script>
     <link href="https://unpkg.com/@yaireo/tagify/dist/tagify.css" rel="stylesheet" type="text/css" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <!-- 폰트어썸 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 	<style>
 	   .tagify{    
 	        width: 50%;
 	        max-width: 400px;
-          
+          	border:none;
+          	border-bottom:1px solid lightgrey;
+          	border-radius:0;
+          	text-align:center;
+          	margin-left:35px;
 	      }
+	    .btn-search:hover{
+	    	background-color:white;
+	    	font-weight:900;
+	    }
+	    .btn4{
+	    	color:rgb(24, 207, 155);
+	    }
+	    .btn4:hover{
+	    	background-color: rgb(206, 231, 236);
+	    }
 
    </style>
 	
@@ -47,20 +63,25 @@
     <form action="<%=request.getContextPath() %>/searchPlace.se" id="enroll-form" method="post">
      <div class="input-group mb-3" style="width:700px; height:50px; margin:auto;">
        <input style="border:2px solid rgb(206, 204, 204);" type="text" class="form-control" aria-label="Recipient's username" aria-describedby="button-addon2" name="word" placeholder="시설의 이름을 입력해주세요">
-       <button style="border:2px solid rgb(206, 204, 204); color:burlywood; font-weight: bold;" class="btn btn-outline-secondary" type="submit" id="button-addon2">검색</button>
+       <button style="border:2px solid rgb(206, 204, 204); background-color: rgb(181, 206, 178) color:burlywood; font-weight: bold;" class="btn btn-outline-secondary btn4" type="submit" id="button-addon2">
+       	<i class="fa-solid fa-magnifying-glass "></i>
+       </button>
+       
      </div>
   	</form>
   	
+  	<br>
+  	
 	<form action="<%=request.getContextPath() %>/searchHashPlace.se" id="enroll-form" method="post">
-	   <div style="box-sizing:border-box; width:500px; margin-left:72%">
+	   <div style="box-sizing:border-box; width:500px; margin:auto;">
 	    <div>
 	      <span style=" width:450px;"><%= hashTag %></span>
 	    </div>
 	    
-		<div class="input-group mb-3" style="width:700px; height:50px; ">
-		  <input style="border:2px solid rgb(206, 204, 204);" type="text" id="search12" class="form-control" aria-label="Recipient's username" aria-describedby="button-addon2" name='hash' placeholder="해시태그를 입력해주세요">
+		<div class="input-group mb-3" style="width:700px; height:50px;">
+		  <input style="border:none !important;" type="text" id="search12" class="form-control" aria-label="Recipient's username" aria-describedby="button-addon2" name='hash' placeholder="해시태그를 입력해주세요">
 		  <input type="hidden" name='hidden_hash'>
-		  <button style="border:2px solid rgb(206, 204, 204); color:burlywood; font-weight: bold;" class="btn btn-outline-secondary" type="submit" id="button-addon2">검색</button>
+		  <button style="border:none; color:white; background-color:lightgrey;" class="btn btn-outline-secondary btn-search" type="submit" id="button-addon2">검색</button>
 		</div>
 		</div> 
 	</form>
@@ -199,9 +220,34 @@
 </div>
 </div>
 
+<br><br><br><br>
+
+<div style="background-color:rgb(181, 206, 178); width:100%; text-align:center;"><br>
+            <h7 style="font-size:16px; color:white;">김채영 &nbsp; 황종수 &nbsp; 이범석 &nbsp; 송지호&nbsp; 조성우</h7> <br><br>
+            </div>
+<footer class="mainFooter" style="text-align:center; background: rgb(237, 236, 236); height:170px; padding:30px;">
+            <!-- Store link Div -->
+            
+            </div>
+            
+            
+            <h7>주식회사 온트립</h7><br>
+            <h7>사업자등록번호 649-88-01082</h7><br>
+            <h7>서울특별시 강남구 역삼동 823-25</h7><br>
+
+            <h7>
+                 contact@ontrip.co.kr</a>
+            </h7>
+            <br>
+            <p><h7>© ONTRIP Co.,Ltd. All rights reserved.</h7></p>
+            
+        </footer>
+
 	<script>
        const input = document.querySelector('input[name=hash]');
+       
        let tagify = new Tagify(input); // initialize Tagify
+       
        let hidden_hash = document.querySelector('input[name=hidden_hash]');
        // 태그가 추가되면 이벤트 발생
        tagify.on('add', function() {

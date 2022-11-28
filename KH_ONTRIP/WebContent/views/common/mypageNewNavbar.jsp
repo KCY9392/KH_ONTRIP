@@ -34,6 +34,13 @@
 		background-color:yellowgreen !important;
 		color:white !important;
 	}
+	.btn-question, .btn-qna{
+		font-weight:500;
+		color:white;
+	}
+	.btn-question:hover, .btn-qna:hover{
+		font-weight:bold;
+	}
 	
 </style>
 
@@ -76,16 +83,18 @@
   </nav>
  
  <!-- side box (Q&A / 고객센터 박스) -->
-  <div class="side-box" style="border:2px solid rgb(113, 89, 80); border-radius: 10px; 
-      display:inline-block; height:100px; position: fixed; margin-top:25%; margin-left:96.35%;">
+  <div class="side-box" style="border:none; box-shadow:0 0 5px 2px lightgrey;  border-radius: 10px; z-index:99999;
+      display:inline-block; height:100px; position: fixed; margin-top:25%; margin-left:96.5%;">
     <div style="height:50%;">
-      <button type="button" 
-        style="background-color: rgb(188, 236, 192); width:100%; height:100%; 
-        border:none; border-bottom:1px solid black; border-radius: 10px;" onclick="goQnA();">Q&A</button>
+      <button type="button"  class="btn-qna"
+        style="background-color: rgb(181, 206, 178); width:100%; height:100%; 
+        border:none; border-bottom:2px solid rgb(238, 236, 236);  border-radius: 10px;" 
+        onclick="goQnA();">Q&A</button>
     </div>
     <div style="height:50%;">
-      <button type="button" style=" background-color: rgb(188, 236, 192); height:100%; border:none;
-        border-radius: 10px;" onclick="goQuestion();">고객센터</button>
+      <button type="button" class="btn-question" style=" background-color: rgb(181, 206, 178); height:100%; border:none;
+        border-radius: 10px;"
+        onclick="goQuestion();">고객센터</button>
     </div>
   </div>
  <script>
