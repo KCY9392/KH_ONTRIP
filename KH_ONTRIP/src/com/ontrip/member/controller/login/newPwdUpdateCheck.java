@@ -39,7 +39,7 @@ public class newPwdUpdateCheck extends HttpServlet {
 			if(result > 0) { // 업데이트 성공
 			
 				response.setContentType("text/html;charset=UTF-8");
-		        response.getWriter().print("<script>alert('비밀번호 재설정에 성공하였습니다.'); location.href = 'KH_ONTRIP/'</script>");
+		        response.getWriter().print("<script>alert('비밀번호 재설정에 성공하였습니다.'); location.href = '/KH_ONTRIP/'</script>");
 			
 			}else { // 업데이트 실패
 				

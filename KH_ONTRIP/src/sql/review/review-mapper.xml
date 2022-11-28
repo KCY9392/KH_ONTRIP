@@ -48,7 +48,7 @@
 							JOIN "Member" USING (MEM_NO) 
 							WHERE PLC_CODE = ? 
 			  			      AND R.STATUS = 'Y'
-							ORDER BY REV_DATE 
+							ORDER BY REV_CODE DESC 
 					 ) A
 			)
         WHERE RNUM BETWEEN ? AND ?
@@ -65,7 +65,7 @@
 		JOIN "Review" USING(PLC_CODE)
 		JOIN "Member" USING(MEM_NO)
 		WHERE PLC_NAME = ?
-		ORDER BY REV_CODE , REV_DATE 
+		ORDER BY REV_CODE DESC
 	</entry>
 	
 	<!-- 게시판에서 한 글을 클릭햇을때 나오는 후기상세조회 -->
@@ -107,7 +107,7 @@
 							JOIN "Member" USING (MEM_NO) 
 							WHERE MEM_NO = ?
 			  			      AND R.STATUS = 'Y'
-							ORDER BY REV_DATE 
+							ORDER BY REV_CODE DESC
 					 ) A
 			)
         WHERE RNUM BETWEEN ? AND ?
