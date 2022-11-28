@@ -3,23 +3,41 @@
     com.ontrip.review.vo.Review , com.ontrip.image.vo.Image"%>
     
 <%
-	Place place = (Place)request.getAttribute("place");
-	String placeName = (String)request.getAttribute("placeName");
-		
-	int memberNo = Integer.parseInt(request.getParameter("memberNo"));
-	String placeCode = String.valueOf(request.getAttribute("placeCode"));
-	int revCode = Integer.parseInt((String)request.getParameter("revCode"));
-	ArrayList<Image> selectMainImagelist = (ArrayList<Image>)request.getAttribute("selectMainImagelist");
-	
-	Review r = (Review) request.getAttribute("re");
+   Place place = (Place)request.getAttribute("place");
+   String placeName = (String)request.getAttribute("placeName");
+      
+   int memberNo = Integer.parseInt(request.getParameter("memberNo"));
+   String placeCode = String.valueOf(request.getAttribute("placeCode"));
+   int revCode = Integer.parseInt((String)request.getParameter("revCode"));
+   ArrayList<Image> selectMainImagelist = (ArrayList<Image>)request.getAttribute("selectMainImagelist");
+   
+   Review r = (Review) request.getAttribute("re");
 %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+
+
+<!-- 폰트적용  -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
+<link href="<%= request.getContextPath() %>/resources/css/mainForm.css" rel="stylesheet" >
+
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+
+<!-- BootStrap 연결 -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+
+<!-- Alert 창  -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
+
 
 <style>
     .outer1{
@@ -121,8 +139,8 @@ button:hover{transform: scale(.9);}
                 <div class="shadow-lg" style="width: 151.5%; margin-left: -135px;">
                     &nbsp;만족도&nbsp;&nbsp;&nbsp;<input type="number" id="updateStar" name = "updateStar" value="<%=r.getReviewStar()%>" min="1" max="5" style="width: 40px; border: 0; color: red; font-weight: bold;">/&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5<br>
                     <div class="star-rating">
-                		<span style="width:<%=r.getReviewStar()*2%>0%; float:left; margin-left: -5.5px;"></span>
-                	</div>
+                      <span style="width:<%=r.getReviewStar()*2%>0%; float:left; margin-left: -5.5px;"></span>
+                   </div>
                 <br>
                 <table>
                     <tr>
@@ -138,12 +156,12 @@ button:hover{transform: scale(.9);}
                 </div><br>
                <strong style="font-size: 25px;">개선사항</strong><br>
                <div class="shadow p-3 mb-5 bg-body rounded" style="width:800px; margin-left: -136px;">
-               		<input type="text" id="rtext" name="rtext" style="width: 440px; height: 150px; margin-bottom: -30px; border: 0;" value="<%=r.getRevText()%>"><br><br>
+                     <input type="text" id="rtext" name="rtext" style="width: 440px; height: 150px; margin-bottom: -30px; border: 0;" value="<%=r.getRevText()%>"><br><br>
                </div>
             
                <% if(loginUser.getMemberName().equals(r.getMemberName())) { %>
                 <div align = "center">
-                    <button type="submit" name ="deleteReivew" class="btn btn-outline-warning" style="width:100px; border-radius:0;">삭제</button>
+                    <button type="button" name ="deleteReivew" onclick="deleteReview();" class="btn btn-outline-warning" style="width:100px; border-radius:0;">삭제</button>
                     <button type="button" name ="updateReivew" onclick="updateReview();" class="btn btn-outline-dark" style="width:100px; border-radius:0;">수정</button>
                 </div>
               <% } %>
@@ -152,30 +170,99 @@ button:hover{transform: scale(.9);}
     </div>
     
     <script>
-        function updateReview(){
-        	
-        	let $updateStar = $("input[name=updateStar]");
-        	let $cScroe = $("input[name=cScore]");
-        	let $sScroe = $("input[name=sScroe]");
-        	let $pScroe = $("input[name=pScore]");
-        	let $rtext = $("input[name=rtext]");
-        	
-        	$.ajax({
-        		url : "reviewUpdate.re",
-            	data : {updateStar : $updateStar.val(), cScore : $cScroe.val(), sScore : $sScroe.val() , pScore : $pScroe.val() , rText : $rtext.val(), revCode : '<%=revCode%>'},
-            	success : function(result){
-            		if(result == "success"){
-            			alert("수정이 완료되었습니다.");
-            			location.href = "<%=request.getContextPath() %>/review.re?placeName=<%=placeName %>&memberNo=<%=memberNo %>&placeCode=<%=placeCode%>";
-            		}else{
-            			alert("수정에 실패하였습니다.");
-            			location.href = '<%=request.getContextPath() %>/detail.bo';
-            		}
-            		
-            	}
-            	
-        	})
-        }
+    function updateReview(){
+       
+       let $updateStar = $("input[name=updateStar]");
+       let $cScroe = $("input[name=cScore]");
+       let $sScroe = $("input[name=sScroe]");
+       let $pScroe = $("input[name=pScore]");
+       let $rtext = $("input[name=rtext]");
+       
+       $.ajax({
+          url : "reviewUpdate.re",
+           data : {updateStar : $updateStar.val(), cScore : $cScroe.val(), sScore : $sScroe.val() , pScore : $pScroe.val() , rText : $rtext.val(), revCode : '<%=revCode%>'},
+           success : function(result){
+              
+              if(result == "success"){
+                  Swal.fire({
+                       title: '후기를 수정하시겠습니까?',
+                       icon: 'warning',
+                       showCancelButton: true,
+                       confirmButtonColor: '#3085d6',
+                       cancelButtonColor: '#d33',
+                       confirmButtonText: '수정',
+                       cancelButtonText: '취소'
+                   }).then((result) => {
+                       if (result.isConfirmed) {
+                           Swal.fire({
+                                 title: '수정이 완료되었습니다.',
+                                 icon:'success',
+                                 customClass: {
+                                     confirmButton: 'swal2-confirm swal2-styled swal2-jong',
+                                     cancelButton: 'btn btn-danger'
+                                   },      
+                           }).then((result) => {
+                              if(result.isConfirmed){
+                               $("#checkReview").submit();
+                               location.href = "<%=request.getContextPath() %>/review.re?placeName=<%=placeName %>&memberNo=<%=memberNo %>&placeCode=<%=placeCode%>";
+                              }                                   
+                           });
+                       }
+                   });   
+              }else{
+                 Swal.fire({
+                      icon: 'error',
+                      title: '수정에 실패하였습니다.',
+                      text: '다시 입력해주세요.',
+                  });
+                 location.href = '<%=request.getContextPath() %>/detail.bo';
+              } 
+           
+              
+              
+              
+              
+              
+           }
+           
+       })
+    }
+        
+    function deleteReview(){
+       
+          Swal.fire({
+               title: '후기를 삭제하시겠습니까?',
+               icon: 'warning',
+               showCancelButton: true,
+               confirmButtonColor: '#3085d6',
+               cancelButtonColor: '#d33',
+               confirmButtonText: '삭제',
+               cancelButtonText: '취소'
+           }).then((result) => {
+               if (result.isConfirmed) {
+                   Swal.fire({
+                         title: '삭제가 완료되었습니다.',
+                         icon:'success',
+                         customClass: {
+                             confirmButton: 'swal2-confirm swal2-styled swal2-jong',
+                             cancelButton: 'btn btn-danger'
+                          },      
+                   }).then((result) => {
+                      if(result.isConfirmed){
+                          $("#checkReview").submit();
+                          
+                      }                                   
+                   });
+               }
+           });   
+          
+          
+          
+         
+      } 
+        
+        
     </script>
+    
 </body>
 </html>

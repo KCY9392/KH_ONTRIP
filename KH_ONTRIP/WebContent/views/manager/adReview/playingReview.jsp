@@ -30,7 +30,7 @@
         width: 1000px;
         height: 650px;
         margin: auto;
-        margin-top: 100px;
+        margin-top: 50px;
         margin-left: 550px;
         box-sizing: border-box;
     }

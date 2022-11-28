@@ -19,8 +19,24 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+
+<!-- 폰트적용  -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
+<link href="<%= request.getContextPath() %>/resources/css/mainForm.css" rel="stylesheet" >
+
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+
+<!-- BootStrap 연결 -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+
+<!-- Alert 창  -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
 
 <style>
     .outer1{
@@ -99,9 +115,7 @@
     font-weight: bold;
     color: orangered;
 }
-form{
-    margin: auto;
-}
+
 button:hover{transform: scale(.9);}
 .star-rating { width:315px; }
 .star-rating,.star-rating span { display:inline-block; height:55px; overflow:hidden; background:url(views/review/star.png)no-repeat; }
@@ -146,7 +160,7 @@ button:hover{transform: scale(.9);}
             
                <% if(loginUser.getMemberName().equals(r.getMemberName())) { %>
                 <div align = "center">
-                    <button type="submit" name ="deleteReivew" class="btn btn-outline-warning" style="width:100px; border-radius:0;">삭제</button>
+                    <button type="button" name ="deleteReivew" onclick="deleteReview();" class="btn btn-outline-warning" style="width:100px; border-radius:0;">삭제</button>
                     <button type="button" name ="updateReivew" onclick="updateReview();" class="btn btn-outline-dark" style="width:100px; border-radius:0;">수정</button>
                 </div>
               <% } %>
@@ -167,18 +181,86 @@ button:hover{transform: scale(.9);}
         		url : "reviewUpdate.re",
             	data : {updateStar : $updateStar.val(), cScore : $cScroe.val(), sScore : $sScroe.val() , pScore : $pScroe.val() , rText : $rtext.val(), revCode : '<%=revCode%>'},
             	success : function(result){
+            		
             		if(result == "success"){
-            			alert("수정이 완료되었습니다.");
-            			location.href = '<%=request.getContextPath() %>/mypageReviewList.me?memberNo=<%=loginUser.getMemberNo()%>&placeCode=<%=placeCode%>';
+	            		Swal.fire({
+		                    title: '후기를 수정하시겠습니까?',
+		                    icon: 'warning',
+		                    showCancelButton: true,
+		                    confirmButtonColor: '#3085d6',
+		                    cancelButtonColor: '#d33',
+		                    confirmButtonText: '수정',
+		                    cancelButtonText: '취소'
+		                }).then((result) => {
+		                    if (result.isConfirmed) {
+		                        Swal.fire({
+		                        		title: '수정이 완료되었습니다.',
+		                        		icon:'success',
+		                        		customClass: {
+		                        		    confirmButton: 'swal2-confirm swal2-styled swal2-jong',
+		                        		    cancelButton: 'btn btn-danger'
+	                  		  			},		
+		                        }).then((result) => {
+		                        	if(result.isConfirmed){
+		    		            		$("#checkReview").submit();
+		    		            		location.href = '<%=request.getContextPath() %>/mypageReviewList.me?memberNo=<%=loginUser.getMemberNo()%>';
+		                        	}  		                        	
+		                        });
+		                    }
+		                });	
             		}else{
-            			alert("수정에 실패하였습니다.");
+            			Swal.fire({
+			                icon: 'error',
+			                title: '수정에 실패하였습니다.',
+			                text: '다시 입력해주세요.',
+			            });
             			location.href = '<%=request.getContextPath() %>/detail.bo';
-            		}
+            		} 
+            	
+            		
+            		
+            		
+            		
             		
             	}
             	
         	})
         }
+        
+        
+        
+        function deleteReview(){
+        	
+       	 Swal.fire({
+                title: '후기를 삭제하시겠습니까?',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: '삭제',
+                cancelButtonText: '취소'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    Swal.fire({
+                    		title: '삭제가 완료되었습니다.',
+                    		icon:'success',
+                    		customClass: {
+                    		    confirmButton: 'swal2-confirm swal2-styled swal2-jong',
+                    		    cancelButton: 'btn btn-danger'
+          		  			},		
+                    }).then((result) => {
+                    	if(result.isConfirmed){
+   		            		$("#checkReview").submit();
+   		            		
+                    	}  		                        	
+                    });
+                }
+            });	
+       	 
+       	 
+       	 
+       	
+       }
     </script>
 </body>
 </html>

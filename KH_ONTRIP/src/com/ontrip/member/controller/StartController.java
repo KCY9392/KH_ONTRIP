@@ -32,7 +32,7 @@ public class StartController extends HttpServlet {
 		
 		String hashTag = "";
 		for(int i=0; i< hash.size(); i++) {
-			hashTag +="#"+hash.get(i).getHashName()+( i != hash.size()-1 ?  ", " : "");
+			hashTag +="#"+hash.get(i).getHashName()+( i != hash.size()-1 ?  " " : "");
 		}
 		
 //		System.out.println(hashTag);

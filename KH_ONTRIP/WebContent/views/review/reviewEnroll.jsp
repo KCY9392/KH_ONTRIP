@@ -131,9 +131,7 @@
     font-weight: bold;
     color: orangered;
 }
-form{
-    margin: auto;
-}
+
 button:hover{transform: scale(.9);}
 </style>
 </head>
@@ -150,7 +148,7 @@ button:hover{transform: scale(.9);}
                 <img src="<%=request.getContextPath()%>/<%=selectMainImagelist.get(0).getFilePath()%><%=selectMainImagelist.get(0).getChangeName() %>" style="width: 110%; height:330px; margin-left: -23px;" class="shadow p-3 mb-5 bg-body rounded"><br>
                 <strong style="float: left;">작성일시 :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong><input type="date" name="reviewSysdate" id = "review" style="height: 30px; border: 0px; font-size: 17; margin-left: -350px;"><br>
                 <strong style="float: left;">작성자 :</strong> <input type="text" name = "memberId" value="<%=memberName.getMemberName() %>" id = "review" style="height: 30px; border: 0px; font-size: 20; font-weight: bold; margin-left: -250px;" readonly><br><br><br> 
-                <div class="shadow-lg" style="width: 151.5%; margin-left: -135px;">
+                <div class="shadow-lg" style="width: 151.5%; margin-left: -135px; padding:25px;">
                     만족도 <br>
                 <div class="star-rating space-x-4 mx-auto">
                     <input type="radio" id="5-stars" name="rating" value="5" v-model="ratings"/>
@@ -180,10 +178,11 @@ button:hover{transform: scale(.9);}
                - 직원 & 서비스&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="number" id = "numreview" name="gScore" min="1" max="10" step="1">/&nbsp;&nbsp;&nbsp;10<br>
                - 편의 시설 서비스&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="number" id = "numreview" name="pScore" min="1" max="10" step="1">/&nbsp;&nbsp;&nbsp;10<br><br> -->
                 </div><br>
-               <strong style="font-size: 25px;">개선사항</strong><br>
+               <strong style="font-size: 25px;">개선사항</strong><br><br>
                <div class="shadow p-3 mb-5 bg-body rounded" style="width:800px; margin-left: -135px;">
                		<input type="text" name="reviewText" id="treview" style="width: 440px; height: 150px; margin-bottom: -30px; border: 0;" placeholder="후기를 입력해주세요 ✎"><br><br>
                </div>
+               <br>
             
                 <div align = "center">
                     <button type = button name = "deleteMember" class = "btn btn-secondary btn-lg btn-outline-dark" 
@@ -192,7 +191,7 @@ button:hover{transform: scale(.9);}
             </form>
         </div>
     </div>
-    
+    <br><br><br><br>
     <script>
     
     	function reviewUpdate(){

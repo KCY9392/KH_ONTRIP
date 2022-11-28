@@ -146,15 +146,24 @@
 	      <input type="hidden" name="qContent" value="${memberQuestionDetailed.qContent}">
 	      <br>
 		</table>
+		<br>
 	      <c:if test="${isUpdated}">
-	        <button type="submit" id="save" class="btn btn-lg btn-success mx-0 mb-2" style="background-color: rgb(189, 192, 191); border: 0; height:50px;">수정하기</button>
+	        <button type="submit" id="save" class="btn btn-lg btn-success mx-0 mb-2" style="background-color: rgb(189, 192, 191); border: 0; height:50px;
+	        	margin-left:-250px !important;  cursor:pointer; display:inline-block; ">수정하기</button>
 	      </c:if>
     </form>
     <form action="/KH_ONTRIP/question/questions" method="get">
-      <div><button type="submit" id="before" class="btn btn-lg btn-success mx-0 mb-2" style="background-color: rgb(189, 192, 191); border: 0; height:50px;">목록으로</button></div>
+      <div style="margin-top:-57px; margin-left:150px;">
+      <button type="submit" id="before" class="btn btn-lg btn-success mx-0 mb-2" 
+      style="background-color: yellowgreen; border: 0; height:50px;
+      	  cursor:pointer;">목록으로</button>
+      </div>
     </form>
     <form name="deleteQue" action="/KH_ONTRIP/question/queDelete?qCode=${memberQuestionDetailed.qCode}" method="post">
-      <button type="button" id="delete" class="sub" style="background-color: rgb(189, 192, 191); border: 0; height:50px;">삭제하기</button>
+    	<div style="margin-top:-57px !important; margin-left:550px;">
+      <button type="button" id="delete" class="sub" style="background-color: rgb(189, 192, 191); border: 0; height:50px;
+        border-radius:5px; cursor:pointer; display:inline-block; ">삭제하기</button>
+      </div>
     </form>
   </div>
 </div>

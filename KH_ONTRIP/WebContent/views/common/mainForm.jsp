@@ -74,15 +74,16 @@
   	
 	<form action="<%=request.getContextPath() %>/searchHashPlace.se" id="enroll-form" method="post">
 	   <div style="box-sizing:border-box; width:500px; margin:auto;">
-	    <div>
-	      <span style=" width:450px;"><%= hashTag %></span>
-	    </div>
+	    
 	    
 		<div class="input-group mb-3" style="width:700px; height:50px;">
 		  <input style="border:none !important;" type="text" id="search12" class="form-control" aria-label="Recipient's username" aria-describedby="button-addon2" name='hash' placeholder="해시태그를 입력해주세요">
 		  <input type="hidden" name='hidden_hash'>
 		  <button style="border:none; color:white; background-color:lightgrey;" class="btn btn-outline-secondary btn-search" type="submit" id="button-addon2">검색</button>
 		</div>
+		<div>
+	      <span style=" width:450px; margin-left:35px; color:lightgrey;"><%= hashTag %></span>
+	    </div>
 		</div> 
 	</form>
 	

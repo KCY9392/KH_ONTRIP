@@ -26,11 +26,7 @@
 
   <title>문의사항 수정하기</title>
   <style>
-    .container{
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
+
      .container{
        display: flex;
        flex-direction: column;
@@ -133,22 +129,25 @@
       <br>
 		<table align="center" style="width:800px; height:300px;">
 			<tr>
-				<td><span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;제목</span></td>
-				<td><input type="text" name="qTitle" id="qTitle" value="${qTitle}"></td>
+				<td><span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;제목</span></td>
+				<td><input type="text" name="qTitle" id="qTitle" value="${qTitle}" style="margin-left:-140px;"></td>
 			</tr>
 			<tr>
-				<td><span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;내용</span></td>
+				<td><span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;내용</span></td>
 
-				<td><textarea cols="50" rows="7" name="qContent">${qContent}</textarea></td>
+				<td><textarea cols="50" rows="7" name="qContent" style="margin-left:-140px;">${qContent}</textarea></td>
 			</tr>	
 			<input type="hidden" name="qCode" value="${qCode}">
 		</table>
 			<br>
-      		<button type="button" class="update" id="btnSave" style="background-color: rgb(130, 202, 164); border: 0; height:50px">수정하기</button>
+      		<button type="button" class="update" id="btnSave" style="background-color: rgb(130, 202, 164); border: 0; 
+      		height:50px; margin-left:-250px; border-radius:8px;">수정하기</button>
 		<br>
     </form>
     <form action="/KH_ONTRIP/question/questions" method="get">
-      <div><button type="submit" id="before" class="btn btn-lg btn-success mx-0 mb-2" style="background-color: rgb(189, 192, 191); border: 0; height:50px; margin-top:-0.1px;">목록으로</button></div>
+      <div><button type="submit" id="before" class="btn btn-lg btn-success mx-0 mb-2" 
+      style="background-color: rgb(189, 192, 191); border: 0; height:50px; margin-top:-0.1px;
+      margin-left:250px !important; margin-top:-79px;">목록으로</button></div>
     </form>
   </div>
 </div>
