@@ -156,13 +156,13 @@
       <div style="margin-top:-57px; margin-left:150px;">
       <button type="submit" id="before" class="btn btn-lg btn-success mx-0 mb-2" 
       style="background-color: yellowgreen; border: 0; height:50px;
-      	  cursor:pointer; margin-left:-200px !important; margin-top:60px;">목록으로</button>
+      	  cursor:pointer; margin-left:0px !important; margin-top:0px;">목록으로</button>
       </div>
     </form>
     <form name="deleteQue" action="/KH_ONTRIP/question/queDelete?qCode=${memberQuestionDetailed.qCode}" method="post">
     	<div style="margin-top:-57px !important; margin-left:550px;">
       <button type="button" id="delete" class="sub" style="background-color: rgb(189, 192, 191); border: 0; height:50px;
-        border-radius:5px; cursor:pointer; display:inline-block; margin-left:-200px !important;">삭제하기</button>
+        border-radius:5px; cursor:pointer; display:inline-block; margin-left:0px !important;">삭제하기</button>
       </div>
     </form>
   </div>
