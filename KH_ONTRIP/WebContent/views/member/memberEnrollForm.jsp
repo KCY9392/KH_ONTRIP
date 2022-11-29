@@ -259,7 +259,7 @@
                <span class="span_pwd">비밀번호</span>
                <input class="input" type="password" placeholder="비밀번호" name="memberPwd" required><br><br>
                <span class="span_pwd2">비밀번호 확인</span>
-               <input class="input" type="password" placeholder="비밀번호 확인"  required> <br><br>
+               <input class="input" type="password" placeholder="비밀번호 확인" name="memberPwd2" required> <br><br>
                <span class="span_phone">휴대전화</span>
                <input class="input" type="text" placeholder="휴대전화번호 ( ' - ' 포함 )" name="phone" required><br>
                
@@ -335,36 +335,77 @@
                }
             });
          }
+         
+         
+         
          function btnEnroll(){
              
-             Swal.fire({
-                 title: '회원가입 하시겠습니까?',
-                 icon: 'warning',
-                 showCancelButton: true,
-                 confirmButtonColor: '#3085d6',
-                 cancelButtonColor: '#d33',
-                 confirmButtonText: '가입',
-                 cancelButtonText: '취소'
-             }).then((result) => {
-                 if (result.isConfirmed) {
-                     Swal.fire({
-                           title: '가입이 완료되었습니다.',
-                           text: '로그인 화면으로 이동합니다.',
-                           icon:'success',
-                           customClass: {
-                               confirmButton: 'swal2-confirm swal2-styled swal2-jong',
-                               cancelButton: 'btn btn-danger'
-                             },    
-                     }).then((result) => {
-                    	 
-                        if(result.isConfirmed){
-                        	
-                         $("#memberEnroll").submit();
-                           
-                        }                                   
-                     });
-                 }
-             });
+        	 if($('input[name=memberName]').val() == ""){
+        		 Swal.fire({
+                     icon: 'error',
+                     title: '이름을 입력해주세요.'                  
+                 });
+        	 } else if($('.select_gender').val() == "성별"){
+        		 Swal.fire({
+                     icon: 'error',
+                     title: '성별을 입력해주세요.'                  
+                 });
+        	 } else if($('input[name=birthDate]').val() == ""){
+        		 Swal.fire({
+                     icon: 'error',
+                     title: '생년월일을 입력해주세요.'                  
+                 });
+        	 } else if($('input[name=memberPwd]').val() == ""){
+        		 Swal.fire({
+                     icon: 'error',
+                     title: '비밀번호를 입력해주세요.'                  
+                 });
+        	 } else if($('input[name=memberPwd2]').val() == ""){
+        		 Swal.fire({
+                     icon: 'error',
+                     title: '비밀번호확인을 입력해주세요.'                  
+                 });
+        	 } else if($('input[name=phone]').val() == ""){
+        		 Swal.fire({
+                     icon: 'error',
+                     title: '휴대폰번호를 입력해주세요.'                  
+                 });
+        	 } else {
+        		 Swal.fire({
+                     title: '회원가입 하시겠습니까?',
+                     icon: 'warning',
+                     showCancelButton: true,
+                     confirmButtonColor: '#3085d6',
+                     cancelButtonColor: '#d33',
+                     confirmButtonText: '가입',
+                     cancelButtonText: '취소'
+                 }).then((result) => {
+                     if (result.isConfirmed) {
+                         Swal.fire({
+                               title: '가입이 완료되었습니다.',
+                               text: '로그인 화면으로 이동합니다.',
+                               icon:'success',
+                               customClass: {
+                                   confirmButton: 'swal2-confirm swal2-styled swal2-jong',
+                                   cancelButton: 'btn btn-danger'
+                                 },    
+                         }).then((result) => {
+                        	 
+                            if(result.isConfirmed){
+                            	
+                             $("#memberEnroll").submit();
+                               
+                            }                                   
+                         });
+                     }
+                 });
+        	 }
+        	 
+        	 
+        	 
+        	 
+        	 
+             
              
           }
           

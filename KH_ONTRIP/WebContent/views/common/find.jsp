@@ -23,7 +23,13 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     
-    <title>아이디 찾기</title>
+    <!-- animate.style -->
+<link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+  />
+  
+    <title>아이디 찾기 / 비밀번호 찾기</title>
     <style>
         @import url("http://fonts.googleapis.com/earlyaccess/nanumgothic.css");
 	
@@ -246,6 +252,8 @@
         for(let i=0; i<tag.length; i++){
             if(element.id+"member" == tag[i].id){
                 tag[i].style.display = "block";
+                tag[i].style.animation = "fadeIn";
+                tag[i].style.animationDuration = "1s";
             }else{
                 tag[i].style.display = "none";
             }

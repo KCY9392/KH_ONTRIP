@@ -138,10 +138,12 @@
 			<input type="hidden" name="memNo" value="${memNo}">
 		</table>
 		<br>
-      <button type="button" class="sub" id="btnSave" style="background-color: rgb(130, 202, 164); border: 0; height:50px">등록하기</button>
+      <button type="button" class="sub" id="btnSave" style="background-color: rgb(130, 202, 164); border: 0; height:50px;
+      margin-left:-100px;">등록하기</button>
     </form>
     <form action="/KH_ONTRIP/question/questions" method="get">
-      <div><button type="submit" id="before" class="btn btn-lg btn-success mx-0 mb-2" style="background-color: rgb(189, 192, 191); border: 0; height:50px; margin-top:-0.1px;">목록으로</button></div>
+      <div><button type="submit" id="before" class="btn btn-lg btn-success mx-0 mb-2" style="background-color: rgb(189, 192, 191); 
+      border: 0; height:50px; margin-top:-0.1px; margin-top:-79px; margin-left:400px !important;">목록으로</button></div>
     </form>
   </div>
 </div>

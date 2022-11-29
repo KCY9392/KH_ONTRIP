@@ -38,6 +38,23 @@
 	.btn-question:hover, .btn-qna:hover{
 		font-weight:bold;
 	}
+	
+@media screen and (max-width:992px){
+	
+    
+}
+@media screen and (max-width:768px){
+body{
+		width:100vw !important;
+	}
+   .navbar{
+        width:700px !important;
+    }
+    .container-fluid{
+    	width:100%;
+    }
+    
+}
 </style>
 
 </head>
