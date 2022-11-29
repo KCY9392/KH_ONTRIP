@@ -1,5 +1,5 @@
 let sub = document.querySelector('.sub');
-sub.addEventListener('click', () => getAlert2());
+sub.addEventListener('click', () => getAlert());
 
 function getAlert(seq) {
   Swal.fire({

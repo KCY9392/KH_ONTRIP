@@ -34,13 +34,8 @@
         </i>
     </p>
     <br><br><br><br><br><br>
-
-    <form action="" style="display:inline-block;">
-        <!-- 클릭시 예약페이지1로 이동 -->
-        <button type="submit">이전화면</button>
-    </form>
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    <form action="" style="display:inline-block;">
+    &nbsp;&nbsp;
+    <form action="/KH_ONTRIP/start.me" style="display:inline-block;">
         <!-- 클릭시 메인페이지로 이동 -->
         <button type="submit">메인화면</button>
     </form>

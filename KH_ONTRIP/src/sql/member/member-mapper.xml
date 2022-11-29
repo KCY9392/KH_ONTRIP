@@ -61,7 +61,7 @@
    <entry key="findMem">
    		SELECT * 
    		FROM "Member"
-   		WHERE MEM_ID = ?
+   		WHERE MEM_ID = ? AND MEM_NAME = ? AND MEM_PHONE = ?
    </entry>
    
    <entry key="placePaging">

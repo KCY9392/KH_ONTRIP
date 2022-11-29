@@ -24,7 +24,7 @@ public class AdAnsController implements QueFrontController {
         adQuestionService.insertAnswer(aContent, i);
 //
         response.setContentType("text/html;charset=UTF-8");
-        response.getWriter().print("<script>alert('수정완료'); location.href = '/KH_ONTRIP/manager/questions/question?qCode="+i+"'</script>");
+        response.getWriter().print("<script>alert('답변 등록 완료'); location.href = '/KH_ONTRIP/manager/questions/question?qCode="+i+"'</script>");
 
     }
 }

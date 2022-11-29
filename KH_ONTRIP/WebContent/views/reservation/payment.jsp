@@ -25,7 +25,7 @@
       pay_method : 'card',
       merchant_uid : 'merchant_' + new Date().getTime(),
       name : '${placeName}',
-      amount : '1',
+      amount : '${totalPrice}',
       buyer_email : 'KH_ONTRIP@example.com',
       buyer_name : '${rnName}',
       buyer_tel : '${rnPhone}',

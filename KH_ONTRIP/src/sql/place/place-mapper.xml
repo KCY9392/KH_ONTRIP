@@ -7,21 +7,21 @@
 	SELECT PLC_NAME, PLC_ADDRESS, PLC_PNUMBER
 	FROM "Place"
 	WHERE STATUS = 'Y' AND DAREA_CODE = ? AND CATEGORY_CODE = 'PP'
-	ORDER BY PLC_NAME
+	ORDER BY PLC_CODE
 	</entry>
 	
 	<entry key="selectHotelInfo">
 	SELECT PLC_NAME, PLC_ADDRESS, PLC_PNUMBER
 	FROM "Place"
 	WHERE STATUS = 'Y' AND DAREA_CODE = ? AND CATEGORY_CODE = 'HH'
-	ORDER BY PLC_NAME
+	ORDER BY PLC_CODE
 	</entry>
 	
 	<entry key="selectFoodInfo">
 	SELECT PLC_NAME, PLC_ADDRESS, PLC_PNUMBER
 	FROM "Place"
 	WHERE STATUS = 'Y' AND DAREA_CODE = ? AND CATEGORY_CODE = 'FF'
-	ORDER BY PLC_NAME
+	ORDER BY PLC_CODE
 	</entry>
 	
 	
@@ -81,7 +81,7 @@
                                                                 FROM "HashStorage" s
                                                                 JOIN "Hash" h USING(HAS_NO)
                                                                 WHERE h.HAS_NAME IN(@))
-   ORDER BY CHANGE_NAME DESC
+   ORDER BY PLC_CODE
    </entry>
    
    <entry key="searchHashPlaceInfo">
@@ -92,7 +92,7 @@
                                         FROM "HashStorage" s
                                         JOIN "Hash" h USING(HAS_NO)
                                         WHERE h.HAS_NAME IN(@))
-   ORDER BY PLC_NAME DESC
+   ORDER BY PLC_CODE
    </entry>
 
 

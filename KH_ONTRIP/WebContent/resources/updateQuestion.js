@@ -1,5 +1,5 @@
 let deleteButton = document.querySelector('.update');
-deleteButton.addEventListener('click', () => getAlert2());
+deleteButton.addEventListener('click', () => getAlert());
 
 function getAlert(seq) {
   Swal.fire({

@@ -109,16 +109,14 @@ public class AdMainSaveImgController extends HttpServlet {
 	        int result1 = new PlaceService().insertPlaceImages(list);
 	
 	        if(result1 > 0) {//성공 => list.bo?currentPage=1
-		        
-	            request.getSession().setAttribute("alertMsg", "시설 등록 성공!");
-	            response.sendRedirect(request.getContextPath()+"/placeList.mn?currentPage=1&categoryCode=PP");
+	        	response.setContentType("text/html;charset=UTF-8");
+	            response.getWriter().print("<script>alert('시설 등록 완료'); location.href = '/KH_ONTRIP/placeList.mn?currentPage=1&categoryCode=PP'</script>");
+	            
 	        
 	        }else {//실패 
-	            
-	            request.setAttribute("errorMsg", "이미지 등록 실패");
-	            // 이미지 등록 실패시, 이미지 등록 페이지로 다시 이동
-	            request.getRequestDispatcher("views/manager/managerplaceInsertImg.jsp").forward(request, response);
-	            
+	        	
+	        	response.setContentType("text/html;charset=UTF-8");
+	            response.getWriter().print("<script>alert('이미지 등록 실패'); location.href = '/KH_ONTRIP/PlaceEnroll.mn'</script>");
 	            
 	        }
 	        

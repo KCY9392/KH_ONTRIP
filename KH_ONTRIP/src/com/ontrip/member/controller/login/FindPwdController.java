@@ -32,16 +32,16 @@ public class FindPwdController extends HttpServlet {
 //		System.out.println(memberId);
 		String phone = request.getParameter("phone");
 		
-		int isMem = new MemberService().findMem(memberId);
-		
-		String memberPwd = new MemberService().findPwd(memberName, memberId, phone);
-//		System.out.println(memberPwd);
-		
-		Member m = new Member(memberId, memberPwd);
-		request.setAttribute("m", m);
-		
+		int isMem = new MemberService().findMem(memberId, memberName, phone);
 		
 		if(isMem > 0) {
+			
+			String memberPwd = new MemberService().findPwd(memberName, memberId, phone);
+			System.out.println(memberPwd);
+			
+			Member m = new Member(memberId, memberPwd);
+			
+			request.setAttribute("m", m);
 			request.getRequestDispatcher("views/common/pwdReveal.jsp").forward(request, response); // 현재 비밀번호 알려는 사이트 => "비밀번호 변경" / "메인으로" 
 			
 		}else {

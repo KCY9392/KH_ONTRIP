@@ -102,11 +102,11 @@ body{
         <span class="room-type">객실 타입 :</span> &nbsp;&nbsp;&nbsp;
         <select class="select_gender" name="rnType">
           <option>타입</option>
-          <option value="스탠다드">스탠다드</option>
-          <option value="디럭스">디럭스</option>
-          <option value="트윈">트윈</option>
-          <option value="패밀리">패밀리</option>
-          <option value="스위트">스위트</option>
+          <option value="스탠다드">스탠다드 (100,000 KRW per)</option>
+          <option value="디럭스">디럭스 (300,000 KRW per)</option>
+          <option value="트윈">트윈 (120,000 KRW per)</option>
+          <option value="패밀리">패밀리 (200,000 KRW per)</option>
+          <option value="스위트">스위트 (400,000 KRW per)</option>
         </select>
         <br><br>
         <hr>

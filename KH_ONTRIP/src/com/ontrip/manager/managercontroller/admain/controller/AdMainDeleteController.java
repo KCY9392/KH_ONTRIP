@@ -58,8 +58,8 @@ public class AdMainDeleteController extends HttpServlet {
 	    
 	    
 	    if(result1 > 0 && result2>0) {
-	    	
-	    	request.getRequestDispatcher("/placeList.mn?categoryCode=PP").forward(request, response);
+	    	response.setContentType("text/html;charset=UTF-8");
+	        response.getWriter().print("<script>alert('삭제완료'); location.href = '/KH_ONTRIP/placeList.mn?categoryCode=PP'</script>");
 	    } else {
 	    	request.setAttribute("errorMsg", "시설 삭제 실패");
 	        request.getRequestDispatcher("views/common/errorPage.jsp").forward(request, response);

@@ -335,7 +335,7 @@ public class MemberDao {
 		  return result;
 	}
 
-	public int findMem(String memberId, Connection conn) {
+	public int findMem(String memberId,String memberName, String phone, Connection conn) {
 		
 		int result = 0;
 		
@@ -348,6 +348,8 @@ public class MemberDao {
 			psmt = conn.prepareStatement(sql);
 			
 			psmt.setString(1, memberId);
+			psmt.setString(2,  memberName);
+			psmt.setString(3, phone);
 			
 			rset = psmt.executeQuery();
 			

@@ -50,6 +50,10 @@ public class LoginController extends HttpServlet {
 			
 			if(memberId.equals("admin")&&memberPwd.equals("1234")) { //관리자계정으로 로그인하였을경우
 				
+				loginUser = new Member("admin", "1234");
+				
+				session.setAttribute("loginUser", loginUser);
+				
 				request.getRequestDispatcher("/placeList.mn?categoryCode=PP").forward(request, response);
 
 			}else {

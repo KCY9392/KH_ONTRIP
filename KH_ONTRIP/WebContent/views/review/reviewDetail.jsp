@@ -121,6 +121,11 @@ button:hover{transform: scale(.9);}
 .star-rating { width:315px; }
 .star-rating,.star-rating span { display:inline-block; height:55px; overflow:hidden; background:url(views/review/star.png)no-repeat;}
 .star-rating span{ background-position:left bottom; line-height:0; vertical-align:top;}
+
+.btn10:hover{
+	color:white;
+	background-color:green !important;
+}
 </style>
 </head>
 <body>
@@ -156,15 +161,16 @@ button:hover{transform: scale(.9);}
                 </div><br>
                <strong style="font-size: 25px;">개선사항</strong><br>
                <div class="shadow p-3 mb-5 bg-body rounded" style="width:800px; margin-left: -136px;">
-                     <input type="text" id="rtext" name="rtext" style="width: 440px; height: 150px; margin-bottom: -30px; border: 0;" value="<%=r.getRevText()%>"><br><br>
+                     <textarea id="rtext" name="rtext" style="width: 440px; height: 150px; margin-bottom: -30px; border: 0;"><%=r.getRevText()%></textarea><br><br>
                </div>
             
-               <% if(loginUser.getMemberName().equals(r.getMemberName())) { %>
                 <div align = "center">
+               <% if(loginUser.getMemberName().equals(r.getMemberName())) { %>
                     <button type="button" name ="deleteReivew" onclick="deleteReview();" class="btn btn-outline-warning" style="width:100px; border-radius:0;">삭제</button>
                     <button type="button" name ="updateReivew" onclick="updateReview();" class="btn btn-outline-dark" style="width:100px; border-radius:0;">수정</button>
-                </div>
               <% } %>
+                    <button type="button" name ="updateReivew" onclick="backReview();" class="btn btn-outline-success btn10" style="width:100px; border-radius:0;">목록으로</button>
+                </div>
             </form>
         </div>
     </div>
@@ -255,11 +261,11 @@ button:hover{transform: scale(.9);}
                    });
                }
            });   
-          
-          
-          
-         
-      } 
+      }
+    
+    function backReview(){
+        location.href = "<%=request.getContextPath() %>/review.re?placeName=<%=placeName %>&memberNo=<%=memberNo %>&placeCode=<%=placeCode%>";
+     }
         
         
     </script>

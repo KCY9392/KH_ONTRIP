@@ -46,6 +46,7 @@ public class LoginCheckFilter implements Filter {
                     && !requestURI.equals("/KH_ONTRIP/newPwdUpdateCheck.le") 
                     && !requestURI.equals("/KH_ONTRIP/views/common/newPwdUpdate.jsp")
                     && !requestURI.equals("/KH_ONTRIP/logout.me")
+                    && !requestURI.equals("/KH_ONTRIP/resources/css/enroll.css")
                     && !requestURI.equals("/KH_ONTRIP/idCheck.me")) {
                 HttpSession session = httpRequest.getSession(false);
                 if (session == null || session.getAttribute("loginUser") == null) {
