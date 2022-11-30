@@ -12,27 +12,25 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    
+    
+	<!-- Alert 창  -->
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
     <style>
-        body{
-            /*        text-align:center; */
-        }
+
         div{
             box-sizing:border-box;
         }
         .outer1{ */
-        background-color: white; /* 해당사이트의 고유한 색상으로 작성 */
+        	background-color: white; /* 해당사이트의 고유한 색상으로 작성 */
             color: black;
             width: 1000px;
             height: 120vh;
-            /* border: 1px solid black; */
             margin: auto;
-            margin-top: 50px;
             box-sizing: border-box;
-            /* text-align: center; */
         }
         .title{
             margin:auto;
-            margin-top:-30px;
             height: 100px;
             border: 2px solid white;
             background-color: rgba(161, 210, 161, 0.911);
@@ -148,77 +146,104 @@
         .btn-enroll:active{
             background-color:rgba(163, 167, 163, 0.911);
         }
+        
     </style>
 </head>
 <body>
 <%@ include file="../../common/adnavbar.jsp" %>
-<%@ include file="../../../views/common/managerNavbar.jsp" %>
+<br><br><br><br><br>
 
-<div class="outer1" style="margin-left:550px;">
-
-    <div class="title">
-         <pre id="qnaTitle" style="text-align:center; margin-top:7px ;">Q & A 관리</pre>
+<div class="uk-section uk-section-default sl-in2" style="min-width: 90vw; height:20vh;">
+        <div class="uk-container">
+            <div style="text-align: center; margin-top : -1.5%;">
+                <div style="color:darkgray">관리자페이지</div> <br>
+                <div>
+                	<span style="color: coral; font-size:25px; font-weight:600;">문의사항 관리</span>
+                </div>
+              
+            </div>
+        </div>
     </div>
 
+<div class="outer1">
 
     <div class="qna">
-        <br><br><br><br>
-        <pre id="qnap"><i class="fa-regular fa-lightbulb fa-lg"></i>&nbsp;자주 묻는 질문&nbsp;<i class="fa-regular fa-lightbulb fa-lg"></i></pre>
+        <br><br>
+        <pre id="qnap"><i class="fa-regular fa-lightbulb fa-lg"></i>&nbsp;자주 묻는 질문</pre>
     </div>
 
-    <br><br><br><br><br><br><br>
+    <br><br><br><br><br>
 
 
 	<form method="post" action="/KH_ONTRIP/manager/qnas/saveform" style="text-align:center;">
-    <button class="btn-enroll" style="margin-bottom:50px;">등록</button>
+    	<button class="btn-enroll" style="margin-bottom:50px;">등록</button>
 	</form>
 
 
-    <pre id="htitle" style="color:gray; margin-left:-530px;"><img src="<%= request.getContextPath() %>/resources/image/숙소.png" width="30px">&nbsp;&nbsp;숙소</pre>
+    <pre id="htitle" style="color:gray;"><img src="<%= request.getContextPath() %>/resources/image/숙소.png" width="30px" 
+    	style="margin-left:170px;">&nbsp;&nbsp;숙소</pre>
     <hr width="70%" style="margin-top: -10px; margin-left:170px;">
     <br>
 
+
     <c:forEach items="${qnaForAccommodation}" var="acco">
+    	<form id="qnaSave" action="/KH_ONTRIP/manager/qnas/delete?qaCode=${acco.qaCode}" method="post">
         <div id="q" class="divForm1" name="divForm1" style="margin-left:170px;"><b id="bfont">${acco.qaQuestion}</b></div>
+        
         <p id="p" class="divForm2" style="margin-left:170px;">
                 ${acco.qaAnswer}
                 <br>
-            <a href="/KH_ONTRIP/manager/qnas/delete?qaCode=${acco.qaCode}" class="delete_answer">삭제하기</a>
+            
+            	<%-- <a href="/KH_ONTRIP/manager/qnas/delete?qaCode=${acco.qaCode}" class="delete_answer">삭제하기</a> --%>
+            
+            	<button class="delete_answer" type="button" onclick="deleteQna();">삭제하기</button>
+			
         </p>
+        
         <br>
+        </form>
     </c:forEach>
+    
 
     <br><br><br><br>
 
-    <pre id="htitle" style="color:gray; margin-left:-530px;"><img src="<%= request.getContextPath() %>/resources/image/기능.png" width="30px">&nbsp;&nbsp;기능</pre>
+    <pre id="htitle" style="color:gray;"><img src="<%= request.getContextPath() %>/resources/image/기능.png" width="30px"
+    style="margin-left:170px;">&nbsp;&nbsp;기능</pre>
     <hr width="70%" style="margin-top: -10px; margin-left:170px;">
     <br>
 
     <c:forEach items="${qnaForUsing}" var="using">
+    <form id="qnaSave2" action="/KH_ONTRIP/manager/qnas/delete?qaCode=${using.qaCode}" method="post">
         <div id="q" class="divForm1" name="divForm1" style="margin-left:170px;"><b id="bfont">${using.qaQuestion}</b></div>
         <p id="p" class="divForm2" style="margin-left:170px;">
                 ${using.qaAnswer}
             <br>
-            <a href="/KH_ONTRIP/manager/qnas/delete?qaCode=${using.qaCode}" class="delete_answer">삭제하기</a>
+<%--             <a href="/KH_ONTRIP/manager/qnas/delete?qaCode=${using.qaCode}" class="delete_answer">삭제하기</a> --%>
+            <button class="delete_answer" type="button" onclick="deleteQna2();">삭제하기</button>
         </p>
         <br>
+        </form>
     </c:forEach>
     
     <br><br><br><br>
 
-    <pre id="htitle" style="color:gray; margin-left:-530px;"><img src="<%= request.getContextPath() %>/resources/image/계정.png" width="30px" >&nbsp;&nbsp;계정</pre>
+    <pre id="htitle" style="color:gray;"><img src="<%= request.getContextPath() %>/resources/image/계정.png" width="30px" 
+    style="margin-left:170px;">&nbsp;&nbsp;계정</pre>
     <hr width="70%" style="margin-top: -10px; margin-left:170px;">
     <br>
 
     <c:forEach items="${qnaForAccount}" var="account">
+    <form id="qnaSave3" action="/KH_ONTRIP/manager/qnas/delete?qaCode=${account.qaCode}" method="post">
         <div id="q" class="divForm1" name="divForm1" style="margin-left:170px;"><b id="bfont">${account.qaQuestion}</b></div>
         
         <p id="p" class="divForm2" style="margin-left:170px;">
                 ${account.qaAnswer}
                 <br>
-            <a href="/KH_ONTRIP/manager/qnas/delete?qaCode=${account.qaCode}" class="delete_answer">삭제하기</a>
+            <%-- <a href="/KH_ONTRIP/manager/qnas/delete?qaCode=${account.qaCode}" class="delete_answer">삭제하기</a> --%>
+            <button class="delete_answer" type="button" onclick="deleteQna3();">삭제하기</button>
         </p>
         <br>
+        </form>
     </c:forEach>
 
 	<br><br><br><br><br><br>
@@ -244,6 +269,93 @@
             }
         });
     });
+    
+   function deleteQna(){
+    	
+    	Swal.fire({
+            title: 'Q&A를 삭제하시겠습니까?',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: '삭제',
+            cancelButtonText: '취소'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                Swal.fire({
+               		title: '삭제가 완료되었습니다.',
+               		icon:'success',
+               		customClass: {
+               		    confirmButton: 'swal2-confirm swal2-styled swal2-jong',
+               		    cancelButton: 'btn btn-danger'
+      		  },		
+                }).then((result) => {
+                	if(result.isConfirmed){
+                		$("#qnaSave").submit();
+		            		
+                	}  		                        	
+                })
+            }
+        });
+    }
+   
+   function deleteQna2(){
+   	
+   	Swal.fire({
+           title: 'Q&A를 삭제하시겠습니까?',
+           icon: 'warning',
+           showCancelButton: true,
+           confirmButtonColor: '#3085d6',
+           cancelButtonColor: '#d33',
+           confirmButtonText: '삭제',
+           cancelButtonText: '취소'
+       }).then((result) => {
+           if (result.isConfirmed) {
+               Swal.fire({
+              		title: '삭제가 완료되었습니다.',
+              		icon:'success',
+              		customClass: {
+              		    confirmButton: 'swal2-confirm swal2-styled swal2-jong',
+              		    cancelButton: 'btn btn-danger'
+     		  },		
+               }).then((result) => {
+               	if(result.isConfirmed){
+               		$("#qnaSave2").submit();
+		            		
+               	}  		                        	
+               })
+           }
+       });
+   }
+   
+   function deleteQna3(){
+   	
+   	Swal.fire({
+           title: 'Q&A를 삭제하시겠습니까?',
+           icon: 'warning',
+           showCancelButton: true,
+           confirmButtonColor: '#3085d6',
+           cancelButtonColor: '#d33',
+           confirmButtonText: '삭제',
+           cancelButtonText: '취소'
+       }).then((result) => {
+           if (result.isConfirmed) {
+               Swal.fire({
+              		title: '삭제가 완료되었습니다.',
+              		icon:'success',
+              		customClass: {
+              		    confirmButton: 'swal2-confirm swal2-styled swal2-jong',
+              		    cancelButton: 'btn btn-danger'
+     		  },		
+               }).then((result) => {
+               	if(result.isConfirmed){
+               		$("#qnaSave3").submit();
+		            		
+               	}  		                        	
+               })
+           }
+       });
+   }
 </script>
 </body>
 </html>

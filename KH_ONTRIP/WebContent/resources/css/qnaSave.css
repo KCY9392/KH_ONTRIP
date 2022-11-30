@@ -24,20 +24,7 @@ body {
 div{
     box-sizing: border-box;
 }
-nav{
-    position:fixed;
-}
-.nav_b{
-    font-size: 30px;
-    padding-left: 40px;
-    color:rgb(155, 205, 138);
-}
-.nav_h{
-    font-size:small;
-}
-.nav_brand{
-    margin-left: 50px;
-}
+
 #qnaTitle{
     font-size: 40px;
     color: white;
@@ -63,7 +50,7 @@ select{
     border-radius: 5px;
 
 }
-button{
+.btnSubmit{
     border:none;
     border-radius: 5px;
     padding:5px;
@@ -71,9 +58,9 @@ button{
     height:50px;
     font-weight: 600;
 }
-button:hover{
+.btnSubmit:hover{
     background-color: rgb(213, 213, 213);
 }
-button:active{
+.btnSubmit:active{
     background-color: rgb(170, 163, 163);
 }

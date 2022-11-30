@@ -14,6 +14,22 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+
+<!-- 폰트적용  -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
+<link href="<%= request.getContextPath() %>/resources/css/mainForm.css" rel="stylesheet" >
+
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+
+<!-- BootStrap 연결 -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+
+
 <style>
     .outer1{
         background-color: white;
@@ -21,9 +37,8 @@
         width: 1000px;
         height: 650px;
         margin: auto;
-        margin-top: 100px;
-        margin-left: 550px;
         box-sizing: border-box;
+        
     }
 
     .table{
@@ -73,9 +88,6 @@
 	    margin-left:33.3%;
 	}	
    #insertPlace{
-      position: absolute;    /*절대값으로 위치를 설정*/
-        left: 1530px;    /* x축 */
-        top: 220px;
         width:130px;
         height: 40px;
         border:none;
@@ -117,16 +129,27 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
 </head>
 <body> 
-  <%@ include file="../common/adnavbar.jsp" %>
-
-  <%@ include file="../common/managerNavbar.jsp" %>  
+  <%@ include file="../common/adnavbar.jsp"%> 
+    <br><br><br><br><br>
+    
+    <div class="uk-section uk-section-default sl-in2" style="min-width: 90vw; height:25vh;">
+        <div class="uk-container">
+            <div style="text-align: center; margin-top : -1.5%;">
+                <div style="color:darkgray">관리자페이지</div> <br>
+                <div>
+                	<span style="color: coral; font-size:25px; font-weight:600;">메인관리</span>
+                </div><br><br>
+                <button type="button" class="btn btn-dark" id="insertPlace" onclick="insertPlace();"
+           			style=" margin:auto; font-weight:bold; font-size: 15px;">등록하기</button>
+            </div>
+        </div>
+    </div>
+    
+    <br>
     
     <div class="outer1">
-        <br>
-        <h1 style = "text-align : center;font-weight: 900; font-size: 35px;"><strong>메인관리</strong></h1>
         <br>&nbsp;
-        <button type="button" class="btn btn-dark" id="insertPlace" onclick="insertPlace();"
-           style="margin-top:40px; margin-left:-110px; font-weight:bold; font-size: 15px;">등록하기</button>
+        
         <br><br>
 
   
@@ -144,6 +167,7 @@
             <button type="submit" name="btn" id="btn" class="btn btn-success">맛집</button>
          </form>
       </div>
+      <br><br><br>
       <div class="adminList" style="margin-top: -50px;">
             <table class="table table-bordered">
                 <thead style="text-align:center;">

@@ -128,27 +128,28 @@
 
 <%@ include file="../../common/adnavbar.jsp" %>
 
-<br><br><br>
-<div class="uk-section uk-section-default sl-in2" style="min-width: 90vw; height:28vh;">
+<br><br><br><br><br>
+
+<div class="uk-section uk-section-default sl-in2" style="min-width: 90vw; height:20vh;">
         <div class="uk-container">
             <div style="text-align: center; margin-top : -1.5%;">
-                <div style="font-size:40px; font-weight:600;">OnTrip</div><br>
-                <div style="color:darkgray">MAKE YOUR ROUTE OPTIMIZED</div> <br><br>
+                <div style="color:darkgray">관리자페이지</div> <br>
                 <div>
-                	<span style="color: coral; font-size:16px; font-weight:600;">문의사항 상세조회</span>
+                	<span style="color: coral; font-size:25px; font-weight:600;">문의사항 조회</span>
                 </div>
+              
             </div>
         </div>
     </div>
-<br><br>
+<br>
 <div class="container">
     
     <div class="form-group" style="text-align:center;">
         <span style="font-size:30px;"> 제목 : ${questionByCode.qTitle}</span> <br><br><br>
         <span> 내용</span> <br><br>
-        <textarea cols="60" rows="10" readonly>${questionByCode.qContent}</textarea>  <br><br>
+        <textarea cols="60" rows="5" readonly>${questionByCode.qContent}</textarea>  <br><br>
         <span> 답변 </span> <br><br>
-        <textarea cols="60" rows="10"readonly>${questionByCode.aContent}</textarea>
+        <textarea cols="60" rows="5"readonly>${questionByCode.aContent}</textarea>
 
         <br><br>
         <c:if test="${isUpdated}">

@@ -19,8 +19,9 @@
         color: black;
         width: 1000px;
         height: 650px;
-        margin-left: 600px;
+        margin:auto;
         box-sizing: border-box;
+        margin-top:-120px;
     }
     #userId , #userPwd{
         border-bottom: 1px solid #adadad;
@@ -64,8 +65,20 @@
 </head>
 <body>
 <%@ include file="../../common/adnavbar.jsp" %>
-<%@ include file="../../../views/common/managerNavbar.jsp" %>
+<br><br><br><br><br>
 
+<div class="uk-section uk-section-default sl-in2" style="min-width: 90vw; height:20vh;">
+        <div class="uk-container">
+            <div style="text-align: center; margin-top : -1.5%;">
+                <div style="color:darkgray">관리자페이지</div> <br>
+                <div>
+                	<span style="color: coral; font-size:25px; font-weight:600;">후기 상세조회</span>
+                </div>
+              
+            </div>
+        </div>
+    </div>
+    
 
 <div class="outer1">
         <br><br><br>

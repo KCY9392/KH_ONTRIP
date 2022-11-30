@@ -43,7 +43,7 @@
       resize: none;
       width: 500px;
 	  margin-bottom: 0px;
-	  height:150px;
+	  height:100px;
     }
     .btn-5{
       padding:5px;
@@ -127,7 +127,7 @@
     <form method="post" action="/KH_ONTRIP/question/queUpdateForm">
 	    
 	    <br>
-		<table align="center" style="width:800px; height:300px;">
+		<table align="center" style="width:800px; height:300px; margin-left:-150px;">
 			<tr style="height:100px;">
 				<td><span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;제목</span></td>
 				<td style="text-align:left;"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${memberQuestionDetailed.qTitle}</span></td>
@@ -146,23 +146,24 @@
 	      <input type="hidden" name="qContent" value="${memberQuestionDetailed.qContent}">
 	      <br>
 		</table>
-		<br>
+		
 	      <c:if test="${isUpdated}">
 	        <button type="submit" id="save" class="btn btn-lg btn-success mx-0 mb-2" style="background-color: rgb(189, 192, 191); border: 0; height:50px;
-	        	margin-left:-250px !important;  cursor:pointer; display:inline-block; ">수정하기</button>
+	        	margin-left:0 !important;  cursor:pointer; display:inline-block; ">수정하기</button>
 	      </c:if>
     </form>
+    <Br>
     <form action="/KH_ONTRIP/question/questions" method="get">
       <div style="margin-top:-57px; margin-left:150px;">
       <button type="submit" id="before" class="btn btn-lg btn-success mx-0 mb-2" 
       style="background-color: yellowgreen; border: 0; height:50px;
-      	  cursor:pointer; margin-left:0px !important; margin-top:0px;">목록으로</button>
+      	  cursor:pointer; margin-left:-400px !important; margin-top:60px;">목록으로</button>
       </div>
     </form>
     <form name="deleteQue" action="/KH_ONTRIP/question/queDelete?qCode=${memberQuestionDetailed.qCode}" method="post">
     	<div style="margin-top:-57px !important; margin-left:550px;">
       <button type="button" id="delete" class="sub" style="background-color: rgb(189, 192, 191); border: 0; height:50px;
-        border-radius:5px; cursor:pointer; display:inline-block; margin-left:0px !important;">삭제하기</button>
+        border-radius:5px; cursor:pointer; display:inline-block; margin-left:-320px !important;">삭제하기</button>
       </div>
     </form>
   </div>

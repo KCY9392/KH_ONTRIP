@@ -42,9 +42,8 @@
 <body>
 
 <%@ include file="../common/adnavbar.jsp" %>        
-<%@ include file="../common/managerNavbar.jsp" %> 
 
-        <br><br><br><br>
+        <br><br><br><br><br><br><br>
      
    <form method="post" action="<%= request.getContextPath()%>/PlaceInsert2.mn?placeCode=<%= placeCode %>&categoryCode=<%= categoryCode %>&dareaCode=<%= dareaCode %>&localCode=<%= localCode %>" enctype="multipart/form-data">
     <div style="border: 1px solid white; height: 650px;" class="shadow-lg" id="outer">
@@ -240,7 +239,7 @@
                newImage.style.height = "15%";  
                newImage.style.objectFit = "contain";
                newImage.style.marginLeft = "-85%";
-               newImage.style.marginTop = "-31%";
+               newImage.style.marginTop = "-27%";
                newImage.style.zIndex = "1";
 
                var container = document.getElementById('image-show1');
@@ -267,7 +266,7 @@
            newImage.style.height = "15%";  
            newImage.style.objectFit = "contain";
            newImage.style.marginLeft = "-84.5%";
-           newImage.style.marginTop = "-31%";
+           newImage.style.marginTop = "-27%";
            newImage.style.zIndex = "1";
 
            var container = document.getElementById('image-show2');
@@ -292,7 +291,7 @@
            newImage.style.height = "15%";   
            newImage.style.objectFit = "contain";
            newImage.style.marginLeft = "-84.5%";
-           newImage.style.marginTop = "-31%";
+           newImage.style.marginTop = "-27%";
            newImage.style.zIndex = "1";
 
            var container = document.getElementById('image-show3');

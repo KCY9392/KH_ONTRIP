@@ -23,7 +23,7 @@
 
     <style>
         .outer{
-            margin-left:-20%;
+      		margin:auto;
 
         }
         .container{
@@ -56,7 +56,7 @@
         }
         .main-container{
             width: 65%;
-            margin-left:20%;
+            margin:auto;
             text-align: center;
         }
         .main-container h2{
@@ -84,17 +84,24 @@
 <body>
 
 <%@ include file="../../common/adnavbar.jsp" %>
-<%@ include file="../../../views/common/managerNavbar.jsp" %>
 
+<br><br><br><br><br>
 
-
-<br><br><br><br>
-
-
+<div class="uk-section uk-section-default sl-in2" style="min-width: 90vw; height:20vh;">
+        <div class="uk-container">
+            <div style="text-align: center; margin-top : -1.5%;">
+                <div style="color:darkgray">관리자페이지</div> <br>
+                <div>
+                	<span style="color: coral; font-size:25px; font-weight:600;">문의사항 관리</span>
+                </div>
+              
+            </div>
+        </div>
+    </div>
 
 
 <div class="main-container">
-    <h2>문의사항 페이지</h2>
+
     <br><br>
 
     <br><br><br>
@@ -117,7 +124,7 @@
                 <tr>
                     <td>${vo.qCode }</td>
                     <td><a style="text-decoration:none; color: green;" href="/KH_ONTRIP/manager/questions/question?qCode=${vo.qCode}">${vo.qTitle}</a></td>
-                    <td><fmt:formatDate value="${vo.qDate }" pattern="yyyy-mm-dd" /></td>
+                    <td><fmt:formatDate value="${vo.qDate }" pattern="yyyy-MM-dd" /></td>
                     <td>${vo.memName}</td>
                     <td>
                     <c:choose>
@@ -158,7 +165,7 @@
                 </li>
 
             </c:forEach>
-
+			&nbsp;&nbsp;&nbsp;&nbsp;
             <c:if test="${page.next }">
 
                 <li>

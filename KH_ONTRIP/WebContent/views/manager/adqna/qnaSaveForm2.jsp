@@ -11,6 +11,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>qna 등록화면</title>
 
+	<!-- Alert 창  -->
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
+
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
 
@@ -28,14 +32,25 @@
 
 <br><br><br><br><br>
 
+<div class="uk-section uk-section-default sl-in2" style="min-width: 90vw; height:20vh;">
+        <div class="uk-container">
+            <div style="text-align: center; margin-top : -1.5%;">
+                <div style="color:darkgray">관리자페이지</div> <br>
+                <div>
+                	<span style="color: coral; font-size:25px; font-weight:600;">Q & A 관리</span>
+                </div>
+              
+            </div>
+        </div>
+    </div>
 
-<div class="title">
-    <pre id="qnaTitle" style="text-align:center;">무엇을 도와드릴까요?</pre>
-</div>
 
-<br><br><br>
 
-<form method="post" action="/KH_ONTRIP/manager/qnas/save">
+
+<br><br>
+
+<div style="text-align:center;">
+<form id="qnaSave" method="post" action="/KH_ONTRIP/manager/qnas/save" >
     <h3>질문내용</h3><br>
     <div>
         <select name="category">
@@ -59,9 +74,41 @@
 
     <br><br>
 
-    <button type="submit">등록하기</button>
+    <button class="btnSubmit" type="button" onclick="alert();">등록하기</button>
 </form>
+</div>
 
 <br><br><br>
+<script>
+	function alert(){
+		
+		Swal.fire({
+              title: 'Q&A를 등록하시겠습니까?',
+              icon: 'warning',
+              showCancelButton: true,
+              confirmButtonColor: '#3085d6',
+              cancelButtonColor: '#d33',
+              confirmButtonText: '등록',
+              cancelButtonText: '취소'
+          }).then((result) => {
+              if (result.isConfirmed) {
+                  Swal.fire({
+                 		title: '등록이 완료되었습니다.',
+                 		icon:'success',
+                 		customClass: {
+                 		    confirmButton: 'swal2-confirm swal2-styled swal2-jong',
+                 		    cancelButton: 'btn btn-danger'
+        		  },		
+                  }).then((result) => {
+                  	if(result.isConfirmed){
+		            		$("#qnaSave").submit();
+                  		
+                  	}  		                        	
+                  })
+              }
+          });
+		
+	}
+</script>
 </body>
 </html>

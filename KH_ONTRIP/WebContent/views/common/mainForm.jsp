@@ -92,7 +92,7 @@
 <div style="width: 90%; margin:auto; text-align: center;">
   <div class="row" id="cityList" style=" margin:auto; ">
     
-    <div class="col s12 m6 l3" name="asia">
+    <div class="col" name="asia">
       <input type="hidden" value="서울">
       <a href="<%=request.getContextPath() %>/mainForm.no?localName=서울&localCode=L1" onclick="" style="color:inherit; text-decoration: none!important;"  aria-expanded="false">
         <div class="card city-card-style " style="margin:0; border: none !important; ">
@@ -109,7 +109,7 @@
       </a>
     </div>
 
-    <div class="col s12 m6 l3" name="asia">
+    <div class="col" name="asia">
       <input type="hidden" value="제주도">
       <a href="<%=request.getContextPath() %>/mainForm.no?localName=제주도&localCode=L3" onclick="" style="color:inherit; text-decoration: none!important;" aria-expanded="false">
         <div class="card city-card-style" style="margin:0; border: none !important; ">
@@ -126,7 +126,7 @@
       </a>
     </div>
 
-    <div class="col s12 m6 l3" name="asia">
+    <div class="col" name="asia">
       <input type="hidden" value="경기도">
       <a href="<%=request.getContextPath() %>/mainForm.no?localName=경기도&localCode=L2" onclick="" style="color:inherit; text-decoration: none!important;" aria-expanded="false">
         <div class="card city-card-style" style="margin:0; border: none !important; ">
@@ -147,7 +147,7 @@
 
     
     
-    <div class="col s12 m6 l3" name="asia">
+    <div class="col" name="asia">
       <input type="hidden" value="강원도">
       <a href="<%=request.getContextPath() %>/mainForm.no?localName=강원도&localCode=L4" onclick="" style="color:inherit; text-decoration: none!important;" aria-expanded="false">
         <div class="card city-card-style" style="margin:0; border: none !important; ">
@@ -169,7 +169,7 @@
     <br><br>
 
     
-    <div class="col s12 m6 l3" name="asia">
+    <div class="col" name="asia">
       <input type="hidden" value="충청도">
       <a href="<%=request.getContextPath() %>/mainForm.no?localName=충청도&localCode=L5" onclick="" style="color:inherit; text-decoration: none!important;" aria-expanded="false">
         <div class="card city-card-style" style="margin:0; border: none !important; ">
@@ -186,7 +186,7 @@
       </a>
     </div>
 
-    <div class="col s12 m6 l3" name="asia">
+    <div class="col" name="asia">
       <input type="hidden" value="전라도">
       <a href="<%=request.getContextPath() %>/mainForm.no?localName=전라도&localCode=L6" onclick="" style="color:inherit; text-decoration: none!important;" aria-expanded="false">
         <div class="card city-card-style" style="margin:0; border: none !important; ">
@@ -203,7 +203,7 @@
       </a>
     </div>
 
-    <div class="col s12 m6 l3" name="asia">
+    <div class="col" name="asia">
       <input type="hidden" value="경상도">
       <a href="<%=request.getContextPath() %>/mainForm.no?localName=경상도&localCode=L7" onclick="" style="color:inherit; text-decoration: none!important;" aria-expanded="false">
         <div class="card city-card-style" style="margin:0; border: none !important; ">

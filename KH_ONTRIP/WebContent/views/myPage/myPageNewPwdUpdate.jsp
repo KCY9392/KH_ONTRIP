@@ -217,28 +217,20 @@ tr>td:nth-child(1) {
 	<br>
 
 	<script>
-	
-   
-    	
-    
-    
          function newPwdUpdate(){
         	
         	  if($("input:password[name=newPwd]").val() != $("input:password[name=checkPwd]").val()){
-                 /*  alert("비밀번호가 일치하지 않습니다."); */
-                 
-		                Swal.fire({
-    			                icon: 'error',
-    			                title: '비밀번호가 일치하지않습니다.',
-    			                text: '비밀번호를 다시 입력해주세요.',
-    			            });
-    			        
-		 
-                 
-                  $("input:password[name=newPwd]").focus();
-                  $("input:password[name=newPwd]").val("");
-                  $("input:password[name=checkPwd]").val("");
-              } 
+                
+				   Swal.fire({
+				        icon: 'error',
+				        title: '비밀번호가 일치하지않습니다.',
+				        text: '비밀번호를 다시 입력해주세요.',
+				    });
+				
+				     $("input:password[name=newPwd]").focus();
+				     $("input:password[name=newPwd]").val("");
+				     $("input:password[name=checkPwd]").val("");
+				} 
         	  
               if($("input:password[name=newPwd]").val() == $("input:password[name=checkPwd]").val() 
             		  	&& $("input:password[name=newPwd]").val() != ""){

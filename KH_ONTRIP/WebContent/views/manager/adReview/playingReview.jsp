@@ -30,8 +30,6 @@
         width: 1000px;
         height: 650px;
         margin: auto;
-        margin-top: 50px;
-        margin-left: 550px;
         box-sizing: border-box;
     }
    td > a{
@@ -67,12 +65,25 @@
 
 <%@ include file="../../common/adnavbar.jsp" %> 
 
-<%@ include file="../../../views/common/managerNavbar.jsp" %>
+<br><br><br><br><br>
 
-<br><br><br><br>
+<div class="uk-section uk-section-default sl-in2" style="min-width: 90vw; height:20vh;">
+        <div class="uk-container">
+            <div style="text-align: center; margin-top : -1.5%;">
+                <div style="color:darkgray">관리자페이지</div> <br>
+                <div>
+                	<span style="color: coral; font-size:25px; font-weight:600;">등록후기</span>
+                </div>
+              
+            </div>
+        </div>
+    </div>
+    
+    <br>
+
 <div class="outer1">
 <br>
-<h1 style = "text-align : center;font-weight: 900; font-size: 35px;">후기관리</h1>
+
 <br>&nbsp;
 <div class="buttons">
 	<form action="/KH_ONTRIP/manager/reviews/play?category=PP" method="post">
@@ -85,6 +96,7 @@
 	    <button class="btn-click btn btn-success" id="btn" name="tb" onclick="show(this);">맛집</button>
 	</form>
 </div>
+<br><br><br>
 <div class="table1" style="margin-top: -50px;">
     <table class="table table-bordered">
 

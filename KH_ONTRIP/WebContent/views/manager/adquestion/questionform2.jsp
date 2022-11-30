@@ -22,12 +22,17 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
 
+<!-- Alert 창  -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
   <title>문의사항 상세조회</title>
   <style>
     .container{
       display: flex;
       flex-direction: column;
       align-items: center;
+      box-shadow:0 0 5px grey;
+      padding:20px;
     }
     .panel-title{
       font-size:35px;
@@ -85,7 +90,7 @@
 
 <%@ include file="../../common/adnavbar.jsp" %>
 
-<br><br><br><br><br>
+<br><br><br><br><br><br>
 
 <div class="container">
   <h2 class="panel-title" style="color:rgb(5, 198, 37);">문의사항 상세조회</h2> <br>
@@ -93,7 +98,7 @@
     <span> 제목 : ${byCode.qTitle} </span> <br><br>
     <span> 내용</span> <br>
     <textarea cols="50" rows="7" readonly >${byCode.qContent}</textarea>  <br><br>
-    <form action="/KH_ONTRIP/manager/questions/answerform/answer?qCode=${byCode.qCode}" method="post">
+    <form id="answerQue" action="/KH_ONTRIP/manager/questions/answerform/answer?qCode=${byCode.qCode}" method="post">
     <span> 답변 </span> <br>
     <table style="margin-left:10%;">
     	<tr>
@@ -101,8 +106,8 @@
 	    		<textarea cols="60" rows="10" name="aContent" style="margin-left:6%;"></textarea>
 	    	</td>
 	    	<td class="tableTd" style="width:200px; height:100%;" >
-	      		<button class="btnAns" type="submit" style="width:90%; height:220px; font-size:20px; border-radius:10px;
-	      			margin-left:20%; margin-top:-4%; border:none;">답변등록</button>
+	      		<button onclick="alert();" class="btnAns" type="button" style="width:90%; height:220px; font-size:20px; border-radius:10px;
+	      			margin-left:22%; margin-top:-4%; border:none;">답변등록</button>
 	    	</td>
           	
     	</tr>
@@ -119,5 +124,36 @@
   </div>
 </div>
 
+	<script>
+		function alert(){
+			
+			Swal.fire({
+                  title: '답변을 등록하시겠습니까?',
+                  icon: 'warning',
+                  showCancelButton: true,
+                  confirmButtonColor: '#3085d6',
+                  cancelButtonColor: '#d33',
+                  confirmButtonText: '등록',
+                  cancelButtonText: '취소'
+              }).then((result) => {
+                  if (result.isConfirmed) {
+                      Swal.fire({
+                     		title: '등록이 완료되었습니다.',
+                     		icon:'success',
+                     		customClass: {
+                     		    confirmButton: 'swal2-confirm swal2-styled swal2-jong',
+                     		    cancelButton: 'btn btn-danger'
+            		  },		
+                      }).then((result) => {
+                      	if(result.isConfirmed){
+  		            		$("#answerQue").submit();
+                      		
+                      	}  		                        	
+                      })
+                  }
+              });
+			
+		}
+	</script>
 </body>
 </html>

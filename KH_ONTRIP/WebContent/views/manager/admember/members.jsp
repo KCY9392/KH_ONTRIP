@@ -28,26 +28,39 @@
 <body>
 
 <%@ include file="../../common/adnavbar.jsp" %>
-<%@ include file="../../../views/common/managerNavbar.jsp" %>
 
-<br><br><br><br>
+<br><br><br><br><br>
+    
+    <div class="uk-section uk-section-default sl-in2" style="min-width: 90vw; height:20vh;">
+        <div class="uk-container">
+            <div style="text-align: center; margin-top : -1.5%;">
+                <div style="color:darkgray">관리자페이지</div> <br>
+                <div>
+                	<span style="color: coral; font-size:25px; font-weight:600;">회원관리</span>
+                </div>
+              
+            </div>
+        </div>
+    </div>
+    
+    <br>
 
-<div class="main-container" >
-    <h2>회원관리 페이지</h2>
-    <br><br>
+
+<div class="main-container">
+
     <button class="btn-memberList" type="button">회원리스트</button> <br><br>
-    <p style="color:lightgrey;"> * 자세한 회원정보는 회원이름을 클릭하세요. </p>
+    <p style="color:grey;"> * 자세한 회원정보는 회원이름을 클릭하세요. </p>
 
 
 
-    <div class="center-box">
+    <div class="center-box" style="margin-left:-50px !important;">
 
-        <table class="table main-table" style="margin:auto; margin-left:4%;">
+        <table class="table main-table" style="margin:auto; margin-left:2%;">
             <thead >
-            <tr>
-                <th scope="col">회원번호</th>
-                <th scope="col">회원이름</th>
-                <th scope="col">가입일자</th>
+            <tr style="margin-left:30px;">
+                <th scope="col" style="width: 465px;">회원번호</th>
+                <th scope="col" style="width: 360px;">회원이름</th>
+                <th scope="col" style="padding-left:60px;">가입일자</th>
             </tr>
             </thead>
         </table>

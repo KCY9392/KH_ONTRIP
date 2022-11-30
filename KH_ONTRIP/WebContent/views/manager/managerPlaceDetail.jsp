@@ -92,10 +92,12 @@
 </head>
 <body>
     <%@ include file="../common/adnavbar.jsp" %>        
-    <%@ include file="../common/managerNavbar.jsp" %> 
 
-        <br><br><br><br>
-        <div class="container-div">
+
+        <br><br><br><br><br><br>
+
+        
+        <div class="container-div" style="margin:auto;">
             <form method="post" action="<%= request.getContextPath()%>/placeDelete.mn?placeName=${place.plcName}">
                 
             <br>
@@ -150,7 +152,7 @@
                </div>
                <div>
                     <br>
-                    <p style="font-size: 17px;" class="shadow-lg">${place.plcText}</p>
+                    <p style="padding:15px; font-size: 17px;" class="shadow-lg">${place.plcText}</p>
                </div>
                <div class="input-box shadow-lg" style="height: 45px;">
                      <span>#해시태그 : &nbsp;</span>

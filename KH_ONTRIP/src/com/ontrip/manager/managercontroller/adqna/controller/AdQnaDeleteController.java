@@ -25,7 +25,7 @@ public class AdQnaDeleteController implements QnaFrontController {
         
         
         response.setContentType("text/html;charset=UTF-8");
-        response.getWriter().print("<script>alert('삭제완료'); location.href = '/KH_ONTRIP/manager/qnas'</script>");
+        response.getWriter().print("<script>location.href = '/KH_ONTRIP/manager/qnas'</script>");
 
 
     }

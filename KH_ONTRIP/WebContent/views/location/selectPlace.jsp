@@ -269,7 +269,6 @@ div {
          <!-- 놀거리버튼 클릭시 해당상세지역의 놀거리가 뜸 -->
          <div id="nsearch" class="box"
             style="padding: 20px; text-align: center;">
-            <!-- border:1px solid black; -->
             <% if(!playPath.isEmpty()) { %>
             <% for(int i=0; i<playPath.size(); i++){ %>
              <div class="outer7 shadow-lg" onclick="movePlay('<%= playInfo.get(i).getPlcName() %>','<%= dareaName%>', '<%= User.getMemberNo() %>')">

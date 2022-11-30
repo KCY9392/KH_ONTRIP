@@ -95,10 +95,9 @@
 </head>
 <body>
     <%@ include file="../common/adnavbar.jsp" %>        
-    <%@ include file="../common/managerNavbar.jsp" %> 
+<br><br><br><br><br><br>
 
-        <br><br><br><br>
-        <div class="container-div">
+        <div class="container-div" style="margin:auto;">
             <form method="post" action="<%= request.getContextPath()%>/PlaceInsert.mn?placeCode=<%= placeCode %>">
                 
             <br>
