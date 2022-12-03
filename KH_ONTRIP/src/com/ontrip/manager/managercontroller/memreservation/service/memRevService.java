@@ -56,4 +56,13 @@ public class memRevService {
     }
 
 
+	public void deleteReservation(int rnCode) throws SQLException{
+		Connection conn = getConnection();
+		
+		memrevdao.deleteReservation(rnCode, conn);
+		
+		close();
+	}
+
+
 }

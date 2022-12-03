@@ -118,7 +118,7 @@
                 <th scope="row">${vo.revCode}</th>
                 <td style="height: 30px;"><a href="/KH_ONTRIP/manager/reviews/review?revCode=${vo.revCode}&categoryCode=${vo.category}">${vo.plcName}</a></td>
                 <td>${vo.memName}</td>
-                <td><fmt:formatDate value="${vo.rnDate }" pattern="yyyy-mm-dd" /></td>
+                <td><fmt:formatDate value="${vo.rnDate }" pattern="yyyy-MM-dd" /></td>
             </tr>
 
         </c:forEach>

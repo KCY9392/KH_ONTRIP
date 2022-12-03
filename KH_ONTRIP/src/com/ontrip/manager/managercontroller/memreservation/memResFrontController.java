@@ -1,5 +1,6 @@
 package com.ontrip.manager.managercontroller.memreservation;
 
+import com.ontrip.manager.managercontroller.memreservation.controller.ReservationDelete;
 import com.ontrip.manager.managercontroller.memreservation.controller.ReservationDetailedController;
 import com.ontrip.manager.managercontroller.memreservation.controller.ReservationListController;
 
@@ -27,6 +28,7 @@ public class memResFrontController extends HttpServlet {
 
         controllerMap.put("/KH_ONTRIP/myPage/reservationList", new ReservationListController());   // 마이페이지 숙소리스트
         controllerMap.put("/KH_ONTRIP/myPage/reservationList/Detailed" , new ReservationDetailedController()); // 숙소상세
+        controllerMap.put("/KH_ONTRIP/myPage/reservationList/delete", new ReservationDelete());
     }
 
 //    public void service(HttpServletRequest request, HttpServletResponse response)throws IOException, ServletException {

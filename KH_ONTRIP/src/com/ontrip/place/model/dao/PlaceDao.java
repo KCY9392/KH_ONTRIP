@@ -473,21 +473,6 @@ public class PlaceDao {
 		
 		String sql = prop.getProperty("insertPlace");
 		
-//		INSERT INTO "Place" 
-//		(PLC_CODE, 
-//		 CATEGORY_CODE, 
-//		 DAREA_CODE, 
-//		 PLC_NAME, 
-//		 PLC_ADDRESS, 
-//		 PLC_TEXT, 
-//		 PLC_BNAME,
-//		 PLC_PNUMBER, 
-//		 PLC_LA, 
-//		 PLC_LO, 
-//		 LOCAL_CODE)
-//		 
-//		VALUES(SEQ_PLC.NEXTVAL, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-		
 		try {
 			psmt = conn.prepareStatement(sql);
 			

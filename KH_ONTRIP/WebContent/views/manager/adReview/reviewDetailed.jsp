@@ -106,50 +106,12 @@
                			</td>
                		</tr>
                </table>
-               개선사항<br>
-               <input type="text" value="${review.revText}" name="rtext" id="treview" style="width: 440px;" readonly><br><br>
+               내용<br>
+               <textarea value="${review.revText}" name="rtext" id="treview" style="width: 440px; resize:none;" readonly>${review.revText}</textarea><br><br>
         </div>
     </div>
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- <div style="text-align:center; margin-top:20px;"> -->
-<!--     <b style="font-size:30px; font-weight:900;">관리자페이지 - 등록후기 관리</b> -->
-<!-- </div> -->
-<!-- <div class="containerBox"> -->
-<!--     <div class="title"> -->
-<%--         <span style="font-weight:900; font-size:25px;">제목 : ${review.plcName}</span><br> --%>
-<%--         <span>작성자 : ${review.memName}</span> --%>
-<!--         <input type="text" name="userName" value="송지호" style="width:50px;"> -->
-<!--         <br> -->
-<%--         <span>작성 일시 : <fmt:formatDate value="${review.revDate}" pattern="yyyy-mm-dd" /></span> --%>
-<!--         <input type="text" name="reviewDate" value="2022년 10월 28일" style="width:130px;"> -->
-<!--         <br><br> -->
-<%--         <span>만족도 : ${review.revStar}</span><br> --%>
-
-
-<!--     </div> -->
 </body>
 </html>

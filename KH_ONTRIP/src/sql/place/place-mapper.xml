@@ -25,13 +25,6 @@
 	</entry>
 	
 	
-<!-- 시설상세창(숙소)에 정보띄우기  -->
-	<entry key="Hotel">
-	SELECT PLC_CODE, CATEGORY_CODE, DAREA_CODE,PLC_ADDRESS, PLC_TEXT, PLC_BNAME, PLC_PNUMBER,
-	PLC_LA, PLC_LO 
-	FROM "Place"
-	WHERE STATUS = 'Y' AND PLC_NAME = ?
-	</entry>
 	
 	<entry key="findDareaCode">
 	SELECT DAREA_CODE 
@@ -45,6 +38,16 @@
 	FROM "Place"
 	WHERE PLC_NAME = ?
 	</entry>
+	
+	
+	<!-- 시설상세창에 정보띄우기  -->
+	<entry key="Hotel">
+	SELECT PLC_CODE, CATEGORY_CODE, DAREA_CODE,PLC_ADDRESS, PLC_TEXT, PLC_BNAME, PLC_PNUMBER,
+	PLC_LA, PLC_LO 
+	FROM "Place"
+	WHERE STATUS = 'Y' AND PLC_NAME = ?
+	</entry>
+	
 	
 	<!-- 시설상세창 이미지 띄우기 -->
 	<entry key="selectPlaceImages">

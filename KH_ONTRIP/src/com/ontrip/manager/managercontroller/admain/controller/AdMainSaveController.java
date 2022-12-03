@@ -23,42 +23,30 @@ public class AdMainSaveController extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		
 		request.setCharacterEncoding("UTF-8");
 		
 		//카테고리코드(놀거리, 숙소, 맛집)
 		String categoryCode = request.getParameter("category");
-		
 		//시설이름
 		String placeName = request.getParameter("placeName");
-		
 		//대표지역코드
 		String localCode = request.getParameter("addressKind");
-		
 		//상세지역이름
 		String dAreaName = request.getParameter("addressDetailKind");
-		
 		//상세지역코드
 		String dareaCode = new PlaceService().selectDAreaCode(dAreaName);
-		
 		//시설대표자이름
 		String plcBname = request.getParameter("placeBName");
-		
 		//시설주소
 		String plcAddress = request.getParameter("areaAddress");
-		
 		//시설전화번호
 		String plcPnumber = request.getParameter("telephone");
-		
 		//시설위도
 		float plcLa = Float.parseFloat(request.getParameter("latitude"));
-		
 		//시설경도
 		float plcLo = Float.parseFloat(request.getParameter("longitude"));
-		
 		//시설설명텍스트
 		String plcText = request.getParameter("content");
-		
 		
 		Place place = new Place();
 		

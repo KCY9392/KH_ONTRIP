@@ -29,22 +29,16 @@ public class FindPwdController extends HttpServlet {
 		
 		String memberName = request.getParameter("memberName");
 		String memberId = request.getParameter("memberId");
-//		System.out.println(memberId);
 		String phone = request.getParameter("phone");
 		
-		int isMem = new MemberService().findMem(memberId, memberName, phone);
+		Member mem = new MemberService().findMem(memberId, memberName, phone);
 		
-		if(isMem > 0) {
+		if(mem != null) { //해당하는 회원이 있다면,
 			
-			String memberPwd = new MemberService().findPwd(memberName, memberId, phone);
-			System.out.println(memberPwd);
+			request.setAttribute("mem", mem);
+			request.getRequestDispatcher("views/common/newPwdUpdate.jsp").forward(request, response); // 새로운 비밀번호 설정하는 창
 			
-			Member m = new Member(memberId, memberPwd);
-			
-			request.setAttribute("m", m);
-			request.getRequestDispatcher("views/common/pwdReveal.jsp").forward(request, response); // 현재 비밀번호 알려는 사이트 => "비밀번호 변경" / "메인으로" 
-			
-		}else {
+		}else {//해당하는 회원이 없다면,
 			
 			response.setContentType("text/html;charset=UTF-8");
 			response.getWriter().print("<script>alert('존재하지 않는 회원입니다'); location.href = '/KH_ONTRIP/find.me'</script>");

@@ -182,6 +182,9 @@
             <% } %>
             <% } %>
 		
+        </div>
+
+        <br><br>
         <script>
             var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
                 mapOption = { 
@@ -192,9 +195,6 @@
             // 지도를 표시할 div와  지도 옵션으로  지도를 생성
             var map = new kakao.maps.Map(mapContainer, mapOption); 
         </script> 
-        </div>
-
-        <br><br>
 
         <i class="fa-solid fa-location-dot" style="color:green;"></i>
         <span style="font-size:15px; font-weight: bold;"><%= place.getPlcAddress() %></span>

@@ -32,6 +32,9 @@
 	<!-- jQuery -->
 	<script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
 	
+	<!-- Alert 창  -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
 	<!-- BootStrap 연결 -->
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -163,24 +166,56 @@
                         </tr>
                         <tr>
                             <td>가격 : &nbsp;</td>
-                            <td><input type="text" value="<fmt:formatNumber value="${totalPrice}" pattern="#,###"/> KRW" readonly></td>
+                            <td><input type="text" value="<fmt:formatNumber value="${rev.rnPrice}" pattern="#,###"/>">KRW</td>
                             
                             <td></td>
                         </tr>
                       
                         
                     </table>
+                    <br><br>
+	            	<button type="button" name ="deleteReservation" id="deleteRn" onclick="deleteReservation()" class="btn btn-outline-warning" style="margin-left:270px; width:100px; border-radius:0;">예약취소</button>
+                	<br><br>
                   </div>
 
                 </div>
-                <br><br><br>
                 
-                <p style="text-align:center; font-weight:600; color:grey;">* 예약취소 관련 문의는 고객센터를 이용해주세요.</p>
                
-            
             </div>
         </div>
 
+	<script>
+	function deleteReservation(){
+    	
+      	 Swal.fire({
+               title: '예약을 취소하시겠습니까?',
+               icon: 'warning',
+               showCancelButton: true,
+               confirmButtonColor: '#3085d6',
+               cancelButtonColor: '#d33',
+               confirmButtonText: '확인',
+               cancelButtonText: '취소'
+           }).then((result) => {
+               if (result.isConfirmed) {
+                   Swal.fire({
+                   		title: '예약취소가 완료되었습니다. &nbsp;&nbsp;&nbsp;&nbsp;일주일뒤에 환불됩니다',
+                   		icon:'success',
+                   		customClass: {
+                   		    confirmButton: 'swal2-confirm swal2-styled swal2-jong',
+                   		    cancelButton: 'btn btn-danger'
+         		  			},		
+                   }).then((result) => {
+                   	if(result.isConfirmed){
+  		            		$("#deleteRn").submit();
+  		            		location.href = '/KH_ONTRIP/myPage/reservationList/delete?rnCode=${rev.rnCode}';
+                   	}  		                        	
+                   });
+               }
+           });	
+      	 
+      }
+	
+	</script>
 		<br><br><br><br>
        
 </body>

@@ -35,9 +35,16 @@ public class SelectFoodController extends HttpServlet {
 		String placeName = request.getParameter("placeName");
 		String dareaName = request.getParameter("dareaName");
 		
+		// 시설정보 띄우기위한 시설객체
 		Place place = new PlaceService().selectHotel(placeName);
-		
 		request.setAttribute("place", place);
+		
+		// 시설사진 띄우기위한 Image객체타입 ArrayList
+		ArrayList<Image> placeImages = new PlaceService().selectPlaceImages(placeName);
+		request.setAttribute("placeImages", placeImages);
+		
+		
+		
 		request.setAttribute("placeName", placeName);
 		request.setAttribute("dareaName", dareaName);
 		
@@ -46,19 +53,15 @@ public class SelectFoodController extends HttpServlet {
 		String value = "";
 		if(hashTag != null) {
 			for(int i = 0; i<hashTag.size(); i++) {
-//				System.out.println(hashTag.get(i).getHashName());
 				value += "#"+hashTag.get(i).getHashName()+  ( i != hashTag.size()-1 ?  "," : "");
 				
 			}
 		}
-//		System.out.println(value);
 		request.setAttribute("value", value);
 		
 		String dareaCode = new PlaceService().findDareaCode(dareaName);
 		
-		// 시설사진
-		ArrayList<Image> placeImages = new PlaceService().selectPlaceImages(placeName);
-		request.setAttribute("placeImages", placeImages);
+		
 		
 		String placeCode = new PlaceService().findPlaceCode(placeName);
 		request.setAttribute("placeCode", placeCode);

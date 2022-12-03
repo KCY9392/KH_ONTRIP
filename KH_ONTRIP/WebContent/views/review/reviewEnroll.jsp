@@ -178,7 +178,7 @@ button:hover{transform: scale(.9);}
                - 직원 & 서비스&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="number" id = "numreview" name="gScore" min="1" max="10" step="1">/&nbsp;&nbsp;&nbsp;10<br>
                - 편의 시설 서비스&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="number" id = "numreview" name="pScore" min="1" max="10" step="1">/&nbsp;&nbsp;&nbsp;10<br><br> -->
                 </div><br>
-               <strong style="font-size: 25px;">개선사항</strong><br><br>
+               <strong style="font-size: 25px;">내용</strong><br><br>
                <div class="shadow p-3 mb-5 bg-body rounded" style="width:800px; margin-left: -135px;">
                		<textarea name="reviewText" id="treview" style="width: 440px; height: 150px; margin-bottom: -30px; border: 0;" placeholder="후기를 입력해주세요 ✎"></textarea><br><br>
                </div>

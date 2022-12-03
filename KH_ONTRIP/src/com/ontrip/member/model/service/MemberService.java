@@ -144,12 +144,12 @@ public class MemberService {
 	}
 
 	// 비밀번호찾기에서 해당회원이 존재하는지 확인
-	public int findMem(String memberId, String memberName, String phone) {
+	public Member findMem(String memberId, String memberName, String phone) {
 		
 		Connection conn = getConnection();
-		int result = new MemberDao().findMem(memberId, memberName, phone, conn);
+		Member mem = new MemberDao().findMem(memberId, memberName, phone, conn);
 		close();
 		
-		return result;
+		return mem;
 	}
 }

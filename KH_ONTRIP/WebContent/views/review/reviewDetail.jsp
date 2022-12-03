@@ -139,7 +139,7 @@ button:hover{transform: scale(.9);}
                 <strong style="float: left; font-size: 25px;">이용시설 : <%=placeName%> &nbsp;&nbsp;&nbsp;</strong> <input type="text" name="placeName" id = "review" style="height: 30px; width: 150px; border: 0px; font-size: 20; font-weight: bold;" readonly><br> 
                 <!-- <hr width="60%"><br> --><br>
                 <img src="<%=request.getContextPath()%>/<%=selectMainImagelist.get(0).getFilePath()%><%=selectMainImagelist.get(0).getChangeName() %>" style="width: 110%; height:330px; margin-left: -23px;" class="shadow p-3 mb-5 bg-body rounded"><br>
-                <strong style="float: left;">작성일시 :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbs&nbsp;&nbsp;;</strong><input type="text" name="reviewSysdate" value="<%=r.getRevDate()%>" id = "review" style="height: 30px; border: 0px; font-size: 17; margin-left: -350px;"><br>
+                <strong style="float: left;">작성일시 :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbs&nbsp;&nbsp;;</strong><input type="text" name="reviewSysdate" value="<%=r.getRevDate()%>" id = "review" style="height: 30px; border: 0px; font-size: 17; margin-left: -350px;" readonly><br>
                 <strong style="float: left;">작성자 :</strong> <input type="text" name = "memberId" value="<%=r.getMemberName()%>" id = "review" style="height: 30px; border: 0px; font-size: 20; font-weight: bold; margin-left: -250px;" readonly><br><br><br> 
                 <div class="shadow-lg" style="width: 151.5%; margin-left: -135px;">
                     &nbsp;만족도&nbsp;&nbsp;&nbsp;<input type="number" id="updateStar" name = "updateStar" value="<%=r.getReviewStar()%>" min="1" max="5" style="width: 40px; border: 0; color: red; font-weight: bold;">/&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5<br>
@@ -159,9 +159,9 @@ button:hover{transform: scale(.9);}
                     </tr>
                 </table>
                 </div><br>
-               <strong style="font-size: 25px;">개선사항</strong><br>
+               <strong style="font-size: 25px;">내용</strong><br>
                <div class="shadow p-3 mb-5 bg-body rounded" style="width:800px; margin-left: -136px;">
-                     <textarea id="rtext" name="rtext" style="width: 440px; height: 150px; margin-bottom: -30px; border: 0;"><%=r.getRevText()%></textarea><br><br>
+                     <textarea id="rtext" name="rtext" style="width: 440px; height: 150px; margin-bottom: -30px; border: 0;" value="<%=r.getRevText()%>"><%=r.getRevText()%></textarea><br><br>
                </div>
             
                 <div align = "center">
@@ -182,7 +182,7 @@ button:hover{transform: scale(.9);}
        let $cScroe = $("input[name=cScore]");
        let $sScroe = $("input[name=sScroe]");
        let $pScroe = $("input[name=pScore]");
-       let $rtext = $("input[name=rtext]");
+       let $rtext = $("textarea[name=rtext]");
        
        $.ajax({
           url : "reviewUpdate.re",

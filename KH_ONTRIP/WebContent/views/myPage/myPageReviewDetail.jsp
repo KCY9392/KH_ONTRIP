@@ -153,9 +153,9 @@ button:hover{transform: scale(.9);}
                     </tr>
                 </table>
                 </div><br>
-               <strong style="font-size: 25px;">개선사항</strong><br>
+               <strong style="font-size: 25px;">내용</strong><br>
                <div class="shadow p-3 mb-5 bg-body rounded" style="width:800px; margin-left: -136px;">
-               		<input type="text" id="rtext" name="rtext" style="width: 440px; height: 150px; margin-bottom: -30px; border: 0;" value="<%=r.getRevText() %>"><br><br>
+               		<textarea id="rtext" name="rtext" style="width: 440px; height: 150px; margin-bottom: -30px; border: 0;" value="<%=r.getRevText() %>"><%=r.getRevText() %></textarea><br><br>
                </div>
             
                <% if(loginUser.getMemberName().equals(r.getMemberName())) { %>
@@ -175,7 +175,7 @@ button:hover{transform: scale(.9);}
         	let $cScroe = $("input[name=cScore]");
         	let $sScroe = $("input[name=sScroe]");
         	let $pScroe = $("input[name=pScore]");
-        	let $rtext = $("input[name=rtext]");
+        	let $rtext = $("textarea[name=rtext]");
         	
         	$.ajax({
         		url : "reviewUpdate.re",
@@ -257,9 +257,6 @@ button:hover{transform: scale(.9);}
                 }
             });	
        	 
-       	 
-       	 
-       	
        }
     </script>
 </body>

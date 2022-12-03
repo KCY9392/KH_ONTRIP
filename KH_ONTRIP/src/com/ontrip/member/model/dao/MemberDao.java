@@ -335,9 +335,9 @@ public class MemberDao {
 		  return result;
 	}
 
-	public int findMem(String memberId,String memberName, String phone, Connection conn) {
+	public Member findMem(String memberId,String memberName, String phone, Connection conn) {
 		
-		int result = 0;
+		Member mem = null;
 		
 		PreparedStatement psmt = null;
 		ResultSet rset = null;
@@ -354,7 +354,8 @@ public class MemberDao {
 			rset = psmt.executeQuery();
 			
 			if(rset.next()) {
-				result = 1;
+				mem = new Member(rset.getString("MEM_ID"),
+								 rset.getString("MEM_PWD"));
 			}
 			
 		} catch (SQLException e) {
@@ -364,7 +365,7 @@ public class MemberDao {
 			close(psmt);
 		}
 		
-		return result;
+		return mem;
 	}
 	
 	

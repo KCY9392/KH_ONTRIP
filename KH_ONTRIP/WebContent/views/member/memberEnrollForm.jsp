@@ -215,6 +215,12 @@
   }
 }
 
+	label{
+		font-size : 12px;
+		text-align:center;
+		margin-left:100px;
+	}
+
 
     </style>
 </head>
@@ -255,11 +261,18 @@
    
                <span class="span_id">아이디</span>
                <input class="input" type="text" placeholder="아이디" name="memberId" required>
-               <button class="btn_2" type="button" onclick="idCheck();">중복확인</button><br><br>
+               <button class="btn_2" type="button" onclick="idCheck();">중복확인</button><br>
+               <label>첫 글자는 반드시 영문자로, 그리고 영문자,숫자를 포함하여 총 4~12자로 입력하시오.</label>
+               <br><br>
+               
                <span class="span_pwd">비밀번호</span>
-               <input class="input" type="password" placeholder="비밀번호" name="memberPwd" required><br><br>
+               <input class="input" type="password" placeholder="비밀번호" name="memberPwd" required><br>
+               <label style="margin-left:10px;">영문자, 숫자, 특수문자로 총 8~15자로 입력하시오.</label>
+               <br><br>
+               
                <span class="span_pwd2">비밀번호 확인</span>
                <input class="input" type="password" placeholder="비밀번호 확인" name="memberPwd2" required> <br><br>
+               
                <span class="span_phone">휴대전화</span>
                <input class="input" type="text" placeholder="휴대전화번호 ( ' - ' 포함 )" name="phone" required><br>
                
@@ -283,6 +296,7 @@
          function idCheck(){
             // 아이디 입력하는 input 요소 객체
             let $memberId = $("#memberEnroll input[name=memberId]");
+            let regExp = /^[a-z][a-z\d]{3,11}$/;
             
             $.ajax({
                url : "idCheck.me",
@@ -299,6 +313,14 @@
 
                        $memberId.focus();
                        
+                   }
+            	   
+            	   else if(!regExp.test($memberId.val())){
+                  	 Swal.fire({
+                           icon: 'error',
+                           title: '유효한 아이디를 입력해주세요.'                  
+                       });
+                  	 
                    }else if(result == "NNNNN"){ // 사용불가능한 아이디
                 	   
                 	   Swal.fire({
@@ -340,11 +362,20 @@
          
          function btnEnroll(){
              
-        	 if($('input[name=memberName]').val() == ""){
+             let regExp = /^[a-z\d!@#$%^*]{8,15}$/i;
+             if(!regExp.test($('input[name=memberPwd]').val())){
+                 Swal.fire({
+                     icon: 'error',
+                     title: '유효한 비밀번호를 입력해주세요.'                  
+                 });
+                 $('input[name=memberPwd]').val()="";
+                 $('input[name=memberPwd]').val().focus();
+             }else if($('input[name=memberName]').val() == ""){
         		 Swal.fire({
                      icon: 'error',
                      title: '이름을 입력해주세요.'                  
                  });
+        		 
         	 } else if($('.select_gender').val() == "성별"){
         		 Swal.fire({
                      icon: 'error',
@@ -370,7 +401,12 @@
                      icon: 'error',
                      title: '휴대폰번호를 입력해주세요.'                  
                  });
-        	 } else {
+        	 } else if($('input[name=memberPwd]').val()!= $('input[name=memberPwd2]').val()){
+        		 Swal.fire({
+                     icon: 'error',
+                     title: '비밀번호와 비밀번호확인이 일치하지않습니다.'                  
+                 });
+             }else {
         		 Swal.fire({
                      title: '회원가입 하시겠습니까?',
                      icon: 'warning',

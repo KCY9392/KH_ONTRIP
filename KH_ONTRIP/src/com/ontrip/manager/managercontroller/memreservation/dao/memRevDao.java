@@ -175,4 +175,24 @@ public class memRevDao {
         return image;
     }
 
+
+	public void deleteReservation(int rnCode, Connection conn) throws SQLException{
+		
+		String sql = prop.getProperty("deleteReservation");
+		
+		PreparedStatement pstmt = null;
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, rnCode);
+			
+			pstmt.executeUpdate();
+		
+		}catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            close(pstmt);
+        } 
+	}
+
 }

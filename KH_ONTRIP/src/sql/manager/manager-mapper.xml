@@ -225,7 +225,12 @@
 
     <!--    마이페이지 예약숙소 -->
 
-
+	<entry key="deleteReservation">
+		
+		DELETE FROM "Reservation"
+		WHERE RN_CODE = ?
+	
+	</entry>
 
 
 
