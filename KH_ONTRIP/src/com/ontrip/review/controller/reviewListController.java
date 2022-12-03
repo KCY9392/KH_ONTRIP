@@ -28,35 +28,32 @@ public class reviewListController extends HttpServlet {
    
     }
 
+    ReviewService rs = new ReviewService();
+    ScoreService ss = new ScoreService();
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		// PLACE_CODE에 해당하는 PLACE_NAME을 뽑아낸후 해당하는 MEM_NO가 작성한 리뷰들을 LIST에 담아서 FOR문 돌리기 위한 코드
-		String placeName = request.getParameter("placeName");//안넘어옴
+		String placeName = request.getParameter("placeName");
 		String placeName2 = (String)request.getAttribute("placeName");
-//		System.out.println("placeName2 : "+placeName2);
 		request.setAttribute("placeName", placeName);
-		
 		request.setAttribute("placeName2", placeName2);
 		
-//		System.out.println(placeName);
+		
 		int placeCode = Integer.parseInt(request.getParameter("placeCode"));
 		int memberNo = Integer.parseInt(request.getParameter("memberNo"));
-//		System.out.println(memberNo+"통과됨");
 
 		// 뽑아낸 정보들을 LIST에 담기
-		ArrayList<Review> reList = new ReviewService().selectReviewList(placeName);
+		ArrayList<Review> reList = rs.selectReviewList(placeName);
 		
 		// JSP에서 사용하기 위해 Attribute에 담기
-		request.setAttribute("reList", reList); // 이거가 찐이에요 대박.
-//		System.out.println(reList);
+		request.setAttribute("reList", reList); 
 		
 		// PLACE_CODE로 해당하는 LIST 가져오기 
 		request.setAttribute("placeCode", placeCode);
-//		System.out.println(placeCode+"통과됨");
 		
 		// 별점 , 쳥결도 , 	직원 & 서비스 , 편의시설 서비스 평점 가져오기 위한 LIST
-		ArrayList<Score> slist = new ScoreService().selectSocreList(placeCode);
+		ArrayList<Score> slist = ss.selectSocreList(placeCode);
 		
 		// LIST에 담긴 평점들을 Attribute에 담기
 		request.setAttribute("slist", slist);
@@ -68,13 +65,20 @@ public class reviewListController extends HttpServlet {
 		request.setAttribute("avgScore", avgScore);
 		
 		// PLACE_CODE에 해당하는 대표이미지를 가져오기 위한 LIST
-		ArrayList<Image> selectMainImagelist = new ReviewService().selectMainImagelist(placeCode);
+		ArrayList<Image> selectMainImagelist = rs.selectMainImagelist(placeCode);
 		
 		// 가져온 대표 이미지가 담긴 LIST를 Attribute에 담기
 		request.setAttribute("selectMainImagelist", selectMainImagelist);
 		
-		int selectHeartCount = new ReviewService().selectHeartCount(placeCode);
+		int selectHeartCount = rs.selectHeartCount(placeCode);
 		request.setAttribute("selectHeartCount", selectHeartCount);
+		
+		
+		
+		// 시설을 예약한 회원인지 확인
+		int rsYes = rs.isReservationMem(memberNo, placeCode);
+		request.setAttribute("rsYes", rsYes);
+		
 	
 		
 		// ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ 페이징 처리 시작 ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
@@ -91,7 +95,7 @@ public class reviewListController extends HttpServlet {
 	    int endPage; // 페이지 하단에 보여질 페이징바의 끝수
 	    
 	    // * listCount : 총 게시글 갯수
-	    listCount = new ReviewService().selectListCount(); 
+	    listCount = rs.selectListCount(); 
 	    
 	    // * currentPage : 현재페이지
 	    currentPage = Integer.parseInt(request.getParameter("currentPage") == null ? "1" : request.getParameter("currentPage"));
@@ -194,7 +198,7 @@ public class reviewListController extends HttpServlet {
 	 // ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ 페이징 처리 종료 ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
 	    
 	    // 현재 일반게시판의 게시글들 가져오기	    
-	    ArrayList<Review> plist = new ReviewService().selectPagingList(pi , placeCode);
+	    ArrayList<Review> plist = rs.selectPagingList(pi , placeCode);
 
 	    
 	    request.setAttribute("plist", plist);

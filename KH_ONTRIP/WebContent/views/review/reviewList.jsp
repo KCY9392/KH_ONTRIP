@@ -33,6 +33,8 @@
 	int endPage = pi.getEndPage();
 	int maxPage = pi.getMaxPage();
 	
+	
+	int rsYes = (int)request.getAttribute("rsYes");
 		
 %>
 <!DOCTYPE html>
@@ -44,6 +46,9 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+<!-- Alert 창  -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 <style>
     .outer{
         background-color: white; /* 해당사이트의 고유한 색상으로 작성 */
@@ -310,7 +315,14 @@
 
         <script>
             function reviewInsert(){
-            	location.href = "<%=request.getContextPath()%>/insertReview.re?placeName=<%=placeName %>&memberNo=<%=memberNo%>&placeCode=<%=placeCode%>";
+            	if(<%= rsYes %> == 0){
+            		Swal.fire({
+                        icon: 'error',
+                        title: '숙소예약 후 작성가능합니다'                  
+                    });		
+            	}else{
+            		location.href = "<%=request.getContextPath()%>/insertReview.re?placeName=<%=placeName %>&memberNo=<%=memberNo%>&placeCode=<%=placeCode%>";
+            	}
             }
             
            $(function(){

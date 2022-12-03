@@ -26,7 +26,7 @@ hr{
     width:978px !important;
 }
 body{
-/* 	cursor: pointer !important; */
+/*    cursor: pointer !important; */
     letter-spacing: -1px;
     font-size: 1.2rem !important;
 }
@@ -45,10 +45,10 @@ body{
   <span class="hotel">${placeName}</span>
   <div class="outer">
     <span id="checkIn">체크인 : </span>
-    <input type="date" name="sdate"  value="" required>
+    <input id="cIn" type="date" name="sdate" min="" max=""  value="" required>
 
     <span id="checkOut">체크아웃 : </span>
-    <input type="date" name="edate" value=""  required>
+    <input id="cOut" type="date" name="edate" min="" max="" value=""  required>
   </div>
 </div>
 <br><br><br><br><br>
@@ -160,5 +160,44 @@ body{
       </div>
     </div>
   </form>
+  
+  <script>
+     let today = new Date();
+     let day = today.getDate();
+     let month = today.getMonth() + 1; // 1월이 0부터 시작하여 1을 더해준다.
+     let year = today.getFullYear();
+     if (day < 10) day = '0' + day;
+     if (month < 10) month = '0' + month;
+     today = year + '-' + month + '-' + day;
+     
+     // 최소 선택 일자는 오늘이다.
+     document.getElementById("cIn").setAttribute("value", today);
+     document.getElementById("cIn").setAttribute("min", today);
+     
+     //// 최대 선택 일자 설정
+     let maxday = new Date();
+     maxday = new Date(maxday.setMonth(maxday.getMonth() + 2))
+     day = maxday.getDate();
+     month = maxday.getMonth() + 1;
+     year = maxday.getFullYear();
+     if (day < 10) day = '0' + day;
+     if (month < 10) month = '0' + month;
+     today = year + '-' + month + '-' + day;
+     document.getElementById("cIn").setAttribute("max", today);
+     document.getElementById("cOut").setAttribute("max", today);
+     
+     /* 오는 날 선택 */
+     function changeReturn() {
+       // 가는 날 선택에 따라 오는 날 초기 날짜 변경
+       let start = document.getElementById("cIn").value;
+       document.getElementById("cOut").setAttribute("value", start);
+       document.getElementById("cOut").setAttribute("min", start);
+     }
+     document.getElementById("cIn").onchange = () => {
+       changeReturn();
+     }
+     changeReturn();
+  </script>
+
 </body>
 </html>

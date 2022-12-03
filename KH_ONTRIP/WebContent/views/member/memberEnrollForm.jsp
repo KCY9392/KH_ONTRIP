@@ -32,6 +32,12 @@
    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
    integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
    crossorigin="anonymous" referrerpolicy="no-referrer" />
+   
+   <!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.1.min.js"
+	integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="
+	crossorigin="anonymous"></script>
+   
 <script
    src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
    integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
@@ -257,7 +263,7 @@
                </select> <br><br>
    
                <span class="span_birth">생년월일</span> &nbsp;
-               <input type="date" name="birthDate"/> <br><br>
+               <input type="date" name="birthDate" id="Date" max=""/> <br><br>
    
                <span class="span_id">아이디</span>
                <input class="input" type="text" placeholder="아이디" name="memberId" required>
@@ -348,8 +354,6 @@
                            }  
                     	  
                       });
-                  
-                	  
                   }
                },
                error : function(){
@@ -358,11 +362,17 @@
             });
          }
          
-         
+         $(function(){
+        	 var now_utc = Date.now()
+        	 var timeOff = new Date().getTimezoneOffset()*60000;
+        	 var today = new Date(now_utc-timeOff).toISOString().split("T")[0];
+        	 document.getElementById("Date").setAttribute("max", today);
+         });
+   	  
          
          function btnEnroll(){
              
-             let regExp = /^[a-zA-Z\d!@#$%^*]{8,15}$/i;
+        	 let regExp = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*]).{8,15}$/i;
              if(!regExp.test($('input[name=memberPwd]').val())){
                  Swal.fire({
                      icon: 'error',
@@ -386,7 +396,7 @@
                      icon: 'error',
                      title: '생년월일을 입력해주세요.'                  
                  });
-        	 } else if($('input[name=memberPwd]').val() == ""){
+          	 } else if($('input[name=memberPwd]').val() == ""){
         		 Swal.fire({
                      icon: 'error',
                      title: '비밀번호를 입력해주세요.'                  
@@ -430,7 +440,6 @@
                             if(result.isConfirmed){
                             	
                              $("#memberEnroll").submit();
-                               
                             }                                   
                          });
                      }

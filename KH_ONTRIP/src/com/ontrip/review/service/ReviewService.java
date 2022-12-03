@@ -17,12 +17,13 @@ import java.util.ArrayList;
 
 public class ReviewService {
 	
+	ReviewDao rd = new ReviewDao();
+	
 	public int insertReview(Review r , Score s) {
 		
 		Connection conn = getConnection();
 		
-		int result1 = new ReviewDao().insertReview(r , conn);
-		int result = new ReviewDao().insertScore(s , conn);
+		int result1 = rd.insertReview(r , conn);
 		
 		close();
 		
@@ -34,7 +35,7 @@ public class ReviewService {
 			
 			Connection conn = getConnection();
 			
-			int result = new ReviewDao().insertScore(s , conn);
+			int result = rd.insertScore(s , conn);
 			
 			if(result > 0) {
 				commit(conn);
@@ -50,7 +51,7 @@ public class ReviewService {
 		
 		Connection conn = getConnection();
 		
-		ArrayList<Review> relist = new ReviewDao().selectReviewList(placeName ,  conn);
+		ArrayList<Review> relist = rd.selectReviewList(placeName ,  conn);
 		
 		close();
 		
@@ -61,7 +62,7 @@ public class ReviewService {
 		
 		Connection conn = getConnection();
 		
-		Review re = new ReviewDao().selectReviewDetail(revCode , conn);
+		Review re = rd.selectReviewDetail(revCode , conn);
 		
 		close();
 		
@@ -73,7 +74,7 @@ public class ReviewService {
 		
 		Connection conn = getConnection();
 		
-		int revCode = new ReviewDao().selectReviewNo(conn);
+		int revCode = rd.selectReviewNo(conn);
 		
 		close();
 		
@@ -84,7 +85,7 @@ public class ReviewService {
 		
 		Connection conn = getConnection();
 		
-		int listCount = new ReviewDao().selectListCount(conn);
+		int listCount = rd.selectListCount(conn);
 		
 		close();
 		
@@ -96,7 +97,7 @@ public class ReviewService {
 		
 		Connection conn = getConnection();
 		
-		ArrayList<Review> plist = new ReviewDao().selectPagingList(pi , placeCode , conn);
+		ArrayList<Review> plist = rd.selectPagingList(pi , placeCode , conn);
 		
 		close();
 		
@@ -107,7 +108,7 @@ public class ReviewService {
 		
 		Connection conn = getConnection();
 		
-		Member memberName = new ReviewDao().selectMemberName(memberNo , conn);
+		Member memberName = rd.selectMemberName(memberNo , conn);
 		
 		return memberName;
 	}
@@ -116,7 +117,7 @@ public class ReviewService {
 		
 		Connection conn = getConnection();
 		
-		ArrayList<Review> mylist = new ReviewDao().selectmyPagePagingList(pi , memberNo , conn);
+		ArrayList<Review> mylist = rd.selectmyPagePagingList(pi , memberNo , conn);
 		
 		close();
 		
@@ -128,7 +129,7 @@ public class ReviewService {
 		
 		Connection conn = getConnection();
 		
-		int result = new ReviewDao().deleteReview(memberNo , revCode , conn);
+		int result = rd.deleteReview(memberNo , revCode , conn);
 		
 		
 		return result;
@@ -138,7 +139,7 @@ public class ReviewService {
 		
 		Connection conn = getConnection();
 		
-		ArrayList<Image> selectMainImagelist = new ReviewDao().selectMainImagelist(placeCode , conn);
+		ArrayList<Image> selectMainImagelist = rd.selectMainImagelist(placeCode , conn);
 		
 		return selectMainImagelist;
 	}
@@ -147,7 +148,7 @@ public class ReviewService {
 	
 		Connection conn = getConnection();
 		
-		int result = new ReviewDao().selectHeartCount(placeCode , conn);
+		int result = rd.selectHeartCount(placeCode , conn);
 		
 		return result;
 	}
@@ -156,8 +157,8 @@ public class ReviewService {
 		
 		Connection conn = getConnection();
 		
-		int result1 = new ReviewDao().updateReview(rUpdate , conn);
-		int result2 = new ReviewDao().updateScore(sUpdate , conn);
+		int result1 = rd.updateReview(rUpdate , conn);
+		int result2 = rd.updateScore(sUpdate , conn);
 		
 		if(result1 >0 && result2>0) {
 			commit(conn);
@@ -174,7 +175,7 @@ public class ReviewService {
 		
 		Connection conn = getConnection();
 		
-		int result3 = new ReviewDao().updateScore(sUpdate , conn);
+		int result3 = rd.updateScore(sUpdate , conn);
 		
 		if(result3 > 0) {
 			commit(conn);
@@ -192,7 +193,7 @@ public class ReviewService {
 		
 		Connection conn = getConnection();
 		
-		int placeCode = new ReviewDao().selectPlaceCode(memberNo , placeName, conn);
+		int placeCode = rd.selectPlaceCode(memberNo , placeName, conn);
 		
 		return placeCode;
 	}
@@ -201,7 +202,7 @@ public class ReviewService {
 		
 		Connection conn = getConnection();
 		
-		ArrayList<Image> selectMyImageList = new ReviewDao().selectMyImageList(placeName , conn);
+		ArrayList<Image> selectMyImageList = rd.selectMyImageList(placeName , conn);
 		
 		return selectMyImageList;
 	}
@@ -212,8 +213,19 @@ public class ReviewService {
 		
 		Connection conn = getConnection();
 		
-		new ReviewDao().deleteMyReview(revCode, conn);
+		rd.deleteMyReview(revCode, conn);
 		
+	}
+
+	
+	//이 시설을 예약한 회원인지 알아보기
+	public int isReservationMem(int memberNo, int placeCode) {
+		
+		Connection conn = getConnection();
+		
+		int isYes = rd.isReservationMem(memberNo, placeCode, conn);
+		
+		return isYes;
 	}
 
 	

@@ -624,5 +624,36 @@ public class ReviewDao {
 		
 	}
 
+	
+	//이 시설을 예약한 회원인지 알아보기
+	public int isReservationMem(int memberNo, int placeCode,Connection conn) {
+		
+		int isYes = 0;
+		
+		PreparedStatement psmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("isReservationMem");
+		
+		try {
+			psmt = conn.prepareStatement(sql);
+			psmt.setInt(1, memberNo);
+			psmt.setInt(2, placeCode);
+			
+			rset = psmt.executeQuery();
+			
+			if(rset.next()) {
+				isYes = rset.getInt(1);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(psmt);
+		}
+		
+		return isYes;
+	}
+
 
 }

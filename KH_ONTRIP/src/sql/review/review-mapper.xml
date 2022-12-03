@@ -172,4 +172,9 @@
 		WHERE PLC_CODE = (SELECT PLC_CODE FROM "Place" WHERE PLC_NAME = ?) AND ORIGIN_NAME LIKE '%1%'
 	</entry>
 	
+	<entry key="isReservationMem">
+		SELECT COUNT(*)
+		FROM "Reservation"
+		WHERE PLC_CODE = ? AND MEM_NO = ?
+	</entry>
 </properties>
