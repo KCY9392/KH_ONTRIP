@@ -362,14 +362,14 @@
          
          function btnEnroll(){
              
-             let regExp = /^[a-z\d!@#$%^*]{8,15}$/i;
+             let regExp = /^[a-zA-Z\d!@#$%^*]{8,15}$/i;
              if(!regExp.test($('input[name=memberPwd]').val())){
                  Swal.fire({
                      icon: 'error',
                      title: '유효한 비밀번호를 입력해주세요.'                  
                  });
                  $('input[name=memberPwd]').val()="";
-                 $('input[name=memberPwd]').val().focus();
+                 $('input[name=memberPwd]').focus();
              }else if($('input[name=memberName]').val() == ""){
         		 Swal.fire({
                      icon: 'error',
@@ -436,18 +436,7 @@
                      }
                  });
         	 }
-        	 
-        	 
-        	 
-        	 
-        	 
-             
-             
           }
-          
-
-         
-         
       </script>
 </body>
 </html>
