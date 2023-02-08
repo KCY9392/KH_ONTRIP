@@ -9,9 +9,9 @@
 ![image](https://user-images.githubusercontent.com/113049166/217443263-16ab6f38-9476-4926-a6f1-1cd5d70a70b5.png)
 
 
-##만든사람
+   <h2> 팀원명 </h2>
    <table>   
-   <tr><td>이름</td><td>깃허브</td>
-   <tr><td>진웅휘</td><td><a href="https://github.com/woongwhee">@woongwhee</a></td></tr>
+   <tr><td>이름</td><td>GitHub</td>
    <tr><td>김채영</td><td><a href="https://github.com/KCY9392">@KCY9392</a></td></tr>
+   <tr><td>송지호</td><td><a href="https://github.com/SongJiho1998">@SongJiho1998</a></td></tr>
    </table>
