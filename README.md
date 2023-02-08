@@ -28,6 +28,3 @@
 - tomcat9
 
    <br><br>
-   
-   ##USECASE-DIAGRAM
-   ![image](https://user-images.githubusercontent.com/113049166/217445659-f8a79960-635f-4d7f-b993-63086fbb5e17.png)
