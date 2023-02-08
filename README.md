@@ -1,5 +1,5 @@
 # KH_ONTRIP 
-<h1 style="font-family:맑은 고딕;"><여행코스 추천 & 예약 웹사이트></h1>
+<h1 style="font-family:한양해서, 펜흘림, 굴림체"><여행코스 추천 & 예약 웹사이트></h1>
 
 
 ![세미로고](https://user-images.githubusercontent.com/113049166/217444144-6083bddb-ffe2-4a59-a838-a36feddace74.png)
