@@ -1,5 +1,5 @@
 # KH_ONTRIP 
-<h1><여행코스 추천 & 예약 웹사이트></h1>
+<h1 style="font-family:맑은 고딕;"><여행코스 추천 & 예약 웹사이트></h1>
 
 
 ![세미로고](https://user-images.githubusercontent.com/113049166/217444144-6083bddb-ffe2-4a59-a838-a36feddace74.png)
@@ -15,3 +15,15 @@
    <tr><td>김채영</td><td><a href="https://github.com/KCY9392">@KCY9392</a></td></tr>
    <tr><td>송지호</td><td><a href="https://github.com/SongJiho1998">@SongJiho1998</a></td></tr>
    </table>
+   
+   <br><br>
+
+   ## :first_quarter_moon: 개발환경
+- HTML5 & CSS3
+- JavaScript
+- ajax
+- jQuery
+- OracleDB
+- Eclipse (java11)
+- tomcat9
+<br>
