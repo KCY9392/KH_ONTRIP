@@ -1,6 +1,8 @@
 # KH_ONTRIP
 
-#
+![세미로고](https://user-images.githubusercontent.com/113049166/217443485-81697ce1-b689-496b-bd0a-c87807829a1d.png)
+
+
 ![image](https://user-images.githubusercontent.com/113049166/217443399-0394c1cb-66bf-4bf1-a4b9-4de63cdebeea.png)
 
 
