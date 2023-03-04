@@ -11,7 +11,7 @@
 
 <br>
 
-## <img src="https://user-images.githubusercontent.com/113049166/222699301-ce14e886-186b-4241-91fc-132ba832cbe9.png" width="35px" height="35px"> 프로젝트소개
+## 👏 프로젝트소개
 
  <img src="https://user-images.githubusercontent.com/113049166/217443263-16ab6f38-9476-4926-a6f1-1cd5d70a70b5.png" width="80%" height="20%">
 
