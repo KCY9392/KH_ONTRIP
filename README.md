@@ -180,134 +180,131 @@
 <br>
   
 ## 🌟 주요기능
-#### 1) 채팅첨부파일 보내기 기능
+#### 1) 해시태그를 적용한 검색 기능
 
-<img src="https://user-images.githubusercontent.com/113049166/222718256-1cf90370-c99d-4f9d-b6e3-24cd6e9f16c2.png" width="80%" height="20%">
+<img src="https://user-images.githubusercontent.com/113049166/222877486-6715c38d-d6e7-41e0-aaa3-38081883d7bc.png" width="80%" height="20%">
 
-	/* 채팅 보내기 버튼 눌렀을 경우, */
-           $("#send").on('click',function(){
-        	   $.ajax({
-                   type: "post",
-                   url: "${pageContext.request.contextPath}/chat/chatFile/insert",
-                   data: new FormData($("#uploadfileForm")[0]),
-                   processData: false,
-                   contentType: false,
-                   success: function (rsp) {
-                	   
-                	   let changeName = rsp.changeName;
-                       let originName = rsp.originName;
-                	   
-                       let ext = originName.split('.').pop().toLowerCase();
-                       if ($.inArray(ext, ['jpg', 'jpeg', 'png', 'gif']) != -1) {
-                    	   
-                    	   let wsJson = {
-                    			   "chatContent": "<img src='/tresure/resources/images/chat/"+changeName+"' style='width: 200px'><br>",
-                    			   "chatRoomNo": chatRoomNo,
-                                   "userNo": userNo
-                    	   };
-                    	   //JSON 전송
-                           $("#uploadfile").val("");
-                           ws.send(JSON.stringify(wsJson));
-                           $(".chatImageBeforeSetImage").css('display','none');
-                           $('#View').attr('src', "");
-                           return false;
-                       }
-                	   
-                   },
-                   error : function(data){
-                	 alert("오류");   
-                   }
-                });
-           });
+
+#### /* 해시태그 검색창 Form */
+	<form action="<%=request.getContextPath() %>/searchHashPlace.se" id="enroll-form" method="post">
+	   <div style="box-sizing:border-box; width:500px; margin:auto;">
+	       <div class="input-group mb-3" style="width:700px; height:50px;">
+		  <input style="border:none !important;" type="text" id="search12" class="form-control" aria-label="Recipient's username" aria-describedby="button-addon2" name='hash' placeholder="해시태그를 입력해주세요">
+		  <input type="hidden" name='hidden_hash'>
+		  <button style="border:none; color:white; background-color:lightgrey;" class="btn btn-outline-secondary btn-search" type="submit" id="button-addon2">검색</button>
+		</div>
+		<div>
+	        	<span style=" width:450px; margin-left:35px; color:lightgrey;"><%= hashTag %></span>
+	        </div>
+	   </div> 
+	</form>
+	
+#### /* 태그 추가 시, 이벤트 발생 script */
+	<script>
+            const input = document.querySelector('input[name=hash]');
+       
+            let tagify = new Tagify(input); // initialize Tagify
+       
+            let hidden_hash = document.querySelector('input[name=hidden_hash]');
+            
+	        // 태그가 추가되면 이벤트 발생
+            tagify.on('add', function() {
+		    console.log(tagify.value); // 입력된 태그 정보 객체
+		    let tag = "";
+		    let arr = tagify.value;
+		    for(let i =0; i<arr.length; i++){ //{value: 태그명, tagid : ? , asda:?}
+			tag += arr[i]["value"]+  ( i != arr.length-1 ?  "," : "")
+			hidden_hash.value = tag;
+		    }
+             })
+   	</script>
+	
+#### /* 검색버튼 눌렀을 경우, 넘어가는 Controller */
+	@WebServlet("/searchHashPlace.se")
+	public class SearchHashPlaceController extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+	public SearchHashPlaceController() {
+		super();
+	}
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+	    // 해시태그 생성
+	    String hash = (String) request.getParameter("hidden_hash");
+	    String[] split_hash;
+	    if(hash != null) {
+		split_hash = hash.split(",");
+			
+		// 검색한 시설 사진 해시태그로 불러오기
+		ArrayList<Image> placeHashPath = new PlaceService().searchHashPlacePath(split_hash);
+		request.setAttribute("placeHashPath", placeHashPath);
+			
+		// 검색한 시설 정보 해시태그로 불러오기
+		ArrayList<Place> placeHashInfo = new PlaceService().searchHashPlaceInfo(split_hash);
+		request.setAttribute("placeHashInfo", placeHashInfo);
+	     }
+	     request.getRequestDispatcher("views/location/searchHashPlace.jsp").forward(request, response);
+	}
+
+	
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		doGet(request, response);
+	}
+	
+#### /* 입력값을 통한 DB데이터 select */
+	<!-- 해시태그를 사용한 검색 -->
+   	<entry key="searchHashPlacePath">
+   		SELECT FILE_NO, FILE_PATH, CHANGE_NAME
+   		FROM "Image"
+   		WHERE STATUS = 'Y' AND ORIGIN_NAME LIKE '%1%' AND PLC_CODE IN(SELECT s.PLC_CODE
+                                                                FROM "HashStorage" s
+                                                                JOIN "Hash" h USING(HAS_NO)
+                                                                WHERE h.HAS_NAME IN(@))
+   		ORDER BY PLC_CODE
+   	</entry>
+	
+	
+#### /* 메인창에서 해시태그키워드키워드로 시설 정보 찾기 */
+   	public ArrayList<Place> searchHashPlaceInfo(String[] split_hash, Connection conn){
+        	ArrayList<Place> placeHashInfo = new ArrayList<>();
+        	String hash = "";
+		for(int i=0; i<split_hash.length; i++) {
+			hash += "?";
+			if(i<split_hash.length-1) {
+				hash += ",";
+			}	
+		}
+      		PreparedStatement psmt = null;
+      		ResultSet rset = null;
+      
+      		String sql = prop.getProperty("searchHashPlaceInfo");
+      		sql = sql.replace("@",  hash);
+      		
+		try {
+		   psmt = conn.prepareStatement(sql);
+		   for(int i=0; i<split_hash.length; i++) {
+					psmt.setString(i+1, split_hash[i]);
+		   }
+         	   rset = psmt.executeQuery();
+         
+        	   while(rset.next()) {
+        	     placeHashInfo.add(new Place(
+                       rset.getString("CATEGORY_CODE"),
+                       rset.getString("PLC_NAME"),
+                       rset.getString("PLC_ADDRESS"),
+                       rset.getString("PLC_PNUMBER"),
+                       rset.getString("DAREA_NAME")));
+         	   }
+      		} catch (SQLException e) {
+         	e.printStackTrace();
+      		} finally {
+		 close(rset);
+		 close(psmt);
+	      }
+	      return placeHashInfo;
+	   }
 	   
-
-1. [보내기] 버튼 누를경우, ajax로 input file안의 데이터를 form으로 감싸서 chatFile/insert url로 post방식으로 보냅니다. 
-2. 이미지 데이터를 받은 controller에서 이미지를 저장할 서버저장폴더를 생성,이미지 저장하고
-3. DB에 이미지를 등록시키도록 service단으로 이미지객체를 넘깁니다. 
-4. 이미지의 원본명, 수정명을 map에 담아서 ajax결과값으로 보내주고, 그 결과값인 이미지 정보를 이미지태그로 만들고, Json객체로 감싸서 Websocket에 send합니다.
-5. 그 결과, 채팅창에 이미지가 출력됩니다.
-
-<br><br>
-#### 2) 최근 본 상품 기능
-<table>
-<tr>
-	<th>
-	  아직 상품 조회 X
-	</th>
-	<th>
-	  상품조회
-	</th>
-	<th>
-	  상품 조회 시,
-	</th>
-</tr>
-<tr>
-	<td width="10%">
-		<img src="https://user-images.githubusercontent.com/113049166/222720430-4e92aa76-e435-4bbe-9f24-fb811c8abb7b.png" width="600" height="200"/>
-	</td>
-	<td width="30%">
-		<img src="https://user-images.githubusercontent.com/113049166/222720807-f550b0b2-3bdf-4fe1-8ffd-7e42a13c6d27.png" width="600" height="200"></td>
-	<td width="10%">
-		<img src="https://user-images.githubusercontent.com/113049166/222720824-7beb0401-97af-4b95-a07e-ad04cdf4266f.png" width="600" height="200"></td>
-</tr>
-</table>
-
-	// localStorage에서 products 키값 가져오기.
-	let sideBarProducts = localStorage.getItem("products");
-
-	// 만약 products가 undefined가 아니라면 list 변수에 JSON.parse(sideBarProducts)를 통해서 JSON Array를 만들고, 그게 아니라면 list 변수를 새로운 배열로 생성한다.
-	let sideBarList = sideBarProducts ? JSON.parse(sideBarProducts) : [];
-
-	<c:choose>
-		<c:when test="${sessionScope.loginUser != null}">
-			let sideBarUrl = "${pageContext.request.contextPath}/recent/" + (sideBarList ? "update" : "products");
-
-			$.ajax({
-				   async : false,
-				   url : sideBarUrl,
-				   data : JSON.stringify(sideBarList),
-				   type : "post",
-				   dataType : "json",
-				   contentType : "application/json",
-				   success : function(data) {
-
-					localStorage.removeItem("products");
-					$("#nrecentlyList").children().remove();
-					$(data).each((i, elem) => {
-						if (elem.crawl == "N") {
-							elem.imgSrc = "${pageContext.request.contextPath}" + elem.imgSrc;
-						}
-						console.log("로그인 된 상태 -> href : ${pageContext.request.contextPath}/sell/sellDetail/" 
-								+ elem.sellNo, ", imgSrc :", elem.imgSrc, ", crawl:", elem.crawl);
-						$("#nrecentlyList").append($("<li>")
-								   .append($("<a>", { href : "${pageContext.request.contextPath}/sell/sellDetail/" + elem.sellNo })
-								   .append($("<img>", { src : elem.imgSrc }).addClass("nrecentlyImage")))
-								   .append($("<input>", {type : "hidden", name : "recentNo", value : elem.recentNo}))
-								   .append($("<input>", {type : "hidden", name : "sellNo", value : elem.sellNo}))
-								   .append($("<input>", {type : "hidden", name : "imgSrc", value : elem.imgSrc}))
-								   .append($("<input>", {type : "hidden", name : "crawl", value : elem.crawl}))
-								   .append($("<button>", { text : "X", class : "deleteBtn" })))
-						});
-						$("#nrecentlyCnt").text(data.length);
-					},
-				   error : function() {
-						console.log("오류 발생");
-					}
-				});
-		</c:when>
-	<c:otherwise>
-
-
-- 로컬스토리지를 이용하여서 상품을 클릭 시, 상품상세페이지로 이동할때 상품정보를 로컬스토리지에 세팅하는 스크립트를 사용하였습니다. 
-1. item변수에 상품객체를 담고, 
-2. 2개이상의 상품을 저장하기위해 다시 list배열에 담아 로컬스토리지 키값에 저장시킵니다.
-3. 이때의 키값을 sidebar.jsp에 전달시키고 이미지를 출력합니다.
-
-<br><br>
-
-
-
-
 
 
 
