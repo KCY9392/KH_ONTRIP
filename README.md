@@ -131,35 +131,51 @@
 	</td>
 </tr>
 <tr>
-	<th>채팅방목록
+	<th>시설이용후기
 	</th>
 	<th>
-	    채팅창
+	    시설이용후기 상세
+	</th>
+</tr>
+<tr>
+
+	<td>
+	  <img src="https://user-images.githubusercontent.com/113049166/222876375-19d98e68-59b1-4577-ad10-914b4bb159ea.png" width="600" height="200"/>
+	</td>
+	<td>
+	  <img src="https://user-images.githubusercontent.com/113049166/222876384-9d2364d9-3a73-46f8-897b-e691942d8cd0.png" width="600" height="200"/>
+	</td>
+<tr>
+<tr>
+	<th>시설선택창
+	</th>
+	<th>
+	    예약창
 	</th>
 </tr>
 <tr>
 	<td>
-	  <img src="https://user-images.githubusercontent.com/113049166/222710675-2151095c-77f8-4fe6-8dde-3a4151dc3a3a.png" width="600" height="200"/>
+	   <img src="https://user-images.githubusercontent.com/113049166/222876421-c01e6293-cd9d-400f-8279-994c92efa151.png" width="600" height="200"/>
 	</td>
 	<td>
-	  <img src="https://user-images.githubusercontent.com/113049166/222710805-367c4898-23d4-4525-b476-68750a696877.png" width="600" height="200"/>
+	   <img src="https://user-images.githubusercontent.com/113049166/222876445-49fa0704-c9c9-4973-a64e-10beb288cda5.png" width="600" height="200"/>
 	</td>
 <tr>
 <tr>
-	<th>내상점
+	<th>예약확인창
 	</th>
 	<th>
-	    내상점 찜목록
+	    마이페이지
 	</th>
 </tr>
 <tr>
 	<td>
-	   <img src="https://user-images.githubusercontent.com/113049166/222710884-a3f5ab8e-4777-407e-adbb-81c19d62b7de.png" width="600" height="200"/>
+	   <img src="https://user-images.githubusercontent.com/113049166/222876477-9cbc17d6-c3af-43af-b4fa-c2f208fdcb03.png" width="600" height="200"/>
 	</td>
 	<td>
-	   <img src="https://user-images.githubusercontent.com/113049166/222711021-ae1ba4b2-4b69-4533-b266-df2b46fd8e6a.png" width="600" height="200"/>
+	   <img src="https://user-images.githubusercontent.com/113049166/222876488-c1c6b3d2-a06f-4c2a-ace5-0bea2a0476c6.png" width="600" height="200"/>
 	</td>
-<tr>
+<tr>	
 </table>
 
 <br>
