@@ -138,14 +138,13 @@
 	</th>
 </tr>
 <tr>
-
 	<td>
-	  <img src="https://user-images.githubusercontent.com/113049166/222876375-19d98e68-59b1-4577-ad10-914b4bb159ea.png" width="600" height="200"/>
+	 <img src="https://user-images.githubusercontent.com/106515028/218249213-f37d2b31-906f-489d-953d-fd4ba914fa7c.png" width="600" height="200"/>
 	</td>
 	<td>
-	  <img src="https://user-images.githubusercontent.com/113049166/222876384-9d2364d9-3a73-46f8-897b-e691942d8cd0.png" width="600" height="200"/>
+	  <img src="https://user-images.githubusercontent.com/106515028/218249423-8deb878e-c599-4537-ae02-3a8784b558bd.png" width="600" height="200"/>
 	</td>
-<tr>
+</tr>
 <tr>
 	<th>시설선택창
 	</th>
